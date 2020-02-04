@@ -10,14 +10,10 @@ https://www.thejoyapp.com/
 https://explorejoy.co.uk/ 
 http://joy-age-uk.herokuapp.com/login - we have details
 
-https://foundersandcoders.slack.com/archives/GTFP4ULKE/p1580826632005400
 https://docs.google.com/forms/d/e/1FAIpQLSd8qeYzkFeVT_Zzjtn3E7m3doKLbSgdZIEILXmn8BEi-DiKEA/viewform
 https://docs.google.com/forms/d/e/1FAIpQLSflGceKvgvTPY758rWJZ5nnShwDCDdFMYQqy_pTPYuL4IzCSw/viewform
 
 Joy google sheets database - https://docs.google.com/spreadsheets/d/1R7-1iC3SsjIhLPAS4LHF4eo1Wo0rNX3UNx6eiO_hw6s/edit?ts=5e3957fc#gid=0
-
-User Research
-https://github.com/foundersandcoders/tech-for-better-leads/issues/271
 
 Figma
 Prototype
