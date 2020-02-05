@@ -10,12 +10,18 @@ An efficacy tool to demonstrate the impact of key services
 [explorejoy.co.uk](https://explorejoy.co.uk/)
 
 ## Previous Efficacy Tool
-[joy-age-uk.herokuapp.com](http://joy-age-uk.herokuapp.com/login - we have details)
+[joy-age-uk.herokuapp.com](http://joy-age-uk.herokuapp.com/login)
+
+## User research
 
 [User research 1](https://docs.google.com/forms/d/e/1FAIpQLSd8qeYzkFeVT_Zzjtn3E7m3doKLbSgdZIEILXmn8BEi-DiKEA/viewform)
 [User research 2](https://docs.google.com/forms/d/e/1FAIpQLSflGceKvgvTPY758rWJZ5nnShwDCDdFMYQqy_pTPYuL4IzCSw/viewform)
 
+## Database mockup
+
 [Joy google sheets database](https://docs.google.com/spreadsheets/d/1R7-1iC3SsjIhLPAS4LHF4eo1Wo0rNX3UNx6eiO_hw6s/edit?ts=5e3957fc#gid=0)
+
+## Prototyping
 
 [Figma Prototype](https://www.figma.com/file/jUQWIh89Y683BJfg9pe169/Joy-Efficacy?node-id=0%3A1)
 
@@ -23,12 +29,7 @@ An efficacy tool to demonstrate the impact of key services
 
 ## Crazy 8's
 
-<img src="https://i.imgur.com/3viZtml.jpg" width="200">
-<img src="https://i.imgur.com/16yykBE.jpg" width="200">
-<img src="https://i.imgur.com/lyf0FTY.jpg" width="200">
-<img src="https://i.imgur.com/vxuDxr3.jpg" width="200">
-<img src="https://i.imgur.com/J3Zf8dx.jpg" width="200">
-<img src="https://i.imgur.com/qtRKZNS.jpg" width="200">
+<img src="https://i.imgur.com/3viZtml.jpg" width="200"><img src="https://i.imgur.com/16yykBE.jpg" width="200"><img src="https://i.imgur.com/lyf0FTY.jpg" width="200"><img src="https://i.imgur.com/vxuDxr3.jpg" width="200"><img src="https://i.imgur.com/J3Zf8dx.jpg" width="200"><img src="https://i.imgur.com/qtRKZNS.jpg" width="200">
 
 ## Define problem
 
