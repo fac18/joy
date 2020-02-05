@@ -43,3 +43,5 @@ User Stories
 Database Schema
 https://dbdiagram.io/d/5e383ecf9e76504e0ef0f83b
 using checkboxes react - https://stackoverflow.com/questions/50360526/how-to-access-state-of-checkboxes-in-reactjs
+
+Data visualisation research results: https://docs.google.com/document/d/1DQzswMYZcc1HpxVnqLsKTLy-Jlx5ep9USFhy_UAqv2M/edit?usp=sharing (
