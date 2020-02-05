@@ -24,21 +24,21 @@ https://www.figma.com/file/02nqBJbpepY17Ak3uXoq6O/Untitled?node-id=0%3A1
 
 Crazy 8's
 
-!()[https://files.slack.com/files-pri/TJ91QJ800-FTGVB64KZ/20200120_175614.jpg]
-!()[https://files.slack.com/files-pri/TJ91QJ800-FTHA67KF0/20200120_175623.jpg]
-!()[https://files.slack.com/files-pri/TJ91QJ800-FTGVB6S2K/20200120_175631.jpg]
-!()[https://files.slack.com/files-pri/TJ91QJ800-FT2A7GND8/20200120_175639.jpg]
-!()[https://files.slack.com/files-pri/TJ91QJ800-FTF3ZAEKA/20200120_175644.jpg]
-!()[https://files.slack.com/files-pri/TJ91QJ800-FT3KMJXGT/20200120_175655.jpg]
+![](https://files.slack.com/files-pri/TJ91QJ800-FTGVB64KZ/20200120_175614.jpg)
+![](https://files.slack.com/files-pri/TJ91QJ800-FTHA67KF0/20200120_175623.jpg)
+![](https://files.slack.com/files-pri/TJ91QJ800-FTGVB6S2K/20200120_175631.jpg)
+![](https://files.slack.com/files-pri/TJ91QJ800-FT2A7GND8/20200120_175639.jpg)
+![](https://files.slack.com/files-pri/TJ91QJ800-FTF3ZAEKA/20200120_175644.jpg)
+![](https://files.slack.com/files-pri/TJ91QJ800-FT3KMJXGT/20200120_175655.jpg)
 
 Define problem
 
-!()[https://files.slack.com/files-pri/TJ91QJ800-FTHA6EEBY/20200120_175650.jpg]
+![](https://files.slack.com/files-pri/TJ91QJ800-FTHA6EEBY/20200120_175650.jpg)
 
 User Stories
 
-!()[https://files.slack.com/files-pri/TJ91QJ800-FT4BZK3B5/20200203_125156.jpg]
-!()[https://files.slack.com/files-pri/TJ91QJ800-FTHMPMJ2K/20200203_125137.jpg]
+![](https://files.slack.com/files-pri/TJ91QJ800-FT4BZK3B5/20200203_125156.jpg)
+![](https://files.slack.com/files-pri/TJ91QJ800-FTHMPMJ2K/20200203_125137.jpg)
 
 Database Schema
 https://dbdiagram.io/d/5e383ecf9e76504e0ef0f83b
