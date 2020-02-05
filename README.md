@@ -2,13 +2,18 @@
 
 An efficacy tool to demonstrate the impact of key services
 
-[Questions for product owner](https://docs.google.com/document/d/1AHMBpd4muYEc-Ki1Kdffsrb31EDjrS-Ou1MDVJQi-Lk/edit?usp=sharing)
+## Questions Product owner 
 
-[Plan for design week](https://docs.google.com/document/d/1eVwszROvm7Q8ci575emBwHVLZDQrAJGqYA1wltS-fQk/edit)
+[Questions - googlewords doc](https://docs.google.com/document/d/1AHMBpd4muYEc-Ki1Kdffsrb31EDjrS-Ou1MDVJQi-Lk/edit?usp=sharing)
+
+## Plan for design week
+
+[Plan - googlewords doc](https://docs.google.com/document/d/1eVwszROvm7Q8ci575emBwHVLZDQrAJGqYA1wltS-fQk/edit)
 
 ## Joy interface examples
 
 [thejoyapp.com](https://www.thejoyapp.com/)
+
 [explorejoy.co.uk](https://explorejoy.co.uk/)
 
 ## Previous Efficacy Tool
@@ -18,6 +23,7 @@ An efficacy tool to demonstrate the impact of key services
 ## User research
 
 [User research 1](https://docs.google.com/forms/d/e/1FAIpQLSd8qeYzkFeVT_Zzjtn3E7m3doKLbSgdZIEILXmn8BEi-DiKEA/viewform)
+
 [User research 2](https://docs.google.com/forms/d/e/1FAIpQLSflGceKvgvTPY758rWJZ5nnShwDCDdFMYQqy_pTPYuL4IzCSw/viewform)
 
 ## Database mockup
