@@ -1,0 +1,25 @@
+{
+  "name": "joy",
+  "version": "1.0.0",
+  "description": "An efficacy tool to demonstrate the impact of key services",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac18/joy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac18/joy/issues"
+  },
+  "homepage": "https://github.com/fac18/joy#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "password-generator": "^2.2.3"
+  }
+}
