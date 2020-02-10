@@ -2,7 +2,12 @@
 
 An efficacy tool to demonstrate the impact of key services
 
-## Questions Product owner 
+## Installation instructions
+
+git clone https://github.com/fac18/joy.git
+npm i && cd client && npm i && cd .. && npm run start:dev
+
+## Questions Product owner
 
 [Questions - googlewords doc](https://docs.google.com/document/d/1AHMBpd4muYEc-Ki1Kdffsrb31EDjrS-Ou1MDVJQi-Lk/edit?usp=sharing)
 
@@ -63,6 +68,6 @@ An efficacy tool to demonstrate the impact of key services
 
 [User Stories - draft](https://docs.google.com/document/d/1NFNn2UPRoiQl8vs_puuFhkzXUMbOtAYf9H-aScHjFQ4/edit)
 
-## First Build Sprint Estimated Velocity 
+## First Build Sprint Estimated Velocity
 
 - 21 points
