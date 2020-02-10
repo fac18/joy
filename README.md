@@ -66,3 +66,5 @@ An efficacy tool to demonstrate the impact of key services
 ## First Build Sprint Estimated Velocity 
 
 - 21 points
+
+[Process Guide](https://docs.google.com/document/d/1rsj6Z045ovwxx-vbf2c2zJTBEKdIINJfH4wifYhlBvs/edit)
