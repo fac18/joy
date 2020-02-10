@@ -71,3 +71,5 @@ npm i && cd client && npm i && cd .. && npm run start:dev
 ## First Build Sprint Estimated Velocity
 
 - 21 points
+
+[Process Guide](https://docs.google.com/document/d/1rsj6Z045ovwxx-vbf2c2zJTBEKdIINJfH4wifYhlBvs/edit)
