@@ -62,3 +62,7 @@ An efficacy tool to demonstrate the impact of key services
 [Data visualisation research results](https://docs.google.com/document/d/1DQzswMYZcc1HpxVnqLsKTLy-Jlx5ep9USFhy_UAqv2M/edit?usp=sharing)
 
 [User Stories - draft](https://docs.google.com/document/d/1NFNn2UPRoiQl8vs_puuFhkzXUMbOtAYf9H-aScHjFQ4/edit)
+
+## First Build Sprint Estimated Velocity 
+
+- 21 points
