@@ -40,7 +40,7 @@ const ServicesGraph = () => {
       <XAxis title='% Wellbeing Increase' />
       <YAxis />
       <ChartLabel
-        text='% wellbeing increase'
+        text='% Wellbeing Increase'
         xPercent={0.6}
         yPercent={0.55}
         style={{
