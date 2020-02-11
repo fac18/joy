@@ -24,6 +24,14 @@ const getService = id => {
     .then(data => data.rows);
 };
 
+const getAssessment = id => {
+    return dbConnection.query(
+        "SELECT service_name, service_provider WHERE service_id=$1",
+        [id]
+    )
+    .then(data => data.rows);
+};
+
 module.exports = {
     getClient,
     getPrescriber,
