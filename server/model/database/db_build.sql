@@ -1,10 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS prescriber CASCADE;
-DROP TABLE IF EXISTS client CASCADE;
-DROP TABLE IF EXISTS services CASCADE;
-DROP TABLE IF EXISTS ucla3_questionnaire CASCADE;
-DROP TABLE IF EXISTS referrals_questionnaire CASCADE;
+DROP TABLE IF EXISTS prescriber, client, services, ucla3_questionnaire, referrals_questionnaire CASCADE;
 
 CREATE TABLE prescriber (
     prescriber_id SERIAL PRIMARY KEY,
@@ -18,7 +14,7 @@ CREATE TABLE client (
     client_id SERIAL PRIMARY KEY,
     client_firstname VARCHAR(50) NOT NULL,
     client_surname VARCHAR(50) NOT NULL,
-    client_dob DATE NOT NULL
+    client_dob DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
 CREATE  TABLE services (
@@ -27,21 +23,20 @@ CREATE  TABLE services (
     services_provider VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE ucl3_questionnaire (
-    input_date_ucl3 DATE NOT NULL, 
+CREATE TABLE ucla3_questionnaire (
+    input_date_ucla3 DATE NOT NULL DEFAULT CURRENT_DATE, 
     q1_companionship INTEGER NOT NULL , 
     q2_left_out INTEGER NOT NULL, 
     q3_isolated INTEGER NOT NULL, 
     client_id INTEGER REFERENCES client(client_id)
-)
+);
 
 CREATE TABLE referrals_questionnaire (
-    input_date_referral DATE NOT NULL,
-    client_id INTEGER REFERENCES client(client_id)
-    services_id INTEGER REFERENCES services(services_id)
-    client_attended BOOLEAN NOT NULL 
-)
-
+    input_date_referral DATE NOT NULL DEFAULT CURRENT_DATE,
+    client_id INTEGER REFERENCES client(client_id),
+    services_id INTEGER REFERENCES services(services_id),
+    client_attended BOOLEAN NOT NULL DEFAULT FALSE
+);
 
 INSERT INTO prescriber (prescriber_username, prescriber_password, prescriber_admin) VALUES 
 ('Nikke', 'password123', 'true'),
@@ -50,10 +45,10 @@ INSERT INTO prescriber (prescriber_username, prescriber_password, prescriber_adm
 ('Roshan', 'password123', 'false');
 
 INSERT INTO client (client_firstname, client_surname, client_dob) VALUES
-('Jim', 'Brown', '12-12-1955'),
-('Dot', 'Green', '28-03-1954'),
-('Kathy', 'Black', '03-01-1980'),
-('Jim', 'Brown', '05-05-1947');
+('Jim', 'Brown', '1955-12-12'),
+('Dot', 'Green', '1954-03-28'),
+('Kathy', 'Black', '1980-01-03'),
+('Jim', 'Brown', '1947-05-05');
 
 INSERT INTO services (services_name, services_provider) VALUES
 ('Local Offer - support for people with SEND', 'Family Information Service F'),
@@ -71,31 +66,29 @@ INSERT INTO services (services_name, services_provider) VALUES
 ('Mens Cooking', 'Wokingham Cares'),
 ('Information and Advice', 'Wokingham Cares');
 
-
-INSERT INTO ucl3_questionnaire (input_date_ucl3, client_id, q1_companionship, q2_left_out, q3_isolated) VALUES 
-('03-01-2020', 1,  2, 3, 3),
-('14-01-2020', 3, 3, 3, 2),
-('20-01-2020', 2, 1, 2, 1),
-('03/02/2020', 1, 1, 2),
-('14-02-2020', 3, 2, 2, 1),
-('20-02-2020', 2, 3, 3, 2),
-('05-01-2020', 4, 3, 3, 3), 
-('05-02-2020', 4, 2, 1, 1) 
-
+INSERT INTO ucla3_questionnaire (input_date_ucla3, client_id, q1_companionship, q2_left_out, q3_isolated) VALUES 
+('2020-01-03', 1,  2, 3, 3),
+('2020-01-14', 3, 3, 3, 2),
+('2020-01-20', 2, 1, 2, 1),
+('2020-02-03', 1,1, 1, 2),
+('2020-02-14', 3, 2, 2, 1),
+('2020-02-20', 2, 3, 3, 2),
+('2020-01-05', 4, 3, 3, 3), 
+('2020-02-05', 4, 2, 1, 1); 
 
 INSERT INTO referrals_questionnaire (input_date_referral, client_id, services_id, client_attended) VALUES
-('03-01-2020', 1, 7, 'true'), 
-('14-01-2020', 1, 11, 'true'), 
-('31-01-2020', 1, 13, 'true'), 
-('05-06-2019', 3, 9, 'true'), 
-('07-03-2019', 2, 10, 'true'), 
-('03-05-2019', 2, 11, 'true'), 
-('05-04-2019', 2, 12, 'true'),
-('27-03-2019', 3, 11, 'true'), 
-('03-05-2019', 3, 10, 'true'), 
-('07-06-2019', 2, 11, 'true'), 
-('23-03-2019', 2, 9, 'true'), 
-('05-01-2020', 4, 10, 'true'), 
-('05-02-2020', 4, 13, 'true')
+('2020-01-03', 1, 7, TRUE), 
+('2020-01-14', 1, 11, TRUE), 
+('2020-01-31', 1, 13, TRUE), 
+('2019-06-05', 3, 9, TRUE), 
+('2019-03-07', 2, 10, TRUE),
+('2019-05-03', 2, 11, TRUE), 
+('2019-04-05', 2, 12, TRUE),
+('2019-03-27', 3, 11, TRUE), 
+('2019-05-03', 3, 10, TRUE), 
+('2019-06-07', 2, 11, TRUE), 
+('2019-03-23', 2, 9, TRUE), 
+('2020-01-05', 4, 10, TRUE), 
+('2020-02-05', 4, 13, TRUE);
 
 COMMIT;
