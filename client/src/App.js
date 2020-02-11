@@ -3,7 +3,8 @@ import Dashboard from './components/Dashboard/Dashboard';
 import './App.css';
 
 const App = () => {
-  return <Dashboard />;
+  const [serviceReferrals, setServiceReferrals] = React.useState(15);
+  return <Dashboard serviceReferrals={serviceReferrals} />;
 };
 
 export default App;
