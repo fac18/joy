@@ -1,8 +1,12 @@
 const express = require('express');
+const morgan = require('morgan');
 const path = require('path');
 const generatePassword = require('password-generator');
 
 const app = express();
+
+app.use(morgan('combined'))
+// Log all request to make error identification easier
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));

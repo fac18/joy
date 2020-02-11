@@ -3,13 +3,14 @@ import ServicesGraph from './ServicesGraph';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import upArrow from '../../assets/up-arrow.svg';
-import { isNullOrUndefined } from 'util';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
     margin: 'auto',
     maxWidth: 500,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Source Sans Pro'
   },
   card: {
     minWidth: 275,
@@ -37,6 +38,7 @@ const Dashboard = ({ overallWellbeing }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
+      <Link to='/SearchClient'> Search for clients </Link>
       <h2 className={classes.emphasis}>My Dashboard</h2>
       <Card className={classes.card}>
         <img className={classes.arrow} src={upArrow} />
