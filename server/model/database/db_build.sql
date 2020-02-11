@@ -6,7 +6,8 @@ DROP TABLE IF EXISTS services CASCADE;
 
 CREATE TABLE prescriber (
     prescriber_id SERIAL PRIMARY KEY,
-    prescriber_username VARCHAR(100) NOT NULL,
+    prescriber_firstname VARCHAR(100) NOT NULL,
+    prescriber_lastname VARCHAR(100) NOT NULL,
     prescriber_password VARCHAR(50) NOT NULL, 
     prescriber_admin BOOLEAN NOT NULL
 );
