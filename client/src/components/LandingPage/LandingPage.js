@@ -6,6 +6,7 @@ const LandingPage = () => {
   return (
     <div>
       {/* <LogoSvg /> */}
+      <h1>Joy Efficacy Tool</h1>
       <LandingPageSvg />
     </div>
   );
