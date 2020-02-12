@@ -56,6 +56,9 @@ const useStyles = makeStyles({
     },
     padding: "10px 20px",
     margin: "0.5rem auto"
+  },
+  accountIcon: {
+    color: "#C4C4C4"
   }
 });
 
@@ -66,7 +69,7 @@ const ClientProfile = () => {
       <NavBar />
       <div className="App">
         <Typography className={classes.mainTitle} variant="h4" gutterBottom>
-          <AccountCircleIcon fontSize="large" />
+          <AccountCircleIcon fontSize="large" className={classes.accountIcon} />
           Jim Brown, 64
         </Typography>
 
