@@ -1,14 +1,36 @@
 // search client page
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import getRequest from '../../utils/getData';
 
 const SearchClient = () => {
+  const [clients, updateClients] = React.useState(
+    [
+      {
+        client_firstname: 'Jim',
+        client_surname: 'Morris',
+        client_dob: '1994/05/05'
+      }
+    ],
+    [
+      {
+        client_firstname: 'Sally',
+        client_surname: 'Evans',
+        client_dob: '1993/05/05'
+      }
+    ]
+  );
+
+  useEffect(() => {
+    getRequest('/list-users').then(res => updateClients(res));
+  }, []);
+
   return (
-    <div className='App'>
-      I am the search clients page
+    <>
+      {clients.map}I am the search clients page
       <Link to='/clientProfile'>Link to client profile</Link>
-    </div>
+    </>
   );
 };
 
