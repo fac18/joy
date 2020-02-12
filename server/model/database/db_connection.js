@@ -1,9 +1,9 @@
 const { Pool } = require('pg');
 const url = require('url');
+const dotenv = require('dotenv').config();
 
-// check environment and load env variables/assign database URL accordingly
-
-const DB_URL = process.env.DB_URL;
+let DB_URL = process.env.DB_URL;
+console.log(DB_URL);
 
 if (!DB_URL) throw new Error('Environment variable not available');
 

@@ -1,4 +1,4 @@
-const dbConnection = require('../model/dbConnection');
+const dbConnection = require('../database/db_connection.js');
 
 const getAllClients = () => {
   return dbConnection

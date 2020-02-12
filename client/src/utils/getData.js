@@ -1,7 +1,7 @@
 // get data file
 
 const getRequest = endpoint => {
-  return fetch('http://localhost:3001' + endpoint)
+  return fetch('http://localhost:5000' + endpoint)
     .then(res => res.json())
     .catch(console.log);
 };

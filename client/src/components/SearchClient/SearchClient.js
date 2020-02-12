@@ -23,13 +23,14 @@ const SearchClient = () => {
   );
 
   useEffect(() => {
-    getRequest('/list-users').then(res => updateClients(res));
+    getRequest('/getallclients')
+      .then(res => updateClients(res))
+      .then(console.log(clients));
   }, []);
 
   return (
     <>
-      {clients.map}I am the search clients page
-      <Link to='/clientProfile'>Link to client profile</Link>
+      <p>shhh</p>
     </>
   );
 };
