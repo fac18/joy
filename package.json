@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/fac18/joy#readme",
   "dependencies": {
+    "@material-ui/core": "^4.9.2",
+    "@material-ui/icons": "^4.9.1",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
     "password-generator": "^2.2.3"

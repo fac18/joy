@@ -1,13 +1,16 @@
-import React from "react";
-import { ReactComponent as LogoSvg } from "../../svgs/logo.svg";
-import { ReactComponent as LandingPageSvg } from "../../svgs/landing-page.svg";
+import React from 'react';
+import { ReactComponent as LogoSvg } from '../../svgs/logo.svg';
+import { ReactComponent as LandingPageSvg } from '../../svgs/landing-page.svg';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   return (
-    <div>
+    <div className='App'>
       {/* <LogoSvg /> */}
       <h1>Joy Efficacy Tool</h1>
-      <LandingPageSvg />
+      <Link to='/dashboard'>
+        <LandingPageSvg />
+      </Link>
     </div>
   );
 };
