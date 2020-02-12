@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS prescriber, client, services, ucla3_questionnaire, referral
 CREATE TABLE prescriber (
     prescriber_id SERIAL PRIMARY KEY,
     prescriber_firstname VARCHAR(100) NOT NULL,
-    prescriber_lastname VARCHAR(100) NOT NULL,
     prescriber_password VARCHAR(50) NOT NULL, 
     prescriber_admin BOOLEAN NOT NULL
 );
@@ -25,6 +24,7 @@ CREATE  TABLE services (
 );
 
 CREATE TABLE ucla3_questionnaire (
+    ucla3_id SERIAL PRIMARY KEY,
     input_date_ucla3 DATE NOT NULL DEFAULT CURRENT_DATE, 
     q1_companionship INTEGER NOT NULL , 
     q2_left_out INTEGER NOT NULL, 
@@ -33,13 +33,14 @@ CREATE TABLE ucla3_questionnaire (
 );
 
 CREATE TABLE referrals_questionnaire (
+    referrals_id SERIAL PRIMARY KEY,
     input_date_referral DATE NOT NULL DEFAULT CURRENT_DATE,
     client_id INTEGER REFERENCES client(client_id),
     services_id INTEGER REFERENCES services(services_id),
     client_attended BOOLEAN NOT NULL DEFAULT FALSE
 );
 
-INSERT INTO prescriber (prescriber_username, prescriber_password, prescriber_admin) VALUES 
+INSERT INTO prescriber (prescriber_firstname, prescriber_password, prescriber_admin) VALUES 
 ('Nikke', 'password123', 'true'),
 ('Maria', 'password123', 'false'),
 ('Rosa', 'password123', 'false'),
