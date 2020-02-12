@@ -9,6 +9,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import NavBar from "../NavBar/NavBar";
 // import Button from "../Button/Button";
 
 const useStyles = makeStyles({
@@ -42,7 +43,7 @@ const useStyles = makeStyles({
     background: "#A0B43B",
     color: "white",
     "&:hover": {
-      backgroundColor: "#f06292"
+      backgroundColor: "#707E29"
     },
     padding: "10px 20px",
     margin: "0.5rem auto"
@@ -51,7 +52,7 @@ const useStyles = makeStyles({
     background: "#E71F67",
     color: "white",
     "&:hover": {
-      backgroundColor: "#f06292"
+      backgroundColor: "#80902F"
     },
     padding: "10px 20px",
     margin: "0.5rem auto"
@@ -62,6 +63,7 @@ const ClientProfile = () => {
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
+      <NavBar />
       <div className="App">
         <Typography className={classes.mainTitle} variant="h4" gutterBottom>
           <AccountCircleIcon fontSize="large" />
