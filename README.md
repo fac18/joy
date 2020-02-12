@@ -1,7 +1,7 @@
 # joy
 
 An efficacy tool to demonstrate the impact of key services
-[joy live on heroku](https://radiant-retreat-42470.herokuapp.com/)
+[joy live on heroku](https://team-joy.herokuapp.com/)
 
 ## Installation instructions
 
