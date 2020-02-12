@@ -1,4 +1,8 @@
 .App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
   font-family: "Source Sans Pro", sans-serif;
   width: 100%;
