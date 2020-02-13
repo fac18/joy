@@ -1,9 +1,13 @@
 const dbConnection = require('../database/db_connection.js');
 
+// SELECT TO_CHAR(client_dob, 'dd/mm/yyyy') FROM client;
+
 const getAllClients = () => {
   console.log('I am getallclients');
   return dbConnection
-    .query('SELECT client_firstname, client_surname, client_dob FROM client;')
+    .query(
+      "SELECT client_firstname, client_surname, TO_CHAR(client_dob, 'dd/mm/yyyy') FROM client"
+    )
     .then(data => {
       console.log('I am the data in the getdata function', data.rows);
       return data.rows;

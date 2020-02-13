@@ -61,7 +61,7 @@ const SearchClient = () => {
                     {client.client_firstname} {client.client_surname}
                   </b>
                 </h3>
-                <p>DOB: {client.client_dob}</p>
+                <p>DOB: {client.to_char}</p>
               </Typography>
             </Card>
           </Link>
