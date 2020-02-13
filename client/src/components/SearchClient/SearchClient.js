@@ -32,6 +32,8 @@ const useStyles = makeStyles({
   accountInfo: {}
 });
 
+// Automatically sends a request to the server asking for a list of all the clients
+
 const SearchClient = () => {
   const [clients, updateClients] = React.useState([{}], [{}]);
   useEffect(() => {
@@ -40,6 +42,8 @@ const SearchClient = () => {
       updateClients(res);
     });
   }, []);
+
+  // Creates a card for every user which comes back from the database
 
   const classes = useStyles();
   return (

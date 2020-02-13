@@ -1,6 +1,6 @@
 const dbConnection = require('../database/db_connection.js');
 
-// SELECT TO_CHAR(client_dob, 'dd/mm/yyyy') FROM client;
+// Sends a request to the database including reformatting data to make more readable
 
 const getAllClients = () => {
   console.log('I am getallclients');
@@ -13,19 +13,6 @@ const getAllClients = () => {
       return data.rows;
     });
 };
-
-// const getAllClients = (request, response) => {
-//   dbConnection.query(
-//     'SELECT client_firstname, client_surname, client_dob FROM client',
-//     (error, res) => {
-//       if (error) {
-//         throw error;
-//       }
-//       response.status(200).json(results.rows);
-//     }
-//   );
-//   console.log(results.rows);
-// };
 
 // const getClientInfo = id => {
 //   return dbConnection
