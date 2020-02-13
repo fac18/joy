@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Dashboard from './components/Dashboard/Dashboard';
 import LandingPage from '../src/components/LandingPage/LandingPage';
 import SearchClient from '../src/components/SearchClient/SearchClient';
+import AddNewService from '../src/components/AddNewService/AddNewService';
 import ClientProfile from '../src/components/ClientProfile/ClientProfile';
 
 const App = () => {
@@ -30,6 +31,10 @@ const App = () => {
         render={() => (
           <SearchClient clients={clients} setClients={setClients} />
         )}
+      />
+      <Route
+        path='/AddService'
+        render={() => (<AddNewService />)}
       />
       <Route path='/clientProfile' component={ClientProfile} />
     </Router>

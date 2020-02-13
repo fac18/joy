@@ -22,7 +22,7 @@ const LandingPage = () => {
       <LogoSvg className={classes.logo} />
       <h1>Efficacy Tool</h1>
       <Link to='/dashboard'>
-        <LandingPageSvg />
+        <LandingPageSvg title="Click me"/>
       </Link>
     </div>
     </ThemeProvider>

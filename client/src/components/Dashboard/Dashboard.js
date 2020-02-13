@@ -51,6 +51,7 @@ const Dashboard = ({ overallWellbeing, clients, setClients }) => {
         <NavBar />
         <br />
         <Link to='/SearchClient'> Search for clients </Link>
+        <Link to='/AddService'> Add a new service </Link>
         <h2 className={classes.emphasis}>My Dashboard</h2>
         <Card className={classes.card}>
           <img className={classes.arrow} src={upArrow} />
