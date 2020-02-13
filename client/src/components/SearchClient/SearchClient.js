@@ -51,7 +51,10 @@ const SearchClient = ({ setClients, clients }) => {
         <b>{clients.length} results:</b>
         <br />
         {clients.map(client => (
-          <Link to='/clientProfile' style={{ textDecoration: 'none' }}>
+          <Link
+            to={{ '/clientProfile/': client.client_id }}
+            style={{ textDecoration: 'none' }}
+          >
             <Card className={classes.cardBg}>
               <CardContent>
                 <AccountCircleIcon className={classes.accountIcon} />

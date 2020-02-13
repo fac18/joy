@@ -12,4 +12,10 @@ router.get('/getallclients', (req, res) => {
   });
 });
 
+router.get('/clientProfile:id', (req, res) => {
+  getClient(id).then(data => {
+    res.json(data);
+  });
+});
+
 module.exports = router;
