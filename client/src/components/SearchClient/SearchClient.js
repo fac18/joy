@@ -34,7 +34,6 @@ const useStyles = makeStyles({
 
 const SearchClient = () => {
   const [clients, updateClients] = React.useState([{}], [{}]);
-
   useEffect(() => {
     getRequest('/getallclients').then(res => {
       console.log('I am the res in searhclient', res[0].client_firstname);
@@ -48,32 +47,25 @@ const SearchClient = () => {
       <NavBar />
       <div className='App'>
         <br />
-        <b>2 results:</b>
+        <b>{clients.length} results:</b>
         <br />
-        <Link to='/clientProfile' style={{ textDecoration: 'none' }}>
-          <Card className={classes.cardBg}>
-            <CardContent>
-              <AccountCircleIcon className={classes.accountIcon} />
-            </CardContent>
-            <Typography className={classes.accountInfo}>
-              <h3>
-                <b>Jim Brown, 64</b>
-              </h3>
-              <p>DOB: 12/12/1955</p>
-            </Typography>
-          </Card>
-        </Link>
-        <Card className={classes.cardBg}>
-          <CardContent>
-            <AccountCircleIcon className={classes.accountIcon} />
-          </CardContent>
-          <Typography className={classes.accountInfo}>
-            <h3>
-              <b>Jim Brown, 72</b>
-            </h3>
-            <p>DOB: 05/05/1947</p>
-          </Typography>
-        </Card>
+        {clients.map(client => (
+          <Link to='/clientProfile' style={{ textDecoration: 'none' }}>
+            <Card className={classes.cardBg}>
+              <CardContent>
+                <AccountCircleIcon className={classes.accountIcon} />
+              </CardContent>
+              <Typography className={classes.accountInfo}>
+                <h3>
+                  <b>
+                    {client.client_firstname} {client.client_surname}
+                  </b>
+                </h3>
+                <p>DOB: {client.client_dob}</p>
+              </Typography>
+            </Card>
+          </Link>
+        ))}
       </div>
     </ThemeProvider>
   );
