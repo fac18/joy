@@ -3,8 +3,22 @@ const dbConnection = require('../database/db_connection.js');
 const getAllClients = () => {
   return dbConnection
     .query('SELECT client_firstname, client_surname, client_dob FROM client')
-    .then(data => data.rows);
+    .then(data => data.rows)
+    .then(data => console.log('I am in the getdata function', data.rows));
 };
+
+// const getAllClients = (request, response) => {
+//   dbConnection.query(
+//     'SELECT client_firstname, client_surname, client_dob FROM client',
+//     (error, results) => {
+//       if (error) {
+//         throw error;
+//       }
+//       response.status(200).json(results.rows);
+//     }
+//   );
+//   console.log(results.rows);
+// };
 
 // const getClientInfo = id => {
 //   return dbConnection

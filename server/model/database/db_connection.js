@@ -12,13 +12,11 @@ const params = url.parse(DB_URL);
 const [username, password] = params.auth.split(':');
 
 const options = {
-  host: params.hostname,
-  port: params.port,
-  database: params.pathname.split('/')[1],
-  max: process.env.DB_MAX_CONNECTIONS || 2,
-  user: username,
-  password,
-  ssl: params.hostname !== 'localhost'
+  host: 'localhost',
+  port: '5432',
+  database: 'joy_data',
+  user: 'team_joy',
+  password: 'joy2020'
 };
 
 module.exports = new Pool(options);
