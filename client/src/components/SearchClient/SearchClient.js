@@ -1,7 +1,6 @@
 // search client page
 
 import React, { useEffect } from 'react';
-import getRequest from '../../utils/getData';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
@@ -11,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import NavBar from '../NavBar/NavBar';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme';
+import getRequest from '../../utils/getData';
 
 const useStyles = makeStyles({
   cardBg: {
@@ -34,16 +34,13 @@ const useStyles = makeStyles({
 
 // Automatically sends a request to the server asking for a list of all the clients
 
-const SearchClient = () => {
-  const [clients, updateClients] = React.useState([{}], [{}]);
+const SearchClient = ({ setClients, clients }) => {
+  // Creates a card for every user which comes back from the database
   useEffect(() => {
     getRequest('/getallclients').then(res => {
-      console.log('I am the res in searhclient', res[0].client_firstname);
-      updateClients(res);
+      setClients(res);
     });
   }, []);
-
-  // Creates a card for every user which comes back from the database
 
   const classes = useStyles();
   return (
