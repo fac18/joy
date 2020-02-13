@@ -1,33 +1,34 @@
-  
-const { Pool } = require("pg");
-const url = require("url");
+const { Pool } = require('pg');
+const url = require('url');
+const dotenv = require('dotenv').config();
 
-// check environment and load env variables/assign database URL accordingly
-const isTravis = process.env.NODE_ENV === "travis";
-const isProduction = process.env.NODE_ENV === "production";
+let DATABASE_URL = process.env.DATABASE_URL;
+console.log(DATABASE_URL);
 
-if (!(isProduction || isTravis)) require("env2")("../.env");
+if (!DATABASE_URL) throw new Error('Environment variable not available');
 
-const DB_URL = isProduction
-  ? process.env.DB_URL
-  : isTravis
-  ? process.env.DBTRAVIS_URL
-  : process.env.DBTEST_URL;
+const params = url.parse(DATABASE_URL);
 
-if (!DB_URL) throw new Error("Environment variable not available");
+const [username, password] = params.auth.split(':');
 
-const params = url.parse(DB_URL);
+// The below commented out code and params split do the same thing
 
-const [username, password] = params.auth.split(":");
+// const options = {
+//   host: 'localhost',
+//   port: '5432',
+//   database: 'joy_data',
+//   user: username,
+//   password: 'joy2020'
+// };
 
 const options = {
   host: params.hostname,
   port: params.port,
-  database: params.pathname.split("/")[1],
+  database: params.pathname.split('/')[1],
   max: process.env.DB_MAX_CONNECTIONS || 2,
   user: username,
   password,
-  ssl: params.hostname !== "localhost"
+  ssl: params.hostname !== 'localhost'
 };
 
 module.exports = new Pool(options);
