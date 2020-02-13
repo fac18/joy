@@ -1,1 +1,3 @@
-// add new service test
+test("Jest is working", () => {
+  expect(true).toBeTruthy();
+});
