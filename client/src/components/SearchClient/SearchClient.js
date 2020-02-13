@@ -5,32 +5,18 @@ import { Link } from 'react-router-dom';
 import getRequest from '../../utils/getData';
 
 const SearchClient = () => {
-  const [clients, updateClients] = React.useState(
-    [
-      {
-        client_firstname: 'Jim',
-        client_surname: 'Morris',
-        client_dob: '1994/05/05'
-      }
-    ],
-    [
-      {
-        client_firstname: 'Sally',
-        client_surname: 'Evans',
-        client_dob: '1993/05/05'
-      }
-    ]
-  );
+  const [clients, updateClients] = React.useState([{}], [{}]);
 
   useEffect(() => {
-    getRequest('/getallclients')
-      .then(res => updateClients(res))
-      .then(console.log(clients));
+    getRequest('/getallclients').then(res => {
+      console.log('I am the res in searhclient', res[0].client_firstname);
+      updateClients(res);
+    });
   }, []);
 
   return (
     <>
-      <p>shhh</p>
+      <p>{clients[0].client_firstname}</p>
     </>
   );
 };

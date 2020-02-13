@@ -1,16 +1,19 @@
 const dbConnection = require('../database/db_connection.js');
 
 const getAllClients = () => {
+  console.log('I am getallclients');
   return dbConnection
-    .query('SELECT client_firstname, client_surname, client_dob FROM client')
-    .then(data => data.rows)
-    .then(data => console.log('I am in the getdata function', data.rows));
+    .query('SELECT client_firstname, client_surname, client_dob FROM client;')
+    .then(data => {
+      console.log('I am the data in the getdata function', data.rows);
+      return data.rows;
+    });
 };
 
 // const getAllClients = (request, response) => {
 //   dbConnection.query(
 //     'SELECT client_firstname, client_surname, client_dob FROM client',
-//     (error, results) => {
+//     (error, res) => {
 //       if (error) {
 //         throw error;
 //       }
