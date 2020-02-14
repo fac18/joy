@@ -56,58 +56,58 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        <ListItem>
-          <ListItemIcon>
-            <FavoriteBorderIcon />
-          </ListItemIcon>
-          <Link className={classes.link} to="/">
+        <Link className={classes.link} to="/">
+          <ListItem>
+            <ListItemIcon>
+              <FavoriteBorderIcon color="primary" />
+            </ListItemIcon>
             <ListItemText>Add New Service</ListItemText>
-          </Link>
-        </ListItem>
+          </ListItem>
+        </Link>
       </List>
       <Divider />
       <List>
-        <ListItem>
-          <ListItemIcon>
-            <TimelineIcon />
-          </ListItemIcon>
-          <Link className={classes.link} to="/dashboard">
+        <Link className={classes.link} to="/dashboard">
+          <ListItem>
+            <ListItemIcon>
+              <TimelineIcon color="primary" />
+            </ListItemIcon>
             <ListItemText>Dashboard</ListItemText>
-          </Link>
-        </ListItem>
+          </ListItem>
+        </Link>
       </List>
       <Divider />
       <List>
-        <ListItem>
-          <ListItemIcon>
-            <PersonIcon />
-          </ListItemIcon>
-          <Link className={classes.link} to="/clientProfile">
+        <Link className={classes.link} to="/clientProfile">
+          <ListItem>
+            <ListItemIcon>
+              <PersonIcon color="primary" />
+            </ListItemIcon>
             <ListItemText>Register Client</ListItemText>
-          </Link>
-        </ListItem>
+          </ListItem>
+        </Link>
       </List>
       <Divider />
       <List>
-        <ListItem>
-          <ListItemIcon>
-            <FindInPageIcon />
-          </ListItemIcon>
-          <Link className={classes.link} to="/searchClient">
+        <Link className={classes.link} to="/searchClient">
+          <ListItem>
+            <ListItemIcon>
+              <FindInPageIcon color="primary" />
+            </ListItemIcon>
             <ListItemText>Search Client</ListItemText>
-          </Link>
-        </ListItem>
+          </ListItem>
+        </Link>
       </List>
       <Divider />
       <List>
-        <ListItem>
-          <ListItemIcon>
-            <ExitToAppIcon />
-          </ListItemIcon>
-          <Link className={classes.link} to="/">
+        <Link className={classes.link} to="/">
+          <ListItem>
+            <ListItemIcon>
+              <ExitToAppIcon color="primary" />
+            </ListItemIcon>
             <ListItemText>Logout</ListItemText>
-          </Link>
-        </ListItem>
+          </ListItem>
+        </Link>
       </List>
     </div>
   );
