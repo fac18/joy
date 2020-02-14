@@ -18,7 +18,6 @@ const useStyles = makeStyles({
     maxWidth: 500,
     border: "solid 2px #A0B43B",
     textAlign: "center",
-    margin: "auto",
     margin: "1rem"
   },
   services: {
