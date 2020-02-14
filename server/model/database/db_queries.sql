@@ -25,19 +25,19 @@ ORDER BY ucla3_questionnaire.client_id, input_date_ucla3 ASC;
 
 -- Query 4a
 -- Returns a single client's INITIAL assessment date and score 
--- (currently set to client 3, Kathy Black)
+-- (currently set to client 1, our beloved Jim Brown)
 SELECT ucla3_id, input_date_ucla3 AS initial_assessment_date, total_ucla3, client_id
 FROM ucla3_questionnaire
-WHERE client_id = 3
+WHERE client_id = 1
 ORDER BY input_date_ucla3 ASC
 LIMIT 1;
 
 -- Query 4a
 -- Returns a single client's CURRENT assessment date and score
--- (currently set to client 3, Kathy Black)
+-- (currently set to client 1, our beloved Jim Brown)
 SELECT ucla3_id, input_date_ucla3 AS current_assessment_date, total_ucla3, client_id
 FROM ucla3_questionnaire
-WHERE client_id = 3
+WHERE client_id = 1
 ORDER BY input_date_ucla3 DESC
 LIMIT 1;
 
