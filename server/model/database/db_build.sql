@@ -29,6 +29,7 @@ CREATE TABLE ucla3_questionnaire (
     q1_companionship INTEGER NOT NULL , 
     q2_left_out INTEGER NOT NULL, 
     q3_isolated INTEGER NOT NULL, 
+    total_ucla3 INTEGER NOT NULL GENERATED ALWAYS AS (q1_companionship + q2_left_out + q3_isolated) STORED,
     client_id INTEGER REFERENCES client(client_id)
 );
 
@@ -72,11 +73,16 @@ INSERT INTO ucla3_questionnaire (input_date_ucla3, client_id, q1_companionship, 
 ('2020-01-03', 1,  2, 3, 3),
 ('2020-01-14', 3, 3, 3, 2),
 ('2020-01-20', 2, 1, 2, 1),
-('2020-02-03', 1,1, 1, 2),
+('2020-02-03', 1, 1, 1, 2),
 ('2020-02-14', 3, 2, 2, 1),
 ('2020-02-20', 2, 3, 3, 2),
 ('2020-01-05', 4, 3, 3, 3), 
-('2020-02-05', 4, 2, 1, 1); 
+('2020-02-05', 4, 2, 1, 1),
+('2020-03-03', 1,  1, 2, 3),
+('2020-04-03', 1,  1, 1, 1),
+('2019-05-03', 1,  2, 3, 3);
+
+
 
 INSERT INTO referrals_questionnaire (input_date_referral, client_id, services_id, client_attended) VALUES
 ('2020-01-03', 1, 7, TRUE), 
