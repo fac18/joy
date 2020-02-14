@@ -12,6 +12,8 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme';
 import getRequest from '../../utils/getData';
 
+import { filterClients } from '../../utils/filterClients';
+
 const useStyles = makeStyles({
   cardBg: {
     backgroundColor: '#EBEDEE',
@@ -41,16 +43,29 @@ const SearchClient = ({ setClients, clients }) => {
       setClients(res);
     });
   }, []);
+  const [searchInput, setSearchInput] = React.useState(undefined)
 
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
+      <form>
+            <input 
+                type="text"
+                id="search"
+                name="search"
+                required
+                value={searchInput}
+                aria-label="search bar"
+                placeholder="search for a client"
+                onChange={e => setSearchInput(e.target.value)}
+            />
+      </form>
       <div className='App'>
         <br />
         <b>{clients.length} results:</b>
         <br />
-        {clients.map(client => (
+        { filterClients(searchInput, clients).map(client => (
           <Link to='/clientProfile' style={{ textDecoration: 'none' }}>
             <Card className={classes.cardBg}>
               <CardContent>
