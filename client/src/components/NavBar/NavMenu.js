@@ -16,6 +16,7 @@ import TimelineIcon from "@material-ui/icons/Timeline";
 import PersonIcon from "@material-ui/icons/Person";
 import FindInPageIcon from "@material-ui/icons/FindInPage";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   list: {
@@ -52,50 +53,58 @@ export default function TemporaryDrawer() {
     >
       <List>
         <ListItem>
-          <ListItemIcon>
-            <FavoriteBorderIcon />
-          </ListItemIcon>
-          <ListItemText>Add New Service</ListItemText>
+          <Link to="/">
+            <ListItemIcon>
+              <FavoriteBorderIcon />
+            </ListItemIcon>
+            <ListItemText>Add New Service</ListItemText>
+          </Link>
         </ListItem>
       </List>
       <Divider />
       <List>
         <ListItem>
-          <ListItemIcon>
-            <TimelineIcon />
-          </ListItemIcon>
-          <ListItemText>Dashboard</ListItemText>
+          <Link to="/dashboard">
+            <ListItemIcon>
+              <TimelineIcon />
+            </ListItemIcon>
+            <ListItemText>Dashboard</ListItemText>
+          </Link>
         </ListItem>
       </List>
       <Divider />
       <List>
         <ListItem>
-          <ListItemIcon>
-            <PersonIcon />
-          </ListItemIcon>
-          <ListItemText>Register Client</ListItemText>
+          <Link to="/clientProfile">
+            <ListItemIcon>
+              <PersonIcon />
+            </ListItemIcon>
+            <ListItemText>Register Client</ListItemText>
+          </Link>
         </ListItem>
       </List>
       <Divider />
       <List>
         <ListItem>
-          <ListItemIcon>
-            <FindInPageIcon />
-          </ListItemIcon>
-          <ListItemText>Search Client</ListItemText>
+          <Link to="/searchClient">
+            <ListItemIcon>
+              <FindInPageIcon />
+            </ListItemIcon>
+            <ListItemText>Search Client</ListItemText>
+          </Link>
         </ListItem>
       </List>
       <Divider />
       <List>
         <ListItem>
-          <ListItemIcon>
-            <ExitToAppIcon />
-          </ListItemIcon>
-          <ListItemText>Logout</ListItemText>
+          <Link to="/">
+            <ListItemIcon>
+              <ExitToAppIcon />
+            </ListItemIcon>
+            <ListItemText>Logout</ListItemText>
+          </Link>
         </ListItem>
       </List>
-      <Divider />
-      <Divider />
     </div>
   );
 
