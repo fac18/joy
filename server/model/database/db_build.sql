@@ -1,14 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS prescriber, client, services, ucla3_questionnaire, referrals_questionnaire CASCADE;
-
-CREATE TABLE prescriber (
-    prescriber_id SERIAL PRIMARY KEY,
-    prescriber_firstname VARCHAR(100) NOT NULL,
-    prescriber_password VARCHAR(50) NOT NULL, 
-    prescriber_admin BOOLEAN NOT NULL
-);
-
+DROP TABLE IF EXISTS client, services, ucla3_questionnaire, referrals_questionnaire CASCADE;
 
 CREATE TABLE client (
     client_id SERIAL PRIMARY KEY,
@@ -40,12 +32,6 @@ CREATE TABLE referrals_questionnaire (
     services_id INTEGER REFERENCES services(services_id),
     client_attended BOOLEAN NOT NULL DEFAULT FALSE
 );
-
-INSERT INTO prescriber (prescriber_firstname, prescriber_password, prescriber_admin) VALUES 
-('Nikke', 'password123', 'true'),
-('Maria', 'password123', 'false'),
-('Rosa', 'password123', 'false'),
-('Roshan', 'password123', 'false');
 
 INSERT INTO client (client_firstname, client_surname, client_dob) VALUES
 ('Jim', 'Brown', '1955-12-12'),

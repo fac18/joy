@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import ServicesGraph from "./ServicesGraph";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../../theme";
+import getRequest from "../../utils/getData";
 
 const useStyles = makeStyles({
   root: {
@@ -36,7 +37,13 @@ const useStyles = makeStyles({
   }
 });
 
-const Dashboard = ({ overallWellbeing }) => {
+const Dashboard = ({ overallWellbeing, clients, setClients }) => {
+  useEffect(() => {
+    getRequest("/getallclients").then(res => {
+      setClients(res);
+    });
+  }, []);
+
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
@@ -48,8 +55,8 @@ const Dashboard = ({ overallWellbeing }) => {
         <Card className={classes.card}>
           <img className={classes.arrow} src={upArrow} />
           <h3>
-            Over the last month, average wellbeing increased by:
-            <span className={classes.emphasis}> {overallWellbeing}%</span>
+            You currently have:
+            <span className={classes.emphasis}> {clients.length} clients!</span>
           </h3>
         </Card>
         <Card className={classes.card}>

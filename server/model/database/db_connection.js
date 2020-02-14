@@ -1,22 +1,34 @@
-const { Pool } = require("pg");
-const url = require("url");
+const { Pool } = require('pg');
+const url = require('url');
+const dotenv = require('dotenv').config();
 
-// check environment and load env variables/assign database URL accordingly
+let DATABASE_URL = process.env.DATABASE_URL;
+console.log(DATABASE_URL);
 
-const { DATABASE_URL } = process.env;
+if (!DATABASE_URL) throw new Error('Environment variable not available');
 
 const params = url.parse(DATABASE_URL);
 
-const [username, password] = params.auth.split(":");
+const [username, password] = params.auth.split(':');
+
+// The below commented out code and params split do the same thing
+
+// const options = {
+//   host: 'localhost',
+//   port: '5432',
+//   database: 'joy_data',
+//   user: username,
+//   password: 'joy2020'
+// };
 
 const options = {
   host: params.hostname,
   port: params.port,
-  database: params.pathname.split("/")[1],
+  database: params.pathname.split('/')[1],
   max: process.env.DB_MAX_CONNECTIONS || 2,
   user: username,
   password,
-  ssl: params.hostname !== "localhost"
+  ssl: params.hostname !== 'localhost'
 };
 
 module.exports = new Pool(options);

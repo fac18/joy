@@ -1,1 +1,3 @@
-// initial assessment test
+test("Jest is working", () => {
+  expect(true).toBeTruthy();
+});

@@ -1,2 +1,0 @@
-DATABASE_URL = postgres://joy_team:teamjoy2020@localhost:5432/joy_data
-DB_URL = postgres://joy_team:teamjoy2020@localhost:5432/joy_data
