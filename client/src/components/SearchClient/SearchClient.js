@@ -43,7 +43,9 @@ const SearchClient = ({ setClients, clients }) => {
       setClients(res);
     });
   }, []);
-  const [searchInput, setSearchInput] = React.useState(undefined)
+  const [searchInputFirstName, setSearchInputFirstName] = React.useState(undefined)
+  const [searchInputLastName, setSearchInputLastName] = React.useState(undefined)
+  const [searchInputDOB, setSearchInputDOB] = React.useState(undefined)
 
   const classes = useStyles();
   return (
@@ -55,17 +57,40 @@ const SearchClient = ({ setClients, clients }) => {
                 id="search"
                 name="search"
                 required
-                value={searchInput}
+                value={searchInputFirstName}
                 aria-label="search bar"
-                placeholder="search for a client"
-                onChange={e => setSearchInput(e.target.value)}
+                placeholder="Search by first name"
+                onChange={e => setSearchInputFirstName(e.target.value)}
+            />
+      </form>
+      <form>
+            <input 
+                type="text"
+                id="search"
+                name="search"
+                required
+                value={searchInputLastName}
+                aria-label="search bar"
+                placeholder="Search by surname"
+                onChange={e => setSearchInputFirstName(e.target.value)}
+            />
+      </form>      <form>
+            <input 
+                type="text"
+                id="search"
+                name="search"
+                required
+                value={searchInputDOB}
+                aria-label="search bar"
+                placeholder="Search by date of birth"
+                onChange={e => setSearchInputFirstName(e.target.value)}
             />
       </form>
       <div className='App'>
         <br />
         <b>{clients.length} results:</b>
         <br />
-        { filterClients(searchInput, clients).map(client => (
+        { filterClients(searchInputFirstName, clients).map(client => (
           <Link to='/clientProfile' style={{ textDecoration: 'none' }}>
             <Card className={classes.cardBg}>
               <CardContent>
