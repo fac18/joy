@@ -24,9 +24,13 @@ const useStyles = makeStyles({
   },
   fullList: {
     width: "auto"
+  },
+  link: {
+    textDecoration: "none",
+    color: "black"
   }
 });
-// const classes = useStyles();
+
 export default function TemporaryDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -53,10 +57,10 @@ export default function TemporaryDrawer() {
     >
       <List>
         <ListItem>
-          <Link to="/">
-            <ListItemIcon>
-              <FavoriteBorderIcon />
-            </ListItemIcon>
+          <ListItemIcon>
+            <FavoriteBorderIcon />
+          </ListItemIcon>
+          <Link className={classes.link} to="/">
             <ListItemText>Add New Service</ListItemText>
           </Link>
         </ListItem>
@@ -64,10 +68,10 @@ export default function TemporaryDrawer() {
       <Divider />
       <List>
         <ListItem>
-          <Link to="/dashboard">
-            <ListItemIcon>
-              <TimelineIcon />
-            </ListItemIcon>
+          <ListItemIcon>
+            <TimelineIcon />
+          </ListItemIcon>
+          <Link className={classes.link} to="/dashboard">
             <ListItemText>Dashboard</ListItemText>
           </Link>
         </ListItem>
@@ -75,10 +79,10 @@ export default function TemporaryDrawer() {
       <Divider />
       <List>
         <ListItem>
-          <Link to="/clientProfile">
-            <ListItemIcon>
-              <PersonIcon />
-            </ListItemIcon>
+          <ListItemIcon>
+            <PersonIcon />
+          </ListItemIcon>
+          <Link className={classes.link} to="/clientProfile">
             <ListItemText>Register Client</ListItemText>
           </Link>
         </ListItem>
@@ -86,10 +90,10 @@ export default function TemporaryDrawer() {
       <Divider />
       <List>
         <ListItem>
-          <Link to="/searchClient">
-            <ListItemIcon>
-              <FindInPageIcon />
-            </ListItemIcon>
+          <ListItemIcon>
+            <FindInPageIcon />
+          </ListItemIcon>
+          <Link className={classes.link} to="/searchClient">
             <ListItemText>Search Client</ListItemText>
           </Link>
         </ListItem>
@@ -97,10 +101,10 @@ export default function TemporaryDrawer() {
       <Divider />
       <List>
         <ListItem>
-          <Link to="/">
-            <ListItemIcon>
-              <ExitToAppIcon />
-            </ListItemIcon>
+          <ListItemIcon>
+            <ExitToAppIcon />
+          </ListItemIcon>
+          <Link className={classes.link} to="/">
             <ListItemText>Logout</ListItemText>
           </Link>
         </ListItem>
