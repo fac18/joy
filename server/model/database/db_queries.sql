@@ -32,7 +32,7 @@ WHERE client_id = 1
 ORDER BY input_date_ucla3 ASC
 LIMIT 1;
 
--- Query 4a
+-- Query 4b
 -- Returns a single client's CURRENT assessment date and score
 -- (currently set to client 1, our beloved Jim Brown)
 SELECT ucla3_id, input_date_ucla3 AS current_assessment_date, total_ucla3, client_id
