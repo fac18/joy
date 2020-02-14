@@ -5,7 +5,7 @@
 
 const getRequest = endpoint => {
   return fetch(endpoint)
-    .then(res => res.json())
+    .then(res => {console.log('hello'); res.json()})
     .catch(console.log);
 };
 

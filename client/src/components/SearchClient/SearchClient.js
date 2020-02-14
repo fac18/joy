@@ -38,9 +38,10 @@ const SearchClient = ({ setClients, clients }) => {
   // Creates a card for every user which comes back from the database
   useEffect(() => {
     getRequest('/getallclients').then(res => {
+      console.log(res);
       setClients(res);
     });
-  }, []);
+  }, [setClients]);
 
   const classes = useStyles();
   return (
@@ -50,6 +51,18 @@ const SearchClient = ({ setClients, clients }) => {
         <br />
         <b>{clients.length} results:</b>
         <br />
+        <form>
+            <input 
+                type="text"
+                id="search"
+                name="search"
+                required
+                value={clients}
+                aria-label="search bar"
+                placeholder="search for a client"
+                onChange={e => setClients(e.target.value)}
+            />
+        </form>
         {clients.map(client => (
           <Link to='/clientProfile' style={{ textDecoration: 'none' }}>
             <Card className={classes.cardBg}>

@@ -6,10 +6,10 @@ import LandingPage from '../src/components/LandingPage/LandingPage';
 import SearchClient from '../src/components/SearchClient/SearchClient';
 import AddNewService from '../src/components/AddNewService/AddNewService';
 import ClientProfile from '../src/components/ClientProfile/ClientProfile';
-import LoginPage from '../src/components/LoginPage/LoginPage';
-import RegisterClient from '../src/components/RegisterClient/RegisterClient';
-import SuccessPage from '../src/components/SuccessPage/Success';
-import WellbeingAssessment from '../src/components/WellbeingAssessment/WellbeingAssessment';
+// import LoginPage from '../src/components/LoginPage/LoginPage';
+// import RegisterClient from '../src/components/RegisterClient/RegisterClient';
+// import SuccessPage from '../src/components/SuccessPage/Success';
+// import WellbeingAssessment from '../src/components/WellbeingAssessment/WellbeingAssessment';
 
 const App = () => {
   const [overallWellbeing, setOverallWellbeing] = React.useState(15);
