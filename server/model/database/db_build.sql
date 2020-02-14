@@ -30,6 +30,7 @@ CREATE TABLE referrals_questionnaire (
     input_date_referral DATE NOT NULL DEFAULT CURRENT_DATE,
     client_id INTEGER REFERENCES client(client_id),
     services_id INTEGER REFERENCES services(services_id),
+    no_of_services_attended INTEGER ,
     client_attended BOOLEAN NOT NULL DEFAULT FALSE
 );
 
@@ -37,7 +38,11 @@ INSERT INTO client (client_firstname, client_surname, client_dob) VALUES
 ('Jim', 'Brown', '1955-12-12'),
 ('Dot', 'Green', '1954-03-28'),
 ('Kathy', 'Black', '1980-01-03'),
-('Jim', 'Brown', '1947-05-05');
+('Jim', 'Brown', '1947-05-05'),
+('Katherine', 'Woods', '1981-04-26'),
+('Jay', 'Lejeune', '1943-02-27'),
+('Lucy', 'Baughan', '1952-01-17'),
+('Leonardo', 'Barbosa', '1938-03-14');
 
 INSERT INTO services (services_name, services_provider) VALUES
 ('Local Offer - support for people with SEND', 'Family Information Service F'),
@@ -66,23 +71,27 @@ INSERT INTO ucla3_questionnaire (input_date_ucla3, client_id, q1_companionship, 
 ('2020-02-05', 4, 2, 1, 1),
 ('2020-03-03', 1,  1, 2, 3),
 ('2020-04-03', 1,  1, 1, 1),
-('2019-05-03', 1,  2, 3, 3);
+('2019-05-28', 1,  2, 3, 3),
+('2019-06-09', 2,  2, 3, 3),
+('2019-07-15', 3,  2, 3, 3),
+('2019-08-30', 4,  2, 3, 3);
 
 
 
-INSERT INTO referrals_questionnaire (input_date_referral, client_id, services_id, client_attended) VALUES
-('2020-01-03', 1, 7, TRUE), 
-('2020-01-14', 1, 11, TRUE), 
-('2020-01-31', 1, 13, TRUE), 
-('2019-06-05', 3, 9, TRUE), 
-('2019-03-07', 2, 10, TRUE),
-('2019-05-03', 2, 11, TRUE), 
-('2019-04-05', 2, 12, TRUE),
-('2019-03-27', 3, 11, TRUE), 
-('2019-05-03', 3, 10, TRUE), 
-('2019-06-07', 2, 11, TRUE), 
-('2019-03-23', 2, 9, TRUE), 
-('2020-01-05', 4, 10, TRUE), 
-('2020-02-05', 4, 13, TRUE);
+
+INSERT INTO referrals_questionnaire (input_date_referral, client_id, services_id, no_of_services_attended, client_attended) VALUES
+('2020-01-03', 1, 7, 5, TRUE), 
+('2020-01-14', 1, 11, 5, TRUE), 
+('2020-01-31', 1, 13, 3, TRUE), 
+('2019-06-05', 3, 9, 1, TRUE), 
+('2019-03-07', 2, 10, 0, TRUE),
+('2019-05-03', 2, 11, 7, TRUE), 
+('2019-04-05', 2, 12, 3, TRUE),
+('2019-03-27', 3, 11, 0, TRUE), 
+('2019-05-03', 3, 10, 1, TRUE), 
+('2019-06-07', 2, 11, 3, TRUE), 
+('2019-03-23', 2, 9, 8, TRUE), 
+('2020-01-05', 4, 10, 2, TRUE), 
+('2020-02-05', 4, 13, 2, TRUE);
 
 COMMIT;
