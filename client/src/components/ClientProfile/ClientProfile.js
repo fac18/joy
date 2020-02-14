@@ -64,17 +64,15 @@ const useStyles = makeStyles({
   }
 });
 
-const ClientProfile = () => {
+const ClientProfile = ({ singleClient, setSingleClient }) => {
   let { id } = useParams();
 
-  // useEffect(() => {
-  //   getRequest('/getclient:id').then(res => {
-  //     setSingleClient(res);
-  //     console.log(Singleclient);
-  //   });
-  // }, []);
-
-  console.log(id);
+  useEffect(() => {
+    getRequest(`/getclient:${id}`).then(res => {
+      console.log('I am the res', res);
+      setSingleClient(res);
+    });
+  }, []);
 
   const classes = useStyles();
   return (
@@ -83,7 +81,7 @@ const ClientProfile = () => {
       <div className='App'>
         <Typography className={classes.mainTitle} variant='h4' gutterBottom>
           <AccountCircleIcon fontSize='large' className={classes.accountIcon} />
-          Jim Brown, 64
+          {singleClient.first_name} Brown, 64
         </Typography>
 
         <Card className={classes.root}>

@@ -14,6 +14,17 @@ const getAllClients = () => {
     });
 };
 
+const getClient = id => {
+  return dbConnection
+    .query(
+      `SELECT client_firstname, client_surname, client_dob FROM client WHERE client_id=${id}`
+    )
+    .then(data => {
+      console.log('I am the data in the getclient request', data);
+      return data.rows;
+    });
+};
+
 // const getClientInfo = id => {
 //   return dbConnection
 //     .query(
@@ -27,15 +38,6 @@ const getPrescriber = id => {
   return dbConnection
     .query(
       'SELECT prescriber_firstname, prescriber_surname WHERE prescriber_id=$1',
-      [id]
-    )
-    .then(data => data.rows);
-};
-
-const getClient = id => {
-  return dbConnection
-    .query(
-      'SELECT client_firstname, client_surname, client_dob WHERE client_id=$1',
       [id]
     )
     .then(data => data.rows);
