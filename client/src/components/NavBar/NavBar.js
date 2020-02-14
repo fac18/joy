@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { ReactComponent as LogoSvg } from "../../svgs/logo.svg";
+import NavMenu from "../NavBar/NavMenu";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,7 +41,7 @@ export default function ButtonAppBar() {
             color="primary"
             aria-label="menu"
           >
-            <MenuIcon />
+            <NavMenu />
           </IconButton>
           <LogoSvg className={classes.logo} />
         </Toolbar>
