@@ -34,14 +34,15 @@ const useStyles = makeStyles({
 
 // Automatically sends a request to the server asking for a list of all the clients
 
-const SearchClient = ({ setClients, clients }) => {
+const SearchClient = ({ clients, setClients }) => {
   // Creates a card for every user which comes back from the database
+
   useEffect(() => {
     getRequest('/getallclients').then(res => {
       setClients(res);
+      console.log(clients.client_id);
     });
   }, []);
-
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
@@ -51,8 +52,8 @@ const SearchClient = ({ setClients, clients }) => {
         <b>{clients.length} results:</b>
         <br />
         {clients.map(client => (
-          <Link
-            to={{ '/clientProfile/': client.client_id }}
+          <a
+            href={`clientProfile/${client.client_id}`}
             style={{ textDecoration: 'none' }}
           >
             <Card className={classes.cardBg}>
@@ -68,7 +69,7 @@ const SearchClient = ({ setClients, clients }) => {
                 <p>DOB: {client.to_char}</p>
               </Typography>
             </Card>
-          </Link>
+          </a>
         ))}
       </div>
     </ThemeProvider>

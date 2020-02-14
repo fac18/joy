@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Route,
   Redirect,
-  useParams
+  useParams,
+  Switch
 } from 'react-router-dom';
 import Dashboard from './components/Dashboard/Dashboard';
 import LandingPage from '../src/components/LandingPage/LandingPage';
@@ -42,15 +43,17 @@ const App = () => {
           />
         )}
       />
-      <Route
-        path='/clientProfile/:id'
-        render={() => (
-          <ClientProfile
-            singleClient={singleClient}
-            setSingleClient={setSingleClient}
-          />
-        )}
-      />
+      <Switch>
+        <Route
+          path='/clientProfile/:id'
+          render={() => (
+            <ClientProfile
+              singleClient={singleClient}
+              setSingleClient={setSingleClient}
+            />
+          )}
+        />
+      </Switch>
     </Router>
   );
 };

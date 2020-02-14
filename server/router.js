@@ -12,7 +12,8 @@ router.get('/getallclients', (req, res) => {
   });
 });
 
-router.get('/clientProfile:id', (req, res) => {
+router.get('/getclient:id', (req, res) => {
+  const id = parseInt(req.params.id);
   getClient(id).then(data => {
     res.json(data);
   });

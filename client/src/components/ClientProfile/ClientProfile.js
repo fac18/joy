@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -10,6 +10,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import NavBar from '../NavBar/NavBar';
+import getRequest from '../../utils/getData';
+
 // import Button from "../Button/Button";
 
 const useStyles = makeStyles({
@@ -62,8 +64,16 @@ const useStyles = makeStyles({
   }
 });
 
-const ClientProfile = ({ client, setClient, match: { params } }) => {
-  let id = useParams();
+const ClientProfile = () => {
+  let { id } = useParams();
+
+  // useEffect(() => {
+  //   getRequest('/getclient:id').then(res => {
+  //     setSingleClient(res);
+  //     console.log(Singleclient);
+  //   });
+  // }, []);
+
   console.log(id);
 
   const classes = useStyles();
