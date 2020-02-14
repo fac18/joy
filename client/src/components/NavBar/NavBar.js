@@ -14,13 +14,6 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     bgcolor: "#000000"
   },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    flexGrow: 1,
-    textAlign: "center"
-  },
   logo: {
     paddingTop: "0vh",
     height: "30px",
@@ -35,14 +28,7 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static" style={{ background: "#FFF" }}>
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="primary"
-            aria-label="menu"
-          >
-            <NavMenu />
-          </IconButton>
+          <NavMenu />
           <LogoSvg className={classes.logo} />
         </Toolbar>
       </AppBar>
