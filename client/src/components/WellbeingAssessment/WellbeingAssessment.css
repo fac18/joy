@@ -1,0 +1,17 @@
+fieldset {
+  border: 0;
+}
+
+.formWellbeing input[type="radio"] {
+  display: none;
+}
+
+label {
+  padding: 5px;
+  padding-left: 20px;
+}
+
+input:checked + span {
+  background: #ccf;
+  border-color: #ccf;
+}
