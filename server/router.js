@@ -5,7 +5,8 @@ const {
   getAllClients,
   getClient,
   getCurrentAssessment,
-  getInitialAssessment
+  getInitialAssessment,
+  getClientServices
 } = require('./model/queries/getData.js');
 
 // When the getallclients route is called, calls the getdata function
@@ -22,7 +23,8 @@ router.get('/getclient:id', (req, res) => {
   Promise.all([
     getClient(id),
     getInitialAssessment(id),
-    getCurrentAssessment(id)
+    getCurrentAssessment(id),
+    getClientServices(id)
   ]).then(data => {
     // console.log('I am the res.json', res.json(data));
     console.log('I am not res.jsoned', data);

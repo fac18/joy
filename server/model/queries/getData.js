@@ -43,6 +43,17 @@ LIMIT 1;`
     });
 };
 
+const getClientServices = id => {
+  return dbConnection
+    .query(
+      `SELECT services_name FROM services WHERE services_id =ANY(SELECT services_id FROM referrals_questionnaire WHERE client_id=${id});`
+    )
+    .then(data => {
+      console.log('I am the data in the getclientservices request', data.rows);
+      return data.rows;
+    });
+};
+
 // async function getAllAssessments() {
 //   console.log('starting async query');
 //   const result = await dbConnection.query(`SELECT ucla3_id, input_date_ucla3 AS initial_assessment_date, total_ucla3, client_id
@@ -131,5 +142,6 @@ module.exports = {
   getService,
   getAllClients,
   getCurrentAssessment,
-  getInitialAssessment
+  getInitialAssessment,
+  getClientServices
 };

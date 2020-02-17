@@ -71,12 +71,25 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
 
   let newObject = function(someone) {
     return {
-      firstname: someone[0][0].client_firstname,
-      surname: someone[0][0].client_surname,
-      DOB: someone[0][0].client_dob,
-      initialAssessment: someone[1][0].total_ucla3,
-      currentAssessment: someone[2][0].ucla3_id,
-      currentAssessmentDate: someone[2][0].current_assessment_date
+      firstname: someone[0][0].client_firstname
+        ? someone[0][0].client_firstname
+        : 'First name unknown',
+      surname: someone[0][0].client_surname
+        ? someone[0][0].client_surname
+        : 'Last name unknown',
+      DOB: someone[0][0].client_dob
+        ? someone[0][0].client_dob
+        : 'Date of birth unknown',
+      initialAssessment: someone[1][0]
+        ? someone[1][0].total_ucla3
+        : 'Unavailable',
+      currentAssessment: someone[2][0] ? someone[2][0].ucla3_id : 'Unavailable',
+      currentAssessmentDate: someone[2][0]
+        ? someone[2][0].current_assessment_date
+        : 'No wellbeing assessments carried out',
+      referredServices: someone[3].length
+        ? someone[3]
+        : 'No current services referred'
     };
   };
 
@@ -85,21 +98,6 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
       setSingleClient(newObject(res));
     });
   });
-
-  //   useEffect(() => {
-  //     getRequest(`/getclient:${id}`).then(res => {
-  //       setSingleClient(res.reduce((acc, fact) => ({
-  //         let { firstname, lastname, DOB, initialassessment, currentassessment } = fact;
-  //       return { ...acc, [firstname]: [...(acc[client[0][0].client_firstname] || []),
-  //         firstname: client[0][0].client_firstname,
-  //         lastname: client[0][0].client_surname,
-  //         DOB: client[0][0].client_dob,
-  //         initialAssessment: client[1][0].total_ucla3,
-  //         currentAssessment: client[2][0].ucla3_id
-  //       )}
-  //       )
-  //   })
-  // }, []);
 
   if (singleClient === null) {
     console.log('poo');
@@ -157,12 +155,13 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
                 <b>Current services referred to:</b>
               </Typography>
               <Typography color='textPrimary'>
-                Learning Spanish
-                <br />
-                Pub Lunch
-                <br />
-                Modern Dance
-                <br />
+                <ul>
+                  {Array.isArray(singleClient.referredServices)
+                    ? singleClient.referredServices.map(service => (
+                        <li> {service} </li>
+                      ))
+                    : singleClient.referredServices}
+                </ul>
               </Typography>
             </CardContent>
             <CardActions>
