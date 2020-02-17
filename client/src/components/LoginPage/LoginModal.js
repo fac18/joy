@@ -19,6 +19,7 @@ const LoginModal = ({ handleClose, show }) => {
 
     const showHideClassName = show ? "modal display-block" : "modal display-none";
     const handleSubmit = () => { (login.username === user.username && login.password === user.password) && setWelcome("display-block") }
+    // alter handle submit to display paragraph(or div) with a welcome message and link to redirect to the dashboard
 
     return (
         <>
