@@ -12,6 +12,8 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme';
 import getRequest from '../../utils/getData';
 
+import { filterClients } from '../../utils/filterClients';
+
 const useStyles = makeStyles({
   cardBg: {
     backgroundColor: '#EBEDEE',
@@ -43,19 +45,71 @@ const SearchClient = ({ clients, setClients }) => {
       console.log(clients.client_id);
     });
   }, []);
+<<<<<<< HEAD
+||||||| merged common ancestors
+
+=======
+  const [searchInputFirstName, setSearchInputFirstName] = React.useState(undefined)
+  const [searchInputLastName, setSearchInputLastName] = React.useState(undefined)
+  const [searchInputDOB, setSearchInputDOB] = React.useState(undefined)
+
+>>>>>>> master
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
+      <form>
+            <input 
+                type="text"
+                id="search"
+                name="search"
+                required
+                value={searchInputFirstName}
+                aria-label="search bar"
+                placeholder="Search by first name"
+                onChange={e => setSearchInputFirstName(e.target.value)}
+            />
+      </form>
+      <form>
+            <input 
+                type="text"
+                id="search"
+                name="search"
+                required
+                value={searchInputLastName}
+                aria-label="search bar"
+                placeholder="Search by surname"
+                onChange={e => setSearchInputFirstName(e.target.value)}
+            />
+      </form>      <form>
+            <input 
+                type="text"
+                id="search"
+                name="search"
+                required
+                value={searchInputDOB}
+                aria-label="search bar"
+                placeholder="Search by date of birth"
+                onChange={e => setSearchInputFirstName(e.target.value)}
+            />
+      </form>
       <div className='App'>
         <br />
         <b>{clients.length} results:</b>
         <br />
+<<<<<<< HEAD
         {clients.map(client => (
           <a
             href={`clientProfile/${client.client_id}`}
             style={{ textDecoration: 'none' }}
           >
+||||||| merged common ancestors
+        {clients.map(client => (
+          <Link to='/clientProfile' style={{ textDecoration: 'none' }}>
+=======
+        { filterClients(searchInputFirstName, clients).map(client => (
+          <Link to='/clientProfile' style={{ textDecoration: 'none' }}>
+>>>>>>> master
             <Card className={classes.cardBg}>
               <CardContent>
                 <AccountCircleIcon className={classes.accountIcon} />

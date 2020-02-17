@@ -1,1 +1,3 @@
-// login page test
+test("Jest is working", () => {
+  expect(true).toBeTruthy();
+});

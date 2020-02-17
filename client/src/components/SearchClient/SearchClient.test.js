@@ -1,1 +1,3 @@
-// search client test
+test("Jest is working", () => {
+  expect(true).toBeTruthy();
+});
