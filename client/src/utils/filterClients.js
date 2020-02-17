@@ -14,10 +14,10 @@
     // add -> lastNameStr, dateOfBirthStr, 
         if (firstNameStr && lastNameStr && dateOfBirthStr === undefined) {
           return array;
-        } else if(firstNameStr && lastNameStr !== undefined) {
+        } else if(firstNameStr && dateOfBirthStr !== undefined) {
           return array.filter(client => {
             let lowerCaseInput = firstNameStr.toLowerCase();
-            return client.client_firstname.toLowerCase().includes(lowerCaseInput);
+            return client.client_firstname.toLowerCase().includes(lowerCaseInput) && client.to_char.toLowerCase().startsWith(dateOfBirthStr);
         })}
          else if(firstNameStr !== undefined) {
           return array.filter(client => {
@@ -32,7 +32,7 @@
         } else if(dateOfBirthStr !== undefined) {
           return array.filter(client => {
             let lowerCaseInput = dateOfBirthStr.toLowerCase();
-            return client.to_char.toLowerCase().includes(lowerCaseInput);
+            return client.to_char.toLowerCase().startsWith(lowerCaseInput);
           });
         } else {
           return array;
