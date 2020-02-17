@@ -12,6 +12,8 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme';
 import getRequest from '../../utils/getData';
 
+import { filterClients } from '../../utils/filterClients';
+
 const useStyles = makeStyles({
   cardBg: {
     backgroundColor: '#EBEDEE',
@@ -41,16 +43,54 @@ const SearchClient = ({ setClients, clients }) => {
       setClients(res);
     });
   }, []);
+  const [searchInputFirstName, setSearchInputFirstName] = React.useState(undefined)
+  const [searchInputLastName, setSearchInputLastName] = React.useState(undefined)
+  const [searchInputDOB, setSearchInputDOB] = React.useState(undefined)
 
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
+      <form>
+            <input 
+                type="text"
+                id="search"
+                name="search"
+                required
+                value={searchInputFirstName}
+                aria-label="search bar"
+                placeholder="Search by first name"
+                onChange={e => setSearchInputFirstName(e.target.value)}
+            />
+      </form>
+      <form>
+            <input 
+                type="text"
+                id="search"
+                name="search"
+                required
+                value={searchInputLastName}
+                aria-label="search bar"
+                placeholder="Search by surname"
+                onChange={e => setSearchInputFirstName(e.target.value)}
+            />
+      </form>      <form>
+            <input 
+                type="text"
+                id="search"
+                name="search"
+                required
+                value={searchInputDOB}
+                aria-label="search bar"
+                placeholder="Search by date of birth"
+                onChange={e => setSearchInputFirstName(e.target.value)}
+            />
+      </form>
       <div className='App'>
         <br />
         <b>{clients.length} results:</b>
         <br />
-        {clients.map(client => (
+        { filterClients(searchInputFirstName, clients).map(client => (
           <Link to='/clientProfile' style={{ textDecoration: 'none' }}>
             <Card className={classes.cardBg}>
               <CardContent>
