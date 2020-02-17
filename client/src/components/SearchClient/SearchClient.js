@@ -42,7 +42,7 @@ const SearchClient = ({ setClients, clients }) => {
     getRequest('/getallclients').then(res => {
       setClients(res);
     });
-  }, []);
+  }, [setClients]);
   const [searchInputFirstName, setSearchInputFirstName] = React.useState(undefined)
   const [searchInputLastName, setSearchInputLastName] = React.useState(undefined)
   const [searchInputDOB, setSearchInputDOB] = React.useState(undefined)
@@ -72,7 +72,7 @@ const SearchClient = ({ setClients, clients }) => {
                 value={searchInputLastName}
                 aria-label="search bar"
                 placeholder="Search by surname"
-                onChange={e => setSearchInputFirstName(e.target.value)}
+                onChange={e => setSearchInputLastName(e.target.value)}
             />
       </form>      <form>
             <input 
@@ -83,14 +83,14 @@ const SearchClient = ({ setClients, clients }) => {
                 value={searchInputDOB}
                 aria-label="search bar"
                 placeholder="Search by date of birth"
-                onChange={e => setSearchInputFirstName(e.target.value)}
+                onChange={e => setSearchInputDOB(e.target.value)}
             />
       </form>
       <div className='App'>
         <br />
-        <b>{clients.length} results:</b>
+        <b>You have {clients.length} clients:</b>
         <br />
-        { filterClients(searchInputFirstName, clients).map(client => (
+        { filterClients(searchInputFirstName, searchInputLastName, searchInputDOB, clients).map(client => (
           <Link to='/clientProfile' style={{ textDecoration: 'none' }}>
             <Card className={classes.cardBg}>
               <CardContent>
