@@ -14,7 +14,11 @@
     // add -> lastNameStr, dateOfBirthStr, 
         if (firstNameStr && lastNameStr && dateOfBirthStr === undefined) {
           return array;
-        }
+        } else if(firstNameStr && lastNameStr !== undefined) {
+          return array.filter(client => {
+            let lowerCaseInput = firstNameStr.toLowerCase();
+            return client.client_firstname.toLowerCase().includes(lowerCaseInput);
+        })}
          else if(firstNameStr !== undefined) {
           return array.filter(client => {
             let lowerCaseInput = firstNameStr.toLowerCase();
