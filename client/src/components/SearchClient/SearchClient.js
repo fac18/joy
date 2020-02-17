@@ -88,7 +88,7 @@ const SearchClient = ({ setClients, clients }) => {
       </form>
       <div className='App'>
         <br />
-        <b>{clients.length} results:</b>
+        <b>You have {clients.length} clients:</b>
         <br />
         { filterClients(searchInputFirstName, clients).map(client => (
           <Link to='/clientProfile' style={{ textDecoration: 'none' }}>
