@@ -26,7 +26,8 @@ const useStyles = makeStyles({
     minWidth: 350,
     maxWidth: 500,
     border: 'solid 2px #E91E63',
-    margin: '1rem'
+    margin: '1rem',
+    listStyleType: 'none'
   },
   mainTitle: {
     paddingTop: '2rem'
@@ -60,6 +61,10 @@ const useStyles = makeStyles({
   },
   accountIcon: {
     color: '#C4C4C4'
+  },
+  list: {
+    listStyleType: 'none',
+    margin: 'auto'
   }
 });
 
@@ -155,10 +160,10 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
                 <b>Current services referred to:</b>
               </Typography>
               <Typography color='textPrimary'>
-                <ul>
+                <ul className={classes.list}>
                   {Array.isArray(singleClient.referredServices)
                     ? singleClient.referredServices.map(service => (
-                        <li> {service} </li>
+                        <li> {service.services_name} </li>
                       ))
                     : singleClient.referredServices}
                 </ul>
