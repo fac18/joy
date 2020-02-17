@@ -42,7 +42,7 @@ const SearchClient = ({ setClients, clients }) => {
     getRequest('/getallclients').then(res => {
       setClients(res);
     });
-  }, []);
+  }, [setClients]);
   const [searchInputFirstName, setSearchInputFirstName] = React.useState(undefined)
   const [searchInputLastName, setSearchInputLastName] = React.useState(undefined)
   const [searchInputDOB, setSearchInputDOB] = React.useState(undefined)

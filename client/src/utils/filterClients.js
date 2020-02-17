@@ -19,16 +19,13 @@
             let lowerCaseInput = firstNameStr.toLowerCase();
             return client.client_firstname.toLowerCase().includes(lowerCaseInput) && client.to_char.toLowerCase().startsWith(dateOfBirthStr);
         })
-        } 
-        // else if(firstNameStr && lastNameStr !== undefined) {
-        //   return array.filter(client => {
-        //     let lowerCaseFirstName = firstNameStr.toLowerCase();
-        //     let lowerCaseLastName = lastNameStr.toLowerCase();
-        //     return client.client_firstname.toLowerCase().includes(lowerCaseFirstName) && client.client_surname.toLowerCase().includes(lowerCaseLastName);
-        // })
-        // } 
-        // to be refactored
-        else if(lastNameStr && dateOfBirthStr !== undefined) {
+        } else if(firstNameStr && lastNameStr !== undefined) {
+          return array.filter(client => {
+            let lowerCaseFirstName = firstNameStr.toLowerCase();
+            let lowerCaseLastName = lastNameStr.toLowerCase();
+            return client.client_firstname.toLowerCase().includes(lowerCaseFirstName) && client.client_surname.toLowerCase().includes(lowerCaseLastName);
+        })
+        } else if(lastNameStr && dateOfBirthStr !== undefined) {
           return array.filter(client => {
             let lowerCaseInput = lastNameStr.toLowerCase();
             return client.client_surname.toLowerCase().includes(lowerCaseInput) && client.to_char.toLowerCase().startsWith(dateOfBirthStr);
