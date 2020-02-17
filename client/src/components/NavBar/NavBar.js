@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import { ReactComponent as LogoSvg } from "../../svgs/logo.svg";
+import { ReactComponent as LogoSvg } from "../../assets/logo.svg";
 import NavMenu from "../NavBar/NavMenu";
 
 const useStyles = makeStyles(theme => ({
