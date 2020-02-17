@@ -96,6 +96,7 @@ const ClientProfile = () => {
             </Typography>
           </CardContent>
           <CardActions>
+            <Link to="/wellbeingAssessment">
             <Button
               className={classes.greenButton}
               variant="container"
@@ -103,6 +104,7 @@ const ClientProfile = () => {
             >
               Start Wellbeing Assessment
             </Button>
+            </Link>
           </CardActions>
         </Card>
         <Card className={classes.services}>

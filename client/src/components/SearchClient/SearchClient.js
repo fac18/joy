@@ -46,6 +46,9 @@ const SearchClient = ({ setClients, clients }) => {
   const [searchInputFirstName, setSearchInputFirstName] = React.useState(undefined)
   const [searchInputLastName, setSearchInputLastName] = React.useState(undefined)
   const [searchInputDOB, setSearchInputDOB] = React.useState(undefined)
+  // const [cardCount, setCardCount] = React.useState(clients.length)
+  // let counter = 0;
+
 
   const classes = useStyles();
   return (
@@ -88,9 +91,9 @@ const SearchClient = ({ setClients, clients }) => {
       </form>
       <div className='App'>
         <br />
-        <b>You have {clients.length} clients:</b>
+        <p><b>You have {clients.length} clients:</b></p>
         <br />
-        { filterClients(searchInputFirstName, searchInputLastName, searchInputDOB, clients).map(client => (
+        { filterClients(searchInputFirstName, searchInputLastName, searchInputDOB, clients).map(client =>(
           <Link to='/clientProfile' style={{ textDecoration: 'none' }}>
             <Card className={classes.cardBg}>
               <CardContent>
@@ -111,5 +114,6 @@ const SearchClient = ({ setClients, clients }) => {
     </ThemeProvider>
   );
 };
+
 
 export default SearchClient;
