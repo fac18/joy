@@ -17,7 +17,7 @@ const getAllClients = () => {
 const getClient = id => {
   return dbConnection
     .query(
-      `SELECT client_firstname, client_surname, client_dob FROM client WHERE client_id=${id};`
+      `SELECT client_firstname, client_surname, TO_CHAR(client_dob, 'dd/mm/yyyy') FROM client WHERE client_id=${id};`
     )
     .then(data => {
       console.log('I am the data in the getclient request', data.rows);

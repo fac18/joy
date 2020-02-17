@@ -64,6 +64,8 @@ const useStyles = makeStyles({
 });
 
 const ClientProfile = ({ singleClient, setSingleClient }) => {
+  // const [id, setID] = React.useState({});
+
   let { id } = useParams();
   const classes = useStyles();
 
@@ -73,7 +75,8 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
       surname: someone[0][0].client_surname,
       DOB: someone[0][0].client_dob,
       initialAssessment: someone[1][0].total_ucla3,
-      currentAssessment: someone[2][0].ucla3_id
+      currentAssessment: someone[2][0].ucla3_id,
+      currentAssessmentDate: someone[2][0].current_assessment_date
     };
   };
 
@@ -132,7 +135,7 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
                 {singleClient.currentAssessment}
               </Typography>
               <Typography variant='body1' component='p'>
-                Last assessment date: 3 Jan 2020
+                Last assessment date: {singleClient.currentAssessmentDate}
               </Typography>
               <Typography variant='h6' component='h6'>
                 <b>Next assessment due: 3 Apr 2020</b>
