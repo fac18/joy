@@ -2,16 +2,27 @@ fieldset {
   border: 0;
 }
 
+h4 {
+  margin-bottom: 60px;
+  margin-top: 60px;
+}
 .formWellbeing input[type="radio"] {
   display: none;
 }
 
-label {
-  padding: 5px;
-  padding-left: 20px;
+.groupQuestion input {
+  display: flex;
+  flex-direction: row;
 }
 
-input:checked + span {
-  background: #ccf;
-  border-color: #ccf;
+label {
+  margin-right: 60px;
+}
+
+.groupQuestion label {
+  border: 1px solid #e71f67;
+  border-radius: 50%;
+  padding: 30px;
+  color: #e71f67;
+  font-weight: bold;
 }
