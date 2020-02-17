@@ -1,6 +1,6 @@
 import React from "react";
-import { ReactComponent as LogoSvg } from "../../svgs/logo.svg";
-import { ReactComponent as LandingPageSvg } from "../../svgs/landing-page.svg";
+import { ReactComponent as LogoSvg } from "../../assets/logo.svg";
+import { ReactComponent as LandingPageSvg } from "../../assets/landing-page.svg";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
