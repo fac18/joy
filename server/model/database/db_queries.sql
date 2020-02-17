@@ -53,3 +53,6 @@ SELECT client_id, client_firstname, client_surname,
    EXTRACT(YEAR FROM age(current_date, client_dob)) AS current_age
 FROM client
 WHERE client_id = 1;
+
+
+Hi TEAMS!!!! CAN YOU SEE ME?
