@@ -71,7 +71,6 @@ const ClientAssessment = () => {
               required
               value="1"
               ref={register}
-              className="radio-custom"
             />
           </label>
           <label>
@@ -84,7 +83,7 @@ const ClientAssessment = () => {
               ref={register}
             />
           </label>
-          <label>
+          <label className="lastLabel">
             3
             <input
               name="q1_companionship"
@@ -179,7 +178,7 @@ const ClientAssessment = () => {
         </aside>
         <br />
         <br />
-        <h4>Additional Notes:</h4>
+        <h3 className="additionalTextTitle">Additional Notes:</h3>
         <label className="additionalNotes">
           <br />
           <br />
@@ -190,54 +189,56 @@ const ClientAssessment = () => {
           />
         </label>
         <br />
-        <h4>Schedule next Appointment:</h4>
-        <label>
-          1 month
-          <input
-            name="schedule"
-            type="radio"
-            required
-            value="1 month"
-            ref={register}
-          />
-        </label>
-        <label>
-          3 month
-          <input
-            name="schedule"
-            type="radio"
-            required
-            value="3 month"
-            ref={register}
-          />
-        </label>
-        <label>
-          6 month
-          <input
-            name="schedule"
-            type="radio"
-            required
-            value="6 month"
-            ref={register}
-          />
-        </label>
-        <label>
-          Other
-          <input
-            name="schedule"
-            type="radio"
-            required
-            value="other"
-            ref={register}
-          />
-        </label>
-        {/* <input
+        <h3 className="scheduleTitle">Schedule next Appointment:</h3>
+        <div className="schedule-options">
+          <label>
+            <input
+              name="schedule"
+              type="radio"
+              required
+              value="1 month"
+              ref={register}
+            />
+            1 month
+          </label>
+          <label>
+            <input
+              name="schedule"
+              type="radio"
+              required
+              value="3 month"
+              ref={register}
+            />
+            3 month
+          </label>
+          <label>
+            <input
+              name="schedule"
+              type="radio"
+              required
+              value="6 month"
+              ref={register}
+            />
+            6 month
+          </label>
+          <label>
+            <input
+              name="schedule"
+              type="radio"
+              required
+              value="other"
+              ref={register}
+            />
+            Other
+          </label>
+          {/* <input
           type="datetime-local"
           placeholder="nextAppointment"
           name="nextAppointment"
           ref={register}
         /> */}
-        <br />
+          <br />
+        </div>
 
         <Button
           type="submit"

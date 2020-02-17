@@ -14,17 +14,19 @@ label {
 .groupQuestion label {
   border: 1px solid #e71f67;
   border-radius: 50%;
-  padding: 30px;
+  padding: 35px;
   color: #e71f67;
   font-weight: bold;
   font-size: 25px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
-/* .groupQuestion label:hover {
+.groupQuestion label:hover {
   cursor: pointer;
   background-color: #e71f67;
   color: white;
-} */
+}
 
 .ratingQ {
   margin-top: 30px;
@@ -42,12 +44,11 @@ label {
   margin-left: 80px;
 }
 
-/* 
 .groupQuestion input[type="radio"] {
   opacity: 0;
   position: fixed;
   width: 0;
-} */
+}
 
 input[type="radio"]:checked + label {
   background-color: #bfb;
@@ -58,8 +59,87 @@ input[type="radio"]:checked + label {
   font-size: 20px;
 }
 
+.additionalTextTitle {
+  text-align: center;
+  margin-top: 35px;
+  margin-bottom: 0;
+}
+
+.scheduleTitle {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 25px;
+}
+
 textarea {
-  margin-left: 30px;
+  margin-left: 45px;
   width: 300px;
   height: 300px;
+  background-color: #ebedee;
+  font-size: 12px;
+}
+
+.formWellbeing {
+  border: 1px solid;
+  width: 400px;
+  margin-left: 480px;
+  padding: 50px;
+  padding-top: 0;
+}
+
+.schedule-options {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1.5;
+}
+
+/* .schedule-options input[type="radio"] {
+  visibility: hidden;
+}
+
+.schedule-options label {
+  display: block;
+  margin: 0 0 0 -10px;
+  padding: 0 0 20px 0;
+  height: 20px;
+  width: 150px;
+  color: black;
+} */
+
+@media (max-width: 600px) {
+  .formWellbeing {
+    border-style: none;
+    margin-left: 45px;
+  }
+
+  .groupQuestion label {
+    padding: 30px;
+    font-size: 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}
+
+@media (max-width: 375px) {
+  fieldset .groupQuestion {
+    width: 10px;
+  }
+  .groupQuestion label {
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 10px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+  .formWellbeing {
+    border-style: none;
+    margin-left: 0px;
+    padding: 0;
+  }
+  .ratingQ {
+    padding-left: 0;
+  }
+  .lastLabel {
+    margin-right: 0;
+  }
 }
