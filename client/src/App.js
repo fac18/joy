@@ -16,7 +16,7 @@ const App = () => {
   const [overallWellbeing, setOverallWellbeing] = React.useState(15);
   const [data, setOverallData] = React.useState({});
   const [clients, setClients] = React.useState([{}]);
-  const [singleClient, setSingleClient] = React.useState({});
+  const [singleClient, setSingleClient] = React.useState(null);
 
   return (
     <Router>

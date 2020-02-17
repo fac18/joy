@@ -17,10 +17,80 @@ const getAllClients = () => {
 const getClient = id => {
   return dbConnection
     .query(
-      `SELECT client_firstname, client_surname, client_dob FROM client WHERE client_id=${id}`
+      `SELECT client_firstname, client_surname, client_dob FROM client WHERE client_id=${id};`
     )
     .then(data => {
-      console.log('I am the data in the getclient request', data);
+      console.log('I am the data in the getclient request', data.rows);
+      return data.rows;
+    });
+};
+
+const getInitialAssessment = id => {
+  return dbConnection
+    .query(
+      `SELECT ucla3_id, input_date_ucla3 AS initial_assessment_date, total_ucla3, client_id
+FROM ucla3_questionnaire
+WHERE client_id = ${id}
+ORDER BY input_date_ucla3 ASC
+LIMIT 1;`
+    )
+    .then(data => {
+      console.log(
+        'I am the data in the getinitialassessment request',
+        data.rows
+      );
+      return data.rows;
+    });
+};
+
+// async function getAllAssessments() {
+//   console.log('starting async query');
+//   const result = await dbConnection.query(`SELECT ucla3_id, input_date_ucla3 AS initial_assessment_date, total_ucla3, client_id
+// FROM ucla3_questionnaire
+// WHERE client_id = 1
+// ORDER BY input_date_ucla3 ASC
+// LIMIT 1;`);
+//   console.log('async query finished');
+//   console.log('starting callback query');
+//   dbConnection
+//     .query(
+//       `SELECT ucla3_id, input_date_ucla3 AS current_assessment_date, total_ucla3, client_id
+// FROM ucla3_questionnaire
+// WHERE client_id = 1
+// ORDER BY input_date_ucla3 DESC
+// LIMIT 1;`
+//     )
+//     .then(data => {
+//       return data.rows;
+//     });
+//   console.log('calling end');
+//   // await dbConnection.end();
+//   console.log('pool has drained');
+// }
+
+// getAllAssessments().then(data => {
+//   console.log('I am the data in getallassessments', data);
+// });
+
+// getClient(1).then(data => {
+//   console.log('I am the data in the router', data);
+//   return res.json(data);
+// });
+
+const getCurrentAssessment = id => {
+  return dbConnection
+    .query(
+      `SELECT ucla3_id, input_date_ucla3 AS current_assessment_date, total_ucla3, client_id
+FROM ucla3_questionnaire
+WHERE client_id = ${id}
+ORDER BY input_date_ucla3 DESC
+LIMIT 1;`
+    )
+    .then(data => {
+      console.log(
+        'I am the data in the getcurrentassesssment request',
+        data.rows
+      );
       return data.rows;
     });
 };
@@ -59,5 +129,7 @@ module.exports = {
   getClient,
   getPrescriber,
   getService,
-  getAllClients
+  getAllClients,
+  getCurrentAssessment,
+  getInitialAssessment
 };

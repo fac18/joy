@@ -65,84 +65,117 @@ const useStyles = makeStyles({
 
 const ClientProfile = ({ singleClient, setSingleClient }) => {
   let { id } = useParams();
+  const classes = useStyles();
+
+  let newObject = function(someone) {
+    return {
+      firstname: someone[0][0].client_firstname,
+      surname: someone[0][0].client_surname,
+      DOB: someone[0][0].client_dob,
+      initialAssessment: someone[1][0].total_ucla3,
+      currentAssessment: someone[2][0].ucla3_id
+    };
+  };
 
   useEffect(() => {
     getRequest(`/getclient:${id}`).then(res => {
-      console.log('I am the res', res);
-      setSingleClient(res);
+      setSingleClient(newObject(res));
     });
-  }, []);
+  });
 
-  const classes = useStyles();
-  return (
-    <ThemeProvider theme={theme}>
-      <NavBar />
-      <div className='App'>
-        <Typography className={classes.mainTitle} variant='h4' gutterBottom>
-          <AccountCircleIcon fontSize='large' className={classes.accountIcon} />
-          {singleClient.first_name} Brown, 64
-        </Typography>
+  //   useEffect(() => {
+  //     getRequest(`/getclient:${id}`).then(res => {
+  //       setSingleClient(res.reduce((acc, fact) => ({
+  //         let { firstname, lastname, DOB, initialassessment, currentassessment } = fact;
+  //       return { ...acc, [firstname]: [...(acc[client[0][0].client_firstname] || []),
+  //         firstname: client[0][0].client_firstname,
+  //         lastname: client[0][0].client_surname,
+  //         DOB: client[0][0].client_dob,
+  //         initialAssessment: client[1][0].total_ucla3,
+  //         currentAssessment: client[2][0].ucla3_id
+  //       )}
+  //       )
+  //   })
+  // }, []);
 
-        <Card className={classes.root}>
-          <CardContent>
-            <Typography
-              variant='body1'
-              component='p'
-              color='textPrimary'
-              gutterBottom
-            >
-              Initial wellbeing score: <b>8</b>
-            </Typography>
-            <Typography variant='h6' component='h6'>
-              <b>Current wellbeing score:</b>
-            </Typography>
-            <Typography className={classes.pos} color='textPrimary'>
-              8
-            </Typography>
-            <Typography variant='body1' component='p'>
-              Last assessment date: 3 Jan 2020
-            </Typography>
-            <Typography variant='h6' component='h6'>
-              <b>Next assessment due: 3 Apr 2020</b>
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button
-              className={classes.greenButton}
-              variant='container'
-              size='medium'
-            >
-              Start Wellbeing Assessment
-            </Button>
-          </CardActions>
-        </Card>
-        <Card className={classes.services}>
-          <CardContent>
-            <Typography variant='h6' component='h2'>
-              <b>Current services referred to:</b>
-            </Typography>
-            <Typography color='textPrimary'>
-              Learning Spanish
-              <br />
-              Pub Lunch
-              <br />
-              Modern Dance
-              <br />
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button
-              className={classes.pinkButton}
-              variant='container'
-              size='medium'
-            >
-              Start Services Referral
-            </Button>
-          </CardActions>
-        </Card>
-      </div>
-    </ThemeProvider>
-  );
+  if (singleClient === null) {
+    console.log('poo');
+    return null;
+  } else {
+    console.log('I am the singleClient', singleClient);
+    return (
+      <ThemeProvider theme={theme}>
+        <NavBar />
+        <div className='App'>
+          <Typography className={classes.mainTitle} variant='h4' gutterBottom>
+            <AccountCircleIcon
+              fontSize='large'
+              className={classes.accountIcon}
+            />
+            {singleClient.firstname} {singleClient.surname}, 64
+          </Typography>
+
+          <Card className={classes.root}>
+            <CardContent>
+              <Typography
+                variant='body1'
+                component='p'
+                color='textPrimary'
+                gutterBottom
+              >
+                Initial wellbeing score: <b>{singleClient.initialAssessment}</b>
+              </Typography>
+              <Typography variant='h6' component='h6'>
+                <b>Current wellbeing score:</b>
+              </Typography>
+              <Typography className={classes.pos} color='textPrimary'>
+                {singleClient.currentAssessment}
+              </Typography>
+              <Typography variant='body1' component='p'>
+                Last assessment date: 3 Jan 2020
+              </Typography>
+              <Typography variant='h6' component='h6'>
+                <b>Next assessment due: 3 Apr 2020</b>
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button
+                className={classes.greenButton}
+                variant='container'
+                size='medium'
+              >
+                Start Wellbeing Assessment
+              </Button>
+            </CardActions>
+          </Card>
+          <Card className={classes.services}>
+            <CardContent>
+              <Typography variant='h6' component='h2'>
+                <b>Current services referred to:</b>
+              </Typography>
+              <Typography color='textPrimary'>
+                Learning Spanish
+                <br />
+                Pub Lunch
+                <br />
+                Modern Dance
+                <br />
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button
+                className={classes.pinkButton}
+                variant='container'
+                size='medium'
+              >
+                Start Services Referral
+              </Button>
+            </CardActions>
+          </Card>
+        </div>
+      </ThemeProvider>
+    );
+  }
 };
 
 export default ClientProfile;
