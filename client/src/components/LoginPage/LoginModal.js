@@ -38,7 +38,7 @@ const LoginModal = ({ handleClose, show }) => {
                     type="text"
                     id="username"
                     name="username"
-                    required
+                    // required
                     defaultValue={login.username}
                     placeholder="Username"
                 ></input>
@@ -48,7 +48,7 @@ const LoginModal = ({ handleClose, show }) => {
                     type="password"
                     id="password"
                     name="password"
-                    required
+                    // required
                     defaultValue={login.password}
                     placeholder="Password"
                 ></input>

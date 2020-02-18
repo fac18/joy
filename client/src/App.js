@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
   Route,
-  Redirect,
-  useParams,
   Switch
 } from 'react-router-dom';
 import Dashboard from './components/Dashboard/Dashboard';
@@ -14,8 +12,6 @@ import ClientProfile from '../src/components/ClientProfile/ClientProfile';
 import WellbeingAssessment from '../src/components/WellbeingAssessment/WellbeingAssessment';
 
 const App = () => {
-  const [overallWellbeing, setOverallWellbeing] = React.useState(15);
-  const [data, setOverallData] = React.useState({});
   const [clients, setClients] = React.useState([{}]);
   const [singleClient, setSingleClient] = React.useState(null);
 
@@ -28,8 +24,6 @@ const App = () => {
           <Dashboard
             clients={clients}
             setClients={setClients}
-            overallWellbeing={overallWellbeing}
-            data={data}
           />
         )}
       />
