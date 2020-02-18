@@ -127,15 +127,12 @@ const getAssessment = id => {
     .then(data => data.rows);
 };
 
-const getWellbeingTotals = id => {
-  console.log("we are GETting wellbingTotals");
+const getWellbeingTotals = () => {
   return dbConnection
     .query(
-      "SELECT total_ucla3, COUNT(total_ucla3) FROM ucla3_questionnaire GROUP BY total_ucla3 ORDER BY total_ucla3",
-      [id]
+      "SELECT total_ucla3, COUNT(total_ucla3) FROM ucla3_questionnaire GROUP BY total_ucla3 ORDER BY total_ucla3"
     )
     .then(data => {
-      console.log("wellbeingTotals results", data.rows);
       return data.rows;
     });
 };
