@@ -12,6 +12,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../../theme";
 import getRequest from "../../utils/getData";
 
+// import LoadingPage from '../LoadingPage/LoadingPage';
 import { filterClients } from "../../utils/filterClients";
 
 const useStyles = makeStyles({
@@ -55,7 +56,7 @@ const SearchClient = ({ clients, setClients }) => {
 
   const classes = useStyles();
 
-  if(clients.length == 1) {
+  if(clients.length < 1) {
     return "Loading";
   }
 
@@ -109,7 +110,7 @@ const SearchClient = ({ clients, setClients }) => {
           searchInputLastName,
           searchInputDOB,
           clients
-        ).map((client, index) => (
+        ).map((client) => (
           // each client needs a unique key (virtual DOM node re-rendering)
           <Link to="/clientProfile" style={{ textDecoration: "none" }}>
             <Card className={classes.cardBg}>

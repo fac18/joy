@@ -8,8 +8,6 @@ import ClientProfile from "../src/components/ClientProfile/ClientProfile";
 import WellbeingAssessment from "../src/components/WellbeingAssessment/WellbeingAssessment";
 
 const App = () => {
-  // const [overallWellbeing, setOverallWellbeing] = React.useState(15);
-  // const [data, setOverallData] = React.useState({});
   const [clients, setClients] = React.useState([{}]);
 
   return (
@@ -21,8 +19,6 @@ const App = () => {
           <Dashboard
             clients={clients}
             setClients={setClients}
-            overallWellbeing={15}
-            data={{}}
           />
         )}
       />
