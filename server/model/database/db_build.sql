@@ -15,14 +15,15 @@ CREATE  TABLE services (
     services_provider VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE ucla3_questionnaire (
+CREATE TABLE ucla3_test (
     ucla3_id SERIAL PRIMARY KEY,
     input_date_ucla3 DATE NOT NULL DEFAULT CURRENT_DATE, 
     q1_companionship INTEGER NOT NULL , 
     q2_left_out INTEGER NOT NULL, 
     q3_isolated INTEGER NOT NULL, 
     total_ucla3 INTEGER NOT NULL GENERATED ALWAYS AS (q1_companionship + q2_left_out + q3_isolated) STORED,
-    client_id INTEGER REFERENCES client(client_id)
+    client_id INTEGER REFERENCES client(client_id), 
+    next_appointment_date DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
 CREATE TABLE referrals_questionnaire (
@@ -61,7 +62,7 @@ INSERT INTO services (services_name, services_provider) VALUES
 ('Information and Advice', 'Wokingham Cares');
 
 INSERT INTO ucla3_questionnaire (input_date_ucla3, client_id, q1_companionship, q2_left_out, q3_isolated) VALUES 
-('2020-01-03', 1,  2, 3, 3),
+('2020-01-03', 1,  2, 3, 3, '2020-01-04'),
 ('2020-01-14', 3, 3, 3, 2),
 ('2020-01-20', 2, 1, 2, 1),
 ('2020-02-03', 1, 1, 1, 2),

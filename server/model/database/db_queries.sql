@@ -52,6 +52,26 @@ FROM client;
 SELECT client_id, client_firstname, client_surname, 
    EXTRACT(YEAR FROM age(current_date, client_dob)) AS current_age
 FROM client
+<<<<<<< HEAD
+WHERE client_id = 1;
+
+--- Query 5c 
+--- Calculate the current services referred to 
+
+SELECT * FROM services WHERE services_id =ANY(SELECT services_id FROM referrals_questionnaire WHERE client_id=1);
+
+
+-- Query 6
+-- Sort referrals by popularity between two dates (default: current_date)
+SELECT services_id, SUM(no_of_services_attended)
+FROM referrals_questionnaire
+WHERE input_date_referral BETWEEN '2019-01-01' AND current_date
+GROUP BY services_id
+ORDER BY SUM(no_of_services_attended) DESC
+LIMIT 10;
+||||||| merged common ancestors
+WHERE client_id = 1;
+=======
 WHERE client_id = 1;
 
 -- Query 6
@@ -75,3 +95,4 @@ SELECT total_ucla3, COUNT(total_ucla3)
 FROM ucla3_questionnaire
 GROUP BY total_ucla3
 ORDER BY total_ucla3;
+>>>>>>> master
