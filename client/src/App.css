@@ -7,3 +7,9 @@
   font-family: "Source Sans Pro", sans-serif;
   width: 100%;
 }
+
+.loading {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
