@@ -60,7 +60,12 @@ const ClientAssessment = () => {
       </Typography>
       <br />
 
-      <form onSubmit={handleSubmit(onSubmit)} className="formWellbeing">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="formWellbeing"
+        action="/create-assessment"
+        method="post"
+      >
         <h4>1. Feel lack of companionship?</h4>
         <fieldset className="groupQuestion">
           <label>
