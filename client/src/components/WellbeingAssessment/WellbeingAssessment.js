@@ -191,52 +191,12 @@ const ClientAssessment = () => {
         <br />
         <h3 className="scheduleTitle">Schedule next Appointment:</h3>
         <div className="schedule-options">
-          <label>
-            <input
-              name="schedule"
-              type="radio"
-              required
-              value="1 month"
-              ref={register}
-            />
-            1 month
-          </label>
-          <label>
-            <input
-              name="schedule"
-              type="radio"
-              required
-              value="3 month"
-              ref={register}
-            />
-            3 month
-          </label>
-          <label>
-            <input
-              name="schedule"
-              type="radio"
-              required
-              value="6 month"
-              ref={register}
-            />
-            6 month
-          </label>
-          <label>
-            <input
-              name="schedule"
-              type="radio"
-              required
-              value="other"
-              ref={register}
-            />
-            Other
-          </label>
-          {/* <input
-          type="datetime-local"
-          placeholder="nextAppointment"
-          name="nextAppointment"
-          ref={register}
-        /> */}
+          <input
+            type="datetime-local"
+            placeholder="nextAppointment"
+            name="nextAppointment"
+            ref={register}
+          />
           <br />
         </div>
 
