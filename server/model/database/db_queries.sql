@@ -54,5 +54,24 @@ SELECT client_id, client_firstname, client_surname,
 FROM client
 WHERE client_id = 1;
 
+-- Query 6
+-- Sort referrals by popularity between two dates (default: current_date)
+-- Note: JOIN goes after the FROM but before the WHERE
+SELECT 
+   referrals_questionnaire.services_id AS referrals_id, 
+   services.services_name AS service_name, 
+   SUM(no_of_services_attended)
+FROM referrals_questionnaire
+JOIN services 
+   ON services.services_id = referrals_questionnaire.services_id
+WHERE input_date_referral BETWEEN '2019-01-01' AND current_date
+GROUP BY referrals_questionnaire.services_id, services.services_name
+ORDER BY SUM(no_of_services_attended) DESC
+LIMIT 10;
 
-Hi TEAMS!!!! CAN YOU SEE ME?
+-- Query 7 
+-- Current number of lonely (8-9), medium (5-7) and not lonely (3-4) risk clients 
+SELECT total_ucla3, COUNT(total_ucla3)
+FROM ucla3_questionnaire
+GROUP BY total_ucla3
+ORDER BY total_ucla3;
