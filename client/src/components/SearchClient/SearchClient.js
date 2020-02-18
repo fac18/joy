@@ -12,6 +12,8 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme';
 import getRequest from '../../utils/getData';
 
+import { filterClients } from '../../utils/filterClients';
+
 const useStyles = makeStyles({
   cardBg: {
     backgroundColor: '#EBEDEE',
@@ -40,17 +42,58 @@ const SearchClient = ({ setClients, clients }) => {
     getRequest('/getallclients').then(res => {
       setClients(res);
     });
-  }, []);
+  }, [setClients]);
+  const [searchInputFirstName, setSearchInputFirstName] = React.useState(undefined)
+  const [searchInputLastName, setSearchInputLastName] = React.useState(undefined)
+  const [searchInputDOB, setSearchInputDOB] = React.useState(undefined)
+  // const [cardCount, setCardCount] = React.useState(clients.length)
+  // let counter = 0;
+
 
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
+      <form>
+            <input 
+                type="text"
+                id="search"
+                name="search"
+                required
+                value={searchInputFirstName}
+                aria-label="search bar"
+                placeholder="Search by first name"
+                onChange={e => setSearchInputFirstName(e.target.value)}
+            />
+      </form>
+      <form>
+            <input 
+                type="text"
+                id="search"
+                name="search"
+                required
+                value={searchInputLastName}
+                aria-label="search bar"
+                placeholder="Search by surname"
+                onChange={e => setSearchInputLastName(e.target.value)}
+            />
+      </form>      <form>
+            <input 
+                type="text"
+                id="search"
+                name="search"
+                required
+                value={searchInputDOB}
+                aria-label="search bar"
+                placeholder="Search by date of birth"
+                onChange={e => setSearchInputDOB(e.target.value)}
+            />
+      </form>
       <div className='App'>
         <br />
-        <b>{clients.length} results:</b>
+        <p><b>You have {clients.length} clients:</b></p>
         <br />
-        {clients.map(client => (
+        { filterClients(searchInputFirstName, searchInputLastName, searchInputDOB, clients).map(client =>(
           <Link to='/clientProfile' style={{ textDecoration: 'none' }}>
             <Card className={classes.cardBg}>
               <CardContent>
@@ -71,5 +114,6 @@ const SearchClient = ({ setClients, clients }) => {
     </ThemeProvider>
   );
 };
+
 
 export default SearchClient;

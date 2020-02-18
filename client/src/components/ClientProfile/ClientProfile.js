@@ -18,7 +18,6 @@ const useStyles = makeStyles({
     maxWidth: 500,
     border: "solid 2px #A0B43B",
     textAlign: "center",
-    margin: "auto",
     margin: "1rem"
   },
   services: {
@@ -97,6 +96,7 @@ const ClientProfile = () => {
             </Typography>
           </CardContent>
           <CardActions>
+            <Link to="/wellbeingAssessment">
             <Button
               className={classes.greenButton}
               variant="container"
@@ -104,6 +104,7 @@ const ClientProfile = () => {
             >
               Start Wellbeing Assessment
             </Button>
+            </Link>
           </CardActions>
         </Card>
         <Card className={classes.services}>
