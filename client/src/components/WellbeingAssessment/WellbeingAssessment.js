@@ -1,12 +1,12 @@
 // initial assessment
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import theme from '../../theme';
-import NavBar from '../NavBar/NavBar';
-import Typography from '@material-ui/core/Typography';
-import './WellbeingAssessment.css';
-import Button from '@material-ui/core/Button';
+import React from "react";
+import { useForm } from "react-hook-form";
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import theme from "../../theme";
+import NavBar from "../NavBar/NavBar";
+import Typography from "@material-ui/core/Typography";
+import "./WellbeingAssessment.css";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
   mainTitle: {
@@ -50,7 +50,8 @@ const ClientAssessment = () => {
       <NavBar />
       <br />
       <Typography className={classes.mainTitle}>
-        Wellbeing assessment:
+        <span><InfoIcon title="Click me"/>     </span>
+        Wellbeing assessment: 
       </Typography>
       <Typography className={classes.clientName}>Jim Brown, 64</Typography>
       <br />
