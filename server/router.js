@@ -1,7 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
-const { getAllClients } = require("./model/queries/getData.js");
+const {
+  getAllClients,
+  getClient,
+  getCurrentAssessment,
+  getInitialAssessment,
+  getClientServices
+} = require("./model/queries/getData.js");
 const { postClientAssessment } = require("./model/queries/postData");
 
 // When the getallclients route is called, calls the getdata function
@@ -16,6 +22,20 @@ router.get("/getallclients", (req, res) => {
 router.post("/postclientassessment", (req, res) => {
   postClientAssessment().then(data => {
     res.json(data);
+  });
+});
+
+router.get("/getclient:id", (req, res) => {
+  const id = parseInt(req.params.id.slice(1, req.params.id.length));
+  Promise.all([
+    getClient(id),
+    getInitialAssessment(id),
+    getCurrentAssessment(id),
+    getClientServices(id)
+  ]).then(data => {
+    // console.log('I am the res.json', res.json(data));
+    console.log("I am not res.jsoned", data);
+    return res.json(data);
   });
 });
 
