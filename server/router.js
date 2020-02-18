@@ -19,12 +19,6 @@ router.get("/getallclients", (req, res) => {
   });
 });
 
-router.post("/postclientassessment", (req, res) => {
-  postClientAssessment().then(data => {
-    res.json(data);
-  });
-});
-
 router.get("/getclient:id", (req, res) => {
   const id = parseInt(req.params.id.slice(1, req.params.id.length));
   Promise.all([
@@ -37,6 +31,19 @@ router.get("/getclient:id", (req, res) => {
     console.log("I am not res.jsoned", data);
     return res.json(data);
   });
+});
+
+router.post("/postclientassessment", (req, res) => {
+  // console.log("This is the response", req);
+  console.log("This is the request body", JSON.parse(req.body));
+  // postClientAssessment().then(data => {
+  //   res.redirect("/");
+  //   res.json(data);
+  // });
+  return req.then(data => {
+    console.log("This is data body", JSON.parse(data.body));
+  });
+  // res.redirect("/");
 });
 
 module.exports = router;

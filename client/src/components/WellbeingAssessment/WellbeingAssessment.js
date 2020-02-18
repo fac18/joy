@@ -38,9 +38,23 @@ const useStyles = makeStyles({
 const ClientAssessment = () => {
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm();
+  // const { ucla3_assessment, setUcla3_assessment } = useState({
+  //   q1_companionship,
+  //   q2_left_out,
+  //   q3_isolated,
+  //   next_appointment_date
+  // });
 
   const onSubmit = data => {
-    console.log(data);
+    console.log("This is the data inside onSubmit", data);
+    // e.preventDefault();
+    fetch("/postclientassessment", {
+      method: "POST",
+      body: JSON.stringify({
+        data
+      })
+    });
+    console.log("this is after the fetch", data);
   };
 
   console.log(errors);
@@ -60,12 +74,7 @@ const ClientAssessment = () => {
       </Typography>
       <br />
 
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="formWellbeing"
-        action="/create-assessment"
-        method="post"
-      >
+      <form onSubmit={handleSubmit(onSubmit)} className="formWellbeing">
         <h4>1. Feel lack of companionship?</h4>
         <fieldset className="groupQuestion">
           <label>
