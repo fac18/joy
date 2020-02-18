@@ -33,6 +33,7 @@ const App = () => {
           />
         )}
       />
+
       <Route
         path='/searchClient'
         render={() => (
@@ -55,6 +56,7 @@ const App = () => {
           )}
         />
       </Switch>
+      <Route path='/wellbeingAssessment' component={WellbeingAssessment} />
     </Router>
   );
 };

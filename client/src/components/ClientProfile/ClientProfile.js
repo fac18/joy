@@ -144,15 +144,17 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
                 <b>Next assessment due: 3 Apr 2020</b>
               </Typography>
             </CardContent>
-            <CardActions>
-              <Button
-                className={classes.greenButton}
-                variant='container'
-                size='medium'
-              >
-                Start Wellbeing Assessment
-              </Button>
-            </CardActions>
+            <Link to='/wellbeingAssessment' style={{ textDecoration: 'none' }}>
+              <CardActions>
+                <Button
+                  className={classes.greenButton}
+                  variant='container'
+                  size='medium'
+                >
+                  Start Wellbeing Assessment
+                </Button>
+              </CardActions>
+            </Link>
           </Card>
           <Card className={classes.services}>
             <CardContent>
