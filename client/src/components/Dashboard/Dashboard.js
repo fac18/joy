@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import ServicesGraph from "./ServicesGraph";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -42,7 +42,7 @@ const Dashboard = ({ overallWellbeing, clients, setClients }) => {
     getRequest("/getallclients").then(res => {
       setClients(res);
     });
-  }, []);
+  }, [setClients]);
 
   const classes = useStyles();
   return (
@@ -53,7 +53,7 @@ const Dashboard = ({ overallWellbeing, clients, setClients }) => {
         <Link to="/SearchClient"> Search for clients </Link>
         <h2 className={classes.emphasis}>My Dashboard</h2>
         <Card className={classes.card}>
-          <img className={classes.arrow} src={upArrow} />
+          <img className={classes.arrow} alt="profile" src={upArrow} />
           <h3>
             You currently have:
             <span className={classes.emphasis}> {clients.length} clients!</span>

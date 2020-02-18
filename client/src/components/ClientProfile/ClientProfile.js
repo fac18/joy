@@ -34,7 +34,8 @@ const useStyles = makeStyles({
     fontSize: 32,
     marginBottom: 12,
     backgroundColor: "#F6A192",
-    borderRadius: "50",
+    // borderRadius: "50",
+    // duplicate border radius, assumed the one below is the property in use
     padding: "13px 28px",
     borderRadius: "100px"
   },

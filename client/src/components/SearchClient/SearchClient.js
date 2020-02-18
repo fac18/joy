@@ -36,7 +36,7 @@ const useStyles = makeStyles({
 
 // Automatically sends a request to the server asking for a list of all the clients
 
-const SearchClient = ({ setClients, clients }) => {
+const SearchClient = ({ clients, setClients }) => {
   // Creates a card for every user which comes back from the database
   useEffect(() => {
     getRequest("/getallclients").then(res => {
@@ -54,6 +54,11 @@ const SearchClient = ({ setClients, clients }) => {
   // let counter = 0;
 
   const classes = useStyles();
+
+  if(clients.length == 1) {
+    return "Loading";
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
@@ -104,7 +109,8 @@ const SearchClient = ({ setClients, clients }) => {
           searchInputLastName,
           searchInputDOB,
           clients
-        ).map(client => (
+        ).map((client, index) => (
+          // each client needs a unique key (virtual DOM node re-rendering)
           <Link to="/clientProfile" style={{ textDecoration: "none" }}>
             <Card className={classes.cardBg}>
               <CardContent>
@@ -112,6 +118,7 @@ const SearchClient = ({ setClients, clients }) => {
               </CardContent>
               <Typography className={classes.accountInfo}>
                 <h3>
+                  {/* there is apparently an issue with h3 being a descedant of the p tag */}
                   <b>
                     {client.client_firstname} {client.client_surname}
                   </b>
