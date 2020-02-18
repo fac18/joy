@@ -8,6 +8,8 @@ import NavBar from "../NavBar/NavBar";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../../theme";
 import getRequest from "../../utils/getData";
+import WellbeingRisk from "./WellbeingRiskGraph";
+import WellBeingPieChart from "./WellBeingPieChart";
 
 const useStyles = makeStyles({
   root: {
@@ -58,6 +60,12 @@ const Dashboard = ({ overallWellbeing, clients, setClients }) => {
             You currently have:
             <span className={classes.emphasis}> {clients.length} clients!</span>
           </h3>
+        </Card>
+        <Card className={classes.card}>
+          <WellBeingPieChart />
+        </Card>
+        <Card className={classes.card}>
+          <WellbeingRisk />
         </Card>
         <Card className={classes.card}>
           <ServicesGraph />
