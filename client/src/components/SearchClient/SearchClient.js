@@ -44,8 +44,7 @@ const SearchClient = ({ clients, setClients }) => {
       setClients(res);
       console.log(clients.client_id);
     });
-  }, []);
-
+  }, [setClients]);
   const [searchInputFirstName, setSearchInputFirstName] = React.useState(
     undefined
   );
@@ -79,7 +78,7 @@ const SearchClient = ({ clients, setClients }) => {
           value={searchInputLastName}
           aria-label='search bar'
           placeholder='Search by surname'
-          onChange={e => setSearchInputFirstName(e.target.value)}
+          onChange={e => setSearchInputLastName(e.target.value)}
         />
       </form>{' '}
       <form>
@@ -91,14 +90,19 @@ const SearchClient = ({ clients, setClients }) => {
           value={searchInputDOB}
           aria-label='search bar'
           placeholder='Search by date of birth'
-          onChange={e => setSearchInputFirstName(e.target.value)}
+          onChange={e => setSearchInputDOB(e.target.value)}
         />
       </form>
       <div className='App'>
         <br />
-        <b>{clients.length} results:</b>
+        <b>You have {clients.length} clients:</b>
         <br />
-        {filterClients(searchInputFirstName, clients).map(client => (
+        {filterClients(
+          searchInputFirstName,
+          searchInputLastName,
+          searchInputDOB,
+          clients
+        ).map(client => (
           <a
             href={`clientProfile/${client.client_id}`}
             style={{ textDecoration: 'none' }}
