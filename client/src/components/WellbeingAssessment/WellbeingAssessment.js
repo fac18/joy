@@ -7,6 +7,7 @@ import NavBar from '../NavBar/NavBar';
 import Typography from '@material-ui/core/Typography';
 import './WellbeingAssessment.css';
 import Button from '@material-ui/core/Button';
+import { ReactComponent as InfoIcon } from '../../assets/info.svg';
 
 const useStyles = makeStyles({
   mainTitle: {
@@ -50,7 +51,8 @@ const ClientAssessment = () => {
       <NavBar />
       <br />
       <Typography className={classes.mainTitle}>
-        Wellbeing assessment:
+        <span><InfoIcon title="Click me"/>     </span>
+        Wellbeing assessment: 
       </Typography>
       <Typography className={classes.clientName}>Jim Brown, 64</Typography>
       <br />
