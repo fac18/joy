@@ -28,7 +28,7 @@ const getClient = id => {
 const getInitialAssessment = id => {
   return dbConnection
     .query(
-      `SELECT ucla3_id, input_date_ucla3 AS initial_assessment_date, total_ucla3, client_id
+      `SELECT ucla3_id, TO_CHAR(input_date_ucla3, 'dd/mm/yyyy') AS initial_assessment_date, total_ucla3, client_id
 FROM ucla3_questionnaire
 WHERE client_id = ${id}
 ORDER BY input_date_ucla3 ASC
@@ -91,7 +91,7 @@ const getClientServices = id => {
 const getCurrentAssessment = id => {
   return dbConnection
     .query(
-      `SELECT ucla3_id, input_date_ucla3 AS current_assessment_date, total_ucla3, client_id
+      `SELECT ucla3_id, TO_CHAR(input_date_ucla3, 'dd/mm/yyyy') AS current_assessment_date, total_ucla3, client_id
 FROM ucla3_questionnaire
 WHERE client_id = ${id}
 ORDER BY input_date_ucla3 DESC
@@ -115,15 +115,6 @@ LIMIT 1;`
 //     .then(data => data.rows);
 // };
 
-const getPrescriber = id => {
-  return dbConnection
-    .query(
-      'SELECT prescriber_firstname, prescriber_surname WHERE prescriber_id=$1',
-      [id]
-    )
-    .then(data => data.rows);
-};
-
 const getService = id => {
   return dbConnection
     .query('SELECT service_name, service_provider WHERE service_id=$1', [id])
@@ -138,7 +129,6 @@ const getAssessment = id => {
 
 module.exports = {
   getClient,
-  getPrescriber,
   getService,
   getAllClients,
   getCurrentAssessment,
