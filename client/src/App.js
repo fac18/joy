@@ -1,20 +1,25 @@
-import React from "react";
-import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Dashboard from "./components/Dashboard/Dashboard";
-import LandingPage from "../src/components/LandingPage/LandingPage";
-import SearchClient from "../src/components/SearchClient/SearchClient";
-import ClientProfile from "../src/components/ClientProfile/ClientProfile";
-import WellbeingAssessment from "../src/components/WellbeingAssessment/WellbeingAssessment";
+import React from 'react';
+import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
+import Dashboard from './components/Dashboard/Dashboard';
+import LandingPage from '../src/components/LandingPage/LandingPage';
+import SearchClient from '../src/components/SearchClient/SearchClient';
+import ClientProfile from '../src/components/ClientProfile/ClientProfile';
+import WellbeingAssessment from '../src/components/WellbeingAssessment/WellbeingAssessment';
 
 const App = () => {
   const [clients, setClients] = React.useState([{}]);
+  const [singleClient, setSingleClient] = React.useState(null);
 
   return (
     <Router>
-      <Route exact path="/" component={LandingPage} />
+      <Route exact path='/' component={LandingPage} />
       <Route
-        path="/dashboard"
+        path='/dashboard'
         render={() => (
           <Dashboard
             clients={clients}
@@ -22,14 +27,30 @@ const App = () => {
           />
         )}
       />
+
       <Route
-        path="/searchClient"
+        path='/searchClient'
         render={() => (
-          <SearchClient clients={clients} setClients={setClients} />
+          <SearchClient
+            singleClient={singleClient}
+            setSingleClient={setSingleClient}
+            clients={clients}
+            setClients={setClients}
+          />
         )}
       />
-      <Route path="/clientProfile" component={ClientProfile} />
-      <Route path="/wellbeingAssessment" component={WellbeingAssessment} />
+      <Switch>
+        <Route
+          path='/clientProfile/:id'
+          render={() => (
+            <ClientProfile
+              singleClient={singleClient}
+              setSingleClient={setSingleClient}
+            />
+          )}
+        />
+      </Switch>
+      <Route path='/wellbeingAssessment' component={WellbeingAssessment} />
     </Router>
   );
 };
