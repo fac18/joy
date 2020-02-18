@@ -1,14 +1,15 @@
-const express = require('express');
-const morgan = require('morgan');
-const path = require('path');
-const router = require('./router');
+const express = require("express");
+const morgan = require("morgan");
+const path = require("path");
+const router = require("./router");
 const app = express();
 
 // Log all request to make error identification easier
-app.use(morgan('combined'));
+app.use(morgan("combined"));
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.json({ limit: "1mb" }));
 
 // app.use(function(req, res, next) {
 //   res.header('Access-Control-Allow-Origin', 'YOUR-DOMAIN.TLD'); // update to match the domain you will make the request from

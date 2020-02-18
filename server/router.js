@@ -34,16 +34,10 @@ router.get("/getclient:id", (req, res) => {
 });
 
 router.post("/postclientassessment", (req, res) => {
-  // console.log("This is the response", req);
-  console.log("This is the request body", JSON.parse(req.body));
-  // postClientAssessment().then(data => {
-  //   res.redirect("/");
-  //   res.json(data);
-  // });
-  return req.then(data => {
-    console.log("This is data body", JSON.parse(data.body));
-  });
-  // res.redirect("/");
+  // res.send("POST request to the wellbeing page");
+  console.log("I got a request!");
+  console.log(req.body);
+  // console.log("This is the request body", JSON.parse(req.body));
 });
 
 module.exports = router;

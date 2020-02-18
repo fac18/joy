@@ -38,23 +38,16 @@ const useStyles = makeStyles({
 const ClientAssessment = () => {
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm();
-  // const { ucla3_assessment, setUcla3_assessment } = useState({
-  //   q1_companionship,
-  //   q2_left_out,
-  //   q3_isolated,
-  //   next_appointment_date
-  // });
 
   const onSubmit = data => {
     console.log("This is the data inside onSubmit", data);
     // e.preventDefault();
-    fetch("/postclientassessment", {
+    const options = {
       method: "POST",
-      body: JSON.stringify({
-        data
-      })
-    });
-    console.log("this is after the fetch", data);
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    };
+    fetch("/postclientassessment", options);
   };
 
   console.log(errors);
