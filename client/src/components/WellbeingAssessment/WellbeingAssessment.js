@@ -7,6 +7,8 @@ import NavBar from "../NavBar/NavBar";
 import Typography from "@material-ui/core/Typography";
 import "./WellbeingAssessment.css";
 import Button from "@material-ui/core/Button";
+import { ReactComponent as InfoIcon } from '../../assets/info.svg';
+import WellbeingAssessmentModal from '../WellbeingAssessment/WellbeingAssessmentModal.js';
 
 const useStyles = makeStyles({
   mainTitle: {
@@ -36,6 +38,10 @@ const useStyles = makeStyles({
 });
 
 const ClientAssessment = () => {
+  const [show, setShow] = React.useState(false);
+  const showModal = () => setShow(true);
+  const hideModal = () => setShow(false);
+
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm();
 
@@ -48,9 +54,13 @@ const ClientAssessment = () => {
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
+      <WellbeingAssessmentModal show={show} handleClose={hideModal}>
+            <p>Modal</p>
+            <p>Data</p>
+      </WellbeingAssessmentModal>
       <br />
       <Typography className={classes.mainTitle}>
-        <span><InfoIcon title="Click me"/>     </span>
+        <span onClick={showModal}><InfoIcon title="Click me" />     </span>
         Wellbeing assessment: 
       </Typography>
       <Typography className={classes.clientName}>Jim Brown, 64</Typography>
