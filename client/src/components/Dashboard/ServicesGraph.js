@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../../../node_modules/react-vis/dist/style.css';
 import {
   XYPlot,

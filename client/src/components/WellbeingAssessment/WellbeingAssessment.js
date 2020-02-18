@@ -1,13 +1,12 @@
 // initial assessment
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import theme from '../../theme';
-import NavBar from '../NavBar/NavBar';
-import Typography from '@material-ui/core/Typography';
-import './WellbeingAssessment.css';
-import Button from '@material-ui/core/Button';
-import { ReactComponent as InfoIcon } from '../../assets/info.svg';
+import React from "react";
+import { useForm } from "react-hook-form";
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import theme from "../../theme";
+import NavBar from "../NavBar/NavBar";
+import Typography from "@material-ui/core/Typography";
+import "./WellbeingAssessment.css";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
   mainTitle: {

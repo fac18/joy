@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import { CardContent } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -12,7 +12,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme';
 import getRequest from '../../utils/getData';
 
-import { filterClients } from '../../utils/filterClients';
+import { filterClients } from "../../utils/filterClients";
 
 const useStyles = makeStyles({
   cardBg: {
@@ -42,9 +42,9 @@ const SearchClient = ({ clients, setClients }) => {
   useEffect(() => {
     getRequest('/getallclients').then(res => {
       setClients(res);
-      console.log(clients.client_id);
+      // console.log(clients.client_id);
     });
-  }, [setClients]);
+  }, []);
   const [searchInputFirstName, setSearchInputFirstName] = React.useState(
     undefined
   );
@@ -56,6 +56,7 @@ const SearchClient = ({ clients, setClients }) => {
   // let counter = 0;
 
   const classes = useStyles();
+
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
@@ -117,6 +118,7 @@ const SearchClient = ({ clients, setClients }) => {
               </CardContent>
               <Typography className={classes.accountInfo}>
                 <h3>
+                  {/* there is apparently an issue with h3 being a descedant of the p tag */}
                   <b>
                     {client.client_firstname} {client.client_surname}
                   </b>
