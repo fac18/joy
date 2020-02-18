@@ -8,6 +8,7 @@ import NavBar from "../NavBar/NavBar";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../../theme";
 import getRequest from "../../utils/getData";
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 const useStyles = makeStyles({
   root: {
@@ -45,6 +46,13 @@ const Dashboard = ({ overallWellbeing, clients, setClients }) => {
   }, [setClients]);
 
   const classes = useStyles();
+
+  if(clients.length == 1 ) {
+    console.log('load')
+    return <LoadingPage />;
+  };
+  console.log('hello')
+
   return (
     <ThemeProvider theme={theme}>
       <div className={classes.root}>

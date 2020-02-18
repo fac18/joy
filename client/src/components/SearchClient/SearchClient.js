@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import { CardContent } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -12,7 +12,6 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme';
 import getRequest from '../../utils/getData';
 
-// import LoadingPage from '../LoadingPage/LoadingPage';
 import { filterClients } from "../../utils/filterClients";
 
 const useStyles = makeStyles({
@@ -43,9 +42,9 @@ const SearchClient = ({ clients, setClients }) => {
   useEffect(() => {
     getRequest('/getallclients').then(res => {
       setClients(res);
-      console.log(clients.client_id);
+      // console.log(clients.client_id);
     });
-  }, [setClients]);
+  }, []);
   const [searchInputFirstName, setSearchInputFirstName] = React.useState(
     undefined
   );
@@ -57,10 +56,6 @@ const SearchClient = ({ clients, setClients }) => {
   // let counter = 0;
 
   const classes = useStyles();
-
-  if(clients.length < 1) {
-    return "Loading";
-  }
 
   return (
     <ThemeProvider theme={theme}>
