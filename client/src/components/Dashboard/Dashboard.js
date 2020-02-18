@@ -40,7 +40,13 @@ const useStyles = makeStyles({
   }
 });
 
-const Dashboard = ({ overallWellbeing, clients, setClients }) => {
+const Dashboard = ({
+  overallWellbeing,
+  clients,
+  setClients,
+  wellbeingTotals,
+  setWellbeingTotals
+}) => {
   useEffect(() => {
     getRequest("/getallclients").then(res => {
       setClients(res);
@@ -70,7 +76,10 @@ const Dashboard = ({ overallWellbeing, clients, setClients }) => {
           </h3>
         </Card>
         <Card className={classes.card}>
-          <WellBeingPieChart />
+          <WellBeingPieChart
+            wellbeingTotals={wellbeingTotals}
+            setWellbeingTotals={setWellbeingTotals}
+          />
         </Card>
         <Card className={classes.card}>
           <WellbeingRisk />

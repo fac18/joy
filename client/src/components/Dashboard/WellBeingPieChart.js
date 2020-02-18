@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import "../../../node_modules/react-vis/dist/style.css";
 import {
   XYPlot,
@@ -11,27 +11,56 @@ import {
   RadialChart,
   LabelSeries
 } from "react-vis";
+import { makeStyles } from "@material-ui/core";
+import getRequest from "../../utils/getData";
 
-const WellbeingPieGraph = () => {
+const useStyles = makeStyles({
+  root: {
+    color: "red"
+  }
+});
+
+let overallWellbeingObject = function(wellbeing) {
+  return {
+    // wellbeing object goes here
+  };
+};
+
+const WellbeingPieGraph = ({ wellbeingTotals, setWellbeingTotals }) => {
+  useEffect(() => {
+    getRequest("/getwellbeingtotals").then(res => {
+      setWellbeingTotals(res);
+      // console.log(wellbeingTotals);
+    });
+  }, []);
+
+  const classes = useStyles();
   const data = [
-    { angle: 9, subLabel: "Lonely (8-9)", color: "#EBEDEE" },
-    { angle: 5, subLabel: "Ok (5-7)" },
-    { angle: 3, subLabel: "Not lonely (3-4)" }
+    { angle: 5, subLabel: "3" },
+    { angle: 5, subLabel: "4" },
+    { angle: 5, subLabel: "5" },
+    { angle: 5, subLabel: "6" },
+    { angle: 5, subLabel: "7" },
+    { angle: 5, subLabel: "8" },
+    { angle: 5, subLabel: "9" }
   ];
 
   return (
     <>
-      <ChartLabel
-        text="UCLA 3 Overall Current Wellbeing"
-        // margin={{ left: 40, right: 40, top: 10, bottom: 10 }}
-      />
       <RadialChart
         data={data}
-        innerRadius={100}
-        width={200}
-        height={200}
+        width={300}
+        height={300}
         showLabels="true"
-        labelsRadiusMultiplier="1.5"
+        // labelsRadiusMultiplier="0.8"
+      />
+      <ChartLabel
+        text="UCLA 3 Overall Current Wellbeing"
+        // xPercent={0.6}
+        // yPercent={0.55}
+        // style={{
+        //   textAnchor: "end"
+        // }}
       />
     </>
   );

@@ -1,15 +1,15 @@
-const dbConnection = require('../database/db_connection.js');
+const dbConnection = require("../database/db_connection.js");
 
 // Sends a request to the database including reformatting data to make more readable
 
 const getAllClients = () => {
-  console.log('I am getallclients');
+  console.log("I am getallclients");
   return dbConnection
     .query(
       "SELECT client_id, client_firstname, client_surname, TO_CHAR(client_dob, 'dd/mm/yyyy') FROM client"
     )
     .then(data => {
-      console.log('I am the data in the getdata function', data.rows);
+      console.log("I am the data in the getdata function", data.rows);
       return data.rows;
     });
 };
@@ -20,7 +20,7 @@ const getClient = id => {
       `SELECT client_firstname, client_surname, TO_CHAR(client_dob, 'dd/mm/yyyy') FROM client WHERE client_id=${id};`
     )
     .then(data => {
-      console.log('I am the data in the getclient request', data.rows);
+      console.log("I am the data in the getclient request", data.rows);
       return data.rows;
     });
 };
@@ -36,7 +36,7 @@ LIMIT 1;`
     )
     .then(data => {
       console.log(
-        'I am the data in the getinitialassessment request',
+        "I am the data in the getinitialassessment request",
         data.rows
       );
       return data.rows;
@@ -49,7 +49,7 @@ const getClientServices = id => {
       `SELECT services_name FROM services WHERE services_id =ANY(SELECT services_id FROM referrals_questionnaire WHERE client_id=${id});`
     )
     .then(data => {
-      console.log('I am the data in the getclientservices request', data.rows);
+      console.log("I am the data in the getclientservices request", data.rows);
       return data.rows;
     });
 };
@@ -99,7 +99,7 @@ LIMIT 1;`
     )
     .then(data => {
       console.log(
-        'I am the data in the getcurrentassesssment request',
+        "I am the data in the getcurrentassesssment request",
         data.rows
       );
       return data.rows;
@@ -117,14 +117,27 @@ LIMIT 1;`
 
 const getService = id => {
   return dbConnection
-    .query('SELECT service_name, service_provider WHERE service_id=$1', [id])
+    .query("SELECT service_name, service_provider WHERE service_id=$1", [id])
     .then(data => data.rows);
 };
 
 const getAssessment = id => {
   return dbConnection
-    .query('SELECT service_name, service_provider WHERE service_id=$1', [id])
+    .query("SELECT service_name, service_provider WHERE service_id=$1", [id])
     .then(data => data.rows);
+};
+
+const getWellbeingTotals = id => {
+  console.log("we are GETting wellbingTotals");
+  return dbConnection
+    .query(
+      "SELECT total_ucla3, COUNT(total_ucla3) FROM ucla3_questionnaire GROUP BY total_ucla3 ORDER BY total_ucla3",
+      [id]
+    )
+    .then(data => {
+      console.log("wellbeingTotals results", data.rows);
+      return data.rows;
+    });
 };
 
 module.exports = {
@@ -133,5 +146,6 @@ module.exports = {
   getAllClients,
   getCurrentAssessment,
   getInitialAssessment,
-  getClientServices
+  getClientServices,
+  getWellbeingTotals
 };
