@@ -36,6 +36,7 @@ const RegisterClient = () => {
         body: JSON.stringify(data)
   };
   fetch('/postregisterclient', options).then(response => console.log('this is register client fetch response' ,response))
+}
 
   const {
       firstName,
@@ -50,7 +51,7 @@ const RegisterClient = () => {
   } = state;
 
   return (
-    <formn onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={onSubmit}>
 
       <label for="firstName">First Name</label>
       <input
@@ -143,4 +144,5 @@ const RegisterClient = () => {
     </form>
   );
 };
+
 export default RegisterClient;
