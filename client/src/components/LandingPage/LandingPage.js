@@ -14,7 +14,8 @@ const useStyles = makeStyles({
   }
 });
 
-const LandingPage = () => {
+const LandingPage = (props) => {
+  
   const [show, setShow] = React.useState(false);
   const showModal = () => setShow(true);
   const hideModal = () => setShow(false);

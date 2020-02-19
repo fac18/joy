@@ -69,7 +69,7 @@ const Dashboard = ({
         <Link to="/SearchClient"> Search for clients </Link>
         <h2 className={classes.emphasis}>My Dashboard</h2>
         <Card className={classes.card}>
-          <img className={classes.arrow} alt="profile" src={upArrow} />
+          <ilink tolink tomg className={classes.arrow} alt="profile" src={upArrow} />
           <h3>
             You currently have:
             <span className={classes.emphasis}> {clients.length} clients!</span>
