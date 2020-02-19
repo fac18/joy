@@ -26,10 +26,12 @@ CREATE TABLE ucla3_questionnaire (
     input_date_ucla3 DATE NOT NULL DEFAULT CURRENT_DATE, 
     q1_companionship INTEGER NOT NULL , 
     q2_left_out INTEGER NOT NULL, 
-    q3_isolated INTEGER NOT NULL, 
-    total_ucla3 INTEGER NOT NULL GENERATED ALWAYS AS (q1_companionship + q2_left_out + q3_isolated) STORED,
+    q3_isolated INTEGER NOT NULL,
+    total_ucla3 INTEGER NOT NULL GENERATED ALWAYS AS (q1_companionship + q2_left_out + q3_isolated) STORED, 
     client_id INTEGER REFERENCES client(client_id), 
-    next_appointment_date DATE NOT NULL DEFAULT CURRENT_DATE
+    additionalNotes VARCHAR(500) NOT NULL,
+    next_appointment_date DATE NOT NULL DEFAULT CURRENT_DATE, 
+    next_appointment_time TIME 
 );
 
 CREATE TABLE referrals_questionnaire (
@@ -40,6 +42,7 @@ CREATE TABLE referrals_questionnaire (
     no_of_services_attended INTEGER ,
     client_attended BOOLEAN NOT NULL DEFAULT FALSE
 );
+<<<<<<< HEAD
 
 INSERT INTO client (client_firstname, client_surname, client_knownAs, client_dob, client_phone, client_address, client_nhsNumber, client_consent, client_areasOfSupport) VALUES
 ('Jim', 'Brown', 'Jimbo', '1955-12-12', '02085632478', '32 fred st', '123', TRUE, 'Feeling Lonely/Isolated'),
@@ -50,6 +53,17 @@ INSERT INTO client (client_firstname, client_surname, client_knownAs, client_dob
 ('Jay', 'Lejeune', 'Jayjay', '1943-02-27', '0784895231', '2 hero way', '123', TRUE, 'Feeling Lonely/Isolated'),
 ('Lucy', 'Baughan', 'Lucy', '1952-01-17', '02079638452', '64 zoo lane', '123', TRUE, 'Feeling Lonely/Isolated'),
 ('Leonardo', 'Barbosa', 'Leo', '1938-03-14', '020345678995', '5 banham close', '123', TRUE, 'Feeling Lonely/Isolated');
+=======
+INSERT INTO client (client_firstname, client_surname, client_dob) VALUES
+('Jim', 'Brown', '1955-12-12'),
+('Dot', 'Green', '1954-03-28'),
+('Kathy', 'Black', '1980-01-03'),
+('Jim', 'Brown', '1947-05-05'),
+('Katherine', 'Woods', '1981-04-26'),
+('Jay', 'Lejeune', '1943-02-27'),
+('Lucy', 'Baughan', '1952-01-17'),
+('Leonardo', 'Barbosa', '1938-03-14');
+>>>>>>> master
 
 INSERT INTO services (services_name, services_provider) VALUES
 ('Local Offer - support for people with SEND', 'Family Information Service F'),
@@ -67,21 +81,21 @@ INSERT INTO services (services_name, services_provider) VALUES
 ('Mens Cooking', 'Wokingham Cares'),
 ('Information and Advice', 'Wokingham Cares');
 
-INSERT INTO ucla3_questionnaire (input_date_ucla3, client_id, q1_companionship, q2_left_out, q3_isolated, next_appointment_date) VALUES 
-('2020-01-03', 1,  2, 3, 3, '2020-01-04'),
-('2020-01-14', 3, 3, 3, 2,'2020-01-04'),
-('2020-01-20', 2, 1, 2, 1,'2020-01-04'),
-('2020-02-03', 1, 1, 1, 2,'2020-01-04'),
-('2020-02-14', 3, 2, 2, 1,'2020-01-04'),
-('2020-02-20', 2, 3, 3, 2,'2020-01-04'),
-('2020-01-05', 4, 3, 3, 3,'2020-01-04'), 
-('2020-02-05', 4, 2, 1, 1,'2020-01-04'),
-('2020-03-03', 1,  1, 2, 3,'2020-01-04'),
-('2020-04-03', 1,  1, 1, 1,'2020-01-04'),
-('2019-05-28', 1,  2, 3, 3,'2020-01-04'),
-('2019-06-09', 2,  2, 3, 3,'2020-01-04'),
-('2019-07-15', 3,  2, 3, 3,'2020-01-04'),
-('2019-08-30', 4,  2, 3, 3,'2020-01-04');
+INSERT INTO ucla3_questionnaire (input_date_ucla3, client_id, q1_companionship, q2_left_out, q3_isolated, additionalNotes, next_appointment_date ) VALUES 
+('2020-01-03', 1,  2, 3, 3, 'Some notes', '2020-01-04'),
+('2020-01-14', 3, 3, 3, 2, 'Some notes', '2020-01-04'),
+('2020-01-20', 2, 1, 2, 1, 'Some notes', '2020-01-04'),
+('2020-02-03', 1, 1, 1, 2, 'Some notes','2020-01-04'),
+('2020-02-14', 3, 2, 2, 1, 'Some notes','2020-01-04'),
+('2020-02-20', 2, 3, 3, 2, 'Some notes','2020-01-04'),
+('2020-01-05', 4, 3, 3, 3, 'Some notes','2020-01-04'), 
+('2020-02-05', 4, 2, 1, 1, 'Some notes','2020-01-04'),
+('2020-03-03', 1,  1, 2, 3, 'Some notes','2020-01-04'),
+('2020-04-03', 1,  1, 1, 1, 'Some notes','2020-01-04'),
+('2019-05-28', 1,  2, 3, 3, 'Some notes','2020-01-04'),
+('2019-06-09', 2,  2, 3, 3, 'Some notes','2020-01-04'),
+('2019-07-15', 3,  2, 3, 3, 'Some notes','2020-01-04'),
+('2019-08-30', 4,  2, 3, 3, 'Some notes','2020-01-04');
 
 
 
