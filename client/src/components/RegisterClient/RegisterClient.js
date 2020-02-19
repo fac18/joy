@@ -28,6 +28,15 @@ const RegisterClient = () => {
     dispatch({ field: e.target.name, value: e.target.value });
   };
 
+  const onSubmit = (data, e) => {
+      e.preventDefault();
+      const options = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+  };
+  fetch('/postregisterclient', options).then(response => console.log('this is register client fetch response' ,response))
+
   const {
       firstName,
       lastName,
@@ -41,7 +50,7 @@ const RegisterClient = () => {
   } = state;
 
   return (
-    <form>
+    <formn onSubmit={handleSubmit(onSubmit)}>
 
       <label for="firstName">First Name</label>
       <input
@@ -118,6 +127,18 @@ const RegisterClient = () => {
         defaultValue={consent}
         onChange={onChange}
       />
+
+      <label for="areasOfSupport">What areas does the client need support with?</label>
+      <select name="areasOfSupport" multiple id="areasOfSupport" defaultValue={areasOfSupport} onChange={onChange}>
+        <option value="Feeling Lonely/Isolated">Feeling Lonely/Isolated</option>
+        <option value="Managing a health condition">Managing a health condition</option>
+        <option value="Help with Money">Help with Money</option>
+        <option value="Getting outdoors">Getting outdoors</option>
+        <option value="Improving Fitness">Improving Fitness</option>
+        <option value="Information and advice">Information and advice</option>
+        <option value="Assistance with day-to-day tasks">Assistance with day-to-day tasks</option>
+      </select>
+      
       <button type="submit">Register Client</button>
     </form>
   );
