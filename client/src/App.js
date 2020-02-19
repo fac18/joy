@@ -15,23 +15,26 @@ import RegisterClient from './components/RegisterClient/RegisterClient';
 const App = () => {
   const [clients, setClients] = React.useState([{}]);
   const [singleClient, setSingleClient] = React.useState(null);
+  const [wellbeingTotals, setWellbeingTotals] = React.useState([]);
 
   return (
     <Router>
       <Route exact path='/' component={LandingPage} />
       <Route exact path='/registerClient' component={RegisterClient} />
       <Route
-        path='/dashboard'
+        path="/dashboard"
         render={() => (
           <Dashboard
             clients={clients}
             setClients={setClients}
+            wellbeingTotals={wellbeingTotals}
+            setWellbeingTotals={setWellbeingTotals}
           />
         )}
       />
 
       <Route
-        path='/searchClient'
+        path="/searchClient"
         render={() => (
           <SearchClient
             singleClient={singleClient}
@@ -41,9 +44,10 @@ const App = () => {
           />
         )}
       />
+
       <Switch>
         <Route
-          path='/clientProfile/:id'
+          path="/clientProfile/:id"
           render={() => (
             <ClientProfile
               singleClient={singleClient}
@@ -52,7 +56,7 @@ const App = () => {
           )}
         />
       </Switch>
-      <Route path='/wellbeingAssessment' component={WellbeingAssessment} />
+      <Route path="/wellbeingAssessment" component={WellbeingAssessment} />
     </Router>
   );
 };

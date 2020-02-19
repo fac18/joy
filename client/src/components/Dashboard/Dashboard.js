@@ -8,24 +8,26 @@ import NavBar from "../NavBar/NavBar";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../../theme";
 import getRequest from "../../utils/getData";
-import LoadingPage from '../LoadingPage/LoadingPage';
+import WellbeingRisk from "./WellbeingRiskGraph";
+import WellBeingPieChart from "./WellBeingPieChart";
+import LoadingPage from "../LoadingPage/LoadingPage";
 
 const useStyles = makeStyles({
   root: {
-    margin: 'auto',
-    textAlign: 'center',
-    fontFamily: 'Source Sans Pro'
+    margin: "auto",
+    textAlign: "center",
+    fontFamily: "Source Sans Pro"
   },
   card: {
     minWidth: 275,
     maxWidth: 500,
-    backgroundColor: '#EBEDEE',
-    margin: 'auto',
+    backgroundColor: "#EBEDEE",
+    margin: "auto",
     marginTop: 25,
     padding: 20,
-    color: '#676767',
-    display: 'flex',
-    flexDirection: 'row',
+    color: "#676767",
+    display: "flex",
+    flexDirection: "row",
     fontSize: 20
   },
   arrow: {
@@ -34,31 +36,37 @@ const useStyles = makeStyles({
   },
   emphasis: {
     fontSize: 40,
-    color: '#E71F67'
+    color: "#E71F67"
   }
 });
 
-const Dashboard = ({ overallWellbeing, clients, setClients }) => {
+const Dashboard = ({
+  overallWellbeing,
+  clients,
+  setClients,
+  wellbeingTotals,
+  setWellbeingTotals
+}) => {
   useEffect(() => {
-    getRequest('/getallclients').then(res => {
+    getRequest("/getallclients").then(res => {
       setClients(res);
     });
   }, [setClients]);
 
   const classes = useStyles();
 
-  if(clients.length == 1 ) {
-    console.log('load')
+  if (clients.length == 1) {
+    console.log("load");
     return <LoadingPage />;
-  };
-  console.log('hello')
+  }
+  console.log("hello");
 
   return (
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
         <NavBar />
         <br />
-        <Link to='/SearchClient'> Search for clients </Link>
+        <Link to="/SearchClient"> Search for clients </Link>
         <h2 className={classes.emphasis}>My Dashboard</h2>
         <Card className={classes.card}>
           <img className={classes.arrow} alt="profile" src={upArrow} />
@@ -66,6 +74,15 @@ const Dashboard = ({ overallWellbeing, clients, setClients }) => {
             You currently have:
             <span className={classes.emphasis}> {clients.length} clients!</span>
           </h3>
+        </Card>
+
+        <WellBeingPieChart
+          wellbeingTotals={wellbeingTotals}
+          setWellbeingTotals={setWellbeingTotals}
+        />
+
+        <Card className={classes.card}>
+          <WellbeingRisk />
         </Card>
         <Card className={classes.card}>
           <ServicesGraph />
