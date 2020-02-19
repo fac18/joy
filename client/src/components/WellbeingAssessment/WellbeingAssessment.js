@@ -56,8 +56,10 @@ const ClientAssessment = () => {
   const onSubmit = (data, e) => {
     e.preventDefault();
     console.log('This is the data inside onSubmit', data);
+
+    // Add in the client id to the post
+
     data.client_id = id;
-    console.log('I am the data.id', data.id);
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

@@ -1,6 +1,11 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useRouteMatch
+} from 'react-router-dom';
 import Dashboard from './components/Dashboard/Dashboard';
 import LandingPage from '../src/components/LandingPage/LandingPage';
 import SearchClient from '../src/components/SearchClient/SearchClient';
@@ -11,8 +16,6 @@ const App = () => {
   const [clients, setClients] = React.useState([{}]);
   const [singleClient, setSingleClient] = React.useState(null);
   const [wellbeingTotals, setWellbeingTotals] = React.useState([]);
-
-  let match = useRouteMatch();
 
   return (
     <Router>
@@ -48,9 +51,12 @@ const App = () => {
             <ClientProfile
               singleClient={singleClient}
               setSingleClient={setSingleClient}
-              match={match}
             />
           )}
+        />
+        <Route
+          path='/wellbeingAssessment/:id'
+          render={() => <WellbeingAssessment />}
         />
       </Switch>
     </Router>

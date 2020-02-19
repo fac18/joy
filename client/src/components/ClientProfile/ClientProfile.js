@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link, useParams, Switch } from 'react-router-dom';
+import { Link, useParams, Switch, useRouteMatch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -72,12 +72,13 @@ const useStyles = makeStyles({
   }
 });
 
-const ClientProfile = ({ singleClient, setSingleClient, match }) => {
+const ClientProfile = ({ singleClient, setSingleClient }) => {
   // const [id, setID] = React.useState({});
 
   const classes = useStyles();
 
   let { id } = useParams();
+  let match = useRouteMatch();
 
   useEffect(() => {
     getRequest(`/getclient:${id}`).then(res => {
@@ -126,7 +127,7 @@ const ClientProfile = ({ singleClient, setSingleClient, match }) => {
               </Typography>
             </CardContent>
             <Link
-              to={`wellbeingAssessment/${id}`}
+              to={`/wellbeingAssessment/${id}`}
               style={{ textDecoration: 'none' }}
             >
               {' '}
@@ -167,13 +168,6 @@ const ClientProfile = ({ singleClient, setSingleClient, match }) => {
             </CardActions>
           </Card>
         </div>
-        <Switch>
-          <Route
-            path={`${match.path}/wellbeingAssessment/:id`}
-            path='/wellbeingAssessment/:id'
-            render={() => <WellbeingAssessment />}
-          />
-        </Switch>
       </ThemeProvider>
     );
   }
