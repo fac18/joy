@@ -1,17 +1,6 @@
 import React, { Component, useEffect } from "react";
-import "../../../node_modules/react-vis/dist/style.css";
-import {
-  XYPlot,
-  VerticalBarSeries,
-  XAxis,
-  YAxis,
-  HorizontalGridLines,
-  VerticalGridLines,
-  ChartLabel,
-  RadialChart,
-  LabelSeries
-} from "react-vis";
 import { makeStyles } from "@material-ui/core";
+import Chart from "react-apexcharts";
 import getRequest from "../../utils/getData";
 
 const useStyles = makeStyles({
@@ -21,43 +10,76 @@ const useStyles = makeStyles({
 });
 
 const WellbeingPieGraph = ({ wellbeingTotals, setWellbeingTotals }) => {
-  let wellbeingTotalsObject = function(wellbeing) {
-    return {
-      // wellbeing object goes here
-    };
-  };
+  const classes = useStyles();
+
   useEffect(() => {
-    getRequest("/getwellbeingtotals").then(res => {
-      setWellbeingTotals(res);
-      // console.log(wellbeingTotals);
+    getRequest("/getwellbeingtotals").then(data => {
+      setWellbeingTotals(data);
     });
   }, []);
+  if (!wellbeingTotals || wellbeingTotals.length === 0) {
+    console.log("pooh");
+    return null;
+  } else {
+    console.log(
+      "I am wellbeing TOTAL!",
+      wellbeingTotals,
+      wellbeingTotals[0].total_ucla3,
+      wellbeingTotals[0].count,
+      wellbeingTotals[1].total_ucla3,
+      wellbeingTotals[1].count,
+      wellbeingTotals[2].total_ucla3,
+      wellbeingTotals[2].count
+    );
+  }
 
-  const classes = useStyles();
-  const data = [
-    { angle: 5, subLabel: "not lonely (3-4)" },
-    { angle: 5, subLabel: "ok (5-7)" },
-    { angle: 5, subLabel: "lonely (8-9)" }
-  ];
+  wellbeingTotals = {
+    options: {
+      series: [
+        wellbeingTotals[0].count * 100,
+        wellbeingTotals[1].count * 100,
+        wellbeingTotals[2].count * 100
+      ],
+      chart: {
+        width: 380,
+        type: "pie"
+      },
+      fill: {
+        colors: ["rgb(255, 69, 96)", "rgb(0, 227, 150)", "rgb(0, 143, 251)"]
+      },
+      labels: [
+        "HIGH RISK (Lonely 8-9)",
+        "MEDIUM RISK (5-7)",
+        "LOW RISK (Not Lonely 3-4)"
+      ],
+
+      colors: ["rgb(255, 69, 96)", "rgb(0, 227, 150)", "rgb(0, 143, 251)"],
+
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 100
+            },
+            legend: {
+              position: "bottom"
+            }
+          }
+        }
+      ]
+    }
+  };
 
   return (
-    <>
-      <RadialChart
-        data={data}
-        width={300}
-        height={300}
-        showLabels="true"
-        labelsRadiusMultiplier="0.8"
+    <div className="donut">
+      <Chart
+        options={wellbeingTotals.options}
+        series={wellbeingTotals.options.series}
+        type="pie"
+        width="380"
       />
-      <ChartLabel
-        text="UCLA 3 Overall Current Wellbeing"
-        // xPercent={0.6}
-        // yPercent={0.55}
-        // style={{
-        //   textAnchor: "end"
-        // }}
-      />
-    </>
+    </div>
   );
 };
 

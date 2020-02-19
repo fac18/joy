@@ -10,7 +10,7 @@ import WellbeingAssessment from "../src/components/WellbeingAssessment/Wellbeing
 const App = () => {
   const [clients, setClients] = React.useState([{}]);
   const [singleClient, setSingleClient] = React.useState(null);
-  const [wellbeingTotals, setWellbeingTotals] = React.useState([{}]);
+  const [wellbeingTotals, setWellbeingTotals] = React.useState([]);
 
   return (
     <Router>
