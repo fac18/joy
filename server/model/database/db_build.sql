@@ -42,7 +42,6 @@ CREATE TABLE referrals_questionnaire (
     no_of_services_attended INTEGER ,
     client_attended BOOLEAN NOT NULL DEFAULT FALSE
 );
-<<<<<<< HEAD
 
 INSERT INTO client (client_firstname, client_surname, client_knownAs, client_dob, client_phone, client_address, client_nhsNumber, client_consent, client_areasOfSupport) VALUES
 ('Jim', 'Brown', 'Jimbo', '1955-12-12', '02085632478', '32 fred st', '123', TRUE, 'Feeling Lonely/Isolated'),
@@ -53,17 +52,6 @@ INSERT INTO client (client_firstname, client_surname, client_knownAs, client_dob
 ('Jay', 'Lejeune', 'Jayjay', '1943-02-27', '0784895231', '2 hero way', '123', TRUE, 'Feeling Lonely/Isolated'),
 ('Lucy', 'Baughan', 'Lucy', '1952-01-17', '02079638452', '64 zoo lane', '123', TRUE, 'Feeling Lonely/Isolated'),
 ('Leonardo', 'Barbosa', 'Leo', '1938-03-14', '020345678995', '5 banham close', '123', TRUE, 'Feeling Lonely/Isolated');
-=======
-INSERT INTO client (client_firstname, client_surname, client_dob) VALUES
-('Jim', 'Brown', '1955-12-12'),
-('Dot', 'Green', '1954-03-28'),
-('Kathy', 'Black', '1980-01-03'),
-('Jim', 'Brown', '1947-05-05'),
-('Katherine', 'Woods', '1981-04-26'),
-('Jay', 'Lejeune', '1943-02-27'),
-('Lucy', 'Baughan', '1952-01-17'),
-('Leonardo', 'Barbosa', '1938-03-14');
->>>>>>> master
 
 INSERT INTO services (services_name, services_provider) VALUES
 ('Local Offer - support for people with SEND', 'Family Information Service F'),

@@ -28,15 +28,20 @@ const RegisterClient = () => {
     dispatch({ field: e.target.name, value: e.target.value });
   };
 
-//   fetch('http://localhost:4000/api/users/register' , {
-//   method: "POST",
-//   headers: {
-//     'Content-type': 'application/json'
-//   },
-//   body: JSON.stringify(this.state)
-// })
-// .then((result) => result.json())
-// .then((info) => { console.log(info); })
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  fetch('/postregisterclient' , {
+  method: "POST",
+  headers: {
+    'Content-type': 'application/json'
+  },
+  body: JSON.stringify(state)
+})
+.then((result) => result.json())
+.then((info) => { console.log(info); })
+
+  }
+
 
 //   const onSubmit = (e) => {
 //       e.preventDefault();
@@ -62,7 +67,7 @@ const RegisterClient = () => {
   } = state;
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
 
       <label for="firstName">First Name</label>
       <input

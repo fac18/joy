@@ -8,15 +8,9 @@ const {
   getCurrentAssessment,
   getInitialAssessment,
   getClientServices,
-<<<<<<< HEAD
   getWellbeingTotals,
   postRegisterClient
 } = require("./model/queries/getData.js");
-=======
-  getWellbeingTotals
-} = require('./model/queries/getData.js');
-const postClientAssessment = require('./model/queries/postData.js');
->>>>>>> master
 
 // const  = require('./model/queries/postData');
 // When the getallclients route is called, calls the getdata function
@@ -59,7 +53,7 @@ router.post('/postclientassessment', (req, res) => {
   console.log('I got a request!');
   console.log(req.body);
   postClientAssessment(req.body);
-
+});
   // res.redirect("/");
 
   // Promise.all([postClientAssessment]).then(data =>
@@ -67,13 +61,7 @@ router.post('/postclientassessment', (req, res) => {
   // );
   // console.log("This is the request body", JSON.parse(req.body))
   // res.send(req.body);
-<<<<<<< HEAD
 router.get("/getwellbeingtotals", (req, res) => {
-=======
-});
-
-router.get('/getwellbeingtotals', (req, res) => {
->>>>>>> master
   getWellbeingTotals().then(data => {
     res.json(data);
   });
