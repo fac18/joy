@@ -45,7 +45,7 @@ router.post('/postclientassessment', (req, res) => {
 
   postClientAssessment(req.body)
 
-  res.redirect('http://localhost:3000/dashboard')
+  res.redirect('/dashboard')
 })
 
 router.get('/getwellbeingtotals', (req, res) => {
@@ -54,8 +54,12 @@ router.get('/getwellbeingtotals', (req, res) => {
   })
 })
 
-router.get('*', function (req, res) {
-  return res.redirect('/')
+router.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/../client/build'))
 })
+
+// router.get('*', function(req, res) {
+//   res.redirect('/');
+// });
 
 module.exports = router
