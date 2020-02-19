@@ -36,6 +36,8 @@ const RegisterClient = () => {
     phoneNumber,
     address,
     nhsNumber,
+    consent,
+    areasOfSupport
   } = state;
 
   return (
@@ -92,7 +94,7 @@ const RegisterClient = () => {
 
       <label for="address">Address</label>
       <input
-        type="text"
+        type="textarea"
         id="address"
         name="address"
         defaultValue={address}
@@ -108,6 +110,14 @@ const RegisterClient = () => {
         onChange={onChange}
       />
 
+      <label for="nhsNumber">I consent to Joy storing and processing my personal data</label>
+      <input
+        type="checkbox"
+        id="consent"
+        name="consent"
+        defaultValue={consent}
+        onChange={onChange}
+      />
       <button type="submit">Register Client</button>
     </form>
   );
