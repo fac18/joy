@@ -75,12 +75,12 @@ const Dashboard = ({
             <span className={classes.emphasis}> {clients.length} clients!</span>
           </h3>
         </Card>
-        <Card className={classes.card}>
-          <WellBeingPieChart
-            wellbeingTotals={wellbeingTotals}
-            setWellbeingTotals={setWellbeingTotals}
-          />
-        </Card>
+
+        <WellBeingPieChart
+          wellbeingTotals={wellbeingTotals}
+          setWellbeingTotals={setWellbeingTotals}
+        />
+
         <Card className={classes.card}>
           <WellbeingRisk />
         </Card>
