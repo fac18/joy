@@ -11,6 +11,7 @@ import getRequest from "../../utils/getData";
 import WellbeingRisk from "./WellbeingRiskGraph";
 import WellBeingPieChart from "./WellBeingPieChart";
 import LoadingPage from "../LoadingPage/LoadingPage";
+import TotalServices from "./TotalServices";
 
 const useStyles = makeStyles({
   root: {
@@ -44,6 +45,8 @@ const Dashboard = ({
   overallWellbeing,
   clients,
   setClients,
+  services,
+  setServices,
   wellbeingTotals,
   setWellbeingTotals
 }) => {
@@ -65,8 +68,6 @@ const Dashboard = ({
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
         <NavBar />
-        <br />
-        <Link to="/SearchClient"> Search for clients </Link>
         <h2 className={classes.emphasis}>My Dashboard</h2>
         <Card className={classes.card}>
           <img className={classes.arrow} alt="profile" src={upArrow} />
@@ -75,7 +76,7 @@ const Dashboard = ({
             <span className={classes.emphasis}> {clients.length} clients!</span>
           </h3>
         </Card>
-
+        <TotalServices services={services} setServices={setServices} />
         <WellBeingPieChart
           wellbeingTotals={wellbeingTotals}
           setWellbeingTotals={setWellbeingTotals}
