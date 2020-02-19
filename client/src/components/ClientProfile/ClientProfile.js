@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -12,6 +12,8 @@ import Button from '@material-ui/core/Button';
 import NavBar from '../NavBar/NavBar';
 import getRequest from '../../utils/getData';
 import buildClientObject from '../../utils/buildClientObject';
+import { Route } from 'react-router-dom';
+import WellbeingAssessment from '../WellbeingAssessment/WellbeingAssessment';
 
 // import Button from "../Button/Button";
 
@@ -70,7 +72,7 @@ const useStyles = makeStyles({
   }
 });
 
-const ClientProfile = ({ singleClient, setSingleClient }) => {
+const ClientProfile = ({ singleClient, setSingleClient, match }) => {
   // const [id, setID] = React.useState({});
 
   const classes = useStyles();
@@ -123,8 +125,8 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
                 <b>Next assessment due: 3 Apr 2020</b>
               </Typography>
             </CardContent>
-            <a
-              href={`wellbeingAssessment/${id}`}
+            <Link
+              to={`wellbeingAssessment/${id}`}
               style={{ textDecoration: 'none' }}
             >
               {' '}
@@ -137,7 +139,7 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
                   Start Wellbeing Assessment
                 </Button>
               </CardActions>
-            </a>
+            </Link>
           </Card>
           <Card className={classes.services}>
             <CardContent>
@@ -165,6 +167,13 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
             </CardActions>
           </Card>
         </div>
+        <Switch>
+          <Route
+            path={`${match.path}/wellbeingAssessment/:id`}
+            path='/wellbeingAssessment/:id'
+            render={() => <WellbeingAssessment />}
+          />
+        </Switch>
       </ThemeProvider>
     );
   }

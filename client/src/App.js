@@ -12,6 +12,8 @@ const App = () => {
   const [singleClient, setSingleClient] = React.useState(null);
   const [wellbeingTotals, setWellbeingTotals] = React.useState([]);
 
+  let match = useRouteMatch();
+
   return (
     <Router>
       <Route exact path='/' component={LandingPage} />
@@ -46,19 +48,11 @@ const App = () => {
             <ClientProfile
               singleClient={singleClient}
               setSingleClient={setSingleClient}
+              match={match}
             />
           )}
         />
       </Switch>
-      <Route
-        path='/wellbeingAssessment/:id'
-        render={() => (
-          <WellbeingAssessment
-            singleClient={singleClient}
-            setSingleClient={setSingleClient}
-          />
-        )}
-      />
     </Router>
   );
 };
