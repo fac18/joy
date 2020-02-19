@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import NavBar from '../NavBar/NavBar';
 import getRequest from '../../utils/getData';
+import buildClientObject from '../../utils/buildClientObject';
 
 // import Button from "../Button/Button";
 
@@ -36,11 +37,11 @@ const useStyles = makeStyles({
     display: 'inline-block',
     fontSize: 32,
     marginBottom: 12,
-    backgroundColor: "#F6A192",
+    backgroundColor: '#F6A192',
     // borderRadius: "50",
     // duplicate border radius, assumed the one below is the property in use
-    padding: "13px 28px",
-    borderRadius: "100px"
+    padding: '13px 28px',
+    borderRadius: '100px'
   },
   greenButton: {
     background: '#A0B43B',
@@ -72,38 +73,15 @@ const useStyles = makeStyles({
 const ClientProfile = ({ singleClient, setSingleClient }) => {
   // const [id, setID] = React.useState({});
 
-  let { id } = useParams();
   const classes = useStyles();
 
-  let newObject = function(someone) {
-    return {
-      firstname: someone[0][0].client_firstname
-        ? someone[0][0].client_firstname
-        : 'First name unknown',
-      surname: someone[0][0].client_surname
-        ? someone[0][0].client_surname
-        : 'Last name unknown',
-      DOB: someone[0][0].client_dob
-        ? someone[0][0].client_dob
-        : 'Date of birth unknown',
-      initialAssessment: someone[1][0]
-        ? someone[1][0].total_ucla3
-        : 'Unavailable',
-      currentAssessment: someone[2][0] ? someone[2][0].ucla3_id : 'Unavailable',
-      currentAssessmentDate: someone[2][0]
-        ? someone[2][0].current_assessment_date
-        : 'No wellbeing assessments carried out',
-      referredServices: someone[3].length
-        ? someone[3]
-        : 'No current services referred'
-    };
-  };
+  let { id } = useParams();
 
   useEffect(() => {
     getRequest(`/getclient:${id}`).then(res => {
-      setSingleClient(newObject(res));
+      setSingleClient(buildClientObject(res));
     });
-  });
+  }, []);
 
   if (singleClient === null) {
     console.log('poo');
@@ -145,7 +123,11 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
                 <b>Next assessment due: 3 Apr 2020</b>
               </Typography>
             </CardContent>
-            <Link to='/wellbeingAssessment' style={{ textDecoration: 'none' }}>
+            <a
+              href={`wellbeingAssessment/${id}`}
+              style={{ textDecoration: 'none' }}
+            >
+              {' '}
               <CardActions>
                 <Button
                   className={classes.greenButton}
@@ -155,7 +137,7 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
                   Start Wellbeing Assessment
                 </Button>
               </CardActions>
-            </Link>
+            </a>
           </Card>
           <Card className={classes.services}>
             <CardContent>

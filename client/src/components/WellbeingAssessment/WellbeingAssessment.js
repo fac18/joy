@@ -9,6 +9,7 @@ import './WellbeingAssessment.css';
 import Button from '@material-ui/core/Button';
 import { ReactComponent as InfoIcon } from '../../assets/info.svg';
 import WellbeingAssessmentModal from '../WellbeingAssessment/WellbeingAssessmentModal.js';
+import { useParams } from 'react-router-dom';
 
 const useStyles = makeStyles({
   mainTitle: {
@@ -41,13 +42,22 @@ const ClientAssessment = () => {
   const [show, setShow] = React.useState(false);
   const showModal = () => setShow(true);
   const hideModal = () => setShow(false);
+  let { id } = useParams();
 
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm();
 
+  // useEffect(() => {
+  //   getRequest(`/getclient:${id}`).then(res => {
+  //     setSingleClient(buildClientObject(res));
+  //   });
+  // }, []);
+
   const onSubmit = (data, e) => {
-    console.log('This is the data inside onSubmit', data);
     e.preventDefault();
+    console.log('This is the data inside onSubmit', data);
+    data.client_id = id;
+    console.log('I am the data.id', data.id);
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
