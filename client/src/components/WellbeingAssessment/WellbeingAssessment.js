@@ -1,12 +1,12 @@
 // initial assessment
-import React from "react";
-import { useForm } from "react-hook-form";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
-import theme from "../../theme";
-import NavBar from "../NavBar/NavBar";
-import Typography from "@material-ui/core/Typography";
-import "./WellbeingAssessment.css";
-import Button from "@material-ui/core/Button";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import theme from '../../theme';
+import NavBar from '../NavBar/NavBar';
+import Typography from '@material-ui/core/Typography';
+import './WellbeingAssessment.css';
+import Button from '@material-ui/core/Button';
 import { ReactComponent as InfoIcon } from '../../assets/info.svg';
 import WellbeingAssessmentModal from '../WellbeingAssessment/WellbeingAssessmentModal.js';
 
@@ -45,8 +45,22 @@ const ClientAssessment = () => {
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = data => {
-    console.log(data);
+  const onSubmit = (data, e) => {
+    console.log('This is the data inside onSubmit', data);
+    e.preventDefault();
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    };
+    fetch('/postclientassessment', options).then(response =>
+      console.log(response)
+    );
+    // fetch(options).then(res => {
+    //   res.json().then(data => {
+    //     console.log(data);
+    //   });
+    // });
   };
 
   console.log(errors);
@@ -55,13 +69,15 @@ const ClientAssessment = () => {
     <ThemeProvider theme={theme}>
       <NavBar />
       <WellbeingAssessmentModal show={show} handleClose={hideModal}>
-            <p>Modal</p>
-            <p>Data</p>
+        <p>Modal</p>
+        <p>Data</p>
       </WellbeingAssessmentModal>
       <br />
       <Typography className={classes.mainTitle}>
-        <span onClick={showModal}><InfoIcon title="Click me" />     </span>
-        Wellbeing assessment: 
+        <span onClick={showModal}>
+          <InfoIcon title='Click me' />{' '}
+        </span>
+        Wellbeing assessment:
       </Typography>
       <Typography className={classes.clientName}>Jim Brown, 64</Typography>
       <br />
