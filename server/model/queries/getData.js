@@ -130,7 +130,7 @@ const getAssessment = id => {
 const getWellbeingTotals = () => {
   return dbConnection
     .query(
-      "SELECT total_ucla3, COUNT(total_ucla3) FROM ucla3_questionnaire GROUP BY total_ucla3 ORDER BY total_ucla3"
+      "SELECT COUNT(total_ucla3) FILTER (WHERE total_ucla3 >= 8) AS lonely_8_9, COUNT(total_ucla3) FILTER (WHERE total_ucla3 BETWEEN 5 AND 7) AS ok_5_6_7, COUNT(total_ucla3) FILTER (WHERE total_ucla3 <= 4) AS not_lonely_3_4 FROM ucla3_questionnaire"
     )
     .then(data => {
       return data.rows;

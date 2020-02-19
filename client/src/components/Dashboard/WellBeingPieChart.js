@@ -39,34 +39,34 @@ const WellbeingPieGraph = ({ wellbeingTotals, setWellbeingTotals }) => {
     console.log(
       "I am wellbeing TOTAL!",
       wellbeingTotals,
-      wellbeingTotals[0].total_ucla3,
-      wellbeingTotals[0].count,
-      wellbeingTotals[1].total_ucla3,
-      wellbeingTotals[1].count,
-      wellbeingTotals[2].total_ucla3,
-      wellbeingTotals[2].count
+      wellbeingTotals[0].lonely_8_9,
+      wellbeingTotals[0].ok_5_6_7,
+      wellbeingTotals[0].not_lonely_3_4
     );
   }
 
   wellbeingTotals = {
     options: {
       series: [
-        wellbeingTotals[0].count * 100,
-        wellbeingTotals[1].count * 100,
-        wellbeingTotals[2].count * 100
+        (wellbeingTotals[0].lonely_8_9 * 100) / 100,
+        (wellbeingTotals[0].ok_5_6_7 * 100) / 100,
+        (wellbeingTotals[0].not_lonely_3_4 * 100) / 100
       ],
       chart: {
         width: 380,
         type: "pie"
       },
-      labels: ["Lonely 8-9", "OK 5-7", "Not Lonely 3-4"],
+      labels: [
+        `${wellbeingTotals[0].lonely_8_9} at HIGH risk (level 8-9)`,
+        `${wellbeingTotals[0].ok_5_6_7} at MEDIUM risk (level 5-7)`,
+        `${wellbeingTotals[0].not_lonely_3_4} at LOW risk (level 3-4)`
+      ],
       colors: ["rgb(255, 69, 96)", "rgb(0, 227, 150)", "rgb(0, 143, 251)"],
       fill: {
         colors: ["rgb(255, 69, 96)", "rgb(0, 227, 150)", "rgb(0, 143, 251)"]
       },
       legend: {
         position: "bottom",
-        verticalAlign: "center",
         onItemClick: {
           toggleDataSeries: true
         }
@@ -76,7 +76,7 @@ const WellbeingPieGraph = ({ wellbeingTotals, setWellbeingTotals }) => {
           breakpoint: 480,
           options: {
             chart: {
-              width: 100
+              width: 350
             },
             legend: {
               position: "bottom"
@@ -90,14 +90,14 @@ const WellbeingPieGraph = ({ wellbeingTotals, setWellbeingTotals }) => {
   return (
     <Card className={classes.card}>
       <Typography variant="h5" component="h5">
-        Overall Wellbeing Score
+        Overall UCLA3 Wellbeing Score
       </Typography>
       <Chart
         className={classes.chart}
         options={wellbeingTotals.options}
         series={wellbeingTotals.options.series}
         type="pie"
-        width="380"
+        width="400"
       />
     </Card>
   );
