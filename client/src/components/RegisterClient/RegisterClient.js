@@ -30,6 +30,7 @@ const RegisterClient = () => {
 
   const onSubmit = (data, e) => {
       e.preventDefault();
+      console.log('this is my clients data' ,data);
       const options = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -62,6 +63,7 @@ const RegisterClient = () => {
         required
         onChange={onChange}
       />
+      <br />
 
       <label for="lastName">Last Name</label>
       <input
@@ -72,6 +74,7 @@ const RegisterClient = () => {
         required
         onChange={onChange}
       />
+      <br />
 
       <label for="knownAs">Known As</label>
       <input
@@ -82,6 +85,7 @@ const RegisterClient = () => {
         required
         onChange={onChange}
       />
+      <br />
 
       <label for="dateOfBirth">Date Of Birth</label>
       <input
@@ -92,15 +96,17 @@ const RegisterClient = () => {
         required
         onChange={onChange}
       />
+      <br />
 
       <label for="phoneNumber">Phone Number</label>
       <input
-        type="number"
+        type="text"
         name="phoneNumber"
         id="phoneNumber"
         defaultValue={phoneNumber}
         onChange={onChange}
       />
+      <br />
 
       <label for="address">Address</label>
       <input
@@ -119,6 +125,7 @@ const RegisterClient = () => {
         defaultValue={nhsNumber}
         onChange={onChange}
       />
+      <br />
 
       <label for="nhsNumber">I consent to Joy storing and processing my personal data</label>
       <input
@@ -128,6 +135,7 @@ const RegisterClient = () => {
         defaultValue={consent}
         onChange={onChange}
       />
+      <br />
 
       <label for="areasOfSupport">What areas does the client need support with?</label>
       <select name="areasOfSupport" multiple id="areasOfSupport" defaultValue={areasOfSupport} onChange={onChange}>

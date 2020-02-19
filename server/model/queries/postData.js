@@ -18,11 +18,11 @@ const postRegisterClient = registerClient => {
           registerClient.client_areasOfSupport
         ]
       )
-      .catch(console.log)
       .then(data => {
-        console.log("DATA INSERTED", data);
-        // return data;
-      });
+          console.log("DATA INSERTED", data);
+          // return data;
+        })
+        .catch(console.log)
   };
   module.exports = postRegisterClient;
   
