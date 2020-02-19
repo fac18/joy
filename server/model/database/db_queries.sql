@@ -68,6 +68,21 @@ WHERE input_date_referral BETWEEN '2019-01-01' AND current_date
 GROUP BY services_id
 ORDER BY SUM(no_of_services_attended) DESC
 LIMIT 10;
+
+--- Query 5c 
+--- Calculate the current services referred to 
+
+SELECT * FROM services WHERE services_id =ANY(SELECT services_id FROM referrals_questionnaire WHERE client_id=1);
+
+
+-- Query 6
+-- Sort referrals by popularity between two dates (default: current_date)
+SELECT services_id, SUM(no_of_services_attended)
+FROM referrals_questionnaire
+WHERE input_date_referral BETWEEN '2019-01-01' AND current_date
+GROUP BY services_id
+ORDER BY SUM(no_of_services_attended) DESC
+LIMIT 10;
 WHERE client_id = 1;
 
 -- Query 6
@@ -85,9 +100,15 @@ GROUP BY referrals_questionnaire.services_id, services.services_name
 ORDER BY SUM(no_of_services_attended) DESC
 LIMIT 10;
 
--- Query 7 
+-- Query 7a
 -- Current number of lonely (8-9), medium (5-7) and not lonely (3-4) risk clients 
 SELECT total_ucla3, COUNT(total_ucla3)
 FROM ucla3_questionnaire
 GROUP BY total_ucla3
 ORDER BY total_ucla3;
+
+-- Query 7b
+SELECT  COUNT(total_ucla3) FILTER (WHERE total_ucla3 >= 8) AS lonely_8_9,
+   COUNT(total_ucla3) FILTER (WHERE total_ucla3 BETWEEN 5 AND 7) AS ok_5_6_7,
+   COUNT(total_ucla3) FILTER (WHERE total_ucla3 <= 4) AS not_lonely_3_4
+FROM ucla3_questionnaire;
