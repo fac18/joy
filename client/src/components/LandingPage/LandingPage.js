@@ -1,16 +1,26 @@
-import React from 'react';
-import { ReactComponent as LogoSvg } from '../../assets/logo.svg';
-import { ReactComponent as LandingPageSvg } from '../../assets/landing-page.svg';
-import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
-import { ThemeProvider } from '@material-ui/core/styles';
-import theme from '../../theme';
-import LoginModal from '../LoginPage/LoginModal';
+import React from "react";
+import { ReactComponent as LandingPageSvg } from "../../assets/landing-page.svg";
+import { ReactComponent as LogoSvg } from "../../assets/logo.svg";
+import { makeStyles } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core/styles";
+import theme from "../../theme";
+import LoginModal from "../LoginPage/LoginModal";
+import Button from "@material-ui/core/Button";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles({
   logo: {
-    paddingTop: '5vh',
-    height: '70px'
+    padding: "2rem 1rem 1rem 1rem",
+    height: "70px"
+  },
+  pinkButton: {
+    background: "#E71F67",
+    color: "white",
+    "&:hover": {
+      backgroundColor: "#a11548"
+    },
+    padding: "10px 20px",
+    margin: "2rem auto"
   }
 });
 
@@ -23,29 +33,24 @@ const LandingPage = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <div className='App'>
+        <div className="App">
           <LoginModal show={show} handleClose={hideModal}>
             <p>Modal</p>
             <p>Data</p>
           </LoginModal>
-          <nav>
-            <ul className='homePageNav'>
-              {/* <li>
-            <Link className="list" to="/About">ABOUT US</Link>
-          </li> */}
-              <li className='list' onClick={showModal}>
-                LOGIN
-              </li>
-              {/* <li>
-            <Link className="signUp list" to="/SignUp">SIGN UP</Link>
-          </li> */}
-            </ul>
-          </nav>{' '}
           <LogoSvg className={classes.logo} />
-          <h1>Efficacy Tool</h1>
-          <Link to='/dashboard'>
-            <LandingPageSvg />
-          </Link>
+          <Typography variant="h3" component="h3">
+            Efficacy Tool
+          </Typography>
+          <Button
+            className={classes.pinkButton}
+            variant="container"
+            size="large"
+            onClick={showModal}
+          >
+            START LOGIN
+          </Button>
+          <LandingPageSvg />
         </div>
       </ThemeProvider>
     </>
