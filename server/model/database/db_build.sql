@@ -20,11 +20,12 @@ CREATE TABLE ucla3_questionnaire (
     input_date_ucla3 DATE NOT NULL DEFAULT CURRENT_DATE, 
     q1_companionship INTEGER NOT NULL , 
     q2_left_out INTEGER NOT NULL, 
-    q3_isolated INTEGER NOT NULL, 
-    total_ucla3 INTEGER NOT NULL GENERATED ALWAYS AS (q1_companionship + q2_left_out + q3_isolated) STORED,
+    q3_isolated INTEGER NOT NULL,
+    -- total_ucla3 INTEGER NOT NULL GENERATED ALWAYS AS (q1_companionship + q2_left_out + q3_isolated) STORED, 
     client_id INTEGER REFERENCES client(client_id), 
     additionalNotes VARCHAR(500) NOT NULL,
-    next_appointment_date DATE NOT NULL DEFAULT CURRENT_DATE
+    next_appointment_date DATE NOT NULL DEFAULT CURRENT_DATE, 
+    next_appointment_time TIME 
 );
 
 CREATE TABLE referrals_questionnaire (
