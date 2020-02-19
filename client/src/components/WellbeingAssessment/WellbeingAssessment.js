@@ -39,15 +39,22 @@ const ClientAssessment = () => {
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = data => {
+  const onSubmit = (data, e) => {
     console.log("This is the data inside onSubmit", data);
-    // e.preventDefault();
+    e.preventDefault();
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     };
-    fetch("/postclientassessment", options);
+    fetch("/postclientassessment", options).then(response =>
+      console.log(response)
+    );
+    // fetch(options).then(res => {
+    //   res.json().then(data => {
+    //     console.log(data);
+    //   });
+    // });
   };
 
   console.log(errors);

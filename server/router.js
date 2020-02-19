@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
+const bodyParser = require("body-parser");
 const {
   getAllClients,
   getClient,
@@ -8,8 +9,8 @@ const {
   getInitialAssessment,
   getClientServices
 } = require("./model/queries/getData.js");
-const { postClientAssessment } = require("./model/queries/postData");
-
+const postClientAssessment = require("./model/queries/postData");
+// const urlencodedParser = bodyParser.urlencoded({ extended: false });
 // When the getallclients route is called, calls the getdata function
 // Sends back info from database
 
@@ -37,7 +38,15 @@ router.post("/postclientassessment", (req, res) => {
   // res.send("POST request to the wellbeing page");
   console.log("I got a request!");
   console.log(req.body);
-  // console.log("This is the request body", JSON.parse(req.body));
+  postClientAssessment(req.body);
+
+  // res.redirect("/");
+
+  // Promise.all([postClientAssessment]).then(data =>
+  //   console.log("Inside the post promise", data)
+  // );
+  // console.log("This is the request body", JSON.parse(req.body))
+  // res.send(req.body);
 });
 
 module.exports = router;
