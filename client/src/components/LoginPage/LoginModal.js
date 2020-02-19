@@ -1,6 +1,7 @@
 // login page
 
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from "../../svgs/joy-logo.svg";
 import './loginmodal.css';
 
@@ -10,15 +11,15 @@ const LoginModal = ({ handleClose, show }) => {
         username: "",
         password: ""
     });
-    const [welcome, setWelcome] = React.useState("display-none")
+    // const [welcome, setWelcome] = React.useState("display-none")
 
-    const user = {
-      username: "joy",
-      password: "joy"
-    }
+    // const user = {
+    //   username: "joy",
+    //   password: "joy"
+    // }
 
     const showHideClassName = show ? "modal display-block" : "modal display-none";
-    const handleSubmit = () => { (login.username === user.username && login.password === user.password) && setWelcome("display-block") }
+    // const handleSubmit = () => <Link to='/dashboard' /> 
     // alter handle submit to display paragraph(or div) with a welcome message and link to redirect to the dashboard
 
     return (
@@ -26,13 +27,13 @@ const LoginModal = ({ handleClose, show }) => {
         {/* <Button variant="primary" onClick={handleShow}>
           Launch demo modal
         </Button> */}
-      <p className={welcome}>Welcome back {login.username}</p>
+      {/* <p className={welcome}>Welcome back {login.username}</p> */}
       <div className={showHideClassName}>
           <section className="modal-main">
           <div>
            
             <h2>Welcome to  <Logo /></h2>
-            <form className="formFlex" onSubmit={handleSubmit}>
+            <form className="formFlex">
                 <label>
                 <input className="inputs"
                     type="text"
@@ -54,7 +55,7 @@ const LoginModal = ({ handleClose, show }) => {
                 ></input>
                 </label>
                 <label>
-                <button  className="inputs color" type="submit" value="Submit" onChange={event => setLogin(event.target.value)}>Log in</button>
+                <button className="inputs color" type="submit" value="Submit" onChange={event => setLogin(event.target.value)}><Link to='/dashboard' > Log in</ Link></button>
                 </label>
                 <div className="btn">
               <button  className="inputs" onClick={handleClose}>Close</button>

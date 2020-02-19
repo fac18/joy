@@ -28,16 +28,26 @@ const RegisterClient = () => {
     dispatch({ field: e.target.name, value: e.target.value });
   };
 
-  const onSubmit = (data, e) => {
-      e.preventDefault();
-      console.log('this is my clients data' ,data);
-      const options = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-  };
-  fetch('/postregisterclient', options).then(response => console.log('this is register client fetch response' ,response))
-}
+//   fetch('http://localhost:4000/api/users/register' , {
+//   method: "POST",
+//   headers: {
+//     'Content-type': 'application/json'
+//   },
+//   body: JSON.stringify(this.state)
+// })
+// .then((result) => result.json())
+// .then((info) => { console.log(info); })
+
+//   const onSubmit = (e) => {
+//       e.preventDefault();
+//       console.log('this is my clients data' ,data);
+//       const options = {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(data)
+//   };
+//   fetch('/postregisterclient', options).then(response => console.log('this is register client fetch response' ,response))
+// }
 
   const {
       firstName,
@@ -52,7 +62,7 @@ const RegisterClient = () => {
   } = state;
 
   return (
-    <form onSubmit={onSubmit}>
+    <form>
 
       <label for="firstName">First Name</label>
       <input
