@@ -10,6 +10,7 @@ import LandingPage from '../src/components/LandingPage/LandingPage';
 import SearchClient from '../src/components/SearchClient/SearchClient';
 import ClientProfile from '../src/components/ClientProfile/ClientProfile';
 import WellbeingAssessment from '../src/components/WellbeingAssessment/WellbeingAssessment';
+import RegisterClient from './components/RegisterClient/RegisterClient';
 
 const App = () => {
   const [clients, setClients] = React.useState([{}]);
@@ -18,6 +19,7 @@ const App = () => {
   return (
     <Router>
       <Route exact path='/' component={LandingPage} />
+      <Route exact path='/registerClient' component={RegisterClient} />
       <Route
         path='/dashboard'
         render={() => (

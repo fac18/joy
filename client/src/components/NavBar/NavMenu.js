@@ -75,7 +75,7 @@ export default function TemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        <Link className={classes.link} to="/clientProfile">
+        <Link className={classes.link} to="/registerClient">
           <ListItem>
             <ListItemIcon>
               <PersonIcon color="primary" />
