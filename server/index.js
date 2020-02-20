@@ -9,9 +9,10 @@ const app = express();
 app.use(morgan('combined'));
 
 // Serve static files from the React app
-app.use(
-  express.static(path.join(__dirname, '..', 'client', 'public', 'index.html'))
-);
+
+app.use(express.static(path.join(__dirname, '../client/build')))
+
+
 // app.use(express.json({ limit: '1mb' }))
 app.use(bodyParser.json());
 app.use(
