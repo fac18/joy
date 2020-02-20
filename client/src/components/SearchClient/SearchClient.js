@@ -57,10 +57,14 @@ const SearchClient = ({ clients, setClients }) => {
 
   const classes = useStyles();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           id="search"
@@ -71,8 +75,6 @@ const SearchClient = ({ clients, setClients }) => {
           placeholder="Search by first name"
           onChange={e => setSearchInputFirstName(e.target.value)}
         />
-      </form>
-      <form>
         <input
           type="text"
           id="search"
@@ -83,8 +85,6 @@ const SearchClient = ({ clients, setClients }) => {
           placeholder="Search by surname"
           onChange={e => setSearchInputLastName(e.target.value)}
         />
-      </form>{' '}
-      <form>
         <input
           type="text"
           id="search"
@@ -96,7 +96,7 @@ const SearchClient = ({ clients, setClients }) => {
           onChange={e => setSearchInputDOB(e.target.value)}
         />
       </form>
-      <div className="App">
+      <div className="App" aria-live="polite">
         <br />
         <p>
           <b>You have {clients.length} clients:</b>
