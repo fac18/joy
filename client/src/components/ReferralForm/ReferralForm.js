@@ -10,6 +10,7 @@ import NavBar from '../NavBar/NavBar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { useParams } from 'react-router-dom';
+import FormControl from '@material-ui/core/FormControl';
 
 const useStyles = makeStyles({
   mainTitle: {
@@ -41,8 +42,20 @@ const useStyles = makeStyles({
 const ReferralForm = () => {
   let { id } = useParams();
 
+  const [data, setData] = React.useState({
+    age: '',
+    name: 'hai'
+  });
+
+  const handleChange = name => event => {
+    setData({
+      ...state,
+      [name]: event.target.value
+    });
+  };
+
   const classes = useStyles();
-  const { register, handleSubmit, errors } = useForm();
+  // const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data, e) => {
     console.log('This is the data inside onSubmit', data);
@@ -61,7 +74,7 @@ const ReferralForm = () => {
       <Typography className={classes.mainTitle}>Referral Form:</Typography>
       <Typography className={classes.clientName}>Jim Brown, 64</Typography>
       <Typography className={classes.startQ}></Typography>;
-      <form onSubmit={handleSubmit(onSubmit)} className='formWellbeing'>
+      <FormControl onSubmit={handleSubmit(onSubmit)} className='formWellbeing'>
         <Autocomplete
           id=''
           options={['poo', 'wee', 'blue']}
@@ -103,7 +116,7 @@ const ReferralForm = () => {
         >
           NEXT
         </Button>
-      </form>
+      </FormControl>
     </ThemeProvider>
   );
 };
