@@ -131,6 +131,7 @@ const getAllServices = () => {
   return dbConnection.query('SELECT * FROM services').then(data => data.rows);
 };
 
+// DASHBOARD getREQUESTS
 const getTotalClients = () => {
   return dbConnection
     .query('SELECT COUNT(client_id) FROM client')
@@ -179,5 +180,5 @@ module.exports = {
   getTotalServices,
   getWellbeingTotals,
   getServicesPopularity,
-  getAllServices,
+  getAllServices
 };
