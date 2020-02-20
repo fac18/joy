@@ -84,15 +84,19 @@ router.get('/gettotalservices', (req, res) => {
   });
 });
 
-router.post('/postreferralform:id', (req, res) => {
-  const id = parseInt(req.params.id);
-  postReferralForm(req, id);
-});
-
 router.get('/getwellbeingtotals', (req, res) => {
   getWellbeingTotals().then(data => {
     res.json(data);
   });
+});
+
+router.post('/postreferralform:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  postReferralForm(req, id)
+    .then(data => {
+      res.status(200);
+    })
+    .catch(res.status(500).send('Server error posting to database'));
 });
 
 router.get('/getallservices', (req, res) => {
