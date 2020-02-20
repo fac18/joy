@@ -126,8 +126,8 @@ const LandingPage = ({ history }) => {
 
     if(dummyLogin.username === values.username && dummyLogin.password === values.password) {
     history.push('/dashboard');
-    alert('Welcome to Joy');
-
+    } else {
+      alert('Please enter the correct login details!')
     }
   }
 

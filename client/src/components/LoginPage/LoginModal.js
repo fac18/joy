@@ -24,10 +24,9 @@ const LoginModal = ({ handleClose, show, history }) => {
 
       if(dummyLogin.username === username && dummyLogin.password === password) {
       history.push('/dashboard');
-      alert('Welcome to Joy');
-
+      } else {
+        alert('Please enter the correct login details')
       }
-
       // <Link to='/dashboard' />
     } 
     // alter handle submit to display paragraph(or div) with a welcome message and link to redirect to the dashboard
