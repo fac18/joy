@@ -19,6 +19,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import FormGroup from '@material-ui/core/FormGroup';
 
 import { Link } from "react-router-dom";
 
@@ -92,10 +93,12 @@ const useStyles = makeStyles({
   }
 });
 
-const LandingPage = () => {
+const LandingPage = ({ history }) => {
   // const [show, setShow] = React.useState(false);
   // const showModal = () => setShow(true);
   // const hideModal = () => setShow(false);
+  const [password, setPassword] = React.useState('');
+  const [username, setUsername] = React.useState('');
 
   const classes = useStyles();
 
@@ -108,6 +111,24 @@ const LandingPage = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const user = {
+    username: "joy",
+    password: "joy"
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if(user.username === username && user.password === password) {
+    history.push('/dashboard');
+    alert('Welcome to Joy');
+
+    }
+
+    // <Link to='/dashboard' />
+  } 
+
   const [values, setValues] = React.useState({
     amount: "",
     password: "",
@@ -166,18 +187,21 @@ const LandingPage = () => {
               <div className={classes.paper}>
                 <LogoSvg className={classes.logo} />
                 <h2 id="transition-modal-title">Please log in below:</h2>
+                  <FormGroup onSubmit={handleSubmit}>
                 <div className={classes.root}>
                   <FormControl
                     className={clsx(classes.margin, classes.textField)}
                     variant="filled"
-                  >
+                    >
                     <InputLabel htmlFor="filled-adornment-username">
                       Username
                     </InputLabel>
                     <FilledInput
                       id="filled-adornment-username"
-                      value={values.weight}
-                      onChange={handleChange("weight")}
+                      // value={values.weight}
+                      // onChange={handleChange("weight")}
+                      defaultValue={username}
+                      onChange={event => setUsername(event.target.value)}
                       endAdornment={
                         <InputAdornment position="end">
                           <AccountCircle className={classes.userIcon} />
@@ -187,21 +211,23 @@ const LandingPage = () => {
                       inputProps={{
                         "aria-label": "weight"
                       }}
-                    />
+                      />
                   </FormControl>
                   <div className={classes.root}>
                     <FormControl
                       className={clsx(classes.margin, classes.textField)}
                       variant="filled"
-                    >
+                      >
                       <InputLabel htmlFor="filled-adornment-password">
                         Password
                       </InputLabel>
                       <FilledInput
                         id="filled-adornment-password"
-                        type={values.showPassword ? "text" : "password"}
-                        value={values.password}
-                        onChange={handleChange("password")}
+                        // type={values.showPassword ? "text" : "password"}
+                        // value={values.password}
+                        // onChange={handleChange("password")}
+                        defaultValue={password}
+                        onChange={event => setPassword(event.target.value)}
                         endAdornment={
                           <InputAdornment position="end">
                             <IconButton
@@ -209,38 +235,41 @@ const LandingPage = () => {
                               onClick={handleClickShowPassword}
                               onMouseDown={handleMouseDownPassword}
                               edge="end"
-                            >
+                              >
                               {values.showPassword ? (
                                 <Visibility />
-                              ) : (
-                                <VisibilityOff />
-                              )}
+                                ) : (
+                                  <VisibilityOff />
+                                  )}
                             </IconButton>
                           </InputAdornment>
                         }
-                      />
+                        />
                     </FormControl>
                   </div>
                 </div>
 
-                <Link className={classes.mainLink} to="/dashboard">
+                {/* <Link className={classes.mainLink} to="/dashboard"> */}
                   <Button
                     className={classes.pinkButton}
                     variant="container"
                     size="medium"
+                    type='submit'
+                    // value='submit'
                     // onClick={event => setLogin(event.target.value)}
-                  >
+                    >
                     Login
                   </Button>
-                </Link>
+                {/* </Link> */}
                 <Button
                   className={classes.greenButton}
                   variant="container"
                   size="medium"
                   onClick={handleClose}
-                >
+                  >
                   Exit
                 </Button>
+              </FormGroup>
               </div>
             </Fade>
           </Modal>

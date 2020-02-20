@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const bodyParser = require("body-parser");
+
 const {
   getAllClients,
   getAllServices,
@@ -9,17 +10,12 @@ const {
   getCurrentAssessment,
   getInitialAssessment,
   getClientServices,
-<<<<<<< HEAD
-  getWellbeingTotals,
-  postRegisterClient
-} = require("./model/queries/getData.js");
-=======
+  postRegisterClient,
   getTotalClients,
   getTotalServices,
   getWellbeingTotals
 } = require("./model/queries/getData.js");
 const postClientAssessment = require("./model/queries/postData.js");
->>>>>>> master
 
 // const  = require('./model/queries/postData');
 // When the getallclients route is called, calls the getdata function
