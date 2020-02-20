@@ -18,7 +18,7 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
   cardBg: {
     backgroundColor: "#EBEDEE",
-    width: "350px",
+    width: "320px",
     height: "110px",
     display: "flex",
     borderRadius: "10px",
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   },
   cardBgGrey: {
     backgroundColor: "rgba(0,0,0,0.2)",
-    width: "350px",
+    width: "320px",
     display: "flex",
     borderRadius: "10px",
     margin: "2rem auto"
@@ -48,9 +48,9 @@ const useStyles = makeStyles({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: 250,
+      width: 200,
       "&:focus": {
-        width: 250
+        width: 200
       }
     }
   },
@@ -63,7 +63,7 @@ const useStyles = makeStyles({
     },
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(1),
+      // marginLeft: theme.spacing(1),
       width: "auto"
     },
     margin: "1rem auto"
@@ -116,7 +116,6 @@ const SearchClient = ({ clients, setClients }) => {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search by first name"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
@@ -128,7 +127,7 @@ const SearchClient = ({ clients, setClients }) => {
               required
               value={searchInputFirstName}
               aria-label="search bar"
-              placeholder="Search by first name"
+              placeholder="First name"
               onChange={e => setSearchInputFirstName(e.target.value)}
             />
           </div>
@@ -137,7 +136,6 @@ const SearchClient = ({ clients, setClients }) => {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search by first name"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
@@ -149,7 +147,7 @@ const SearchClient = ({ clients, setClients }) => {
               required
               value={searchInputLastName}
               aria-label="search bar"
-              placeholder="Search by surname"
+              placeholder="Surname"
               onChange={e => setSearchInputLastName(e.target.value)}
             />
           </div>
@@ -158,7 +156,6 @@ const SearchClient = ({ clients, setClients }) => {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search by first name"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
@@ -170,7 +167,7 @@ const SearchClient = ({ clients, setClients }) => {
               required
               value={searchInputDOB}
               aria-label="search bar"
-              placeholder="Search by date of birth"
+              placeholder="Date of birth"
               onChange={e => setSearchInputDOB(e.target.value)}
             />
           </div>
@@ -178,9 +175,8 @@ const SearchClient = ({ clients, setClients }) => {
       </Card>
       <div className="App">
         <p>
-          <b>You have {clients.length} clients:</b>
+          <b>Results:</b>
         </p>
-        <br />
         {filterClients(
           searchInputFirstName,
           searchInputLastName,
