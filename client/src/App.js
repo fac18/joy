@@ -1,10 +1,6 @@
 import React from 'react';
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Dashboard from './components/Dashboard/Dashboard';
 import LandingPage from '../src/components/LandingPage/LandingPage';
 import SearchClient from '../src/components/SearchClient/SearchClient';
@@ -18,11 +14,12 @@ const App = () => {
   const [totalServices, setTotalServices] = React.useState([]);
   const [singleClient, setSingleClient] = React.useState(null);
   const [wellbeingTotals, setWellbeingTotals] = React.useState([]);
+  const [servicesPopularity, setServicesPopularity] = React.useState([]);
 
   return (
     <Router>
-      <Route exact path='/' component={LandingPage} />
-      <Route exact path='/registerClient' component={RegisterClient} />
+      <Route exact path="/" component={LandingPage} />
+      <Route exact path="/registerClient" component={RegisterClient} />
       <Route
         path="/dashboard"
         render={() => (
@@ -35,6 +32,8 @@ const App = () => {
             setTotalServices={setTotalServices}
             wellbeingTotals={wellbeingTotals}
             setWellbeingTotals={setWellbeingTotals}
+            servicesPopularity={servicesPopularity}
+            setServicesPopularity={setServicesPopularity}
           />
         )}
       />
