@@ -52,14 +52,8 @@ router.post('/postclientassessment', (req, res) => {
 })
 
 router.post('/postreferralform:id', (req, res) => {
-  const id = req.params.id.slice(1, req.params.id.length)
-  console.log('I am the id', id)
-  console.log(
-    'I am the req.body in post referral form',
-    req.body.referredServiceOne.services_id
-  )
+  const id = parseInt(req.params.id)
   postReferralForm(req, id)
-  console.log('I got a request!')
 })
 
 router.get('/getwellbeingtotals', (req, res) => {
