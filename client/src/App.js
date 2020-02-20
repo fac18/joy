@@ -57,9 +57,22 @@ const App = () => {
         />
         <Route
           path='/wellbeingAssessment/:id'
-          render={() => <WellbeingAssessment />}
+          render={() => (
+            <WellbeingAssessment
+              singleClient={singleClient}
+              setSingleClient={setSingleClient}
+            />
+          )}
         />
-        <Route path='/referralForm/:id' render={() => <ReferralForm />} />
+        <Route
+          path='/referralForm/:id'
+          render={() => (
+            <ReferralForm
+              singleClient={singleClient}
+              setSingleClient={setSingleClient}
+            />
+          )}
+        />
       </Switch>
     </Router>
   );

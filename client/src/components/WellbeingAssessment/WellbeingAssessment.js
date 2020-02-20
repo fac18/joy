@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import { ReactComponent as InfoIcon } from '../../assets/info.svg';
 import WellbeingAssessmentModal from '../WellbeingAssessment/WellbeingAssessmentModal.js';
 import { useParams } from 'react-router-dom';
+import buildClientObject from '../../utils/buildClientObject';
 
 const useStyles = makeStyles({
   mainTitle: {
@@ -38,7 +39,7 @@ const useStyles = makeStyles({
   }
 });
 
-const ClientAssessment = () => {
+const ClientAssessment = ({ singleClient, setSingleClient }) => {
   const [show, setShow] = React.useState(false);
   const showModal = () => setShow(true);
   const hideModal = () => setShow(false);
@@ -90,7 +91,10 @@ const ClientAssessment = () => {
         </span>
         Wellbeing assessment:
       </Typography>
-      <Typography className={classes.clientName}>Jim Brown, 64</Typography>
+      <Typography className={classes.clientName}>
+        {' '}
+        {singleClient.firstname} {singleClient.surname}
+      </Typography>
       <br />
       <Typography className={classes.startQ}>
         {' '}

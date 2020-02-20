@@ -9,7 +9,8 @@ const {
   getInitialAssessment,
   getClientServices,
   getWellbeingTotals,
-  getAllServices
+  getAllServices,
+  getClientAge
 } = require('./model/queries/getData.js')
 const {
   postClientAssessment,

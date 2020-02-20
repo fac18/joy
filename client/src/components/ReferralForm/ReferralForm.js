@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { useParams } from 'react-router-dom';
 import getRequest from '../../utils/getData';
+import buildClientObject from '../../utils/buildClientObject';
 
 const useStyles = makeStyles({
   mainTitle: {
@@ -45,11 +46,17 @@ const useStyles = makeStyles({
   }
 });
 
-const ReferralForm = () => {
+const ReferralForm = ({ singleClient, setSingleClient }) => {
   const [services, setServices] = React.useState(null);
   const [referredServices, setReferredServices] = React.useState(null);
   const classes = useStyles();
   let { id } = useParams();
+
+  useEffect(() => {
+    getRequest(`/getclient:${id}`).then(res => {
+      setSingleClient(buildClientObject(res));
+    });
+  }, []);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -75,7 +82,10 @@ const ReferralForm = () => {
     <ThemeProvider theme={theme}>
       <NavBar />
       <Typography className={classes.mainTitle}>Referral Form:</Typography>
-      <Typography className={classes.clientName}>Jim Brown, 64</Typography>
+      <Typography className={classes.clientName}>
+        {' '}
+        {singleClient.firstname} {singleClient.surname}
+      </Typography>
       <Typography className={classes.startQ}></Typography>;
       <form className={classes.form} onSubmit={handleSubmit}>
         <Typography className={classes.startQ}>

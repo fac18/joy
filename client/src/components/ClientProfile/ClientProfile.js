@@ -97,7 +97,7 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
               fontSize='large'
               className={classes.accountIcon}
             />
-            {singleClient.firstname} {singleClient.surname}, 64
+            {singleClient.firstname} {singleClient.surname}
           </Typography>
 
           <Card className={classes.root}>
