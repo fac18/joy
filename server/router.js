@@ -54,12 +54,16 @@ router.get('/getwellbeingtotals', (req, res) => {
   })
 })
 
-router.use('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/../client/build'))
-})
+// router.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname + '/../client/build'));
+// });
 
 // router.get('*', function(req, res) {
 //   res.redirect('/');
 // });
+
+router.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'))
+})
 
 module.exports = router
