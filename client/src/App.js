@@ -11,6 +11,7 @@ import LandingPage from '../src/components/LandingPage/LandingPage';
 import SearchClient from '../src/components/SearchClient/SearchClient';
 import ClientProfile from '../src/components/ClientProfile/ClientProfile';
 import WellbeingAssessment from '../src/components/WellbeingAssessment/WellbeingAssessment';
+import ReferralForm from '../src/components/ReferralForm/ReferralForm';
 
 const App = () => {
   const [clients, setClients] = React.useState([{}]);
@@ -58,6 +59,7 @@ const App = () => {
           path='/wellbeingAssessment/:id'
           render={() => <WellbeingAssessment />}
         />
+        <Route path='/referralForm/:id' render={() => <ReferralForm />} />
       </Switch>
     </Router>
   );
