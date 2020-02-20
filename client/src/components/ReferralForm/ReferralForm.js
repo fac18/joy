@@ -10,7 +10,6 @@ import NavBar from '../NavBar/NavBar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { useParams } from 'react-router-dom';
-import FormControl from '@material-ui/core/FormControl';
 import getRequest from '../../utils/getData';
 
 const useStyles = makeStyles({
@@ -37,6 +36,12 @@ const useStyles = makeStyles({
     marginLeft: '11rem',
     marginTop: '2rem',
     marginBottom: '2rem'
+  },
+  form: {
+    margin: 'auto',
+    marginTop: '4em',
+    display: 'flex',
+    flexDirection: 'column'
   }
 });
 
@@ -66,20 +71,16 @@ const ReferralForm = () => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   setReferredServices({
-  //     ...referredServices,
-  //     client_id: id
-  //   });
-  // }, []);
-
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
       <Typography className={classes.mainTitle}>Referral Form:</Typography>
       <Typography className={classes.clientName}>Jim Brown, 64</Typography>
       <Typography className={classes.startQ}></Typography>;
-      <form onSubmit={handleSubmit} className='formWellbeing'>
+      <form className={classes.form} onSubmit={handleSubmit}>
+        <Typography className={classes.startQ}>
+          Which service would you like to refer your client to?
+        </Typography>
         <Autocomplete
           onChange={(event, value) => {
             setReferredServices({
@@ -90,7 +91,7 @@ const ReferralForm = () => {
           id=''
           getOptionLabel={option => option.services_name}
           options={services}
-          style={{ width: 300 }}
+          style={{ width: 300, margin: 'auto', padding: '5em' }}
           renderInput={params => (
             <TextField
               {...params}
@@ -106,8 +107,9 @@ const ReferralForm = () => {
           className={classes.pinkButton}
           variant='container'
           size='medium'
+          style={{ margin: 'auto' }}
         >
-          NEXT
+          SUBMIT
         </Button>
       </form>
     </ThemeProvider>

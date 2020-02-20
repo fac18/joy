@@ -244,7 +244,7 @@ const ClientAssessment = () => {
           variant='container'
           size='medium'
         >
-          NEXT
+          SUBMIT
         </Button>
       </form>
     </ThemeProvider>
