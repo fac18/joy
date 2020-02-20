@@ -67,7 +67,7 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
     };
     fetch('/postclientassessment', options).then(result => {
       if (result.status === 200) {
-        history.push(`/clientProfile${id}`);
+        history.push(`/clientProfile/${id}`);
       } else console.log(result);
     });
   };

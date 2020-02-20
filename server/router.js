@@ -12,13 +12,13 @@ const {
   getClientServices,
   getTotalClients,
   getTotalServices,
-  getWellbeingTotals
+  getWellbeingTotals,
 } = require('./model/queries/getData.js');
 
 const {
   postClientAssessment,
   postReferralForm,
-  postRegisterClient
+  postRegisterClient,
 } = require('./model/queries/postData.js');
 
 // const  = require('./model/queries/postData');
@@ -37,7 +37,7 @@ router.get('/getclient:id', (req, res) => {
     getClient(id),
     getInitialAssessment(id),
     getCurrentAssessment(id),
-    getClientServices(id)
+    getClientServices(id),
   ]).then(data => {
     // console.log('I am the res.json', res.json(data));
     console.log('I am not res.jsoned', data);
@@ -122,7 +122,7 @@ router.get('/getallservices', (req, res) => {
 //   res.redirect('/');
 // });
 
-router.get('*', function (req, res) {
+router.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'));
 });
 
