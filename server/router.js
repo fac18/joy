@@ -8,9 +8,13 @@ const {
   getCurrentAssessment,
   getInitialAssessment,
   getClientServices,
-  getWellbeingTotals
+  getWellbeingTotals,
+  getAllServices
 } = require('./model/queries/getData.js')
-const { postClientAssessment, postReferralForm } = require('./model/queries/postData.js')
+const {
+  postClientAssessment,
+  postReferralForm
+} = require('./model/queries/postData.js')
 
 // When the getallclients route is called, calls the getdata function
 // Sends back info from database
@@ -49,7 +53,7 @@ router.post('/postclientassessment', (req, res) => {
 })
 
 router.post('/postreferralform', (req, res) => {
-  for (i = 0; i < req.length, i++) {
+  for (let i = 0; i < req.length; i++) {
     postReferralForm(req[i])
   }
   console.log('I got a request!')
@@ -58,6 +62,12 @@ router.post('/postreferralform', (req, res) => {
 
 router.get('/getwellbeingtotals', (req, res) => {
   getWellbeingTotals().then(data => {
+    res.json(data)
+  })
+})
+
+router.get('/getAllServices', (req, res) => {
+  getAllServices().then(data => {
     res.json(data)
   })
 })

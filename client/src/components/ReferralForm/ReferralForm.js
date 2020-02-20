@@ -1,7 +1,7 @@
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 // initial assessment
-import React, { useReducer } from 'react';
+import React, { useEffect } from 'react';
 // import { useForm } from 'react-hook-form';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { useParams } from 'react-router-dom';
 import FormControl from '@material-ui/core/FormControl';
+import getRequest from '../../utils/getData';
 
 const useStyles = makeStyles({
   mainTitle: {
@@ -41,7 +42,7 @@ const useStyles = makeStyles({
 
 const ReferralForm = () => {
   let { id } = useParams();
-
+  const [services, AllServices] = 
   const [referredServices, setReferredServices] = React.useState(null);
 
   const classes = useStyles();
