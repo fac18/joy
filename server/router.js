@@ -13,6 +13,7 @@ const {
   postRegisterClient,
   getTotalClients,
   getTotalServices,
+
   getWellbeingTotals
 } = require('./model/queries/getData.js');
 
@@ -37,7 +38,7 @@ router.get('/getclient:id', (req, res) => {
     getClient(id),
     getInitialAssessment(id),
     getCurrentAssessment(id),
-    getClientServices(id)
+    getClientServices(id),
   ]).then(data => {
     // console.log('I am the res.json', res.json(data));
     console.log('I am not res.jsoned', data);
@@ -109,8 +110,14 @@ router.get('/getallservices', (req, res) => {
 //   res.redirect('/');
 // });
 
-router.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'));
-});
+
+// router.get('*', function (req, res) {
+//   res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'))
+// })
+
+router.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '../client/build/index.html'))
+})
+
 
 module.exports = router;
