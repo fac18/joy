@@ -1,5 +1,5 @@
 // initial assessment
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import theme from "../../theme";
@@ -47,12 +47,57 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
 
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm();
+  const [colorOne, setColorOne] = useState(null);
+  const [colorTwo, setColorTwo] = useState(null);
+  const [colorThree, setColorThree] = useState(null);
+  const [colorFour, setColorFour] = useState(null);
+  const [colorFive, setColorFive] = useState(null);
+  const [colorSix, setColorSix] = useState(null);
+  const [colorSeven, setColorSeven] = useState(null);
+  const [colorEight, setColorEight] = useState(null);
+  const [colorNine, setColorNine] = useState(null);
 
   // useEffect(() => {
   //   getRequest(`/getclient:${id}`).then(res => {
   //     setSingleClient(buildClientObject(res));
   //   });
   // }, []);
+  const colorOneFunc = event => {
+    console.log("Hello this is pink");
+    setColorOne("turn-pink");
+  };
+  const colorTwoFunc = event => {
+    console.log("Hello this is pink");
+    setColorTwo("turn-pink");
+  };
+  const colorThreeFunc = event => {
+    console.log("Hello this is pink");
+    setColorThree("turn-pink");
+  };
+  const colorFourFunc = event => {
+    console.log("Hello this is pink");
+    setColorFour("turn-pink");
+  };
+  const colorFiveFunc = event => {
+    console.log("Hello this is pink");
+    setColorFive("turn-pink");
+  };
+  const colorSixFunc = event => {
+    console.log("Hello this is pink");
+    setColorSix("turn-pink");
+  };
+  const colorSevenFunc = event => {
+    console.log("Hello this is pink");
+    setColorSeven("turn-pink");
+  };
+  const colorEightFunc = event => {
+    console.log("Hello this is pink");
+    setColorEight("turn-pink");
+  };
+  const colorNineFunc = event => {
+    console.log("Hello this is pink");
+    setColorNine("turn-pink");
+  };
 
   const onSubmit = (data, e) => {
     // e.preventDefault();
@@ -76,6 +121,21 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
   };
 
   console.log(errors);
+
+  useEffect(() => {
+    if (colorOne === "turn-pink") {
+      setColorOne(null);
+    }
+  }, [
+    colorTwo,
+    colorThree,
+    colorFour,
+    colorFive,
+    colorSix,
+    colorSeven,
+    colorEight,
+    colorNine
+  ]);
 
   return (
     <ThemeProvider theme={theme} className={classes.parentElement}>
@@ -105,34 +165,55 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
         <form onSubmit={handleSubmit(onSubmit)} className="formWellbeing">
           <h4>1. Feel lack of companionship?</h4>
           <fieldset className="groupQuestion">
-            <label>
+            <label className={colorOne}>
               1
               <input
+                className="radio-input"
                 name="q1_companionship"
                 type="radio"
                 required
                 value="1"
+                checked={
+                  colorOne === "turn-pink" &&
+                  colorTwo === null &&
+                  colorThree === null
+                }
                 ref={register}
+                onChange={colorOneFunc}
               />
             </label>
-            <label>
+            <label className={colorTwo}>
               2
               <input
+                className="radio-input"
+                onChange={colorTwoFunc}
                 name="q1_companionship"
                 type="radio"
                 required
                 value="2"
                 ref={register}
+                checked={
+                  colorTwo === "turn-pink" &&
+                  colorOne === null &&
+                  colorThree === null
+                }
               />
             </label>
-            <label className="lastLabel">
+            <label className={colorThree}>
               3
               <input
+                className="radio-input"
+                onChange={colorThreeFunc}
                 name="q1_companionship"
                 type="radio"
                 required
                 value="3"
                 ref={register}
+                checked={
+                  colorThree === "turn-pink" &&
+                  colorTwo === null &&
+                  colorOne === null
+                }
               />
             </label>
           </fieldset>
@@ -144,34 +225,40 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
           {/* { errors.companionship && <p>Required field!</p> } */}
           <h4> 2. Feel left out?</h4>
           <fieldset className="groupQuestion">
-            <label>
+            <label className={colorFour}>
               1
               <input
+                className="radio-input"
                 name="q2_left_out"
                 type="radio"
                 required
                 value="1"
                 ref={register}
+                onChange={colorFourFunc}
               />
             </label>
-            <label>
+            <label className={colorFive}>
               2
               <input
+                className="radio-input"
                 name="q2_left_out"
                 type="radio"
                 required
                 value="2"
                 ref={register}
+                onChange={colorFiveFunc}
               />
             </label>
-            <label>
+            <label className={colorSix}>
               3
               <input
+                className="radio-input"
                 name="q2_left_out"
                 type="radio"
                 required
                 value="3"
                 ref={register}
+                onChange={colorSixFunc}
               />
             </label>
           </fieldset>
@@ -182,34 +269,40 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
           </aside>
           <h4> 3. Feel isolated from others?</h4>
           <fieldset className="groupQuestion">
-            <label>
+            <label className={colorSeven}>
               1
               <input
+                className="radio-input"
                 name="q3_isolated"
                 type="radio"
                 required
                 value="1"
                 ref={register}
+                onChange={colorSevenFunc}
               />
             </label>
-            <label>
+            <label className={colorEight}>
               2
               <input
+                className="radio-input"
                 name="q3_isolated"
                 type="radio"
                 required
                 value="2"
                 ref={register}
+                onChange={colorEightFunc}
               />
             </label>
-            <label>
+            <label className={colorNine}>
               3
               <input
+                className="radio-input"
                 name="q3_isolated"
                 type="radio"
                 required
                 value="3"
                 ref={register}
+                onChange={colorNineFunc}
               />
             </label>
           </fieldset>
