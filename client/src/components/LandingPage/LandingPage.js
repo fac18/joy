@@ -3,9 +3,7 @@ import { ReactComponent as LandingPageSvg } from '../../assets/landing-page.svg'
 import { ReactComponent as LogoSvg } from '../../assets/logo.svg';
 import { makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core/styles';
-// import { history } from 'react-router-dom'
 import theme from '../../theme';
-// import LoginModal from "../LoginPage/LoginModal";
 import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
