@@ -42,7 +42,6 @@ router.get('/getclient:id', (req, res) => {
 
 router.post('/postclientassessment', (req, res) => {
   // res.send("POST request to the wellbeing page");
-  // const id = parseInt(req.params.id.slice(1, req.params.id.length))
   // const hostname = window && window.location && window.location.hostname
   console.log('I got a request!')
   console.log('I am the client id on the backend', req.body.client_id)
@@ -52,12 +51,15 @@ router.post('/postclientassessment', (req, res) => {
   res.redirect('/dashboard')
 })
 
-router.post('/postreferralform', (req, res) => {
-  for (let i = 0; i < req.length; i++) {
-    postReferralForm(req[i])
-  }
+router.post('/postreferralform:id', (req, res) => {
+  const id = req.params.id.slice(1, req.params.id.length)
+  console.log('I am the id', id)
+  console.log(
+    'I am the req.body in post referral form',
+    req.body.referredServiceOne.services_id
+  )
+  postReferralForm(req, id)
   console.log('I got a request!')
-  console.log('I am the req.body in post referral form', req.body)
 })
 
 router.get('/getwellbeingtotals', (req, res) => {
@@ -66,7 +68,7 @@ router.get('/getwellbeingtotals', (req, res) => {
   })
 })
 
-router.get('/getAllServices', (req, res) => {
+router.get('/getallservices', (req, res) => {
   getAllServices().then(data => {
     res.json(data)
   })

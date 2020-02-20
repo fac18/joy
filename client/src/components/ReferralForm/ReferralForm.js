@@ -41,11 +41,10 @@ const useStyles = makeStyles({
 });
 
 const ReferralForm = () => {
-  let { id } = useParams();
-  const [services, AllServices] = 
+  const [services, setServices] = React.useState(null);
   const [referredServices, setReferredServices] = React.useState(null);
-
   const classes = useStyles();
+  let { id } = useParams();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -55,14 +54,24 @@ const ReferralForm = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(referredServices)
     };
-    fetch('/postreferralform', options).then(response => console.log(response));
+    fetch(`/postreferralform${id}`, options).then(response =>
+      console.log(response)
+    );
   };
 
   useEffect(() => {
-    getRequest(`/getclient:${id}`).then(res => {
-      setSingleClient(buildClientObject(res));
+    getRequest(`/getallservices`).then(res => {
+      console.log(res);
+      setServices(res);
     });
   }, []);
+
+  // useEffect(() => {
+  //   setReferredServices({
+  //     ...referredServices,
+  //     client_id: id
+  //   });
+  // }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -70,97 +79,17 @@ const ReferralForm = () => {
       <Typography className={classes.mainTitle}>Referral Form:</Typography>
       <Typography className={classes.clientName}>Jim Brown, 64</Typography>
       <Typography className={classes.startQ}></Typography>;
-      <form
-        // action='/postreferralform'
-        // method='POST'
-        onSubmit={handleSubmit}
-        className='formWellbeing'
-      >
+      <form onSubmit={handleSubmit} className='formWellbeing'>
         <Autocomplete
           onChange={(event, value) => {
             setReferredServices({
               ...referredServices,
-              referredSeriviceOne: value
+              referredServiceOne: value
             });
           }}
           id=''
-          options={['poo', 'wee', 'blue']}
-          style={{ width: 300 }}
-          renderInput={params => (
-            <TextField
-              {...params}
-              label='Find the right service.'
-              variant='outlined'
-              fullWidth
-            />
-          )}
-        />
-        <Autocomplete
-          onChange={(event, value) => {
-            setReferredServices({
-              ...referredServices,
-              referredSeriviceTwo: value
-            });
-          }}
-          id=''
-          options={['poo', 'wee', 'blue']}
-          style={{ width: 300 }}
-          renderInput={params => (
-            <TextField
-              {...params}
-              label='Find the right service.'
-              variant='outlined'
-              fullWidth
-            />
-          )}
-        />
-        <Autocomplete
-          onChange={(event, value) => {
-            setReferredServices({
-              ...referredServices,
-              referredSeriviceThree: value
-            });
-          }}
-          id=''
-          options={['poo', 'wee', 'blue']}
-          style={{ width: 300 }}
-          renderInput={params => (
-            <TextField
-              {...params}
-              label='Find the right service.'
-              variant='outlined'
-              fullWidth
-            />
-          )}
-        />
-        <Autocomplete
-          onChange={(event, value) => {
-            setReferredServices({
-              ...referredServices,
-              referredSeriviceFour: value
-            });
-          }}
-          id=''
-          options={['poo', 'wee', 'blue']}
-          style={{ width: 300 }}
-          renderInput={params => (
-            <TextField
-              {...params}
-              label='Find the right service.'
-              variant='outlined'
-              fullWidth
-            />
-          )}
-        />
-        <Autocomplete
-          onChange={(event, value) => {
-            setReferredServices({
-              ...referredServices,
-              referredSeriviceFive: value
-            });
-          }}
-          id=''
-          options={['poo', 'wee', 'blue']}
+          getOptionLabel={option => option.services_name}
+          options={services}
           style={{ width: 300 }}
           renderInput={params => (
             <TextField

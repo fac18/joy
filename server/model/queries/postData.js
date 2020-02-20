@@ -26,11 +26,12 @@ const postClientAssessment = clientAssessment => {
     })
 };
 
-const postReferralForm = referralForm => {
+const postReferralForm = (referralForm, id) => {
+  console.log(referralForm)
   return dbConnection
     .query(
-      'INSERT into referrals_questionnaire (client_id, services_id) VALUES ($1, $2)',
-      [referralForm]
+      'INSERT into referrals_questionnaire (services_id, client_id) VALUES ($1, $2)',
+      [referralForm.body.referredServiceOne.services_id, id]
     )
     .catch(console.log)
     .then(data => {

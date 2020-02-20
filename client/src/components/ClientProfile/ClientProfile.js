@@ -73,10 +73,7 @@ const useStyles = makeStyles({
 });
 
 const ClientProfile = ({ singleClient, setSingleClient }) => {
-  // const [id, setID] = React.useState({});
-
   const classes = useStyles();
-
   let { id } = useParams();
   let match = useRouteMatch();
 
@@ -157,15 +154,17 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
                 </ul>
               </Typography>
             </CardContent>
-            <CardActions>
-              <Button
-                className={classes.pinkButton}
-                variant='container'
-                size='medium'
-              >
-                Start Services Referral
-              </Button>
-            </CardActions>
+            <Link to={`/referralForm/${id}`}>
+              <CardActions>
+                <Button
+                  className={classes.pinkButton}
+                  variant='container'
+                  size='medium'
+                >
+                  Start Services Referral
+                </Button>
+              </CardActions>
+            </Link>
           </Card>
         </div>
       </ThemeProvider>
