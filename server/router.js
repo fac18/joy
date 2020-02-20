@@ -9,6 +9,8 @@ const {
   getCurrentAssessment,
   getInitialAssessment,
   getClientServices,
+  getTotalClients,
+  getTotalServices,
   getWellbeingTotals
 } = require("./model/queries/getData.js");
 const postClientAssessment = require("./model/queries/postData.js");
@@ -51,14 +53,20 @@ router.post("/postclientassessment", (req, res) => {
   // res.send(req.body);
 });
 
-router.get("/getwellbeingtotals", (req, res) => {
-  getWellbeingTotals().then(data => {
+router.get("/gettotalclients", (req, res) => {
+  getTotalClients().then(data => {
     res.json(data);
   });
 });
 
-router.get("/getallservices", (req, res) => {
-  getAllServices().then(data => {
+router.get("/gettotalservices", (req, res) => {
+  getTotalServices().then(data => {
+    res.json(data);
+  });
+});
+
+router.get("/getwellbeingtotals", (req, res) => {
+  getWellbeingTotals().then(data => {
     res.json(data);
   });
 });

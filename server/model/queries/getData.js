@@ -127,12 +127,20 @@ const getAssessment = id => {
     .then(data => data.rows);
 };
 
-const getAllServices = () => {
-  console.log("I am getAllServices");
+const getTotalClients = () => {
+  return dbConnection
+    .query("SELECT COUNT(client_id) FROM client")
+    .then(data => {
+      console.log("getTotalClients output:", data.rows);
+      return data.rows;
+    });
+};
+
+const getTotalServices = () => {
   return dbConnection
     .query("SELECT COUNT(services_id) FROM services")
     .then(data => {
-      console.log("I am the data in the getallservices function", data.rows);
+      console.log("getTotalServices output:", data.rows);
       return data.rows;
     });
 };
@@ -151,9 +159,10 @@ module.exports = {
   getClient,
   getService,
   getAllClients,
-  getAllServices,
   getCurrentAssessment,
   getInitialAssessment,
   getClientServices,
+  getTotalClients,
+  getTotalServices,
   getWellbeingTotals
 };

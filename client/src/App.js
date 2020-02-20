@@ -9,7 +9,8 @@ import WellbeingAssessment from "../src/components/WellbeingAssessment/Wellbeing
 
 const App = () => {
   const [clients, setClients] = React.useState([{}]);
-  const [services, setServices] = React.useState([]);
+  const [totalClients, setTotalClients] = React.useState([]);
+  const [totalServices, setTotalServices] = React.useState([]);
   const [singleClient, setSingleClient] = React.useState(null);
   const [wellbeingTotals, setWellbeingTotals] = React.useState([]);
 
@@ -22,8 +23,10 @@ const App = () => {
           <Dashboard
             clients={clients}
             setClients={setClients}
-            services={services}
-            setServices={setServices}
+            totalClients={totalClients}
+            setTotalClients={setTotalClients}
+            totalServices={totalServices}
+            setTotalServices={setTotalServices}
             wellbeingTotals={wellbeingTotals}
             setWellbeingTotals={setWellbeingTotals}
           />

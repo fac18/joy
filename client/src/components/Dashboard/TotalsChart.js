@@ -28,25 +28,42 @@ const useStyles = makeStyles({
   }
 });
 
-const TotalServices = ({ services, setServices }) => {
+const TotalsChart = ({
+  totalClients,
+  setTotalClients,
+  totalServices,
+  setTotalServices
+}) => {
   const classes = useStyles();
 
   useEffect(() => {
-    getRequest("/getallservices").then(data => {
-      setServices(data);
+    getRequest("/gettotalclients").then(data => {
+      setTotalClients(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    getRequest("/gettotalservices").then(data => {
+      setTotalServices(data);
     });
   }, []);
 
   return (
     <Card className={classes.card}>
+      {totalClients && totalClients.length && (
+        <span className={classes.emphasis}>
+          {" "}
+          {totalClients[0].count} clients!
+        </span>
+      )}
       <p variant="h6" component="h6">
         You currently have
       </p>
       {/* if services and services.length are TRUTHY, then render the output because services INITIALIZES AS AN EMPTY ARRAY */}
-      {services && services.length && (
+      {totalServices && totalServices.length && (
         <Typography variant="h2" component="h2" className={classes.emphasis}>
           {" "}
-          {services[0].count}{" "}
+          {totalServices[0].count}{" "}
         </Typography>
       )}
       <Typography variant="h2" component="h2" className={classes.emphasis}>
@@ -56,4 +73,4 @@ const TotalServices = ({ services, setServices }) => {
   );
 };
 
-export default TotalServices;
+export default TotalsChart;
