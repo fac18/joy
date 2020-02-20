@@ -39,7 +39,7 @@ CREATE TABLE referrals_questionnaire (
     input_date_referral DATE NOT NULL DEFAULT CURRENT_DATE,
     client_id INTEGER REFERENCES client(client_id),
     services_id INTEGER REFERENCES services(services_id),
-    no_of_services_attended INTEGER ,
+    no_of_services_attended INTEGER DEFAULT 0,
     client_attended BOOLEAN NOT NULL DEFAULT TRUE
 );
 

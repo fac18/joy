@@ -41,7 +41,11 @@ WHERE client_id = 1
 ORDER BY input_date_ucla3 DESC
 LIMIT 1;
 
---- Query wellbeing assessment
+SELECT client_id, MAX(input_date_ucla3) AS current_assessment_date, total_ucla3
+FROM ucla3_questionnaire
+GROUP BY client_id
+ORDER BY input_date_ucla3 DESC;
+
 
 -- Query 5a
 -- Calculate age of ALL clients
@@ -78,7 +82,7 @@ LIMIT 10;
 SELECT * FROM services WHERE services_id =ANY(SELECT services_id FROM referrals_questionnaire WHERE client_id=1);
 
 
--- Query 6
+-- Query 6a
 -- Sort referrals by popularity between two dates (default: current_date)
 SELECT services_id, SUM(no_of_services_attended)
 FROM referrals_questionnaire
@@ -88,12 +92,10 @@ ORDER BY SUM(no_of_services_attended) DESC
 LIMIT 10;
 WHERE client_id = 1;
 
--- Query 6
+-- Query 6b
 -- Sort referrals by popularity between two dates (default: current_date)
 -- Note: JOIN goes after the FROM but before the WHERE
-SELECT 
-   referrals_questionnaire.services_id AS referrals_id, 
-   services.services_name AS service_name, 
+SELECT services.services_name AS service_name, 
    SUM(no_of_services_attended)
 FROM referrals_questionnaire
 JOIN services 
@@ -101,7 +103,7 @@ JOIN services
 WHERE input_date_referral BETWEEN '2019-01-01' AND current_date
 GROUP BY referrals_questionnaire.services_id, services.services_name
 ORDER BY SUM(no_of_services_attended) DESC
-LIMIT 10;
+LIMIT 5;
 
 -- Query 7a
 -- Current number of lonely (8-9), medium (5-7) and not lonely (3-4) risk clients 
