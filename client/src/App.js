@@ -1,16 +1,13 @@
 import React from 'react';
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Dashboard from './components/Dashboard/Dashboard';
 import LandingPage from '../src/components/LandingPage/LandingPage';
 import SearchClient from '../src/components/SearchClient/SearchClient';
 import ClientProfile from '../src/components/ClientProfile/ClientProfile';
 import WellbeingAssessment from '../src/components/WellbeingAssessment/WellbeingAssessment';
 import RegisterClient from './components/RegisterClient/RegisterClient';
+import ReferralForm from './components/ReferralForm/ReferralForm';
 
 const App = () => {
   const [clients, setClients] = React.useState([{}]);
@@ -21,8 +18,8 @@ const App = () => {
 
   return (
     <Router>
-      <Route exact path='/' component={LandingPage} />
-      <Route exact path='/registerClient' component={RegisterClient} />
+      <Route exact path="/" component={LandingPage} />
+      <Route exact path="/registerClient" component={RegisterClient} />
       <Route
         path="/dashboard"
         render={() => (
@@ -61,8 +58,25 @@ const App = () => {
             />
           )}
         />
+        <Route
+          path="/wellbeingAssessment/:id"
+          render={() => (
+            <WellbeingAssessment
+              singleClient={singleClient}
+              setSingleClient={setSingleClient}
+            />
+          )}
+        />
+        <Route
+          path="/referralForm/:id"
+          render={() => (
+            <ReferralForm
+              singleClient={singleClient}
+              setSingleClient={setSingleClient}
+            />
+          )}
+        />
       </Switch>
-      <Route path="/wellbeingAssessment" component={WellbeingAssessment} />
     </Router>
   );
 };

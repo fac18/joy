@@ -1,19 +1,19 @@
-import React, { useReducer } from "react";
+import React, { useReducer } from 'react';
 
 const initialState = {
-  firstName: "",
-  lastName: "",
-  knownAs: "",
-  email: "",
-  password1: "",
-  password2: "",
-  location: ""
+  firstName: '',
+  lastName: '',
+  knownAs: '',
+  email: '',
+  password1: '',
+  password2: '',
+  location: '',
 };
 
 function reducer(state, { field, value }) {
   return {
     ...state,
-    [field]: value
+    [field]: value,
   };
 }
 
@@ -28,47 +28,46 @@ const RegisterClient = () => {
     dispatch({ field: e.target.name, value: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-  fetch('/postregisterclient' , {
-  method: "POST",
-  headers: {
-    'Content-type': 'application/json'
-  },
-  body: JSON.stringify(state)
-})
-.then((result) => result.json())
-.then((info) => { console.log(info); })
+    fetch('/postregisterclient', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(state),
+    })
+      .then(result => result.json())
+      .then(info => {
+        console.log(info);
+      });
+  };
 
-  }
-
-
-//   const onSubmit = (e) => {
-//       e.preventDefault();
-//       console.log('this is my clients data' ,data);
-//       const options = {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify(data)
-//   };
-//   fetch('/postregisterclient', options).then(response => console.log('this is register client fetch response' ,response))
-// }
+  //   const onSubmit = (e) => {
+  //       e.preventDefault();
+  //       console.log('this is my clients data' ,data);
+  //       const options = {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify(data)
+  //   };
+  //   fetch('/postregisterclient', options).then(response => console.log('this is register client fetch response' ,response))
+  // }
 
   const {
-      firstName,
-      lastName,
-      knownAs,
+    firstName,
+    lastName,
+    knownAs,
     dateOfBirth,
     phoneNumber,
     address,
     nhsNumber,
     consent,
-    areasOfSupport
+    areasOfSupport,
   } = state;
 
   return (
     <form onSubmit={handleSubmit}>
-
       <label for="firstName">First Name</label>
       <input
         type="text"
@@ -142,7 +141,9 @@ const RegisterClient = () => {
       />
       <br />
 
-      <label for="nhsNumber">I consent to Joy storing and processing my personal data</label>
+      <label for="nhsNumber">
+        I consent to Joy storing and processing my personal data
+      </label>
       <input
         type="checkbox"
         id="consent"
@@ -152,17 +153,29 @@ const RegisterClient = () => {
       />
       <br />
 
-      <label for="areasOfSupport">What areas does the client need support with?</label>
-      <select name="areasOfSupport" multiple id="areasOfSupport" defaultValue={areasOfSupport} onChange={onChange}>
+      <label for="areasOfSupport">
+        What areas does the client need support with?
+      </label>
+      <select
+        name="areasOfSupport"
+        multiple
+        id="areasOfSupport"
+        defaultValue={areasOfSupport}
+        onChange={onChange}
+      >
         <option value="Feeling Lonely/Isolated">Feeling Lonely/Isolated</option>
-        <option value="Managing a health condition">Managing a health condition</option>
+        <option value="Managing a health condition">
+          Managing a health condition
+        </option>
         <option value="Help with Money">Help with Money</option>
         <option value="Getting outdoors">Getting outdoors</option>
         <option value="Improving Fitness">Improving Fitness</option>
         <option value="Information and advice">Information and advice</option>
-        <option value="Assistance with day-to-day tasks">Assistance with day-to-day tasks</option>
+        <option value="Assistance with day-to-day tasks">
+          Assistance with day-to-day tasks
+        </option>
       </select>
-      
+
       <button type="submit">Register Client</button>
     </form>
   );

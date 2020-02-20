@@ -24,6 +24,6 @@
 //   });
 // });
 
-test("Jest is working", () => {
+test('Jest is working', () => {
   expect(true).toBeTruthy();
 });

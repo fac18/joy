@@ -1,37 +1,37 @@
 // search client page
 
-import React, { useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-// import { Link } from 'react-router-dom';
-import Card from "@material-ui/core/Card";
-import { CardContent } from "@material-ui/core";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import Typography from "@material-ui/core/Typography";
-import NavBar from "../NavBar/NavBar";
-import { ThemeProvider } from "@material-ui/core/styles";
-import theme from "../../theme";
-import getRequest from "../../utils/getData";
+import React, { useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+import Card from '@material-ui/core/Card';
+import { CardContent } from '@material-ui/core';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import Typography from '@material-ui/core/Typography';
+import NavBar from '../NavBar/NavBar';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from '../../theme';
+import getRequest from '../../utils/getData';
 
-import { filterClients } from "../../utils/filterClients";
+import { filterClients } from '../../utils/filterClients';
 
 const useStyles = makeStyles({
   cardBg: {
-    backgroundColor: "#EBEDEE",
-    width: "350px",
-    height: "110px",
-    display: "flex",
-    borderRadius: "10px",
-    marginBottom: "20px"
+    backgroundColor: '#EBEDEE',
+    width: '350px',
+    height: '110px',
+    display: 'flex',
+    borderRadius: '10px',
+    marginBottom: '20px',
   },
   accountIcon: {
-    color: "#C4C4C4",
-    borderRadius: "50%",
-    width: "100px",
-    height: "100%",
-    justifyContent: "flex-start",
-    alignContent: "center"
+    color: '#C4C4C4',
+    borderRadius: '50%',
+    width: '100px',
+    height: '100%',
+    justifyContent: 'flex-start',
+    alignContent: 'center',
   },
-  accountInfo: {}
+  accountInfo: {},
 });
 
 // Automatically sends a request to the server asking for a list of all the clients
@@ -40,7 +40,7 @@ const SearchClient = ({ clients, setClients }) => {
   // Creates a card for every user which comes back from the database
 
   useEffect(() => {
-    getRequest("/getallclients").then(res => {
+    getRequest('/getallclients').then(res => {
       setClients(res);
       // console.log(clients.client_id);
     });
@@ -83,7 +83,7 @@ const SearchClient = ({ clients, setClients }) => {
           placeholder="Search by surname"
           onChange={e => setSearchInputLastName(e.target.value)}
         />
-      </form>{" "}
+      </form>{' '}
       <form>
         <input
           type="text"
@@ -108,9 +108,9 @@ const SearchClient = ({ clients, setClients }) => {
           searchInputDOB,
           clients
         ).map(client => (
-          <a
-            href={`clientProfile/${client.client_id}`}
-            style={{ textDecoration: "none" }}
+          <Link
+            to={`clientProfile/${client.client_id}`}
+            style={{ textDecoration: 'none' }}
           >
             <Card className={classes.cardBg}>
               <CardContent>
@@ -126,7 +126,7 @@ const SearchClient = ({ clients, setClients }) => {
                 <p>DOB: {client.to_char}</p>
               </Typography>
             </Card>
-          </a>
+          </Link>
         ))}
       </div>
     </ThemeProvider>
