@@ -5,7 +5,7 @@ const postRegisterClient = registerClient => {
   console.log('I am postRegisterClient');
   return dbConnection
     .query(
-      'INSERT into client (client_firstname, client_surname, client_knownAs, client_dob, client_phone, client_address, client_nhsNumber, client_dob, client_areasOfSupport) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
+      'INSERT into client (client_firstname, client_surname, client_knownAs, client_dob, client_phone, client_address, client_nhsNumber, client_consent, client_areasOfSupport) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
       [
         registerClient.firstName,
         registerClient.lastName,
