@@ -9,7 +9,6 @@ import theme from '../../theme';
 import NavBar from '../NavBar/NavBar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import { ReactComponent as InfoIcon } from '../../assets/info.svg';
 import { useParams } from 'react-router-dom';
 
 const useStyles = makeStyles({
@@ -66,6 +65,7 @@ const ReferralForm = () => {
         <Autocomplete
           id=''
           options={['poo', 'wee', 'blue']}
+          value='poo'
           // getOptionLabel={option => option.title}
           style={{ width: 300 }}
           ref={register}
@@ -78,15 +78,21 @@ const ReferralForm = () => {
             />
           )}
         />
+        <input
+          name='email'
+          placeholder='bluebill1049@hotmail.com'
+          type='email'
+          ref={register}
+        />
         <label>
           1
-          <input
+          {/* <input
             name='q1_companionship'
             type='radio'
             required
             value='1'
             ref={register}
-          />
+          /> */}
         </label>
 
         <Button
