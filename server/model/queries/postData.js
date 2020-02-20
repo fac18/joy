@@ -7,15 +7,15 @@ const postRegisterClient = registerClient => {
     .query(
       'INSERT into client (client_firstname, client_surname, client_knownAs, client_dob, client_phone, client_address, client_nhsNumber, client_consent, client_areasOfSupport) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
       [
-        registerClient.client_firstname,
-        registerClient.client_surname,
-        registerClient.client_knownAs,
-        registerClient.client_dob,
-        registerClient.client_phone,
-        registerClient.client_address,
-        registerClient.client_nhsNumber,
-        registerClient.client_consent,
-        registerClient.client_areasOfSupport
+        registerClient.firstName,
+        registerClient.lastName,
+        registerClient.knownAs,
+        registerClient.dateOfBirth,
+        registerClient.phoneNumber,
+        registerClient.address,
+        registerClient.nhsNumber,
+        true,
+        registerClient.areasOfSupport
       ]
     )
     .then(data => {
@@ -24,7 +24,6 @@ const postRegisterClient = registerClient => {
     })
     .catch(console.log);
 };
-module.exports = postRegisterClient;
 
 // Post the ucla3 assessment results to the database
 
@@ -66,6 +65,6 @@ const postReferralForm = (referralForm, id) => {
     });
 };
 
-module.exports = { postClientAssessment, postReferralForm };
+module.exports = { postClientAssessment, postReferralForm, postRegisterClient };
 
 // 'INSERT into ucla3_questionnaire (q1_companionship, q2_left_out, q3_isolated, additionalNotes, next_appointment_date) VALUES (1, 2, 3, 4, 5, 1996-05-05T20:40:00);',
