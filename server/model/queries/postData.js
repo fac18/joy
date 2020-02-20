@@ -24,7 +24,6 @@ const postRegisterClient = registerClient => {
     })
     .catch(console.log);
 };
-module.exports = postRegisterClient;
 
 // Post the ucla3 assessment results to the database
 
@@ -66,6 +65,6 @@ const postReferralForm = (referralForm, id) => {
     });
 };
 
-module.exports = { postClientAssessment, postReferralForm };
+module.exports = { postClientAssessment, postReferralForm, postRegisterClient };
 
 // 'INSERT into ucla3_questionnaire (q1_companionship, q2_left_out, q3_isolated, additionalNotes, next_appointment_date) VALUES (1, 2, 3, 4, 5, 1996-05-05T20:40:00);',
