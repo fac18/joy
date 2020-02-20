@@ -8,6 +8,7 @@ import ClientProfile from '../src/components/ClientProfile/ClientProfile';
 import WellbeingAssessment from '../src/components/WellbeingAssessment/WellbeingAssessment';
 import RegisterClient from './components/RegisterClient/RegisterClient';
 import ReferralForm from './components/ReferralForm/ReferralForm';
+import RegisterSuccess from './components/RegisterClient/RegisterSuccess';
 
 const App = () => {
   const [clients, setClients] = React.useState([{}]);
@@ -20,6 +21,7 @@ const App = () => {
     <Router>
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/registerClient" component={RegisterClient} />
+      <Route exact path="/registerClientSuccess" component={RegisterSuccess} />     
       <Route
         path="/dashboard"
         render={() => (

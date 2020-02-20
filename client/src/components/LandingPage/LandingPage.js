@@ -4,6 +4,7 @@ import { ReactComponent as LogoSvg } from '../../assets/logo.svg';
 import { makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme';
+// import LoginModal from "../LoginPage/LoginModal";
 import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
@@ -91,7 +92,7 @@ const useStyles = makeStyles({
   },
 });
 
-const LandingPage = ({ history }) => {
+const LandingPage = () => {
   // const [show, setShow] = React.useState(false);
   // const showModal = () => setShow(true);
   // const hideModal = () => setShow(false);
@@ -115,22 +116,8 @@ const LandingPage = ({ history }) => {
     showPassword: false,
   });
 
-  const dummyLogin = {
-    username: "joy",
-    password: "joy"
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if(dummyLogin.username === values.username && dummyLogin.password === values.password) {
-    history.push('/dashboard');
-    } else {
-      alert('Please enter the correct login details!')
-    }
-  }
-
-  const handleChange = fieldName => event => {
-    setValues({ ...values, [fieldName]: event.target.value });
+  const handleChange = prop => event => {
+    setValues({ ...values, [prop]: event.target.value });
   };
 
   const handleClickShowPassword = () => {
@@ -189,8 +176,8 @@ const LandingPage = ({ history }) => {
                     </InputLabel>
                     <FilledInput
                       id="filled-adornment-username"
-                      value={values.username}
-                      onChange={handleChange('username')}
+                      value={values.weight}
+                      onChange={handleChange('weight')}
                       endAdornment={
                         <InputAdornment position="end">
                           <AccountCircle className={classes.userIcon} />
@@ -236,14 +223,16 @@ const LandingPage = ({ history }) => {
                   </div>
                 </div>
 
+                <Link className={classes.mainLink} to="/dashboard">
                   <Button
                     className={classes.pinkButton}
                     variant="container"
                     size="medium"
-                    onClick={handleSubmit}
+                    // onClick={event => setLogin(event.target.value)}
                   >
                     Login
                   </Button>
+                </Link>
                 <Button
                   className={classes.greenButton}
                   variant="container"
