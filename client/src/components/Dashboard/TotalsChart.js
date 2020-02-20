@@ -2,7 +2,6 @@ import React, { Component, useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
-import Chart from "react-apexcharts";
 import getRequest from "../../utils/getData";
 import upArrow from "../../assets/up-arrow.svg";
 
@@ -22,8 +21,23 @@ const useStyles = makeStyles({
   chart: {
     margin: "0 auto"
   },
+  arrow: {
+    width: 80,
+    margin: "0 2rem"
+  },
   emphasis: {
-    fontSize: 40,
+    color: "#E71F67"
+  },
+  horizontalContainer: {
+    display: "flex",
+    justifyContent: "center",
+    paddingTop: "1rem"
+  },
+  verticalContainer: {
+    display: "block"
+  },
+  paragraph: {
+    margin: 0,
     color: "#E71F67"
   }
 });
@@ -50,25 +64,46 @@ const TotalsChart = ({
 
   return (
     <Card className={classes.card}>
-      {totalClients && totalClients.length && (
-        <span className={classes.emphasis}>
-          {" "}
-          {totalClients[0].count} clients!
-        </span>
-      )}
-      <p variant="h6" component="h6">
-        You currently have
-      </p>
-      {/* if services and services.length are TRUTHY, then render the output because services INITIALIZES AS AN EMPTY ARRAY */}
-      {totalServices && totalServices.length && (
-        <Typography variant="h2" component="h2" className={classes.emphasis}>
-          {" "}
-          {totalServices[0].count}{" "}
-        </Typography>
-      )}
-      <Typography variant="h2" component="h2" className={classes.emphasis}>
-        Services
+      <Typography variant="h5" component="h5">
+        You currently have:
       </Typography>
+
+      <div className={classes.horizontalContainer}>
+        <div className={classes.verticalContainer}>
+          {/* if totalClients and totalClients.length are TRUTHY, then render the output because totalClients INITIALIZES AS AN EMPTY ARRAY */}
+          {totalClients && totalClients.length && (
+            <Typography
+              variant="h2"
+              component="h2"
+              className={classes.emphasis}
+            >
+              {totalClients[0].count}
+            </Typography>
+          )}
+          <Typography variant="h4" component="h4" className={classes.emphasis}>
+            Clients
+          </Typography>
+        </div>
+        <div className={classes.verticalContainer}>
+          <img className={classes.arrow} alt="profile" src={upArrow} />
+          {/* <p className={classes.paragraph}>and</p> */}
+        </div>
+        <div className={classes.verticalContainer}>
+          {/* similar condition to above for  */}
+          {totalServices && totalServices.length && (
+            <Typography
+              variant="h2"
+              component="h2"
+              className={classes.emphasis}
+            >
+              {totalServices[0].count}
+            </Typography>
+          )}
+          <Typography variant="h4" component="h4" className={classes.emphasis}>
+            Services
+          </Typography>
+        </div>
+      </div>
     </Card>
   );
 };
