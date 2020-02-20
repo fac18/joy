@@ -1,63 +1,63 @@
-import React, { Component, useEffect } from "react";
-import { makeStyles } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
-import Typography from "@material-ui/core/Typography";
-import getRequest from "../../utils/getData";
-import upArrow from "../../assets/up-arrow.svg";
+import React, { Component, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+import getRequest from '../../utils/getData';
+import upArrow from '../../assets/up-arrow.svg';
 
 const useStyles = makeStyles({
   card: {
     minWidth: 275,
     maxWidth: 500,
-    backgroundColor: "#EBEDEE",
-    margin: "auto",
+    backgroundColor: '#EBEDEE',
+    margin: 'auto',
     marginTop: 25,
     padding: 20,
-    color: "#676767",
-    display: "flex",
-    flexDirection: "column",
-    fontSize: 20
+    color: '#676767',
+    display: 'flex',
+    flexDirection: 'column',
+    fontSize: 20,
   },
   chart: {
-    margin: "0 auto"
+    margin: '0 auto',
   },
   arrow: {
     width: 80,
-    margin: "0 2rem"
+    margin: '0 2rem',
   },
   emphasis: {
-    color: "#E71F67"
+    color: '#E71F67',
   },
   horizontalContainer: {
-    display: "flex",
-    justifyContent: "center",
-    paddingTop: "1rem"
+    display: 'flex',
+    justifyContent: 'center',
+    paddingTop: '1rem',
   },
   verticalContainer: {
-    display: "block"
+    display: 'block',
   },
   paragraph: {
     margin: 0,
-    color: "#E71F67"
-  }
+    color: '#E71F67',
+  },
 });
 
 const TotalsChart = ({
   totalClients,
   setTotalClients,
   totalServices,
-  setTotalServices
+  setTotalServices,
 }) => {
   const classes = useStyles();
 
   useEffect(() => {
-    getRequest("/gettotalclients").then(data => {
+    getRequest('/gettotalclients').then(data => {
       setTotalClients(data);
     });
   }, []);
 
   useEffect(() => {
-    getRequest("/gettotalservices").then(data => {
+    getRequest('/gettotalservices').then(data => {
       setTotalServices(data);
     });
   }, []);

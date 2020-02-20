@@ -13,27 +13,27 @@ const useStyles = makeStyles({
   mainTitle: {
     fontSize: '35px',
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   clientName: {
     fontSize: '35px',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   startQ: {
     fontSize: '20px',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   pinkButton: {
     background: '#E71F67',
     color: 'white',
     '&:hover': {
-      backgroundColor: '#80902F'
+      backgroundColor: '#80902F',
     },
     padding: '10px 30px',
     marginLeft: '11rem',
     marginTop: '2rem',
-    marginBottom: '2rem'
-  }
+    marginBottom: '2rem',
+  },
 });
 
 const ClientAssessment = ({ singleClient }) => {
@@ -67,82 +67,82 @@ const ClientAssessment = ({ singleClient }) => {
         </b>{' '}
       </Typography>
       <br />
-      <form onSubmit={handleSubmit(onSubmit)} className='formWellbeing'>
+      <form onSubmit={handleSubmit(onSubmit)} className="formWellbeing">
         <Autocomplete
-          id='combo-box-demo'
+          id="combo-box-demo"
           options={top100Films}
           getOptionLabel={option => option.title}
           style={{ width: 300 }}
           renderInput={params => (
             <TextField
               {...params}
-              label='Combo box'
-              variant='outlined'
+              label="Combo box"
+              variant="outlined"
               fullWidth
             />
           )}
         />
         <Autocomplete
-          id='combo-box-demo'
+          id="combo-box-demo"
           options={top100Films}
           getOptionLabel={option => option.title}
           style={{ width: 300 }}
           renderInput={params => (
             <TextField
               {...params}
-              label='Combo box'
-              variant='outlined'
+              label="Combo box"
+              variant="outlined"
               fullWidth
             />
           )}
         />
         <Autocomplete
-          id='combo-box-demo'
+          id="combo-box-demo"
           options={top100Films}
           getOptionLabel={option => option.title}
           style={{ width: 300 }}
           renderInput={params => (
             <TextField
               {...params}
-              label='Combo box'
-              variant='outlined'
+              label="Combo box"
+              variant="outlined"
               fullWidth
             />
           )}
         />
         <Autocomplete
-          id='combo-box-demo'
+          id="combo-box-demo"
           options={top100Films}
           getOptionLabel={option => option.title}
           style={{ width: 300 }}
           renderInput={params => (
             <TextField
               {...params}
-              label='Combo box'
-              variant='outlined'
+              label="Combo box"
+              variant="outlined"
               fullWidth
             />
           )}
         />
         <Autocomplete
-          id='combo-box-demo'
+          id="combo-box-demo"
           options={top100Films}
           getOptionLabel={option => option.title}
           style={{ width: 300 }}
           renderInput={params => (
             <TextField
               {...params}
-              label='Combo box'
-              variant='outlined'
+              label="Combo box"
+              variant="outlined"
               fullWidth
             />
           )}
         />
         <Button
-          type='submit'
+          type="submit"
           className={classes.pinkButton}
-          variant='container'
-          size='medium'
+          variant="container"
+          size="medium"
         >
           NEXT
         </Button>

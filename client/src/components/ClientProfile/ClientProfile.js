@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Link, useParams, Switch, useRouteMatch } from 'react-router-dom'
-import { ThemeProvider } from '@material-ui/core/styles'
-import theme from '../../theme'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
-import NavBar from '../NavBar/NavBar'
-import getRequest from '../../utils/getData'
-import buildClientObject from '../../utils/buildClientObject'
-import { Route } from 'react-router-dom'
-import WellbeingAssessment from '../WellbeingAssessment/WellbeingAssessment'
+import React, { useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Link, useParams, Switch, useRouteMatch } from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from '../../theme';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import NavBar from '../NavBar/NavBar';
+import getRequest from '../../utils/getData';
+import buildClientObject from '../../utils/buildClientObject';
+import { Route } from 'react-router-dom';
+import WellbeingAssessment from '../WellbeingAssessment/WellbeingAssessment';
 
 // import Button from "../Button/Button";
 
@@ -70,24 +70,24 @@ const useStyles = makeStyles({
     listStyleType: 'none',
     margin: 'auto',
   },
-})
+});
 
 const ClientProfile = ({ singleClient, setSingleClient }) => {
-  const classes = useStyles()
-  let { id } = useParams()
-  let match = useRouteMatch()
+  const classes = useStyles();
+  let { id } = useParams();
+  let match = useRouteMatch();
 
   useEffect(() => {
     getRequest(`/getclient:${id}`).then(res => {
-      setSingleClient(buildClientObject(res))
-    })
-  }, [])
+      setSingleClient(buildClientObject(res));
+    });
+  }, []);
 
   if (singleClient === null) {
-    console.log('poo')
-    return null
+    console.log('poo');
+    return null;
   } else {
-    console.log('I am the singleClient', singleClient)
+    console.log('I am the singleClient', singleClient);
     return (
       <ThemeProvider theme={theme}>
         <NavBar />
@@ -168,8 +168,8 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
           </Card>
         </div>
       </ThemeProvider>
-    )
+    );
   }
-}
+};
 
-export default ClientProfile
+export default ClientProfile;

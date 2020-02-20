@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "../../../node_modules/react-vis/dist/style.css";
+import React, { Component } from 'react';
+import '../../../node_modules/react-vis/dist/style.css';
 import {
   XYPlot,
   VerticalBarSeries,
@@ -7,18 +7,18 @@ import {
   YAxis,
   HorizontalGridLines,
   VerticalGridLines,
-  ChartLabel
-} from "react-vis";
+  ChartLabel,
+} from 'react-vis';
 
 const ServicesGraph = () => {
   const data = [
-    { x: "HIGH (8-9)", y: 9 },
-    { x: "MEDIUM (5-7)", y: 18 },
-    { x: "LOW (3-4)", y: 3 }
+    { x: 'HIGH (8-9)', y: 9 },
+    { x: 'MEDIUM (5-7)', y: 18 },
+    { x: 'LOW (3-4)', y: 3 },
   ];
   return (
     <XYPlot
-      style={{ margin: "auto", backgroundColor: "white" }}
+      style={{ margin: 'auto', backgroundColor: 'white' }}
       xType="ordinal"
       height={500}
       width={450}
@@ -33,7 +33,7 @@ const ServicesGraph = () => {
         xPercent={0.45}
         yPercent={0.75}
         style={{
-          textAnchor: "start"
+          textAnchor: 'start',
         }}
       />
       <VerticalBarSeries color="pink" data={data} />

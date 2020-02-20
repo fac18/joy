@@ -1,8 +1,8 @@
-const dbConnection = require('../database/db_connection')
+const dbConnection = require('../database/db_connection');
 
 // Post a new client registration to the database
 const postRegisterClient = registerClient => {
-  console.log('I am postRegisterClient')
+  console.log('I am postRegisterClient');
   return dbConnection
     .query(
       'INSERT into client (client_firstname, client_surname, client_knownAs, client_dob, client_phone, client_address, client_nhsNumber, client_consent, client_areasOfSupport) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
@@ -19,19 +19,19 @@ const postRegisterClient = registerClient => {
       ]
     )
     .then(data => {
-      console.log('DATA INSERTED', data)
+      console.log('DATA INSERTED', data);
       // return data;
     })
-    .catch(console.log)
-}
-module.exports = postRegisterClient
+    .catch(console.log);
+};
+module.exports = postRegisterClient;
 
 // Post the ucla3 assessment results to the database
 
 const postClientAssessment = clientAssessment => {
-  console.log('I am postClientAssessment')
-  const dateTime = clientAssessment.nextAppointment.split('T')
-  console.log('I am datetime', dateTime, dateTime[0], dateTime[1])
+  console.log('I am postClientAssessment');
+  const dateTime = clientAssessment.nextAppointment.split('T');
+  console.log('I am datetime', dateTime, dateTime[0], dateTime[1]);
   return dbConnection
     .query(
       'INSERT into ucla3_questionnaire (client_id, q1_companionship, q2_left_out, q3_isolated, additionalNotes, next_appointment_date, next_appointment_time) VALUES ($1, $2, $3,$4, $5, $6, $7)',
@@ -47,13 +47,13 @@ const postClientAssessment = clientAssessment => {
     )
     .catch(console.log)
     .then(data => {
-      console.log('DATA INSERTED', data)
+      console.log('DATA INSERTED', data);
       // return data;
-    })
-}
+    });
+};
 
 const postReferralForm = (referralForm, id) => {
-  console.log(referralForm)
+  console.log(referralForm);
   return dbConnection
     .query(
       'INSERT into referrals_questionnaire (services_id, client_id) VALUES ($1, $2)',
@@ -61,11 +61,11 @@ const postReferralForm = (referralForm, id) => {
     )
     .catch(console.log)
     .then(data => {
-      console.log('DATA INSERTED', data)
+      console.log('DATA INSERTED', data);
       // return data;
-    })
-}
+    });
+};
 
-module.exports = { postClientAssessment, postReferralForm }
+module.exports = { postClientAssessment, postReferralForm };
 
 // 'INSERT into ucla3_questionnaire (q1_companionship, q2_left_out, q3_isolated, additionalNotes, next_appointment_date) VALUES (1, 2, 3, 4, 5, 1996-05-05T20:40:00);',
