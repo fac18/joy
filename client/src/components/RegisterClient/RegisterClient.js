@@ -7,13 +7,13 @@ const initialState = {
   email: '',
   password1: '',
   password2: '',
-  location: '',
+  location: ''
 };
 
 function reducer(state, { field, value }) {
   return {
     ...state,
-    [field]: value,
+    [field]: value
   };
 }
 
@@ -33,9 +33,9 @@ const RegisterClient = () => {
     fetch('/postregisterclient', {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json',
+        'Content-type': 'application/json'
       },
-      body: JSON.stringify(state),
+      body: JSON.stringify(state)
     })
       .then(result => result.json())
       .then(info => {
@@ -63,120 +63,120 @@ const RegisterClient = () => {
     address,
     nhsNumber,
     consent,
-    areasOfSupport,
+    areasOfSupport
   } = state;
 
   return (
     <form onSubmit={handleSubmit}>
-      <label for="firstName">First Name</label>
+      <label for='firstName'>First Name</label>
       <input
-        type="text"
-        id="firstName"
-        name="firstName"
+        type='text'
+        id='firstName'
+        name='firstName'
         defaultValue={firstName}
         required
         onChange={onChange}
       />
       <br />
 
-      <label for="lastName">Last Name</label>
+      <label for='lastName'>Last Name</label>
       <input
-        type="text"
-        name="lastName"
-        id="lastName"
+        type='text'
+        name='lastName'
+        id='lastName'
         defaultValue={lastName}
         required
         onChange={onChange}
       />
       <br />
 
-      <label for="knownAs">Known As</label>
+      <label for='knownAs'>Known As</label>
       <input
-        type="text"
-        id="knowsAs"
-        name="knownAs"
+        type='text'
+        id='knowsAs'
+        name='knownAs'
         defaultValue={knownAs}
         required
         onChange={onChange}
       />
       <br />
 
-      <label for="dateOfBirth">Date Of Birth</label>
+      <label for='dateOfBirth'>Date Of Birth</label>
       <input
-        type="date"
-        name="dateOfBirth"
-        id="dateOfBirth"
+        type='date'
+        name='dateOfBirth'
+        id='dateOfBirth'
         defaultValue={dateOfBirth}
         required
         onChange={onChange}
       />
       <br />
 
-      <label for="phoneNumber">Phone Number</label>
+      <label for='phoneNumber'>Phone Number</label>
       <input
-        type="text"
-        name="phoneNumber"
-        id="phoneNumber"
+        type='text'
+        name='phoneNumber'
+        id='phoneNumber'
         defaultValue={phoneNumber}
         onChange={onChange}
       />
       <br />
 
-      <label for="address">Address</label>
+      <label for='address'>Address</label>
       <input
-        type="textarea"
-        id="address"
-        name="address"
+        type='textarea'
+        id='address'
+        name='address'
         defaultValue={address}
         onChange={onChange}
       />
 
-      <label for="nhsNumber">NHS Number</label>
+      <label for='nhsNumber'>NHS Number</label>
       <input
-        type="text"
-        id="nhsNumber"
-        name="nhsNumber"
+        type='text'
+        id='nhsNumber'
+        name='nhsNumber'
         defaultValue={nhsNumber}
         onChange={onChange}
       />
       <br />
 
-      <label for="nhsNumber">
+      <label for='nhsNumber'>
         I consent to Joy storing and processing my personal data
       </label>
       <input
-        type="checkbox"
-        id="consent"
-        name="consent"
-        defaultValue={consent}
+        type='checkbox'
+        id='consent'
+        name='consent'
+        defaultValue={true}
         onChange={onChange}
       />
       <br />
 
-      <label for="areasOfSupport">
+      <label for='areasOfSupport'>
         What areas does the client need support with?
       </label>
       <select
-        name="areasOfSupport"
+        name='areasOfSupport'
         multiple
-        id="areasOfSupport"
+        id='areasOfSupport'
         defaultValue={areasOfSupport}
         onChange={onChange}
       >
-        <option value="Feeling Lonely/Isolated">Feeling Lonely/Isolated</option>
-        <option value="Managing a health condition">
+        <option value='Feeling Lonely/Isolated'>Feeling Lonely/Isolated</option>
+        <option value='Managing a health condition'>
           Managing a health condition
         </option>
-        <option value="Help with Money">Help with Money</option>
-        <option value="Getting outdoors">Getting outdoors</option>
-        <option value="Improving Fitness">Improving Fitness</option>
-        <option value="Information and advice">Information and advice</option>
-        <option value="Assistance with day-to-day tasks">
+        <option value='Help with Money'>Help with Money</option>
+        <option value='Getting outdoors'>Getting outdoors</option>
+        <option value='Improving Fitness'>Improving Fitness</option>
+        <option value='Information and advice'>Information and advice</option>
+        <option value='Assistance with day-to-day tasks'>
           Assistance with day-to-day tasks
         </option>
       </select>
 
-      <button type="submit">Register Client</button>
+      <button type='submit'>Register Client</button>
     </form>
   );
 };
