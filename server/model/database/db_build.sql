@@ -34,7 +34,7 @@ CREATE TABLE referrals_questionnaire (
     client_id INTEGER REFERENCES client(client_id),
     services_id INTEGER REFERENCES services(services_id),
     no_of_services_attended INTEGER ,
-    client_attended BOOLEAN NOT NULL DEFAULT FALSE
+    client_attended BOOLEAN NOT NULL DEFAULT TRUE
 );
 INSERT INTO client (client_firstname, client_surname, client_dob) VALUES
 ('Jim', 'Brown', '1955-12-12'),

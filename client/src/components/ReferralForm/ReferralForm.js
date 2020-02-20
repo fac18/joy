@@ -57,6 +57,12 @@ const ReferralForm = () => {
     fetch('/postreferralform', options).then(response => console.log(response));
   };
 
+  useEffect(() => {
+    getRequest(`/getclient:${id}`).then(res => {
+      setSingleClient(buildClientObject(res));
+    });
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
@@ -76,14 +82,6 @@ const ReferralForm = () => {
               referredSeriviceOne: value
             });
           }}
-          // setReferredServices(prevState => ({
-          //   referredServices: {
-          //     ...prevState.referredServices,
-          //     referredServiceOne: value
-          //   }
-          // }
-          // )}
-          // prints the selected value
           id=''
           options={['poo', 'wee', 'blue']}
           style={{ width: 300 }}

@@ -26,6 +26,19 @@ const postClientAssessment = clientAssessment => {
     })
 };
 
-module.exports = postClientAssessment
+const postReferralForm = referralForm => {
+  return dbConnection
+    .query(
+      'INSERT into referrals_questionnaire (client_id, services_id) VALUES ($1, $2)',
+      [referralForm]
+    )
+    .catch(console.log)
+    .then(data => {
+      console.log('DATA INSERTED', data)
+      // return data;
+    })
+};
+
+module.exports = { postClientAssessment, postReferralForm }
 
 // 'INSERT into ucla3_questionnaire (q1_companionship, q2_left_out, q3_isolated, additionalNotes, next_appointment_date) VALUES (1, 2, 3, 4, 5, 1996-05-05T20:40:00);',
