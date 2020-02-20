@@ -48,6 +48,11 @@ router.post('/postclientassessment', (req, res) => {
   res.redirect('/dashboard')
 })
 
+router.post('/postreferralform', (req, res) => {
+  console.log('I got a request!')
+  console.log('I am the req.body in post referral form', req.body)
+})
+
 router.get('/getwellbeingtotals', (req, res) => {
   getWellbeingTotals().then(data => {
     res.json(data)

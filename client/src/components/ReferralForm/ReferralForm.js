@@ -1,8 +1,8 @@
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 // initial assessment
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useReducer } from 'react';
+// import { useForm } from 'react-hook-form';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import theme from '../../theme';
@@ -42,27 +42,19 @@ const useStyles = makeStyles({
 const ReferralForm = () => {
   let { id } = useParams();
 
-  const [data, setData] = React.useState({
-    age: '',
-    name: 'hai'
-  });
-
-  const handleChange = name => event => {
-    setData(event.target.value);
-  };
+  const [referredServices, setReferredServices] = React.useState(null);
 
   const classes = useStyles();
-  // const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = (data, e) => {
-    console.log('This is the data inside onSubmit', data);
-    // data.client_id = id;
-    // const options = {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(data)
-    // };
-    // fetch('/postreferralform', options).then(response => console.log(response));
+  const handleSubmit = e => {
+    e.preventDefault();
+    alert('submitting form');
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(referredServices)
+    };
+    fetch('/postreferralform', options).then(response => console.log(response));
   };
 
   return (
@@ -71,19 +63,30 @@ const ReferralForm = () => {
       <Typography className={classes.mainTitle}>Referral Form:</Typography>
       <Typography className={classes.clientName}>Jim Brown, 64</Typography>
       <Typography className={classes.startQ}></Typography>;
-      <FormControl onSubmit={handleSubmit(onSubmit)} className='formWellbeing'>
+      <form
+        // action='/postreferralform'
+        // method='POST'
+        onSubmit={handleSubmit}
+        className='formWellbeing'
+      >
         <Autocomplete
+          onChange={(event, value) => {
+            setReferredServices({
+              ...referredServices,
+              referredSeriviceOne: value
+            });
+          }}
+          // setReferredServices(prevState => ({
+          //   referredServices: {
+          //     ...prevState.referredServices,
+          //     referredServiceOne: value
+          //   }
+          // }
+          // )}
+          // prints the selected value
           id=''
           options={['poo', 'wee', 'blue']}
-          value={data}
-          onChange={handleChange()}
-          // inputProps={{
-          //   name: 'age',
-          //   id: 'age-native-simple'
-          // }}
-          // getOptionLabel={option => option.title}
           style={{ width: 300 }}
-          ref={register}
           renderInput={params => (
             <TextField
               {...params}
@@ -93,16 +96,82 @@ const ReferralForm = () => {
             />
           )}
         />
-        <label>
-          1
-          {/* <input
-            name='q1_companionship'
-            type='radio'
-            required
-            value='1'
-            ref={register}
-          /> */}
-        </label>
+        <Autocomplete
+          onChange={(event, value) => {
+            setReferredServices({
+              ...referredServices,
+              referredSeriviceTwo: value
+            });
+          }}
+          id=''
+          options={['poo', 'wee', 'blue']}
+          style={{ width: 300 }}
+          renderInput={params => (
+            <TextField
+              {...params}
+              label='Find the right service.'
+              variant='outlined'
+              fullWidth
+            />
+          )}
+        />
+        <Autocomplete
+          onChange={(event, value) => {
+            setReferredServices({
+              ...referredServices,
+              referredSeriviceThree: value
+            });
+          }}
+          id=''
+          options={['poo', 'wee', 'blue']}
+          style={{ width: 300 }}
+          renderInput={params => (
+            <TextField
+              {...params}
+              label='Find the right service.'
+              variant='outlined'
+              fullWidth
+            />
+          )}
+        />
+        <Autocomplete
+          onChange={(event, value) => {
+            setReferredServices({
+              ...referredServices,
+              referredSeriviceFour: value
+            });
+          }}
+          id=''
+          options={['poo', 'wee', 'blue']}
+          style={{ width: 300 }}
+          renderInput={params => (
+            <TextField
+              {...params}
+              label='Find the right service.'
+              variant='outlined'
+              fullWidth
+            />
+          )}
+        />
+        <Autocomplete
+          onChange={(event, value) => {
+            setReferredServices({
+              ...referredServices,
+              referredSeriviceFive: value
+            });
+          }}
+          id=''
+          options={['poo', 'wee', 'blue']}
+          style={{ width: 300 }}
+          renderInput={params => (
+            <TextField
+              {...params}
+              label='Find the right service.'
+              variant='outlined'
+              fullWidth
+            />
+          )}
+        />
 
         <Button
           type='submit'
@@ -112,7 +181,7 @@ const ReferralForm = () => {
         >
           NEXT
         </Button>
-      </FormControl>
+      </form>
     </ThemeProvider>
   );
 };
