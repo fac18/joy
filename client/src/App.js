@@ -59,7 +59,7 @@ const App = () => {
           path='/wellbeingAssessment/:id'
           render={() => <WellbeingAssessment />}
         />
-        <Route path='/referralForm/:id' render={() => <ReferralForm />} />
+        <Route path='/referralForm' render={() => <ReferralForm />} />
       </Switch>
     </Router>
   );

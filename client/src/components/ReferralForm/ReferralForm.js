@@ -4,13 +4,12 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import theme from '../../theme';
 import NavBar from '../NavBar/NavBar';
 import Typography from '@material-ui/core/Typography';
-import './WellbeingAssessment.css';
 import Button from '@material-ui/core/Button';
 import { ReactComponent as InfoIcon } from '../../assets/info.svg';
-import WellbeingAssessmentModal from '../WellbeingAssessment/WellbeingAssessmentModal.js';
 import { useParams } from 'react-router-dom';
 
 const useStyles = makeStyles({
@@ -48,13 +47,13 @@ const ReferralForm = () => {
 
   const onSubmit = (data, e) => {
     console.log('This is the data inside onSubmit', data);
-    data.client_id = id;
-    const options = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    };
-    fetch('/postreferralform', options).then(response => console.log(response));
+    // data.client_id = id;
+    // const options = {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(data)
+    // };
+    // fetch('/postreferralform', options).then(response => console.log(response));
   };
 
   return (
@@ -62,24 +61,23 @@ const ReferralForm = () => {
       <NavBar />
       <Typography className={classes.mainTitle}>Referral Form:</Typography>
       <Typography className={classes.clientName}>Jim Brown, 64</Typography>
-      <Typography className={classes.startQ}></Typography>
-      <Autocomplete
-        id='combo-box-demo'
-        options={top100Films}
-        getOptionLabel={option => option.title}
-        style={{ width: 300 }}
-        ref={register}
-        renderInput={params => (
-          <TextField
-            {...params}
-            label='Combo box'
-            variant='outlined'
-            fullWidth
-          />
-        )}
-      />
-      ;
+      <Typography className={classes.startQ}></Typography>;
       <form onSubmit={handleSubmit(onSubmit)} className='formWellbeing'>
+        <Autocomplete
+          id=''
+          options={['poo', 'wee', 'blue']}
+          // getOptionLabel={option => option.title}
+          style={{ width: 300 }}
+          ref={register}
+          renderInput={params => (
+            <TextField
+              {...params}
+              label='Find the right service.'
+              variant='outlined'
+              fullWidth
+            />
+          )}
+        />
         <label>
           1
           <input
