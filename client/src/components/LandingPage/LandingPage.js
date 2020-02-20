@@ -92,18 +92,10 @@ const useStyles = makeStyles({
   }
 });
 
-<<<<<<< HEAD
-const LandingPage = (props) => {
-  
-  const [show, setShow] = React.useState(false);
-  const showModal = () => setShow(true);
-  const hideModal = () => setShow(false);
-=======
 const LandingPage = () => {
   // const [show, setShow] = React.useState(false);
   // const showModal = () => setShow(true);
   // const hideModal = () => setShow(false);
->>>>>>> a79314a1ea1c50185a9473e872c428329c8b77e0
 
   const classes = useStyles();
 
