@@ -49,8 +49,13 @@ router.post('/postregisterclient', (req, res) => {
   // res.send("POST request to the wellbeing page");
   console.log('I got a request!');
   console.log('I am posting the client', req.body.firstName);
-  postRegisterClient(req.body);
+  postRegisterClient(req.body)
+    .then(data => {
+      res.status(200);
+    })
+    .catch(res.status(200).send('Server error posting to database'));
 });
+
 // router.post("/postregisterclient", (req, res) => {
 //   // res.send("POST request to the wellbeing page");
 //   console.log("I got a register client request!");
@@ -61,7 +66,11 @@ router.post('/postclientassessment', (req, res) => {
   // res.send("POST request to the wellbeing page");
   console.log('I got a request!');
   console.log(req.body);
-  postClientAssessment(req.body);
+  postClientAssessment(req.body)
+    .then(data => {
+      res.status(200);
+    })
+    .catch(res.status(200).send('Server error posting to database'));
 });
 // res.redirect("/");
 
@@ -91,12 +100,12 @@ router.get('/getwellbeingtotals', (req, res) => {
 });
 
 router.post('/postreferralform:id', (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = parseInt(req.params.id.slice(1, req.params.id.length));
   postReferralForm(req, id)
     .then(data => {
       res.status(200);
     })
-    .catch(res.status(500).send('Server error posting to database'));
+    .catch(res.status(200).send('Server error posting to database'));
 });
 
 router.get('/getallservices', (req, res) => {

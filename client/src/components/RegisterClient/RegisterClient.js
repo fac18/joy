@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const initialState = {
   firstName: '',
@@ -19,7 +20,7 @@ function reducer(state, { field, value }) {
 
 const RegisterClient = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  const history = useHistory();
   // if(state) {
   //     console.log(state);
   // }
@@ -37,7 +38,12 @@ const RegisterClient = () => {
       },
       body: JSON.stringify(state)
     })
-      .then(result => result.json())
+      // .then(result => result.json())
+      .then(result => {
+        if (result.status === 200) {
+          history.push(`/searchClients`);
+        } else console.log(result);
+      })
       .then(info => {
         console.log(info);
       });

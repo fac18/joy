@@ -61,15 +61,14 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    alert('submitting form');
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(referredServices)
     };
-    fetch(`/postreferralform${id}`, options).then(response => {
+    fetch(`/postreferralform:${id}`, options).then(response => {
       if (response.status === 200) {
-        history.push(`/clientProfile${id}`);
+        history.push(`/clientProfile/${id}`);
       } else console.log(response);
     });
   };

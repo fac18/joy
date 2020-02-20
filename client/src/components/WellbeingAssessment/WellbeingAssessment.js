@@ -9,7 +9,7 @@ import './WellbeingAssessment.css';
 import Button from '@material-ui/core/Button';
 import { ReactComponent as InfoIcon } from '../../assets/info.svg';
 import WellbeingAssessmentModal from '../WellbeingAssessment/WellbeingAssessmentModal.js';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import buildClientObject from '../../utils/buildClientObject';
 
 const useStyles = makeStyles({
@@ -46,6 +46,7 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
   const { register, handleSubmit, errors } = useForm();
   const classes = useStyles();
   let { id } = useParams();
+  const history = useHistory();
 
   // useEffect(() => {
   //   getRequest(`/getclient:${id}`).then(res => {
@@ -64,9 +65,11 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     };
-    fetch('/postclientassessment', options).then(response =>
-      console.log(response)
-    );
+    fetch('/postclientassessment', options).then(result => {
+      if (result.status === 200) {
+        history.push(`/clientProfile${id}`);
+      } else console.log(result);
+    });
   };
 
   console.log(errors);
