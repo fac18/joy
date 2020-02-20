@@ -21,6 +21,10 @@ const useStyles = makeStyles({
   },
   chart: {
     margin: "0 auto"
+  },
+  emphasis: {
+    fontSize: 40,
+    color: "#E71F67"
   }
 });
 
@@ -35,20 +39,19 @@ const TotalServices = ({ services, setServices }) => {
 
   return (
     <Card className={classes.card}>
-      <Typography variant="h5" component="h5">
-        Total No. of Services
-      </Typography>
-      <img className={classes.arrow} alt="profile" src={upArrow} />
+      <p variant="h6" component="h6">
+        You currently have
+      </p>
       {/* if services and services.length are TRUTHY, then render the output because services INITIALIZES AS AN EMPTY ARRAY */}
       {services && services.length && (
-        <h3>
-          You currently have:
-          <span className={classes.emphasis}>
-            {" "}
-            {services[0].count} services!
-          </span>
-        </h3>
+        <Typography variant="h2" component="h2" className={classes.emphasis}>
+          {" "}
+          {services[0].count}{" "}
+        </Typography>
       )}
+      <Typography variant="h2" component="h2" className={classes.emphasis}>
+        Services
+      </Typography>
     </Card>
   );
 };
