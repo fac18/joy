@@ -17,33 +17,33 @@ const useStyles = makeStyles({
   mainTitle: {
     fontSize: '35px',
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   clientName: {
     fontSize: '35px',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   startQ: {
     fontSize: '20px',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   pinkButton: {
     background: '#E71F67',
     color: 'white',
     '&:hover': {
-      backgroundColor: '#80902F'
+      backgroundColor: '#80902F',
     },
     padding: '10px 30px',
     marginLeft: '11rem',
     marginTop: '2rem',
-    marginBottom: '2rem'
+    marginBottom: '2rem',
   },
   form: {
     margin: 'auto',
     marginTop: '4em',
     display: 'flex',
-    flexDirection: 'column'
-  }
+    flexDirection: 'column',
+  },
 });
 
 const ReferralForm = ({ singleClient, setSingleClient }) => {
@@ -64,7 +64,7 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(referredServices)
+      body: JSON.stringify(referredServices),
     };
     fetch(`/postreferralform${id}`, options).then(response =>
       console.log(response)
@@ -95,28 +95,28 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
           onChange={(event, value) => {
             setReferredServices({
               ...referredServices,
-              referredServiceOne: value
+              referredServiceOne: value,
             });
           }}
-          id=''
+          id=""
           getOptionLabel={option => option.services_name}
           options={services}
           style={{ width: 300, margin: 'auto', padding: '5em' }}
           renderInput={params => (
             <TextField
               {...params}
-              label='Find the right service.'
-              variant='outlined'
+              label="Find the right service."
+              variant="outlined"
               fullWidth
             />
           )}
         />
 
         <Button
-          type='submit'
+          type="submit"
           className={classes.pinkButton}
-          variant='container'
-          size='medium'
+          variant="container"
+          size="medium"
           style={{ margin: 'auto' }}
         >
           SUBMIT

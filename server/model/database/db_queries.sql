@@ -41,6 +41,8 @@ WHERE client_id = 1
 ORDER BY input_date_ucla3 DESC
 LIMIT 1;
 
+--- Query wellbeing assessment
+
 -- Query 5a
 -- Calculate age of ALL clients
 SELECT *, current_date, 
@@ -68,6 +70,7 @@ WHERE input_date_referral BETWEEN '2019-01-01' AND current_date
 GROUP BY services_id
 ORDER BY SUM(no_of_services_attended) DESC
 LIMIT 10;
+
 
 --- Query 5c 
 --- Calculate the current services referred to 

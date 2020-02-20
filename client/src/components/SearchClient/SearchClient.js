@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     height: '110px',
     display: 'flex',
     borderRadius: '10px',
-    marginBottom: '20px'
+    marginBottom: '20px',
   },
   accountIcon: {
     color: '#C4C4C4',
@@ -29,9 +29,9 @@ const useStyles = makeStyles({
     width: '100px',
     height: '100%',
     justifyContent: 'flex-start',
-    alignContent: 'center'
+    alignContent: 'center',
   },
-  accountInfo: {}
+  accountInfo: {},
 });
 
 // Automatically sends a request to the server asking for a list of all the clients
@@ -62,41 +62,41 @@ const SearchClient = ({ clients, setClients }) => {
       <NavBar />
       <form>
         <input
-          type='text'
-          id='search'
-          name='search'
+          type="text"
+          id="search"
+          name="search"
           required
           value={searchInputFirstName}
-          aria-label='search bar'
-          placeholder='Search by first name'
+          aria-label="search bar"
+          placeholder="Search by first name"
           onChange={e => setSearchInputFirstName(e.target.value)}
         />
       </form>
       <form>
         <input
-          type='text'
-          id='search'
-          name='search'
+          type="text"
+          id="search"
+          name="search"
           required
           value={searchInputLastName}
-          aria-label='search bar'
-          placeholder='Search by surname'
+          aria-label="search bar"
+          placeholder="Search by surname"
           onChange={e => setSearchInputLastName(e.target.value)}
         />
       </form>{' '}
       <form>
         <input
-          type='text'
-          id='search'
-          name='search'
+          type="text"
+          id="search"
+          name="search"
           required
           value={searchInputDOB}
-          aria-label='search bar'
-          placeholder='Search by date of birth'
+          aria-label="search bar"
+          placeholder="Search by date of birth"
           onChange={e => setSearchInputDOB(e.target.value)}
         />
       </form>
-      <div className='App'>
+      <div className="App">
         <br />
         <p>
           <b>You have {clients.length} clients:</b>

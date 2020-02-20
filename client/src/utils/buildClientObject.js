@@ -18,7 +18,7 @@ const buildClientObject = function(someone) {
       : 'No wellbeing assessments carried out',
     referredServices: someone[3].length
       ? someone[3]
-      : 'No current services referred'
+      : 'No current services referred',
   };
 };
 

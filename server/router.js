@@ -1,7 +1,7 @@
-const express = require('express')
-const router = express.Router()
-const path = require('path')
-const bodyParser = require('body-parser')
+const express = require('express');
+const router = express.Router();
+const path = require('path');
+const bodyParser = require('body-parser');
 
 const {
   getAllClients,
@@ -13,13 +13,14 @@ const {
   postRegisterClient,
   getTotalClients,
   getTotalServices,
-  getWellbeingTotals,
-} = require('./model/queries/getData.js')
+
+  getWellbeingTotals
+} = require('./model/queries/getData.js');
 
 const {
   postClientAssessment,
-  postReferralForm,
-} = require('./model/queries/postData.js')
+  postReferralForm
+} = require('./model/queries/postData.js');
 
 // const  = require('./model/queries/postData');
 // When the getallclients route is called, calls the getdata function
@@ -27,12 +28,12 @@ const {
 
 router.get('/getallclients', (req, res) => {
   getAllClients().then(data => {
-    res.json(data)
-  })
-})
+    res.json(data);
+  });
+});
 
 router.get('/getclient:id', (req, res) => {
-  const id = parseInt(req.params.id.slice(1, req.params.id.length))
+  const id = parseInt(req.params.id.slice(1, req.params.id.length));
   Promise.all([
     getClient(id),
     getInitialAssessment(id),
@@ -40,17 +41,17 @@ router.get('/getclient:id', (req, res) => {
     getClientServices(id),
   ]).then(data => {
     // console.log('I am the res.json', res.json(data));
-    console.log('I am not res.jsoned', data)
-    return res.json(data)
-  })
-})
+    console.log('I am not res.jsoned', data);
+    return res.json(data);
+  });
+});
 
 router.post('/postregisterclient', (req, res) => {
   // res.send("POST request to the wellbeing page");
-  console.log('I got a request!')
-  console.log(req.body)
-  postRegisterClient(req.body)
-})
+  console.log('I got a request!');
+  console.log(req.body);
+  postRegisterClient(req.body);
+});
 // router.post("/postregisterclient", (req, res) => {
 //   // res.send("POST request to the wellbeing page");
 //   console.log("I got a register client request!");
@@ -59,10 +60,10 @@ router.post('/postregisterclient', (req, res) => {
 // res.redirect("/");
 router.post('/postclientassessment', (req, res) => {
   // res.send("POST request to the wellbeing page");
-  console.log('I got a request!')
-  console.log(req.body)
-  postClientAssessment(req.body)
-})
+  console.log('I got a request!');
+  console.log(req.body);
+  postClientAssessment(req.body);
+});
 // res.redirect("/");
 
 // Promise.all([postClientAssessment]).then(data =>
@@ -74,32 +75,32 @@ router.post('/postclientassessment', (req, res) => {
 
 router.get('/gettotalclients', (req, res) => {
   getTotalClients().then(data => {
-    res.json(data)
-  })
-})
+    res.json(data);
+  });
+});
 
 router.get('/gettotalservices', (req, res) => {
   getTotalServices().then(data => {
-    res.json(data)
-  })
-})
+    res.json(data);
+  });
+});
 
 router.post('/postreferralform:id', (req, res) => {
-  const id = parseInt(req.params.id)
-  postReferralForm(req, id)
-})
+  const id = parseInt(req.params.id);
+  postReferralForm(req, id);
+});
 
 router.get('/getwellbeingtotals', (req, res) => {
   getWellbeingTotals().then(data => {
-    res.json(data)
-  })
-})
+    res.json(data);
+  });
+});
 
 router.get('/getallservices', (req, res) => {
   getAllServices().then(data => {
-    res.json(data)
-  })
-})
+    res.json(data);
+  });
+});
 
 // router.get('*', (req, res) => {
 //   res.sendFile(path.join(__dirname + '/../client/build'));
@@ -109,6 +110,7 @@ router.get('/getallservices', (req, res) => {
 //   res.redirect('/');
 // });
 
+
 // router.get('*', function (req, res) {
 //   res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'))
 // })
@@ -117,4 +119,5 @@ router.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '../client/build/index.html'))
 })
 
-module.exports = router
+
+module.exports = router;

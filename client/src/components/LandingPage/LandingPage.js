@@ -1,98 +1,99 @@
-import React from "react";
-import { ReactComponent as LandingPageSvg } from "../../assets/landing-page.svg";
-import { ReactComponent as LogoSvg } from "../../assets/logo.svg";
-import { makeStyles } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/core/styles";
-import theme from "../../theme";
+import React from 'react';
+import { ReactComponent as LandingPageSvg } from '../../assets/landing-page.svg';
+import { ReactComponent as LogoSvg } from '../../assets/logo.svg';
+import { makeStyles } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
+// import { history } from 'react-router-dom'
+import theme from '../../theme';
 // import LoginModal from "../LoginPage/LoginModal";
-import Button from "@material-ui/core/Button";
-import { Typography } from "@material-ui/core";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
-import clsx from "clsx";
-import IconButton from "@material-ui/core/IconButton";
-import FilledInput from "@material-ui/core/FilledInput";
-import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControl from "@material-ui/core/FormControl";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+import Button from '@material-ui/core/Button';
+import { Typography } from '@material-ui/core';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+import clsx from 'clsx';
+import IconButton from '@material-ui/core/IconButton';
+import FilledInput from '@material-ui/core/FilledInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
     // display: "flex",
 
-    flexWrap: "wrap",
-    margin: "0 auto"
+    flexWrap: 'wrap',
+    margin: '0 auto',
   },
   margin: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
   withoutLabel: {
-    marginTop: theme.spacing(3)
+    marginTop: theme.spacing(3),
   },
   textField: {
-    width: 250
+    width: 250,
   },
   logo: {
-    padding: "2rem 1rem 1rem 1rem",
-    height: "70px"
+    padding: '2rem 1rem 1rem 1rem',
+    height: '70px',
   },
   pinkButton: {
-    background: "#E71F67",
-    color: "white",
-    "&:hover": {
-      backgroundColor: "#a11548"
+    background: '#E71F67',
+    color: 'white',
+    '&:hover': {
+      backgroundColor: '#a11548',
     },
-    padding: "0.5rem",
-    margin: "2rem auto",
-    fontWeight: "bold",
-    width: "200px"
+    padding: '0.5rem',
+    margin: '2rem auto',
+    fontWeight: 'bold',
+    width: '200px',
   },
   greenButton: {
-    background: "#A0B43B",
-    color: "white",
-    "&:hover": {
-      backgroundColor: "#707E29"
+    background: '#A0B43B',
+    color: 'white',
+    '&:hover': {
+      backgroundColor: '#707E29',
     },
-    padding: "0.5rem",
-    margin: "0.5rem auto",
-    fontWeight: "bold",
-    width: "200px",
-    bottom: "1rem"
+    padding: '0.5rem',
+    margin: '0.5rem auto',
+    fontWeight: 'bold',
+    width: '200px',
+    bottom: '1rem',
   },
   modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
+    border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center"
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   logo: {
-    height: "50px",
-    marginTop: "2rem"
+    height: '50px',
+    marginTop: '2rem',
   },
   mainLink: {
-    textDecoration: "none"
+    textDecoration: 'none',
   },
   userIcon: {
-    color: "rgba(0, 0, 0, 0.54)"
-  }
+    color: 'rgba(0, 0, 0, 0.54)',
+  },
 });
 
-const LandingPage = () => {
+const LandingPage = ({ history }) => {
   // const [show, setShow] = React.useState(false);
   // const showModal = () => setShow(true);
   // const hideModal = () => setShow(false);
@@ -109,15 +110,29 @@ const LandingPage = () => {
     setOpen(false);
   };
   const [values, setValues] = React.useState({
-    amount: "",
-    password: "",
-    weight: "",
-    weightRange: "",
-    showPassword: false
+    amount: '',
+    password: '',
+    weight: '',
+    weightRange: '',
+    showPassword: false,
   });
 
-  const handleChange = prop => event => {
-    setValues({ ...values, [prop]: event.target.value });
+  const dummyLogin = {
+    username: "joy",
+    password: "joy"
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if(dummyLogin.username === values.username && dummyLogin.password === values.password) {
+    history.push('/dashboard');
+    } else {
+      alert('Please enter the correct login details!')
+    }
+  }
+
+  const handleChange = fieldName => event => {
+    setValues({ ...values, [fieldName]: event.target.value });
   };
 
   const handleClickShowPassword = () => {
@@ -159,7 +174,7 @@ const LandingPage = () => {
             closeAfterTransition
             BackdropComponent={Backdrop}
             BackdropProps={{
-              timeout: 500
+              timeout: 500,
             }}
           >
             <Fade in={open}>
@@ -176,8 +191,8 @@ const LandingPage = () => {
                     </InputLabel>
                     <FilledInput
                       id="filled-adornment-username"
-                      value={values.weight}
-                      onChange={handleChange("weight")}
+                      value={values.username}
+                      onChange={handleChange('username')}
                       endAdornment={
                         <InputAdornment position="end">
                           <AccountCircle className={classes.userIcon} />
@@ -185,7 +200,7 @@ const LandingPage = () => {
                       }
                       aria-describedby="filled-weight-helper-text"
                       inputProps={{
-                        "aria-label": "weight"
+                        'aria-label': 'weight',
                       }}
                     />
                   </FormControl>
@@ -199,9 +214,9 @@ const LandingPage = () => {
                       </InputLabel>
                       <FilledInput
                         id="filled-adornment-password"
-                        type={values.showPassword ? "text" : "password"}
+                        type={values.showPassword ? 'text' : 'password'}
                         value={values.password}
-                        onChange={handleChange("password")}
+                        onChange={handleChange('password')}
                         endAdornment={
                           <InputAdornment position="end">
                             <IconButton
@@ -223,16 +238,14 @@ const LandingPage = () => {
                   </div>
                 </div>
 
-                <Link className={classes.mainLink} to="/dashboard">
                   <Button
                     className={classes.pinkButton}
                     variant="container"
                     size="medium"
-                    // onClick={event => setLogin(event.target.value)}
+                    onClick={handleSubmit}
                   >
                     Login
                   </Button>
-                </Link>
                 <Button
                   className={classes.greenButton}
                   variant="container"
