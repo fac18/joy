@@ -48,10 +48,7 @@ const ReferralForm = () => {
   });
 
   const handleChange = name => event => {
-    setData({
-      ...state,
-      [name]: event.target.value
-    });
+    setData(event.target.value);
   };
 
   const classes = useStyles();
@@ -78,7 +75,12 @@ const ReferralForm = () => {
         <Autocomplete
           id=''
           options={['poo', 'wee', 'blue']}
-          value='poo'
+          value={data}
+          onChange={handleChange()}
+          // inputProps={{
+          //   name: 'age',
+          //   id: 'age-native-simple'
+          // }}
           // getOptionLabel={option => option.title}
           style={{ width: 300 }}
           ref={register}
@@ -90,12 +92,6 @@ const ReferralForm = () => {
               fullWidth
             />
           )}
-        />
-        <input
-          name='email'
-          placeholder='bluebill1049@hotmail.com'
-          type='email'
-          ref={register}
         />
         <label>
           1
