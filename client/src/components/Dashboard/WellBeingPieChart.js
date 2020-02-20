@@ -20,6 +20,9 @@ const useStyles = makeStyles({
   },
   chart: {
     margin: "0 auto"
+  },
+  header: {
+    fontWeight: "bold"
   }
 });
 
@@ -36,13 +39,7 @@ const WellbeingPieGraph = ({ wellbeingTotals, setWellbeingTotals }) => {
     console.log("pooh");
     return null;
   } else {
-    console.log(
-      "I am wellbeing TOTAL!",
-      wellbeingTotals,
-      wellbeingTotals[0].lonely_8_9,
-      wellbeingTotals[0].ok_5_6_7,
-      wellbeingTotals[0].not_lonely_3_4
-    );
+    console.log("Pie chart wellbeingTotals:", wellbeingTotals);
   }
 
   wellbeingTotals = {
@@ -57,9 +54,9 @@ const WellbeingPieGraph = ({ wellbeingTotals, setWellbeingTotals }) => {
         type: "pie"
       },
       labels: [
-        `${wellbeingTotals[0].lonely_8_9} at HIGH risk (level 8-9)`,
-        `${wellbeingTotals[0].ok_5_6_7} at MEDIUM risk (level 5-7)`,
-        `${wellbeingTotals[0].not_lonely_3_4} at LOW risk (level 3-4)`
+        `${wellbeingTotals[0].lonely_8_9} clients at HIGH risk (UCLA3 level 8-9)`,
+        `${wellbeingTotals[0].ok_5_6_7} clients at MEDIUM risk (UCLA3 level 5-7)`,
+        `${wellbeingTotals[0].not_lonely_3_4} clients at LOW risk (UCLA3 level 3-4)`
       ],
       colors: ["rgb(255, 69, 96)", "rgb(0, 227, 150)", "rgb(0, 143, 251)"],
       fill: {
@@ -89,7 +86,7 @@ const WellbeingPieGraph = ({ wellbeingTotals, setWellbeingTotals }) => {
 
   return (
     <Card className={classes.card}>
-      <Typography variant="h5" component="h5">
+      <Typography className={classes.header} variant="h5" component="h5">
         Overall UCLA3 Wellbeing Score
       </Typography>
       <Chart
