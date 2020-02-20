@@ -115,7 +115,7 @@ const LandingPage = () => {
     weightRange: '',
     showPassword: false,
   });
-
+console.log(values)
   const handleChange = prop => event => {
     setValues({ ...values, [prop]: event.target.value });
   };
