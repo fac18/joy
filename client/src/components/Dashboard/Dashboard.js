@@ -1,16 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ServicesGraph from "./ServicesGraph";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import upArrow from "../../assets/up-arrow.svg";
-import { Link } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../../theme";
-import getRequest from "../../utils/getData";
+import LoadingPage from "../LoadingPage/LoadingPage";
+import TotalsChart from "./TotalsChart";
 import WellbeingRisk from "./WellbeingRiskGraph";
 import WellBeingPieChart from "./WellBeingPieChart";
-import LoadingPage from "../LoadingPage/LoadingPage";
 
 const useStyles = makeStyles({
   root: {
@@ -30,10 +28,6 @@ const useStyles = makeStyles({
     flexDirection: "row",
     fontSize: 20
   },
-  arrow: {
-    width: 130,
-    padding: 10
-  },
   emphasis: {
     fontSize: 40,
     color: "#E71F67"
@@ -41,46 +35,34 @@ const useStyles = makeStyles({
 });
 
 const Dashboard = ({
-  overallWellbeing,
-  clients,
-  setClients,
+  totalClients,
+  setTotalClients,
+  totalServices,
+  setTotalServices,
   wellbeingTotals,
   setWellbeingTotals
 }) => {
-  useEffect(() => {
-    getRequest("/getallclients").then(res => {
-      setClients(res);
-    });
-  }, [setClients]);
-
   const classes = useStyles();
 
-  if (clients.length == 1) {
-    console.log("load");
+  if (totalClients === 1) {
     return <LoadingPage />;
   }
-  console.log("hello");
 
   return (
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
         <NavBar />
-        <br />
-        <Link to="/SearchClient"> Search for clients </Link>
         <h2 className={classes.emphasis}>My Dashboard</h2>
-        <Card className={classes.card}>
-          <img className={classes.arrow} alt="profile" src={upArrow} />
-          <h3>
-            You currently have:
-            <span className={classes.emphasis}> {clients.length} clients!</span>
-          </h3>
-        </Card>
-
+        <TotalsChart
+          totalClients={totalClients}
+          setTotalClients={setTotalClients}
+          totalServices={totalServices}
+          setTotalServices={setTotalServices}
+        />
         <WellBeingPieChart
           wellbeingTotals={wellbeingTotals}
           setWellbeingTotals={setWellbeingTotals}
         />
-
         <Card className={classes.card}>
           <WellbeingRisk />
         </Card>
