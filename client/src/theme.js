@@ -2,11 +2,17 @@ import { createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
   palette: {
+    // Pinks
     primary: {
-      main: "#E91E63"
+      main: "#E91E63",
+      light: "#eb4b85",
+      dark: "#a11548"
     },
+    // Greens
     secondary: {
-      main: "#A0B43B"
+      main: "#A0B43B",
+      light: "#b3c362",
+      dark: "#707d29"
     }
   },
   typography: {
@@ -21,7 +27,8 @@ const theme = createMuiTheme({
       "sans-serif",
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"'
+      '"Segoe UI Symbol"',
+      "Shadows Into Light Two"
     ].join(",")
   }
 });

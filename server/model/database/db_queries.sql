@@ -54,6 +54,37 @@ SELECT client_id, client_firstname, client_surname,
 FROM client
 WHERE client_id = 1;
 
+--- Query 5c 
+--- Calculate the current services referred to 
+
+SELECT * FROM services WHERE services_id =ANY(SELECT services_id FROM referrals_questionnaire WHERE client_id=1);
+
+
+-- Query 6
+-- Sort referrals by popularity between two dates (default: current_date)
+SELECT services_id, SUM(no_of_services_attended)
+FROM referrals_questionnaire
+WHERE input_date_referral BETWEEN '2019-01-01' AND current_date
+GROUP BY services_id
+ORDER BY SUM(no_of_services_attended) DESC
+LIMIT 10;
+
+--- Query 5c 
+--- Calculate the current services referred to 
+
+SELECT * FROM services WHERE services_id =ANY(SELECT services_id FROM referrals_questionnaire WHERE client_id=1);
+
+
+-- Query 6
+-- Sort referrals by popularity between two dates (default: current_date)
+SELECT services_id, SUM(no_of_services_attended)
+FROM referrals_questionnaire
+WHERE input_date_referral BETWEEN '2019-01-01' AND current_date
+GROUP BY services_id
+ORDER BY SUM(no_of_services_attended) DESC
+LIMIT 10;
+WHERE client_id = 1;
+
 -- Query 6
 -- Sort referrals by popularity between two dates (default: current_date)
 -- Note: JOIN goes after the FROM but before the WHERE
@@ -81,4 +112,3 @@ SELECT  COUNT(total_ucla3) FILTER (WHERE total_ucla3 >= 8) AS lonely_8_9,
    COUNT(total_ucla3) FILTER (WHERE total_ucla3 BETWEEN 5 AND 7) AS ok_5_6_7,
    COUNT(total_ucla3) FILTER (WHERE total_ucla3 <= 4) AS not_lonely_3_4
 FROM ucla3_questionnaire;
-
