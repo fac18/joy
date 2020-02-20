@@ -16,7 +16,11 @@ const {
   getWellbeingTotals,
   getServicesPopularity,
 } = require('./model/queries/getData.js');
-const postClientAssessment = require('./model/queries/postData.js');
+
+const {
+  postClientAssessment,
+  postReferralForm,
+} = require('./model/queries/postData.js');
 
 // const  = require('./model/queries/postData');
 // When the getallclients route is called, calls the getdata function
@@ -81,6 +85,11 @@ router.get('/gettotalservices', (req, res) => {
   });
 });
 
+router.post('/postreferralform:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  postReferralForm(req, id);
+});
+
 router.get('/getwellbeingtotals', (req, res) => {
   getWellbeingTotals().then(data => {
     res.json(data);
@@ -91,6 +100,28 @@ router.get('/getservicespopularity', (req, res) => {
   getServicesPopularity().then(data => {
     res.json(data);
   });
+});
+
+router.get('/getallservices', (req, res) => {
+  getAllServices().then(data => {
+    res.json(data);
+  });
+});
+
+// router.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname + '/../client/build'));
+// });
+
+// router.get('*', function(req, res) {
+//   res.redirect('/');
+// });
+
+// router.get('*', function (req, res) {
+//   res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'))
+// })
+
+router.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '../client/build/index.html'));
 });
 
 module.exports = router;

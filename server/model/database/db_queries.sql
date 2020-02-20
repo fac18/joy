@@ -75,6 +75,7 @@ GROUP BY services_id
 ORDER BY SUM(no_of_services_attended) DESC
 LIMIT 10;
 
+
 --- Query 5c 
 --- Calculate the current services referred to 
 

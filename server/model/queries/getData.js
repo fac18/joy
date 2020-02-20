@@ -54,6 +54,18 @@ const getClientServices = id => {
     });
 };
 
+// const getClientAge = id => {
+//   console.log('I am inside getclientage')
+//   return dbConnection
+//     .query(
+//       `SELECT client_id, client_firstname, client_surname, EXTRACT(YEAR FROM age(current_date, client_dob)) AS current_age FROM client WHERE client_id=${id});`
+//     )
+//     .then(data => {
+//       console.log('I am the data in the getclientage request', data.rows)
+//       return data.rows
+//     })
+// };
+
 // async function getAllAssessments() {
 //   console.log('starting async query');
 //   const result = await dbConnection.query(`SELECT ucla3_id, input_date_ucla3 AS initial_assessment_date, total_ucla3, client_id
@@ -115,16 +127,8 @@ LIMIT 1;`
 //     .then(data => data.rows);
 // };
 
-const getService = id => {
-  return dbConnection
-    .query('SELECT service_name, service_provider WHERE service_id=$1', [id])
-    .then(data => data.rows);
-};
-
-const getAssessment = id => {
-  return dbConnection
-    .query('SELECT service_name, service_provider WHERE service_id=$1', [id])
-    .then(data => data.rows);
+const getAllServices = () => {
+  return dbConnection.query('SELECT * FROM services').then(data => data.rows);
 };
 
 const getTotalClients = () => {
@@ -167,7 +171,6 @@ const getServicesPopularity = () => {
 
 module.exports = {
   getClient,
-  getService,
   getAllClients,
   getCurrentAssessment,
   getInitialAssessment,
@@ -176,4 +179,5 @@ module.exports = {
   getTotalServices,
   getWellbeingTotals,
   getServicesPopularity,
+  getAllServices,
 };

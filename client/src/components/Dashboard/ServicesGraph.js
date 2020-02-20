@@ -7,7 +7,7 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  ChartLabel
+  ChartLabel,
 } from 'react-vis';
 
 const ServicesGraph = () => {
@@ -25,29 +25,29 @@ const ServicesGraph = () => {
     { x: 5, y: 'Modern Dance' },
     { x: 3, y: 'Alpha Course' },
     { x: 0, y: 'Mens Cooking' },
-    { x: 4, y: 'Information and Advice' }
+    { x: 4, y: 'Information and Advice' },
   ];
   return (
     <XYPlot
       style={{ margin: 'auto', backgroundColor: 'white' }}
-      yType='ordinal'
+      yType="ordinal"
       height={500}
       width={450}
       margin={{ left: 200, bottom: 70 }}
     >
       <VerticalGridLines />
       <HorizontalGridLines />
-      <XAxis title='% Wellbeing Increase' />
+      <XAxis title="% Wellbeing Increase" />
       <YAxis />
       <ChartLabel
-        text='% Wellbeing Increase'
+        text="% Wellbeing Increase"
         xPercent={0.6}
         yPercent={0.55}
         style={{
-          textAnchor: 'start'
+          textAnchor: 'start',
         }}
       />
-      <HorizontalBarSeries color='#2F586D' data={data} />
+      <HorizontalBarSeries color="#2F586D" data={data} />
     </XYPlot>
   );
 };

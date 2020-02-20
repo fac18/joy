@@ -3,9 +3,7 @@ import React from 'react';
 import '../../../src/App.css';
 
 const LoadingPage = () => {
-    return (
-        <LoadingLogo className="loading"/>
-    )
-}
+  return <LoadingLogo className="loading" />;
+};
 
 export default LoadingPage;

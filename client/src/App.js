@@ -7,6 +7,7 @@ import SearchClient from '../src/components/SearchClient/SearchClient';
 import ClientProfile from '../src/components/ClientProfile/ClientProfile';
 import WellbeingAssessment from '../src/components/WellbeingAssessment/WellbeingAssessment';
 import RegisterClient from './components/RegisterClient/RegisterClient';
+import ReferralForm from './components/ReferralForm/ReferralForm';
 
 const App = () => {
   const [clients, setClients] = React.useState([{}]);
@@ -60,8 +61,25 @@ const App = () => {
             />
           )}
         />
+        <Route
+          path="/wellbeingAssessment/:id"
+          render={() => (
+            <WellbeingAssessment
+              singleClient={singleClient}
+              setSingleClient={setSingleClient}
+            />
+          )}
+        />
+        <Route
+          path="/referralForm/:id"
+          render={() => (
+            <ReferralForm
+              singleClient={singleClient}
+              setSingleClient={setSingleClient}
+            />
+          )}
+        />
       </Switch>
-      <Route path="/wellbeingAssessment" component={WellbeingAssessment} />
     </Router>
   );
 };
