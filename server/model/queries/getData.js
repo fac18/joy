@@ -159,6 +159,16 @@ const getWellbeingTotals = () => {
     });
 };
 
+const getServicesPopularity = () => {
+  return dbConnection
+    .query(
+      "SELECT services.services_name AS service_name, SUM(no_of_services_attended) FROM referrals_questionnaire JOIN services ON services.services_id = referrals_questionnaire.services_id WHERE input_date_referral BETWEEN '2019-01-01' AND current_date GROUP BY referrals_questionnaire.services_id, services.services_name ORDER BY SUM(no_of_services_attended) DESC LIMIT 5"
+    )
+    .then(data => {
+      return data.rows;
+    });
+};
+
 module.exports = {
   getClient,
   getAllClients,
@@ -168,5 +178,6 @@ module.exports = {
   getTotalClients,
   getTotalServices,
   getWellbeingTotals,
+  getServicesPopularity,
   getAllServices,
 };

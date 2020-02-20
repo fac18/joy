@@ -13,13 +13,13 @@ const {
   postRegisterClient,
   getTotalClients,
   getTotalServices,
-
-  getWellbeingTotals
+  getWellbeingTotals,
+  getServicesPopularity,
 } = require('./model/queries/getData.js');
 
 const {
   postClientAssessment,
-  postReferralForm
+  postReferralForm,
 } = require('./model/queries/postData.js');
 
 // const  = require('./model/queries/postData');
@@ -96,6 +96,12 @@ router.get('/getwellbeingtotals', (req, res) => {
   });
 });
 
+router.get('/getservicespopularity', (req, res) => {
+  getServicesPopularity().then(data => {
+    res.json(data);
+  });
+});
+
 router.get('/getallservices', (req, res) => {
   getAllServices().then(data => {
     res.json(data);
@@ -110,14 +116,12 @@ router.get('/getallservices', (req, res) => {
 //   res.redirect('/');
 // });
 
-
 // router.get('*', function (req, res) {
 //   res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'))
 // })
 
 router.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '../client/build/index.html'))
-})
-
+  res.sendFile(path.join(__dirname + '../client/build/index.html'));
+});
 
 module.exports = router;
