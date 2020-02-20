@@ -12,7 +12,7 @@ const getAllClients = () => {
       console.log('I am the data in the getdata function', data.rows)
       return data.rows
     })
-};
+}
 
 const getClient = id => {
   return dbConnection
@@ -23,7 +23,7 @@ const getClient = id => {
       console.log('I am the data in the getclient request', data.rows)
       return data.rows
     })
-};
+}
 
 const getInitialAssessment = id => {
   return dbConnection
@@ -41,7 +41,7 @@ LIMIT 1;`
       )
       return data.rows
     })
-};
+}
 
 const getClientServices = id => {
   return dbConnection
@@ -52,7 +52,7 @@ const getClientServices = id => {
       console.log('I am the data in the getclientservices request', data.rows)
       return data.rows
     })
-};
+}
 
 // const getClientAge = id => {
 //   console.log('I am inside getclientage')
@@ -116,7 +116,7 @@ LIMIT 1;`
       )
       return data.rows
     })
-};
+}
 
 // const getClientInfo = id => {
 //   return dbConnection
@@ -129,7 +129,25 @@ LIMIT 1;`
 
 const getAllServices = () => {
   return dbConnection.query('SELECT * FROM services').then(data => data.rows)
-};
+}
+
+const getTotalClients = () => {
+  return dbConnection
+    .query('SELECT COUNT(client_id) FROM client')
+    .then(data => {
+      console.log('getTotalClients output:', data.rows)
+      return data.rows
+    })
+}
+
+const getTotalServices = () => {
+  return dbConnection
+    .query('SELECT COUNT(services_id) FROM services')
+    .then(data => {
+      console.log('getTotalServices output:', data.rows)
+      return data.rows
+    })
+}
 
 const getWellbeingTotals = () => {
   return dbConnection
@@ -139,7 +157,7 @@ const getWellbeingTotals = () => {
     .then(data => {
       return data.rows
     })
-};
+}
 
 module.exports = {
   getClient,
@@ -147,6 +165,8 @@ module.exports = {
   getCurrentAssessment,
   getInitialAssessment,
   getClientServices,
+  getTotalClients,
+  getTotalServices,
   getWellbeingTotals,
   getAllServices
 }

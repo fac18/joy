@@ -52,7 +52,7 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
-      <List>
+      {/* <List>
         <Link className={classes.link} to="/">
           <ListItem>
             <ListItemIcon>
@@ -61,7 +61,7 @@ export default function TemporaryDrawer() {
             <ListItemText>Add New Service</ListItemText>
           </ListItem>
         </Link>
-      </List>
+      </List> */}
       <Divider />
       <List>
         <Link className={classes.link} to="/dashboard">
@@ -75,7 +75,7 @@ export default function TemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        <Link className={classes.link} to="/clientProfile">
+        <Link className={classes.link} to="/registerClient">
           <ListItem>
             <ListItemIcon>
               <PersonIcon color="primary" />

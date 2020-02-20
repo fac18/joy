@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Link, useParams, Switch, useRouteMatch } from 'react-router-dom';
-import { ThemeProvider } from '@material-ui/core/styles';
-import theme from '../../theme';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import NavBar from '../NavBar/NavBar';
-import getRequest from '../../utils/getData';
-import buildClientObject from '../../utils/buildClientObject';
-import { Route } from 'react-router-dom';
-import WellbeingAssessment from '../WellbeingAssessment/WellbeingAssessment';
+import React, { useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import { Link, useParams, Switch, useRouteMatch } from 'react-router-dom'
+import { ThemeProvider } from '@material-ui/core/styles'
+import theme from '../../theme'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import NavBar from '../NavBar/NavBar'
+import getRequest from '../../utils/getData'
+import buildClientObject from '../../utils/buildClientObject'
+import { Route } from 'react-router-dom'
+import WellbeingAssessment from '../WellbeingAssessment/WellbeingAssessment'
 
 // import Button from "../Button/Button";
 
@@ -23,17 +23,17 @@ const useStyles = makeStyles({
     maxWidth: 500,
     border: 'solid 2px #A0B43B',
     textAlign: 'center',
-    margin: '1rem'
+    margin: '1rem',
   },
   services: {
     minWidth: 350,
     maxWidth: 500,
     border: 'solid 2px #E91E63',
     margin: '1rem',
-    listStyleType: 'none'
+    listStyleType: 'none',
   },
   mainTitle: {
-    paddingTop: '2rem'
+    paddingTop: '2rem',
   },
   pos: {
     display: 'inline-block',
@@ -43,58 +43,58 @@ const useStyles = makeStyles({
     // borderRadius: "50",
     // duplicate border radius, assumed the one below is the property in use
     padding: '13px 28px',
-    borderRadius: '100px'
+    borderRadius: '100px',
   },
   greenButton: {
     background: '#A0B43B',
     color: 'white',
     '&:hover': {
-      backgroundColor: '#707E29'
+      backgroundColor: '#707E29',
     },
     padding: '10px 20px',
-    margin: '0.5rem auto'
+    margin: '0.5rem auto',
   },
   pinkButton: {
     background: '#E71F67',
     color: 'white',
     '&:hover': {
-      backgroundColor: '#80902F'
+      backgroundColor: '#a11548',
     },
     padding: '10px 20px',
-    margin: '0.5rem auto'
+    margin: '0.5rem auto',
   },
   accountIcon: {
-    color: '#C4C4C4'
+    color: '#C4C4C4',
   },
   list: {
     listStyleType: 'none',
-    margin: 'auto'
-  }
-});
+    margin: 'auto',
+  },
+})
 
 const ClientProfile = ({ singleClient, setSingleClient }) => {
-  const classes = useStyles();
-  let { id } = useParams();
-  let match = useRouteMatch();
+  const classes = useStyles()
+  let { id } = useParams()
+  let match = useRouteMatch()
 
   useEffect(() => {
     getRequest(`/getclient:${id}`).then(res => {
-      setSingleClient(buildClientObject(res));
-    });
-  }, []);
+      setSingleClient(buildClientObject(res))
+    })
+  }, [])
 
   if (singleClient === null) {
-    console.log('poo');
-    return null;
+    console.log('poo')
+    return null
   } else {
-    console.log('I am the singleClient', singleClient);
+    console.log('I am the singleClient', singleClient)
     return (
       <ThemeProvider theme={theme}>
         <NavBar />
-        <div className='App'>
-          <Typography className={classes.mainTitle} variant='h4' gutterBottom>
+        <div className="App">
+          <Typography className={classes.mainTitle} variant="h4" gutterBottom>
             <AccountCircleIcon
-              fontSize='large'
+              fontSize="large"
               className={classes.accountIcon}
             />
             {singleClient.firstname} {singleClient.surname}
@@ -103,23 +103,23 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
           <Card className={classes.root}>
             <CardContent>
               <Typography
-                variant='body1'
-                component='p'
-                color='textPrimary'
+                variant="body1"
+                component="p"
+                color="textPrimary"
                 gutterBottom
               >
                 Initial wellbeing score: <b>{singleClient.initialAssessment}</b>
               </Typography>
-              <Typography variant='h6' component='h6'>
+              <Typography variant="h6" component="h6">
                 <b>Current wellbeing score:</b>
               </Typography>
-              <Typography className={classes.pos} color='textPrimary'>
+              <Typography className={classes.pos} color="textPrimary">
                 {singleClient.currentAssessment}
               </Typography>
-              <Typography variant='body1' component='p'>
+              <Typography variant="body1" component="p">
                 Last assessment date: {singleClient.currentAssessmentDate}
               </Typography>
-              <Typography variant='h6' component='h6'>
+              <Typography variant="h6" component="h6">
                 <b>Next assessment due: 3 Apr 2020</b>
               </Typography>
             </CardContent>
@@ -131,8 +131,8 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
               <CardActions>
                 <Button
                   className={classes.greenButton}
-                  variant='container'
-                  size='medium'
+                  variant="container"
+                  size="medium"
                 >
                   Start Wellbeing Assessment
                 </Button>
@@ -141,10 +141,10 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
           </Card>
           <Card className={classes.services}>
             <CardContent>
-              <Typography variant='h6' component='h2'>
+              <Typography variant="h6" component="h2">
                 <b>Current services referred to:</b>
               </Typography>
-              <Typography color='textPrimary'>
+              <Typography color="textPrimary">
                 <ul className={classes.list}>
                   {Array.isArray(singleClient.referredServices)
                     ? singleClient.referredServices.map(service => (
@@ -158,8 +158,8 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
               <CardActions>
                 <Button
                   className={classes.pinkButton}
-                  variant='container'
-                  size='medium'
+                  variant="container"
+                  size="medium"
                 >
                   Start Services Referral
                 </Button>
@@ -168,8 +168,8 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
           </Card>
         </div>
       </ThemeProvider>
-    );
+    )
   }
-};
+}
 
-export default ClientProfile;
+export default ClientProfile
