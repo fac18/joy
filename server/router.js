@@ -13,12 +13,13 @@ const {
   getTotalClients,
   getTotalServices,
   getWellbeingTotals,
+  getServicesPopularity
 } = require('./model/queries/getData.js');
 
 const {
   postClientAssessment,
   postReferralForm,
-  postRegisterClient,
+  postRegisterClient
 } = require('./model/queries/postData.js');
 
 // const  = require('./model/queries/postData');
@@ -37,7 +38,7 @@ router.get('/getclient:id', (req, res) => {
     getClient(id),
     getInitialAssessment(id),
     getCurrentAssessment(id),
-    getClientServices(id),
+    getClientServices(id)
   ]).then(data => {
     // console.log('I am the res.json', res.json(data));
     console.log('I am not res.jsoned', data);
@@ -108,6 +109,12 @@ router.post('/postreferralform:id', (req, res) => {
     .catch(res.status(200).send('Server error posting to database'));
 });
 
+router.get('/getservicespopularity', (req, res) => {
+  getServicesPopularity().then(data => {
+    res.json(data);
+  });
+});
+
 router.get('/getallservices', (req, res) => {
   getAllServices().then(data => {
     res.json(data);
@@ -122,8 +129,12 @@ router.get('/getallservices', (req, res) => {
 //   res.redirect('/');
 // });
 
-router.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'));
+// router.get('*', function (req, res) {
+//   res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'))
+// })
+
+router.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '../client/build/index.html'));
 });
 
 module.exports = router;
