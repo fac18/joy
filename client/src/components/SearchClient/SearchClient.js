@@ -106,6 +106,10 @@ const SearchClient = ({ clients, setClients }) => {
 
   const classes = useStyles();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
