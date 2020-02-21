@@ -330,6 +330,8 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
           </div>
 
           <Button
+                    onClick={showModal}
+
             type="submit"
             className={classes.pinkButton}
             variant="container"
