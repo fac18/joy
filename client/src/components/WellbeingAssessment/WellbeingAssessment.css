@@ -39,7 +39,7 @@ label {
   color: white;
 }
 
-.turn-pink {
+.groupQuestion .turn-pink {
   background-color: #e71f67;
   color: white;
 }
@@ -78,21 +78,12 @@ label {
   border-color: #4c4;
 } */
 
-/* .radio-input {
+.radio-input {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
-} */
-
-/* .color {
-  width: 8px;
-  height: 8px;
-} */
-
-/* .radio-input:checked + label {
-  background-color: green
-} */
+}
 
 .additionalNotes {
   font-size: 20px;
@@ -124,24 +115,12 @@ textarea {
   font-size: 12px;
 }
 
-/* .formWellbeing {
-  border: 1px solid;
-  width: 400px;
-  margin-left: 480px;
-  padding: 50px;
-  padding-top: 0;
-} */
-
 .schedule-options {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   line-height: 1.5;
 }
-
-/* .schedule-options input[type="radio"] {
-  visibility: hidden;
-} */
 
 .schedule-options label {
   display: block;
@@ -151,41 +130,3 @@ textarea {
   width: 150px;
   color: black;
 }
-/* 
-@media (max-width: 600px) {
-  .formWellbeing {
-    border-style: none;
-    margin-left: 45px;
-  }
-
-  .groupQuestion label {
-    padding: 30px;
-    font-size: 20px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-  }
-}
-
-@media (max-width: 375px) {
-  fieldset .groupQuestion {
-    width: 10px;
-  }
-  .groupQuestion label {
-    padding-left: 16px;
-    padding-right: 16px;
-    font-size: 10px;
-    padding-top: 11px;
-    padding-bottom: 11px;
-  }
-  .formWellbeing {
-    border-style: none;
-    margin-left: 0px;
-    padding: 0;
-  }
-  .ratingQ {
-    padding-left: 0;
-  }
-  .lastLabel {
-    margin-right: 0;
-  }
-} */

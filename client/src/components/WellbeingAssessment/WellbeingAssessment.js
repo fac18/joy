@@ -33,7 +33,7 @@ const useStyles = makeStyles({
       backgroundColor: "#80902F"
     },
     padding: "10px 30px",
-    marginLeft: "16rem",
+    marginLeft: "14.5rem",
     marginTop: "2rem",
     marginBottom: "2rem"
   }
@@ -122,20 +122,20 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
 
   console.log(errors);
 
-  useEffect(() => {
-    if (colorOne === "turn-pink") {
-      setColorOne(null);
-    }
-  }, [
-    colorTwo,
-    colorThree,
-    colorFour,
-    colorFive,
-    colorSix,
-    colorSeven,
-    colorEight,
-    colorNine
-  ]);
+  // useEffect(() => {
+  //   if (colorOne === "turn-pink") {
+  //     setColorOne(null);
+  //   }
+  // }, [
+  //   colorTwo,
+  //   colorThree,
+  //   colorFour,
+  //   colorFive,
+  //   colorSix,
+  //   colorSeven,
+  //   colorEight,
+  //   colorNine
+  // ]);
 
   return (
     <ThemeProvider theme={theme} className={classes.parentElement}>
@@ -173,11 +173,11 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
                 type="radio"
                 required
                 value="1"
-                checked={
-                  colorOne === "turn-pink" &&
-                  colorTwo === null &&
-                  colorThree === null
-                }
+                // checked={
+                //   colorOne === "turn-pink" &&
+                //   colorTwo === null &&
+                //   colorThree === null
+                // }
                 ref={register}
                 onChange={colorOneFunc}
               />
@@ -192,11 +192,11 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
                 required
                 value="2"
                 ref={register}
-                checked={
-                  colorTwo === "turn-pink" &&
-                  colorOne === null &&
-                  colorThree === null
-                }
+                // checked={
+                //   colorTwo === "turn-pink" &&
+                //   colorOne === null &&
+                //   colorThree === null
+                // }
               />
             </label>
             <label className={colorThree}>
@@ -209,11 +209,11 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
                 required
                 value="3"
                 ref={register}
-                checked={
-                  colorThree === "turn-pink" &&
-                  colorTwo === null &&
-                  colorOne === null
-                }
+                // checked={
+                //   colorThree === "turn-pink" &&
+                //   colorTwo === null &&
+                //   colorOne === null
+                // }
               />
             </label>
           </fieldset>
