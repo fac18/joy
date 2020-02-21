@@ -92,7 +92,7 @@ const useStyles = makeStyles({
   },
 });
 
-const LandingPage = ({history}) => {
+const LandingPage = ({ history }) => {
   // const [show, setShow] = React.useState(false);
   // const showModal = () => setShow(true);
   // const hideModal = () => setShow(false);
