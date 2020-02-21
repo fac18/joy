@@ -130,9 +130,8 @@ const LandingPage = ({history}) => {
     }
   }
 
-// console.log(values)
-  const handleChange = prop => event => {
-    setValues({ ...values, [prop]: event.target.value });
+  const handleChange = fieldName => event => {
+    setValues({ ...values, [fieldName]: event.target.value });
   };
 
   const handleClickShowPassword = () => {
