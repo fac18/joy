@@ -1,9 +1,5 @@
 # joy efficacy tool
 
-### Contents (links to the different sections)
-
-- For example, [like this](#to-do)!
-
 ### About
 
 Joy is a health tech company on a mission to add ten years to life expectancy through better social health.
