@@ -29,7 +29,9 @@ You can
 
 1. Register a client
 ![](https://i.imgur.com/XJgJzvK.png)
+
 2. Make a service referral to them from a selection of services
+![](https://i.imgur.com/730RZSa.png)
 
 3. Carry out a wellbeing assessment
 ![](https://i.imgur.com/odrXO5D.png)
