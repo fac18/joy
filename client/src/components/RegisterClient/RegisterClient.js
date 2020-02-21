@@ -49,8 +49,6 @@ const RegisterClient = ({ history }) => {
       .then(info => {
         console.log(info);
       })
-      // .then(showModal);
-      // attempted modal display on submit
   };
 
   //   const onSubmit = (e) => {

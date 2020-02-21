@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import { useParams } from 'react-router-dom';
 import getRequest from '../../utils/getData';
 import buildClientObject from '../../utils/buildClientObject';
+import ReferralSuccessModal from '../ReferralForm/ReferralSuccessModal';
 
 const useStyles = makeStyles({
   mainTitle: {
@@ -48,6 +49,11 @@ const useStyles = makeStyles({
 });
 
 const ReferralForm = ({ singleClient, setSingleClient }) => {
+  const [show, setShow] = React.useState(false);
+  const showModal = () => setShow(true);
+  const hideModal = () => {
+    setShow(false);
+  }
   const [services, setServices] = React.useState(null);
   const [referredServices, setReferredServices] = React.useState(null);
   const classes = useStyles();
@@ -61,7 +67,7 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    alert('submitting form');
+    // alert('submitting form');
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -85,6 +91,10 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
+      <ReferralSuccessModal show={show} handleClose={hideModal}>
+        <p>Modal</p>
+        <p>Data</p>
+      </ReferralSuccessModal>
       <Typography className={classes.mainTitle}>Referral Form:</Typography>
       <Typography className={classes.clientName}>
         {' '}
@@ -117,7 +127,8 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
           )}
         />
 
-        <Button
+        <Button      
+          onClick={showModal}
           type="submit"
           className={classes.pinkButton}
           variant="container"
