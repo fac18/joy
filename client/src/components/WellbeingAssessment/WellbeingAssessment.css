@@ -49,6 +49,11 @@ label {
   color: black;
 } */
 
+input[type='radio']:checked + label {
+  color: white;
+}
+/* from rosas branch - fix/ucla3_calculation  */
+
 .ratingQ {
   display: flex;
   justify-content: center;
