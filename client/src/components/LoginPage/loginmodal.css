@@ -42,3 +42,15 @@
 .display-none {
   display: none;
 }
+
+.registerSucessDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerSuccessSvg {
+  min-height: 80vh;
+  min-width: auto;
+}

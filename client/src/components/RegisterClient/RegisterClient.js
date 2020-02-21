@@ -92,6 +92,7 @@ const RegisterClient = () => {
     setChecked(event.target.checked);
   };
 
+  const history = useHistory();
   // if(state) {
   //     console.log(state);
   // }
@@ -109,7 +110,12 @@ const RegisterClient = () => {
       },
       body: JSON.stringify(state)
     })
-      .then(result => result.json())
+      // .then(result => result.json())
+      .then(result => {
+        if (result.status === 200) {
+          history.push(`/searchClient`);
+        } else console.log(result);
+      })
       .then(info => {
         console.log(info);
       });
