@@ -10,7 +10,6 @@ const {
   getCurrentAssessment,
   getInitialAssessment,
   getClientServices,
-  postRegisterClient,
   getTotalClients,
   getTotalServices,
   getWellbeingTotals,
@@ -20,6 +19,8 @@ const {
 const {
   postClientAssessment,
   postReferralForm,
+  postRegisterClient
+
 } = require('./model/queries/postData.js');
 
 // const  = require('./model/queries/postData');
@@ -49,7 +50,7 @@ router.get('/getclient:id', (req, res) => {
 router.post('/postregisterclient', (req, res) => {
   // res.send("POST request to the wellbeing page");
   console.log('I got a request!');
-  console.log(req.body);
+  console.log('I am posting the client', req.body.firstName);
   postRegisterClient(req.body);
 });
 // router.post("/postregisterclient", (req, res) => {

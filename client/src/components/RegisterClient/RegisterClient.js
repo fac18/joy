@@ -99,23 +99,6 @@ const RegisterClient = () => {
         <Typography className={classes.mainTitle} variant="h4" gutterBottom>
           Register new client:
         </Typography>
-        {/* <form
-          onSubmit={handleSubmit}
-          className={classes.root}
-          autoComplete="off"
-        >
-          <TextField
-            label="First name"
-            variant="outlined"
-            type="text"
-            id="firstName"
-            name="firstName"
-            defaultValue={firstName}
-            required
-            onChange={onChange}
-          />
-        </form> */}
-
         <form onSubmit={handleSubmit}>
           <label for="firstName">First Name</label>
           <input
@@ -197,7 +180,7 @@ const RegisterClient = () => {
             type="checkbox"
             id="consent"
             name="consent"
-            defaultValue={consent}
+            defaultValue={true}
             onChange={onChange}
           />
           <br />
