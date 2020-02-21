@@ -1,29 +1,11 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
-// import ClientProfile from './ClientProfile';
-// describe('ClientProfile', () => {
-//   it('should render correctly in "debug" mode', () => {
-//     const component = shallow(<ClientProfile debug />);
+// import React from "react";
+// import { render } from "@testing-library/react";
+// import ClientProfile from "./ClientProfile";
 
-//     expect(component).toMatchSnapshot();
-//   });
+// test("renders the home landing page component", () => {
+//   render(<ClientProfile />);
 // });
 
-// import { createRender } from "@material-ui/core/test-utils";
-
-// describe("<ClientProfile />", () => {
-//   let render;
-//   let wrapper;
-
-//   before(() => {
-//     render = createRender();
-//   });
-
-//   it("should work", () => {
-//     wrapper = render(<ClientProfile />);
-//   });
-// });
-
-test('Jest is working', () => {
+test("Jest is working", () => {
   expect(true).toBeTruthy();
 });
