@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import RegisterSuccessModal from '../RegisterClient/RegisterSuccessModal';
 
 const initialState = {
   firstName: '',
@@ -18,6 +19,10 @@ function reducer(state, { field, value }) {
 }
 
 const RegisterClient = () => {
+  const [show, setShow] = React.useState(false);
+  const showModal = () => setShow(true);
+  const hideModal = () => setShow(false);
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // if(state) {
@@ -40,7 +45,9 @@ const RegisterClient = () => {
       .then(result => result.json())
       .then(info => {
         console.log(info);
-      });
+      })
+      // .then(showModal);
+      // attempted modal display on submit
   };
 
   //   const onSubmit = (e) => {
@@ -67,6 +74,11 @@ const RegisterClient = () => {
   } = state;
 
   return (
+    <>
+      <RegisterSuccessModal show={show} handleClose={hideModal}>
+        <p>Modal</p>
+        <p>Data</p>
+      </RegisterSuccessModal>
     <form onSubmit={handleSubmit}>
       <label for='firstName'>First Name</label>
       <input
@@ -178,6 +190,7 @@ const RegisterClient = () => {
 
       <button type='submit'>Register Client</button>
     </form>
+    </>
   );
 };
 
