@@ -73,6 +73,12 @@
 }
 
 .registerSuccessSvg {
-  min-height: 80vh;
+  /* min-height: 80vh; */
   min-width: auto;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

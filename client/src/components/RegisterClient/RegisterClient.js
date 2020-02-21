@@ -18,10 +18,13 @@ function reducer(state, { field, value }) {
   };
 }
 
-const RegisterClient = () => {
+const RegisterClient = ({ history }) => {
   const [show, setShow] = React.useState(false);
   const showModal = () => setShow(true);
-  const hideModal = () => setShow(false);
+  const hideModal = () => {
+    setShow(false);
+    history.push('/searchClient');
+  }
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -188,7 +191,7 @@ const RegisterClient = () => {
         </option>
       </select>
 
-      <button type='submit'>Register Client</button>
+      <button type='submit' onClick={showModal}>Register Client</button>
     </form>
     </>
   );
