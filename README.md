@@ -19,26 +19,24 @@ We built a tool which allows you to track which clients you have referred to whi
 - Express server, PSQL, React Hooks, Material UI styling, hosted on Heroku.
 
 ### The app
-
-![](https://i.imgur.com/sRovB7h.png)
-![](https://i.imgur.com/2yYUixu.png)
+<img src="https://i.imgur.com/sRovB7h.png" width="400">
+<img src="https://i.imgur.com/2yYUixu.png" width="400">
 
 - The app makes it easy to view where the most popular services are and the wellbeing of the individuals you are referring.
 
 You can
 
 1. Register a client
-![](https://i.imgur.com/XJgJzvK.png)
+<img src="https://i.imgur.com/XJgJzvK.png" width="400">
 
 2. Make a service referral to them from a selection of services
-![](https://i.imgur.com/730RZSa.png)
+<img src="https://i.imgur.com/730RZSa.png" width="400">
 
 3. Carry out a wellbeing assessment
-![](https://i.imgur.com/odrXO5D.png)
+<img src="https://i.imgur.com/odrXO5D.png" width="400">
 
 4. See how these metrics affect wellbeing on the dashboard
-
-![](https://i.imgur.com/WDPcDS4.png)
+<img src="https://i.imgur.com/WDPcDS4.png" width="400">
 
 ### Database
 
