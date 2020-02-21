@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Link, useParams, Switch, useRouteMatch } from 'react-router-dom';
-import { ThemeProvider } from '@material-ui/core/styles';
-import theme from '../../theme';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import NavBar from '../NavBar/NavBar';
-import getRequest from '../../utils/getData';
-import buildClientObject from '../../utils/buildClientObject';
-import { Route } from 'react-router-dom';
-import WellbeingAssessment from '../WellbeingAssessment/WellbeingAssessment';
+import React, { useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link, useParams, Switch, useRouteMatch } from "react-router-dom";
+import { ThemeProvider } from "@material-ui/core/styles";
+import theme from "../../theme";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import NavBar from "../NavBar/NavBar";
+import getRequest from "../../utils/getData";
+import buildClientObject from "../../utils/buildClientObject";
+import { Route } from "react-router-dom";
+import WellbeingAssessment from "../WellbeingAssessment/WellbeingAssessment";
 
 // import Button from "../Button/Button";
 
@@ -21,55 +21,55 @@ const useStyles = makeStyles({
   root: {
     minWidth: 350,
     maxWidth: 500,
-    border: 'solid 2px #A0B43B',
-    textAlign: 'center',
-    margin: '1rem',
+    border: "solid 2px #A0B43B",
+    textAlign: "center",
+    margin: "1rem"
   },
   services: {
     minWidth: 350,
     maxWidth: 500,
-    border: 'solid 2px #E91E63',
-    margin: '1rem',
-    listStyleType: 'none',
+    border: "solid 2px #E91E63",
+    margin: "1rem",
+    listStyleType: "none"
   },
   mainTitle: {
-    paddingTop: '2rem',
+    paddingTop: "2rem"
   },
   pos: {
-    display: 'inline-block',
+    display: "inline-block",
     fontSize: 32,
     marginBottom: 12,
-    backgroundColor: '#F6A192',
+    backgroundColor: "#F6A192",
     // borderRadius: "50",
     // duplicate border radius, assumed the one below is the property in use
-    padding: '13px 28px',
-    borderRadius: '100px',
+    padding: "13px 28px",
+    borderRadius: "100px"
   },
   greenButton: {
-    background: '#A0B43B',
-    color: 'white',
-    '&:hover': {
-      backgroundColor: '#707E29',
+    background: "#A0B43B",
+    color: "white",
+    "&:hover": {
+      backgroundColor: "#707E29"
     },
-    padding: '10px 20px',
-    margin: '0.5rem auto',
+    padding: "10px 20px",
+    margin: "0.5rem auto"
   },
   pinkButton: {
-    background: '#E71F67',
-    color: 'white',
-    '&:hover': {
-      backgroundColor: '#a11548',
+    background: "#E71F67",
+    color: "white",
+    "&:hover": {
+      backgroundColor: "#a11548"
     },
-    padding: '10px 20px',
-    margin: '0.5rem auto',
+    padding: "10px 20px",
+    margin: "0.5rem auto"
   },
   accountIcon: {
-    color: '#C4C4C4',
+    color: "#C4C4C4"
   },
   list: {
-    listStyleType: 'none',
-    margin: 'auto',
-  },
+    listStyleType: "none",
+    margin: "auto"
+  }
 });
 
 const ClientProfile = ({ singleClient, setSingleClient }) => {
@@ -84,10 +84,10 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
   }, []);
 
   if (singleClient === null) {
-    console.log('poo');
+    console.log("poo");
     return null;
   } else {
-    console.log('I am the singleClient', singleClient);
+    console.log("I am the singleClient", singleClient);
     return (
       <ThemeProvider theme={theme}>
         <NavBar />
@@ -125,9 +125,9 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
             </CardContent>
             <Link
               to={`/wellbeingAssessment/${id}`}
-              style={{ textDecoration: 'none' }}
+              style={{ textDecoration: "none" }}
             >
-              {' '}
+              {" "}
               <CardActions>
                 <Button
                   className={classes.greenButton}
@@ -154,7 +154,7 @@ const ClientProfile = ({ singleClient, setSingleClient }) => {
                 </ul>
               </Typography>
             </CardContent>
-            <Link to={`/referralForm/${id}`}>
+            <Link to={`/referralForm/${id}`} style={{ textDecoration: "none" }}>
               <CardActions>
                 <Button
                   className={classes.pinkButton}
