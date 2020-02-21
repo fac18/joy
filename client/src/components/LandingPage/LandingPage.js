@@ -161,7 +161,7 @@ const LandingPage = ({ history }) => {
             type="button"
             onClick={handleOpen}
           >
-            Start Login
+            Login
           </Button>
           <LandingPageSvg />
           <Modal

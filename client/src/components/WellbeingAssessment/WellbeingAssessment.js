@@ -312,7 +312,7 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
             <br />
             <br />
             <textarea
-              placeholder="The client’s current thoughts and feelings and Anything else to be aware of?"
+              placeholder="The client’s current thoughts and feelings or anything else to be aware of?"
               name="additionalNotes"
               ref={register}
             />
