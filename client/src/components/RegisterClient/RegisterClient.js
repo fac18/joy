@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     padding: "2rem"
   },
   selectBox: {
-    width: 500,
+    width: 380,
     "& > * + *": {
       marginTop: theme.spacing(3)
     }
@@ -47,6 +47,22 @@ const useStyles = makeStyles({
     },
     padding: "10px 20px",
     margin: "0.5rem auto"
+  },
+  dobLabel: {
+    position: "relative",
+    left: -86,
+    color: "rgba(0, 0, 0, 0.6)",
+    fontSize: "12px"
+  },
+  labels: {
+    width: 480,
+    margin: 0,
+    paddingTop: "1rem"
+  },
+  supportLabel: {
+    width: 480,
+    margin: 0,
+    paddingTop: "2rem"
   }
 });
 
@@ -177,9 +193,10 @@ const RegisterClient = () => {
             required
             onChange={onChange}
           />
+          <label className={classes.dobLabel}>Date of Birth*</label>
           <TextField
             className={classes.textField}
-            label="Date of Birth"
+            // label="Date of Birth"
             type="date"
             name="dateOfBirth"
             id="dateOfBirth"
@@ -214,26 +231,12 @@ const RegisterClient = () => {
             defaultValue={nhsNumber}
             onChange={onChange}
           />
-          <label>
-            I consent to Joy storing and processing my personal data
-          </label>
-          <Checkbox
-            className={classes.textField}
-            checked={checked}
-            onChange={handleCheckBoxChange}
-            value="primary"
-            inputProps={{ "aria-label": "primary checkbox" }}
-            id="consent"
-            name="consent"
-            defaultValue={true}
-            // onChange={onChange}
-          />
-          <label for="areasOfSupport">
-            What areas does the client need support with?
-          </label>
           <div className={classes.selectBox}>
+            <label className={classes.supportLabel} for="areasOfSupport">
+              What areas does the client need support with?
+            </label>
             <Autocomplete
-              className={classes.textField}
+              // className={classes.textField}
               multiple
               id="tags-outlined"
               options={filterOptions}
@@ -251,6 +254,19 @@ const RegisterClient = () => {
               )}
             />
           </div>
+          <label className={classes.labels}>
+            <Checkbox
+              checked={checked}
+              onChange={handleCheckBoxChange}
+              value="primary"
+              inputProps={{ "aria-label": "primary checkbox" }}
+              id="consent"
+              name="consent"
+              defaultValue={true}
+              // onChange={onChange}
+            />
+            I consent to Joy storing and processing my personal data
+          </label>
           <Button
             className={classes.pinkButton}
             variant="container"
