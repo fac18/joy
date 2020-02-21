@@ -28,6 +28,10 @@ label {
   color: white;
 }
 
+input[type='radio']:checked + label {
+  color: white;
+}
+
 .ratingQ {
   margin-top: 30px;
 }
