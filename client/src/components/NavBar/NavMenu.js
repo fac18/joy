@@ -91,7 +91,7 @@ export default function TemporaryDrawer() {
             <ListItemIcon>
               <FindInPageIcon color="primary" />
             </ListItemIcon>
-            <ListItemText>Search Client</ListItemText>
+            <ListItemText>Client Search</ListItemText>
           </ListItem>
         </Link>
       </List>

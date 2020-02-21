@@ -81,6 +81,12 @@ const useStyles = makeStyles({
   },
   searchContainer: {
     margin: "0 auto"
+  },
+  emphasis: {
+    fontSize: 40,
+    color: "#E71F67",
+    margin: "1rem",
+    textAlign: "center"
   }
 });
 
@@ -116,6 +122,7 @@ const SearchClient = ({ clients, setClients }) => {
       <div >
 <ThemeProvider theme={theme}>
       <NavBar />
+      <h2 className={classes.emphasis}>Client Search</h2>
       <Card className={classes.cardBgGrey}>
         <div className={classes.searchContainer}>
           <div className={classes.search}>
@@ -183,6 +190,7 @@ const SearchClient = ({ clients, setClients }) => {
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
+      <h2 className={classes.emphasis}>Client Search</h2>
       <Card className={classes.cardBgGrey}>
         <div className={classes.searchContainer}>
           <div className={classes.search}>
