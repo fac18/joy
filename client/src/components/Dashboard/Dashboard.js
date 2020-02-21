@@ -11,7 +11,7 @@ import '../LoginPage/loginmodal.css';
 
 const useStyles = makeStyles({
   root: {
-    margin: "auto",
+    margin: "2rem auto",
     textAlign: "center",
     fontFamily: "Source Sans Pro"
   },
