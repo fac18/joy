@@ -5,12 +5,12 @@ export const filterClients = (
   clients
 ) => {
   let filteredClients=clients.filter(client => {
-   
+
     let [doesFirstNameMatch,doesLastNameMatch,doesDOBMatch] = [false,false,false];
     let isFirstNameFilled = firstNameStr ? true:false;
     let isLastNameFilled = lastNameStr ? true:false;
     let isDOBFilled = dateOfBirthStr ? true:false;
-  
+
     if(firstNameStr && client.client_firstname.toLowerCase().includes(firstNameStr.toLowerCase()))
     {
     doesFirstNameMatch=true;
@@ -28,5 +28,3 @@ export const filterClients = (
    });
    return filteredClients;
    };
-
-

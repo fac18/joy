@@ -92,7 +92,7 @@ const useStyles = makeStyles({
   },
 });
 
-const LandingPage = () => {
+const LandingPage = ({history}) => {
   // const [show, setShow] = React.useState(false);
   // const showModal = () => setShow(true);
   // const hideModal = () => setShow(false);
@@ -115,7 +115,22 @@ const LandingPage = () => {
     weightRange: '',
     showPassword: false,
   });
-console.log(values)
+
+  const dummyLogin = {
+    username: "joy",
+    password: "joy"
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if(dummyLogin.username === values.username && dummyLogin.password === values.password) {
+    history.push('/dashboard');
+    } else {
+      alert('Please enter the correct login details!')
+    }
+  }
+
+// console.log(values)
   const handleChange = prop => event => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -176,8 +191,8 @@ console.log(values)
                     </InputLabel>
                     <FilledInput
                       id="filled-adornment-username"
-                      value={values.weight}
-                      onChange={handleChange('weight')}
+                      value={values.username}
+                      onChange={handleChange('username')}
                       endAdornment={
                         <InputAdornment position="end">
                           <AccountCircle className={classes.userIcon} />
@@ -222,17 +237,14 @@ console.log(values)
                     </FormControl>
                   </div>
                 </div>
-
-                <Link className={classes.mainLink} to="/dashboard">
                   <Button
                     className={classes.pinkButton}
                     variant="container"
                     size="medium"
-                    // onClick={event => setLogin(event.target.value)}
+                    onClick={handleSubmit}
                   >
                     Login
                   </Button>
-                </Link>
                 <Button
                   className={classes.greenButton}
                   variant="container"
