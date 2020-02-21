@@ -13,7 +13,8 @@ import getRequest from "../../utils/getData";
 import { filterClients } from "../../utils/filterClients";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
+// fade,
 import '../LoginPage/loginmodal.css';
 
 const useStyles = makeStyles({
@@ -85,9 +86,11 @@ const useStyles = makeStyles({
   emphasis: {
     fontSize: 40,
     color: "#E71F67",
-    margin: "1rem",
-    textAlign: "center"
-  }
+    fontWeight: "700",
+    // margin: "1rem",
+    margin: "2rem auto",
+    textAlign: "center",
+    fontFamily: "Source Sans Pro"  }
 });
 
 // Automatically sends a request to the server asking for a list of all the clients
@@ -100,7 +103,7 @@ const SearchClient = ({ clients, setClients }) => {
       setClients(res);
       // console.log(clients.client_id);
     });
-  }, []);
+  }, [setClients]);
   const [searchInputFirstName, setSearchInputFirstName] = React.useState(
     undefined
   );
@@ -113,9 +116,9 @@ const SearchClient = ({ clients, setClients }) => {
 
   const classes = useStyles();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // }
   
   if (clients.length < 2) {
     return (

@@ -22,7 +22,7 @@ export const filterClients = (
       doesDOBMatch=true;
     }
 
-   if(isFirstNameFilled == doesFirstNameMatch && isLastNameFilled == doesLastNameMatch && isDOBFilled==doesDOBMatch)
+   if(isFirstNameFilled === doesFirstNameMatch && isLastNameFilled === doesLastNameMatch && isDOBFilled === doesDOBMatch)
    return true;
    else return false;
    });

@@ -72,7 +72,7 @@ const RegisterClient = ({ history }) => {
     phoneNumber,
     address,
     nhsNumber,
-    consent,
+    // consent,
     areasOfSupport
   } = state;
 

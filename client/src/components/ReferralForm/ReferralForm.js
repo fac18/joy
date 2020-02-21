@@ -18,6 +18,7 @@ const useStyles = makeStyles({
     fontSize: '35px',
     fontWeight: 'bold',
     textAlign: 'center',
+    margin: '1rem'
   },
   clientName: {
     fontSize: '35px',
@@ -56,7 +57,7 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
     getRequest(`/getclient:${id}`).then(res => {
       setSingleClient(buildClientObject(res));
     });
-  }, []);
+  }, [setSingleClient, id]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -78,6 +79,9 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
     });
   }, []);
 
+  // console.log('bababa',singleClient)
+  // DOB here is not known?
+
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
@@ -85,6 +89,7 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
       <Typography className={classes.clientName}>
         {' '}
         {singleClient.firstname} {singleClient.surname}
+        {/* , {singleClient.age} */}
       </Typography>
       <Typography className={classes.startQ}></Typography>;
       <form className={classes.form} onSubmit={handleSubmit}>

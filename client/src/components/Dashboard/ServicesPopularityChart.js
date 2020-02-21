@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import "../../../node_modules/react-vis/dist/style.css";
 import getRequest from "../../utils/getData";
@@ -34,7 +34,7 @@ const ServicesPopularityGraph = ({
     getRequest("/getservicespopularity").then(data => {
       setServicesPopularity(data);
     });
-  }, []);
+  }, [setServicesPopularity]);
 
   if (!servicesPopularity || servicesPopularity.length === 0) {
     return null;

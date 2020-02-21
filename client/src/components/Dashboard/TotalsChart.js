@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
@@ -57,13 +57,13 @@ const TotalsChart = ({
     getRequest("/gettotalclients").then(data => {
       setTotalClients(data);
     });
-  }, []);
+  }, [setTotalClients]);
 
   useEffect(() => {
     getRequest("/gettotalservices").then(data => {
       setTotalServices(data);
     });
-  }, []);
+  }, [setTotalServices]);
 
   return (
     <Card className={classes.card}>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link, useParams, Switch, useRouteMatch } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -12,8 +12,8 @@ import Button from '@material-ui/core/Button';
 import NavBar from '../NavBar/NavBar';
 import getRequest from '../../utils/getData';
 import buildClientObject from '../../utils/buildClientObject';
-import { Route } from 'react-router-dom';
-import WellbeingAssessment from '../WellbeingAssessment/WellbeingAssessment';
+// import { Route } from 'react-router-dom';
+// import WellbeingAssessment from '../WellbeingAssessment/WellbeingAssessment';
 
 // import Button from "../Button/Button";
 
@@ -75,13 +75,13 @@ const useStyles = makeStyles({
 const ClientProfile = ({ singleClient, setSingleClient }) => {
   const classes = useStyles();
   let { id } = useParams();
-  let match = useRouteMatch();
+  // let match = useRouteMatch();
 
   useEffect(() => {
     getRequest(`/getclient:${id}`).then(res => {
       setSingleClient(buildClientObject(res));
     });
-  }, []);
+  }, [setSingleClient, id]);
 
   if (singleClient === null) {
     console.log('poo');

@@ -1,5 +1,5 @@
 // initial assessment
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import theme from "../../theme";
@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import { ReactComponent as InfoIcon } from "../../assets/info.svg";
 import WellbeingAssessmentModal from "../WellbeingAssessment/WellbeingAssessmentModal.js";
 import { useParams } from "react-router-dom";
-import buildClientObject from "../../utils/buildClientObject";
+// import buildClientObject from "../../utils/buildClientObject";
 
 const useStyles = makeStyles({
   mainTitle: {
