@@ -43,9 +43,6 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
   const [show, setShow] = React.useState(false);
   const showModal = () => setShow(true);
   const hideModal = () => setShow(false);
-  let { id } = useParams();
-
-  const classes = useStyles();
   const { register, handleSubmit, errors } = useForm();
   const [colorOne, setColorOne] = useState(null);
   const [colorTwo, setColorTwo] = useState(null);
@@ -56,6 +53,8 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
   const [colorSeven, setColorSeven] = useState(null);
   const [colorEight, setColorEight] = useState(null);
   const [colorNine, setColorNine] = useState(null);
+  const classes = useStyles();
+  let { id } = useParams();
 
   // useEffect(() => {
   //   getRequest(`/getclient:${id}`).then(res => {
@@ -113,11 +112,6 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
     fetch("/postclientassessment", options).then(response =>
       console.log(response)
     );
-    // fetch(options).then(res => {
-    //   res.json().then(data => {
-    //     console.log(data);
-    //   });
-    // });
   };
 
   console.log(errors);

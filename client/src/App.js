@@ -15,6 +15,7 @@ const App = () => {
   const [totalServices, setTotalServices] = React.useState([]);
   const [singleClient, setSingleClient] = React.useState(null);
   const [wellbeingTotals, setWellbeingTotals] = React.useState([]);
+  const [servicesPopularity, setServicesPopularity] = React.useState([]);
 
   return (
     <Router>
@@ -32,6 +33,8 @@ const App = () => {
             setTotalServices={setTotalServices}
             wellbeingTotals={wellbeingTotals}
             setWellbeingTotals={setWellbeingTotals}
+            servicesPopularity={servicesPopularity}
+            setServicesPopularity={setServicesPopularity}
           />
         )}
       />
