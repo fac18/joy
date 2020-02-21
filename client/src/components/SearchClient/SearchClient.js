@@ -14,6 +14,7 @@ import { filterClients } from "../../utils/filterClients";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
+import '../LoginPage/loginmodal.css';
 
 const useStyles = makeStyles({
   cardBg: {
@@ -109,6 +110,75 @@ const SearchClient = ({ clients, setClients }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
   }
+  
+  if (clients.length < 2) {
+    return (
+      <div >
+<ThemeProvider theme={theme}>
+      <NavBar />
+      <Card className={classes.cardBgGrey}>
+        <div className={classes.searchContainer}>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+              inputProps={{ "aria-label": "search" }}
+              type="text"
+              id="search"
+              name="search"
+              required
+              aria-label="search bar"
+            />
+          </div>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+              inputProps={{ "aria-label": "search" }}
+              type="text"
+              id="search"
+              name="search"
+              required
+              aria-label="search bar"
+            />
+          </div>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+              inputProps={{ "aria-label": "search" }}
+              type="text"
+              id="search"
+              name="search"
+              required
+              aria-label="search bar"
+            />
+          </div>
+        </div>
+        
+      </Card>
+      </ThemeProvider>
+      <div className="load">
+      <img alt="loading" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+      </div>
+      </div>
+    );
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -120,7 +190,6 @@ const SearchClient = ({ clients, setClients }) => {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search by first name"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
@@ -141,7 +210,6 @@ const SearchClient = ({ clients, setClients }) => {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search by first name"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
@@ -162,7 +230,6 @@ const SearchClient = ({ clients, setClients }) => {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search by first name"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
@@ -179,6 +246,7 @@ const SearchClient = ({ clients, setClients }) => {
             />
           </div>
         </div>
+        
       </Card>
       <div className="App">
         <p>
