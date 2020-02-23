@@ -63,13 +63,17 @@ Quotes:
 
 ### Setup
 
-How to install and run in a development environment
+How to install and run in a development environment:
 
 git clone https://github.com/fac18/joy.git
 
+In the server directory, create an .env file with DATABASE_URL=postgres://url_to_whatever_database_you_have_access
+
+To build the database from the root: npm run /server/model/database/db_build.js
+
 npm i && cd client && npm i && cd .. && npm run start:dev
 
-How to run tests
+## How to run tests
 
 npm test
 
