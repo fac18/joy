@@ -9,7 +9,9 @@ const sql = fs.readFileSync(`${__dirname}/db_build.sql`).toString();
 
 dbConnection.query(sql, (err, res) => {
   if (err) throw err;
-  console.log('Tables created with results: ', res);
+  // console.log('Tables created with results: ', res);
 });
 
-// module.exports = db_build;
+const runDbBuild = sql => dbConnection.query(sql);
+
+module.exports = runDbBuild;
