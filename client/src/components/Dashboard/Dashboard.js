@@ -49,6 +49,8 @@ const Dashboard = ({
           setTotalServices={setTotalServices}
         />
         <WellBeingPieChart
+          totalClients={totalClients}
+          setTotalClients={setTotalClients}
           wellbeingTotals={wellbeingTotals}
           setWellbeingTotals={setWellbeingTotals}
         />

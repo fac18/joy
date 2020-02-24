@@ -26,7 +26,12 @@ const useStyles = makeStyles({
   }
 });
 
-const WellbeingPieGraph = ({ wellbeingTotals, setWellbeingTotals }) => {
+const WellbeingPieGraph = ({
+  wellbeingTotals,
+  setWellbeingTotals,
+  totalClients,
+  setTotalClients
+}) => {
   const classes = useStyles();
 
   useEffect(() => {
@@ -35,10 +40,21 @@ const WellbeingPieGraph = ({ wellbeingTotals, setWellbeingTotals }) => {
     });
   }, []);
 
+  useEffect(() => {
+    getRequest("/gettotalclients").then(data => {
+      setTotalClients(data);
+    });
+  }, []);
+
   if (!wellbeingTotals || wellbeingTotals.length === 0) {
     return null;
   } else {
     console.log("wellbeingTotals:", wellbeingTotals);
+  }
+  if (!totalClients || totalClients.length === 0) {
+    return null;
+  } else {
+    console.log("totalClients:", totalClients);
   }
 
   wellbeingTotals = {
@@ -46,7 +62,11 @@ const WellbeingPieGraph = ({ wellbeingTotals, setWellbeingTotals }) => {
       series: [
         (wellbeingTotals[0].lonely_8_9 * 100) / 100,
         (wellbeingTotals[0].ok_5_6_7 * 100) / 100,
-        (wellbeingTotals[0].not_lonely_3_4 * 100) / 100
+        (wellbeingTotals[0].not_lonely_3_4 * 100) / 100,
+        totalClients[0].count -
+          wellbeingTotals[0].lonely_8_9 -
+          wellbeingTotals[0].ok_5_6_7 -
+          wellbeingTotals[0].not_lonely_3_4
       ],
       chart: {
         width: 380,
@@ -55,12 +75,27 @@ const WellbeingPieGraph = ({ wellbeingTotals, setWellbeingTotals }) => {
       labels: [
         `${wellbeingTotals[0].lonely_8_9} clients at HIGH risk (UCLA3 level 8-9)`,
         `${wellbeingTotals[0].ok_5_6_7} clients at MEDIUM risk (UCLA3 level 5-7)`,
-        `${wellbeingTotals[0].not_lonely_3_4} clients at LOW risk (UCLA3 level 3-4)`
+        `${wellbeingTotals[0].not_lonely_3_4} clients at LOW risk (UCLA3 level 3-4)`,
+        `${totalClients[0].count -
+          wellbeingTotals[0].lonely_8_9 -
+          wellbeingTotals[0].ok_5_6_7 -
+          wellbeingTotals[0]
+            .not_lonely_3_4} clients have NO ASSESSMENTS completed`
       ],
 
-      colors: ["rgb(255, 69, 96)", "rgb(0, 227, 150)", "rgb(0, 143, 251)"],
+      colors: [
+        "rgb(255, 69, 96)",
+        "rgb(0, 227, 150)",
+        "rgb(0, 143, 251)",
+        "rgb(119, 93, 208)"
+      ],
       fill: {
-        colors: ["rgb(255, 69, 96)", "rgb(0, 227, 150)", "rgb(0, 143, 251)"]
+        colors: [
+          "rgb(255, 69, 96)",
+          "rgb(0, 227, 150)",
+          "rgb(0, 143, 251)",
+          "rgb(119, 93, 208)"
+        ]
       },
       legend: {
         position: "bottom",
