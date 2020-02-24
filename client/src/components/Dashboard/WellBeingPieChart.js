@@ -85,8 +85,14 @@ const WellbeingPieGraph = ({
           initialWellbeingTotals[0].ok_5_6_7 -
           initialWellbeingTotals[0].not_lonely_3_4
       ],
+      dataLabels: {
+        enabled: true,
+        formatter: function(val) {
+          return val + "%";
+        }
+      },
       chart: {
-        width: 380,
+        width: 350,
         type: "pie"
       },
       labels: [
