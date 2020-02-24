@@ -12,12 +12,14 @@ import Button from '@material-ui/core/Button';
 import { useParams, useHistory } from 'react-router-dom';
 import getRequest from '../../utils/getData';
 import buildClientObject from '../../utils/buildClientObject';
+import ReferralSuccessModal from '../ReferralForm/ReferralSuccessModal';
 
 const useStyles = makeStyles({
   mainTitle: {
     fontSize: '35px',
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '1rem'
   },
   clientName: {
     fontSize: '35px',
@@ -47,6 +49,11 @@ const useStyles = makeStyles({
 });
 
 const ReferralForm = ({ singleClient, setSingleClient }) => {
+  const [show, setShow] = React.useState(false);
+  const showModal = () => setShow(true);
+  const hideModal = () => {
+    setShow(false);
+  };
   const [services, setServices] = React.useState(null);
   const [referredServices, setReferredServices] = React.useState(null);
   const classes = useStyles();
@@ -57,10 +64,11 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
     getRequest(`/getclient:${id}`).then(res => {
       setSingleClient(buildClientObject(res));
     });
-  }, []);
+  }, [setSingleClient, id]);
 
   const handleSubmit = e => {
     e.preventDefault();
+    // alert('submitting form');
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -80,13 +88,21 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
     });
   }, []);
 
+  // console.log('bababa',singleClient)
+  // DOB here is not known?
+
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
+      <ReferralSuccessModal show={show} handleClose={hideModal}>
+        <p>Modal</p>
+        <p>Data</p>
+      </ReferralSuccessModal>
       <Typography className={classes.mainTitle}>Referral Form:</Typography>
       <Typography className={classes.clientName}>
         {' '}
         {singleClient.firstname} {singleClient.surname}
+        {/* , {singleClient.age} */}
       </Typography>
       <Typography className={classes.startQ}></Typography>;
       <form className={classes.form} onSubmit={handleSubmit}>
@@ -115,6 +131,7 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
         />
 
         <Button
+          onClick={showModal}
           type='submit'
           className={classes.pinkButton}
           variant='container'

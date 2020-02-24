@@ -1,16 +1,16 @@
 import React from 'react';
-import '../LoginPage/loginmodal.css';
-import { ReactComponent as Success } from '../../assets/success.svg';
 import { ReactComponent as LogoSvg } from '../../assets/logo.svg'
+import { ReactComponent as RegisterSuccess } from '../../assets/success.svg';
+import '../LoginPage/loginmodal.css';
 
 
-const WellbeingAssessmentModal = ({ handleClose, show }) => {
+const Success = ({ handleClose, show }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
 
   return (
-    <>
-      <div className={showHideClassName}>
-      <div className='registerSucessDiv'>
+<>
+<div className={showHideClassName}>
+<div className='registerSucessDiv'>
   <section className="modal-main">
     <div>
       <form className="formFlex">
@@ -18,8 +18,7 @@ const WellbeingAssessmentModal = ({ handleClose, show }) => {
         <LogoSvg className="logo"/>
         </div>
         <div className="center">
-  <Success className="registerSuccessSvg"/>
-  <p>Wellbeing assessment completed!</p>
+  <RegisterSuccess className="registerSuccessSvg"/>
 </div>
 
         <div className="btn">
@@ -31,9 +30,11 @@ const WellbeingAssessmentModal = ({ handleClose, show }) => {
     </div>
   </section>
 </div>
-      </div>
-    </>
-  );
-};
+</div>
+</>
+    
+    )
+  }
+  
 
-export default WellbeingAssessmentModal;
+export default Success;

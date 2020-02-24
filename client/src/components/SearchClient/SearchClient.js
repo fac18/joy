@@ -13,7 +13,9 @@ import getRequest from "../../utils/getData";
 import { filterClients } from "../../utils/filterClients";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
+// fade,
+import '../LoginPage/loginmodal.css';
 
 const useStyles = makeStyles({
   cardBg: {
@@ -80,7 +82,15 @@ const useStyles = makeStyles({
   },
   searchContainer: {
     margin: "0 auto"
-  }
+  },
+  emphasis: {
+    fontSize: 40,
+    color: "#E71F67",
+    fontWeight: "700",
+    // margin: "1rem",
+    margin: "2rem auto",
+    textAlign: "center",
+    fontFamily: "Source Sans Pro"  }
 });
 
 // Automatically sends a request to the server asking for a list of all the clients
@@ -93,7 +103,7 @@ const SearchClient = ({ clients, setClients }) => {
       setClients(res);
       // console.log(clients.client_id);
     });
-  }, []);
+  }, [setClients]);
   const [searchInputFirstName, setSearchInputFirstName] = React.useState(
     undefined
   );
@@ -106,13 +116,84 @@ const SearchClient = ({ clients, setClients }) => {
 
   const classes = useStyles();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // }
+  
+  if (clients.length < 2) {
+    return (
+      <div >
+<ThemeProvider theme={theme}>
+      <NavBar />
+      <h2 className={classes.emphasis}>Client Search</h2>
+      <Card className={classes.cardBgGrey}>
+        <div className={classes.searchContainer}>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+              inputProps={{ "aria-label": "search" }}
+              type="text"
+              id="search"
+              name="search"
+              required
+              aria-label="search bar"
+            />
+          </div>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+              inputProps={{ "aria-label": "search" }}
+              type="text"
+              id="search"
+              name="search"
+              required
+              aria-label="search bar"
+            />
+          </div>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+              inputProps={{ "aria-label": "search" }}
+              type="text"
+              id="search"
+              name="search"
+              required
+              aria-label="search bar"
+            />
+          </div>
+        </div>
+        
+      </Card>
+      </ThemeProvider>
+      <div className="load">
+      <img alt="loading" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+      </div>
+      </div>
+    );
   }
 
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
+      <h2 className={classes.emphasis}>Client Search</h2>
       <Card className={classes.cardBgGrey}>
         <div className={classes.searchContainer}>
           <div className={classes.search}>
@@ -176,6 +257,7 @@ const SearchClient = ({ clients, setClients }) => {
             />
           </div>
         </div>
+        
       </Card>
       <div className="App">
         <p>

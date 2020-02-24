@@ -20,8 +20,6 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
-import { Link } from 'react-router-dom';
-
 const useStyles = makeStyles({
   root: {
     // display: "flex",
@@ -38,10 +36,10 @@ const useStyles = makeStyles({
   textField: {
     width: 250,
   },
-  logo: {
-    padding: '2rem 1rem 1rem 1rem',
-    height: '70px',
-  },
+  // logo: {
+  //   padding: '2rem 1rem 1rem 1rem',
+  //   height: '70px',
+  // },
   pinkButton: {
     background: '#E71F67',
     color: 'white',
@@ -161,7 +159,7 @@ const LandingPage = ({ history }) => {
             type="button"
             onClick={handleOpen}
           >
-            Start Login
+            Login
           </Button>
           <LandingPageSvg />
           <Modal

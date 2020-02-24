@@ -3,14 +3,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import NavBar from "../NavBar/NavBar";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../../theme";
-import LoadingPage from "../LoadingPage/LoadingPage";
+// import LoadingPage from "../LoadingPage/LoadingPage";
 import TotalsChart from "./TotalsChart";
 import WellBeingPieChart from "./WellBeingPieChart";
 import ServicesPopularityChart from "./ServicesPopularityChart";
+import '../LoginPage/loginmodal.css';
 
 const useStyles = makeStyles({
   root: {
-    margin: "auto",
+    margin: "2rem auto",
     textAlign: "center",
     fontFamily: "Source Sans Pro"
   },
@@ -33,14 +34,18 @@ const Dashboard = ({
 }) => {
   const classes = useStyles();
 
-  if (totalClients === 1) {
-    return <LoadingPage />;
-  }
+  // if (setTotalClients < 3) {
+  //   return (
+  //     <div className="load">
+  //     <img alt="loading" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+  //     </div>
+  //   );
+  // }
 
   return (
     <ThemeProvider theme={theme}>
-      <div className={classes.root}>
         <NavBar />
+      <div className={classes.root}>
         <h2 className={classes.emphasis}>My Dashboard</h2>
         <TotalsChart
           totalClients={totalClients}

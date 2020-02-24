@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
@@ -33,7 +33,7 @@ const WellbeingPieGraph = ({ wellbeingTotals, setWellbeingTotals }) => {
     getRequest("/getwellbeingtotals").then(data => {
       setWellbeingTotals(data);
     });
-  }, []);
+  }, [setWellbeingTotals]);
 
   if (!wellbeingTotals || wellbeingTotals.length === 0) {
     return null;
