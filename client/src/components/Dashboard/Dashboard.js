@@ -26,8 +26,10 @@ const Dashboard = ({
   setTotalClients,
   totalServices,
   setTotalServices,
-  wellbeingTotals,
-  setWellbeingTotals,
+  initialWellbeingTotals,
+  setInitialWellbeingTotals,
+  currentWellbeingTotals,
+  setCurrentWellbeingTotals,
   servicesPopularity,
   setServicesPopularity
 }) => {
@@ -51,8 +53,10 @@ const Dashboard = ({
         <WellBeingPieChart
           totalClients={totalClients}
           setTotalClients={setTotalClients}
-          wellbeingTotals={wellbeingTotals}
-          setWellbeingTotals={setWellbeingTotals}
+          initialWellbeingTotals={initialWellbeingTotals}
+          setInitialWellbeingTotals={setInitialWellbeingTotals}
+          currentWellbeingTotals={currentWellbeingTotals}
+          setCurrentWellbeingTotals={setCurrentWellbeingTotals}
         />
         <ServicesPopularityChart
           servicesPopularity={servicesPopularity}

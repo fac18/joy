@@ -23,20 +23,30 @@ const useStyles = makeStyles({
   },
   header: {
     fontWeight: "bold"
+  },
+  horizontal: {
+    display: "flex"
   }
 });
 
 const WellbeingPieGraph = ({
-  wellbeingTotals,
-  setWellbeingTotals,
   totalClients,
-  setTotalClients
+  setTotalClients,
+  initialWellbeingTotals,
+  setInitialWellbeingTotals,
+  currentWellbeingTotals,
+  setCurrentWellbeingTotals
 }) => {
   const classes = useStyles();
 
   useEffect(() => {
-    getRequest("/getwellbeingtotals").then(data => {
-      setWellbeingTotals(data);
+    getRequest("/getinitialwellbeingtotals").then(data => {
+      setInitialWellbeingTotals(data);
+    });
+  }, []);
+  useEffect(() => {
+    getRequest("/getcurrentwellbeingtotals").then(data => {
+      setCurrentWellbeingTotals(data);
     });
   }, []);
 
@@ -46,43 +56,45 @@ const WellbeingPieGraph = ({
     });
   }, []);
 
-  if (!wellbeingTotals || wellbeingTotals.length === 0) {
+  if (!initialWellbeingTotals || initialWellbeingTotals.length === 0) {
     return null;
   } else {
-    console.log("wellbeingTotals:", wellbeingTotals);
+    console.log("initialWellbeingTotals:", initialWellbeingTotals);
   }
+
+  if (!currentWellbeingTotals || currentWellbeingTotals.length === 0) {
+    return null;
+  } else {
+    console.log("currentWellbeingTotals:", currentWellbeingTotals);
+  }
+
   if (!totalClients || totalClients.length === 0) {
     return null;
   } else {
     console.log("totalClients:", totalClients);
   }
 
-  wellbeingTotals = {
+  initialWellbeingTotals = {
     options: {
       series: [
-        (wellbeingTotals[0].lonely_8_9 * 100) / 100,
-        (wellbeingTotals[0].ok_5_6_7 * 100) / 100,
-        (wellbeingTotals[0].not_lonely_3_4 * 100) / 100,
+        (initialWellbeingTotals[0].lonely_8_9 * 100) / 100,
+        (initialWellbeingTotals[0].ok_5_6_7 * 100) / 100,
+        (initialWellbeingTotals[0].not_lonely_3_4 * 100) / 100,
         totalClients[0].count -
-          wellbeingTotals[0].lonely_8_9 -
-          wellbeingTotals[0].ok_5_6_7 -
-          wellbeingTotals[0].not_lonely_3_4
+          initialWellbeingTotals[0].lonely_8_9 -
+          initialWellbeingTotals[0].ok_5_6_7 -
+          initialWellbeingTotals[0].not_lonely_3_4
       ],
       chart: {
         width: 380,
         type: "pie"
       },
       labels: [
-        `${wellbeingTotals[0].lonely_8_9} clients at HIGH risk (UCLA3 level 8-9)`,
-        `${wellbeingTotals[0].ok_5_6_7} clients at MEDIUM risk (UCLA3 level 5-7)`,
-        `${wellbeingTotals[0].not_lonely_3_4} clients at LOW risk (UCLA3 level 3-4)`,
-        `${totalClients[0].count -
-          wellbeingTotals[0].lonely_8_9 -
-          wellbeingTotals[0].ok_5_6_7 -
-          wellbeingTotals[0]
-            .not_lonely_3_4} clients have NO ASSESSMENTS completed`
+        `HIGH risk (Level 8-9)`,
+        `MED risk (Level 5-7)`,
+        `LOW risk (Level 3-4)`,
+        `NO ASSESSMENTS`
       ],
-
       colors: [
         "rgb(255, 69, 96)",
         "rgb(0, 227, 150)",
@@ -101,7 +113,8 @@ const WellbeingPieGraph = ({
         position: "bottom",
         onItemClick: {
           toggleDataSeries: true
-        }
+        },
+        horizontalAlign: "center"
       },
       responsive: [
         {
@@ -111,8 +124,65 @@ const WellbeingPieGraph = ({
               width: 350
             },
             legend: {
-              position: "bottom"
+              position: "right"
             }
+          }
+        }
+      ]
+    }
+  };
+  currentWellbeingTotals = {
+    options: {
+      series: [
+        (currentWellbeingTotals[0].lonely_8_9 * 100) / 100,
+        (currentWellbeingTotals[0].ok_5_6_7 * 100) / 100,
+        (currentWellbeingTotals[0].not_lonely_3_4 * 100) / 100,
+        totalClients[0].count -
+          currentWellbeingTotals[0].lonely_8_9 -
+          currentWellbeingTotals[0].ok_5_6_7 -
+          currentWellbeingTotals[0].not_lonely_3_4
+      ],
+      chart: {
+        width: 380,
+        type: "pie"
+      },
+      labels: [
+        `HIGH risk (Level 8-9)`,
+        `MED risk (Level 5-7)`,
+        `LOW risk (Level 3-4)`,
+        `NO ASSESSMENTS`
+      ],
+      colors: [
+        "rgb(255, 69, 96)",
+        "rgb(0, 227, 150)",
+        "rgb(0, 143, 251)",
+        "rgb(119, 93, 208)"
+      ],
+      fill: {
+        colors: [
+          "rgb(255, 69, 96)",
+          "rgb(0, 227, 150)",
+          "rgb(0, 143, 251)",
+          "rgb(119, 93, 208)"
+        ]
+      },
+      legend: {
+        //   position: "bottom",
+        //   onItemClick: {
+        //     toggleDataSeries: true
+        //   },
+        show: false
+      },
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 350
+            }
+            // legend: {
+            //   position: "bottom"
+            // }
           }
         }
       ]
@@ -122,15 +192,36 @@ const WellbeingPieGraph = ({
   return (
     <Card className={classes.card}>
       <Typography className={classes.header} variant="h5" component="h5">
-        Overall UCLA3 Wellbeing Score
+        Overall UCLA3 Wellbeing
       </Typography>
-      <Chart
-        className={classes.chart}
-        options={wellbeingTotals.options}
-        series={wellbeingTotals.options.series}
-        type="pie"
-        width="400"
-      />
+      <div className={classes.horizontal}>
+        <div>
+          <Typography className={classes.header} variant="h6" component="h6">
+            Initial Score
+          </Typography>
+          <Chart
+            className={classes.chart}
+            options={initialWellbeingTotals.options}
+            series={initialWellbeingTotals.options.series}
+            type="pie"
+            width="250"
+            height="280"
+          />
+        </div>
+        <div>
+          <Typography className={classes.header} variant="h6" component="h6">
+            Current Score
+          </Typography>
+          <Chart
+            className={classes.chart}
+            options={currentWellbeingTotals.options}
+            series={currentWellbeingTotals.options.series}
+            type="pie"
+            width="250"
+            height="280"
+          />
+        </div>
+      </div>
     </Card>
   );
 };
