@@ -150,10 +150,43 @@ const getTotalServices = () => {
     });
 };
 
-const getWellbeingTotals = () => {
+const getInitialWellbeingTotals = () => {
   return dbConnection
     .query(
-      'SELECT COUNT(total_ucla3) FILTER (WHERE total_ucla3 >= 8) AS lonely_8_9, COUNT(total_ucla3) FILTER (WHERE total_ucla3 BETWEEN 5 AND 7) AS ok_5_6_7, COUNT(total_ucla3) FILTER (WHERE total_ucla3 <= 4) AS not_lonely_3_4 FROM ucla3_questionnaire'
+      `SELECT  
+        COUNT(total_ucla3) FILTER (WHERE total_ucla3 >= 8) AS lonely_8_9,
+        COUNT(total_ucla3) FILTER (WHERE total_ucla3 BETWEEN 5 AND 7) AS ok_5_6_7,
+        COUNT(total_ucla3) FILTER (WHERE total_ucla3 <= 4) AS not_lonely_3_4
+        FROM (
+          SELECT client_id, input_date_ucla3, total_ucla3
+          FROM ucla3_questionnaire
+          WHERE input_date_ucla3 = ANY (
+            SELECT MIN(input_date_ucla3)
+            FROM ucla3_questionnaire
+            GROUP BY client_id)
+          ORDER BY client_id
+        ) AS output`
+    )
+    .then(data => {
+      return data.rows;
+    });
+};
+const getCurrentWellbeingTotals = () => {
+  return dbConnection
+    .query(
+      `SELECT  
+        COUNT(total_ucla3) FILTER (WHERE total_ucla3 >= 8) AS lonely_8_9,
+        COUNT(total_ucla3) FILTER (WHERE total_ucla3 BETWEEN 5 AND 7) AS ok_5_6_7,
+        COUNT(total_ucla3) FILTER (WHERE total_ucla3 <= 4) AS not_lonely_3_4
+        FROM (
+          SELECT client_id, input_date_ucla3, total_ucla3
+          FROM ucla3_questionnaire
+          WHERE input_date_ucla3 = ANY (
+            SELECT MAX(input_date_ucla3)
+            FROM ucla3_questionnaire
+            GROUP BY client_id)
+          ORDER BY client_id
+        ) AS output`
     )
     .then(data => {
       return data.rows;
@@ -178,7 +211,8 @@ module.exports = {
   getClientServices,
   getTotalClients,
   getTotalServices,
-  getWellbeingTotals,
+  getInitialWellbeingTotals,
+  getCurrentWellbeingTotals,
   getServicesPopularity,
   getAllServices
 };

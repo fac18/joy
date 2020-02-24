@@ -63,23 +63,12 @@ WHERE client_id = 1;
 --- Query 5c 
 --- Calculate the current services referred to 
 
-SELECT * FROM services WHERE services_id =ANY(SELECT services_id FROM referrals_questionnaire WHERE client_id=1);
-
-
--- Query 6
--- Sort referrals by popularity between two dates (default: current_date)
-SELECT services_id, SUM(no_of_services_attended)
-FROM referrals_questionnaire
-WHERE input_date_referral BETWEEN '2019-01-01' AND current_date
-GROUP BY services_id
-ORDER BY SUM(no_of_services_attended) DESC
-LIMIT 10;
-
-
---- Query 5c 
---- Calculate the current services referred to 
-
-SELECT * FROM services WHERE services_id =ANY(SELECT services_id FROM referrals_questionnaire WHERE client_id=1);
+SELECT * 
+FROM services 
+WHERE services_id = ANY(
+   SELECT services_id 
+   FROM referrals_questionnaire 
+   WHERE client_id=1);
 
 
 -- Query 6a
@@ -113,7 +102,52 @@ GROUP BY total_ucla3
 ORDER BY total_ucla3;
 
 -- Query 7b
-SELECT  COUNT(total_ucla3) FILTER (WHERE total_ucla3 >= 8) AS lonely_8_9,
+SELECT  
+   COUNT(total_ucla3) FILTER (WHERE total_ucla3 >= 8) AS lonely_8_9,
    COUNT(total_ucla3) FILTER (WHERE total_ucla3 BETWEEN 5 AND 7) AS ok_5_6_7,
    COUNT(total_ucla3) FILTER (WHERE total_ucla3 <= 4) AS not_lonely_3_4
 FROM ucla3_questionnaire;
+
+-- Query 8a
+-- initial assessment of all current clients
+SELECT  
+   COUNT(total_ucla3) FILTER (WHERE total_ucla3 >= 8) AS lonely_8_9,
+   COUNT(total_ucla3) FILTER (WHERE total_ucla3 BETWEEN 5 AND 7) AS ok_5_6_7,
+   COUNT(total_ucla3) FILTER (WHERE total_ucla3 <= 4) AS not_lonely_3_4
+   FROM (
+      SELECT client_id, input_date_ucla3, total_ucla3
+      FROM ucla3_questionnaire
+      WHERE input_date_ucla3 = ANY (
+         SELECT MIN(input_date_ucla3)
+         FROM ucla3_questionnaire
+         GROUP BY client_id)
+      ORDER BY client_id
+   ) AS output;
+
+
+-- Query 8b
+-- current assesment of all current clients
+SELECT  
+   COUNT(total_ucla3) FILTER (WHERE total_ucla3 >= 8) AS lonely_8_9,
+   COUNT(total_ucla3) FILTER (WHERE total_ucla3 BETWEEN 5 AND 7) AS ok_5_6_7,
+   COUNT(total_ucla3) FILTER (WHERE total_ucla3 <= 4) AS not_lonely_3_4
+   FROM (
+      SELECT client_id, input_date_ucla3, total_ucla3
+      FROM ucla3_questionnaire
+      WHERE input_date_ucla3 = ANY (
+         SELECT MAX(input_date_ucla3)
+         FROM ucla3_questionnaire
+         GROUP BY client_id)
+      ORDER BY client_id
+   ) AS output;
+
+-- ALTERNATIVE OPTION
+SELECT DISTINCT ucla3_questionnaire.client_id, initial_assessment.initial_assessment_date, total_ucla3
+FROM
+   (SELECT ucla3_questionnaire.client_id, MIN(input_date_ucla3) AS initial_assessment_date
+    FROM ucla3_questionnaire
+    GROUP BY ucla3_questionnaire.client_id) AS initial_assessment
+INNER JOIN ucla3_questionnaire
+ON  initial_assessment.initial_assessment_date = input_date_ucla3 
+GROUP BY ucla3_questionnaire.client_id, initial_assessment.initial_assessment_date, total_ucla3
+ORDER BY ucla3_questionnaire.client_id ASC;
