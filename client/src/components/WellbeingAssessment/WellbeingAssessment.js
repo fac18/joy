@@ -67,48 +67,6 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
   const classes = useStyles();
   let { id } = useParams();
 
-  // useEffect(() => {
-  //   getRequest(`/getclient:${id}`).then(res => {
-  //     setSingleClient(buildClientObject(res));
-  //   });
-  // }, []);
-  // const colorOneFunc = event => {
-  //   console.log("Hello this is pink");
-  //   setColorOne("turn-pink");
-  // };
-  // const colorTwoFunc = event => {
-  //   console.log("Hello this is pink");
-  //   setColorTwo("turn-pink");
-  // };
-  // const colorThreeFunc = event => {
-  //   console.log("Hello this is pink");
-  //   setColorThree("turn-pink");
-  // };
-  // const colorFourFunc = event => {
-  //   console.log("Hello this is pink");
-  //   setColorFour("turn-pink");
-  // };
-  // const colorFiveFunc = event => {
-  //   console.log("Hello this is pink");
-  //   setColorFive("turn-pink");
-  // };
-  // const colorSixFunc = event => {
-  //   console.log("Hello this is pink");
-  //   setColorSix("turn-pink");
-  // };
-  // const colorSevenFunc = event => {
-  //   console.log("Hello this is pink");
-  //   setColorSeven("turn-pink");
-  // };
-  // const colorEightFunc = event => {
-  //   console.log("Hello this is pink");
-  //   setColorEight("turn-pink");
-  // };
-  // const colorNineFunc = event => {
-  //   console.log("Hello this is pink");
-  //   setColorNine("turn-pink");
-  // };
-
   const onSubmit = (data, e) => {
     // e.preventDefault();
     console.log('This is the data inside onSubmit', data);
@@ -122,7 +80,7 @@ const ClientAssessment = ({ singleClient, setSingleClient }) => {
     };
     fetch('/postclientassessment', options).then(response => {
       if (response.status === 200) {
-        history.push(`/clientProfile/${id}`);
+        setTimeout(history.push(`/clientProfile/${id}`), 6000);
       } else console.log(response);
     });
   };

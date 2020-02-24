@@ -90,10 +90,13 @@ const RegisterClient = ({ history }) => {
 
   const [show, setShow] = React.useState(false);
   const showModal = () => setShow(true);
+
   const hideModal = () => {
     setShow(false);
     history.push('/searchClient');
   };
+
+  console.log(show);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -128,17 +131,6 @@ const RegisterClient = ({ history }) => {
         console.log(info);
       });
   };
-
-  //   const onSubmit = (e) => {
-  //       e.preventDefault();
-  //       console.log('this is my clients data' ,data);
-  //       const options = {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify(data)
-  //   };
-  //   fetch('/postregisterclient', options).then(response => console.log('this is register client fetch response' ,response))
-  // }
 
   const {
     firstName,
@@ -253,12 +245,10 @@ const RegisterClient = ({ history }) => {
               What areas does the client need support with?
             </label>
             <Autocomplete
-              // className={classes.textField}
               multiple
               id='tags-outlined'
               options={filterOptions}
               getOptionLabel={option => option.option}
-              // defaultValue={[filterOptions[0]]}
               filterSelectedOptions
               renderInput={params => (
                 <TextField
@@ -280,7 +270,6 @@ const RegisterClient = ({ history }) => {
               id='consent'
               name='consent'
               defaultValue={true}
-              // onChange={onChange}
             />
             I consent to Joy storing and processing my personal data
           </label>
@@ -288,6 +277,8 @@ const RegisterClient = ({ history }) => {
             className={classes.pinkButton}
             variant='container'
             size='medium'
+            type='submit'
+            onClick={showModal}
             type='submit'
           >
             Register Client

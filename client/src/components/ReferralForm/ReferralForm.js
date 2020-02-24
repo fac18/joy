@@ -54,6 +54,8 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
   const hideModal = () => {
     setShow(false);
   };
+  console.log(show);
+
   const [services, setServices] = React.useState(null);
   const [referredServices, setReferredServices] = React.useState(null);
   const classes = useStyles();
@@ -68,16 +70,13 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // alert('submitting form');
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(referredServices)
     };
     fetch(`/postreferralform:${id}`, options).then(response => {
-      if (response.status === 200) {
-        history.push(`/clientProfile/${id}`);
-      } else console.log(response);
+      console.log(response);
     });
   };
 
