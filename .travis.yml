@@ -2,6 +2,6 @@ language: node_js
 node_js:
   - 'node'
 script:
-  - cd client && npm i && npm run test -- --coverage --watchAll=false
+  - cd client && npm i && npm run test -- --coverage --watchAll=false  && cd ../server && npm i && npm run travis:test  -- --coverage --watchAll=false
 after_success:
   - npm run coverage
