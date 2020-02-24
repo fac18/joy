@@ -84,27 +84,25 @@ router.post('/postreferralform:id', (req, res) => {
   const id = parseInt(req.params.id.slice(1, req.params.id.length));
   postReferralForm(req, id)
     .then(data => {
-      res.status(200);
+      res.status(200).send('Data successfully submitted!'); ;
     })
-    .catch(err => res.status(200).send('Server error posting to database'));
+    .catch(console.log);
 });
 
 router.post('/postregisterclient', (req, res) => {
-  console.log('I am posting the client', req.body.firstName);
   postRegisterClient(req.body)
     .then(data => {
       res.status(200).send('Data successfully submitted!');
     })
-    .catch(err => res.status(500).send('Server error posting to database'));
+    .catch(console.log);
 });
 
 router.post('/postclientassessment', (req, res) => {
-  console.log(req.body);
   postClientAssessment(req.body)
     .then(data => {
       res.status(200).send('Data successfully submitted!');
     })
-    .catch(err => res.status(500).send('Server error posting to database'));
+    .catch(console.log);
 });
 
 module.exports = router;
