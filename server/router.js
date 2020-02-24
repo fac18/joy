@@ -12,7 +12,8 @@ const {
   getClientServices,
   getTotalClients,
   getTotalServices,
-  getWellbeingTotals,
+  getInitialWellbeingTotals,
+  getCurrentWellbeingTotals,
   getServicesPopularity
 } = require('./model/queries/getData.js');
 
@@ -56,8 +57,13 @@ router.get('/gettotalservices', (req, res) => {
   });
 });
 
-router.get('/getwellbeingtotals', (req, res) => {
-  getWellbeingTotals().then(data => {
+router.get('/getinitialwellbeingtotals', (req, res) => {
+  getInitialWellbeingTotals().then(data => {
+    res.json(data);
+  });
+});
+router.get('/getcurrentwellbeingtotals', (req, res) => {
+  getCurrentWellbeingTotals().then(data => {
     res.json(data);
   });
 });
