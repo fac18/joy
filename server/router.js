@@ -93,7 +93,7 @@ router.post('/postregisterclient', (req, res) => {
   console.log('I am posting the client', req.body.firstName);
   postRegisterClient(req.body)
     .then(data => {
-      res.status(200);
+      res.status(200).send('Data successfully submitted!');
     })
     .catch(err => res.status(500).send('Server error posting to database'));
 });

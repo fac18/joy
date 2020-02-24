@@ -71,10 +71,11 @@ const initialState = {
   firstName: '',
   lastName: '',
   knownAs: '',
-  email: '',
-  password1: '',
-  password2: '',
-  location: ''
+  phoneNumber: '',
+  address: '',
+  nhsNumber: '',
+  consent: '',
+  areasOfSupport: ''
 };
 
 function reducer(state, { field, value }) {
@@ -88,15 +89,21 @@ const RegisterClient = () => {
   const classes = useStyles();
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const [checked, setChecked] = React.useState(true);
-  const handleCheckBoxChange = event => {
-    setChecked(event.target.checked);
-  };
+  // const [checked, setChecked] = React.useState(true);
+  // const handleCheckBoxChange = event => {
+  //   setChecked(event.target.checked);
+  // };
 
   const history = useHistory();
 
-  const onChange = e => {
-    dispatch({ field: e.target.name, value: e.target.value });
+  const onChange = (e, value) => {
+    // Checks whether the input is the material ui component, and if so accesses its value rather than event.value
+
+    const materialUIValue = value ? value.option : null;
+    dispatch({
+      field: materialUIValue ? 'areasOfSupport' : e.target.name,
+      value: materialUIValue ? materialUIValue : e.target.value
+    });
   };
 
   const handleSubmit = e => {
@@ -229,11 +236,13 @@ const RegisterClient = () => {
               What areas does the client need support with?
             </label>
             <Autocomplete
-              multiple
               id='tags-outlined'
               options={filterOptions}
+              name='areasOfSupport'
+              defaultValue={areasOfSupport}
               getOptionLabel={option => option.option}
               filterSelectedOptions
+              onChange={onChange}
               renderInput={params => (
                 <TextField
                   {...params}
@@ -245,8 +254,9 @@ const RegisterClient = () => {
               )}
             />
           </div>
-          <label className={classes.labels}>
-            <Checkbox
+
+          {/* <label className={classes.labels}> */}
+          {/* <Checkbox
               checked={checked}
               onChange={handleCheckBoxChange}
               value='primary'
@@ -256,7 +266,7 @@ const RegisterClient = () => {
               defaultValue={true}
             />
             I consent to Joy storing and processing my personal data
-          </label>
+          </label> */}
           <Button
             className={classes.pinkButton}
             variant='container'
