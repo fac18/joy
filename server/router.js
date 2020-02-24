@@ -86,7 +86,7 @@ router.post('/postreferralform:id', (req, res) => {
     .then(data => {
       res.status(200);
     })
-    .catch(res.status(200).send('Server error posting to database'));
+    .catch(err => res.status(200).send('Server error posting to database'));
 });
 
 router.post('/postregisterclient', (req, res) => {
@@ -95,16 +95,16 @@ router.post('/postregisterclient', (req, res) => {
     .then(data => {
       res.status(200);
     })
-    .catch(res.status(200).send('Server error posting to database'));
+    .catch(err => res.status(500).send('Server error posting to database'));
 });
 
 router.post('/postclientassessment', (req, res) => {
   console.log(req.body);
   postClientAssessment(req.body)
     .then(data => {
-      res.status(200);
+      res.status(200).send('Data successfully submitted!');
     })
-    .catch(res.status(200).send('Server error posting to database'));
+    .catch(err => res.status(500).send('Server error posting to database'));
 });
 
 module.exports = router;

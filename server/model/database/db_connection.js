@@ -6,6 +6,7 @@ let DATABASE_URL = process.env.DATABASE_URL;
 
 if (process.env.NODE_ENV === 'test') {
   DATABASE_URL = process.env.TEST_DATABASE_URL;
+  console.log('I am the test database');
 }
 
 if (!DATABASE_URL) throw new Error('Environment variable not available');

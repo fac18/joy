@@ -32,8 +32,8 @@ const getInitialAssessment = id => {
     .query(
       `SELECT ucla3_id, TO_CHAR(input_date_ucla3, 'dd/mm/yyyy') AS initial_assessment_date, total_ucla3, client_id
 FROM ucla3_questionnaire
-WHERE client_id = ${id}
-ORDER BY input_date_ucla3 ASC
+WHERE client_id = 1
+ORDER BY ucla3_id ASC
 LIMIT 1;`
     )
     .then(data => {
@@ -61,8 +61,8 @@ const getCurrentAssessment = id => {
     .query(
       `SELECT ucla3_id, TO_CHAR(input_date_ucla3, 'dd/mm/yyyy') AS current_assessment_date, total_ucla3, client_id
 FROM ucla3_questionnaire
-WHERE client_id = ${id}
-ORDER BY input_date_ucla3 DESC
+WHERE client_id = 1
+ORDER BY ucla3_id DESC
 LIMIT 1;`
     )
     .then(data => {

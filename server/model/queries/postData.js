@@ -47,7 +47,7 @@ const postClientAssessment = clientAssessment => {
     .catch(console.log)
     .then(data => {
       console.log('DATA INSERTED', data);
-      // return data;
+      return data;
     });
 };
 
