@@ -121,7 +121,7 @@ const RegisterClient = ({ history }) => {
       // .then(result => result.json())
       .then(result => {
         if (result.status === 200) {
-          history.push(`/searchClient`);
+          // history.push(`/searchClient`);
         } else console.log(result);
       })
       .then(info => {
