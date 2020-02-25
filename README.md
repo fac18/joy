@@ -1,5 +1,7 @@
 # joy efficacy tool
 
+[![Build Status](https://travis-ci.com/fac18/joy.svg?branch=master)](https://travis-ci.com/fac18/joy)
+
 ### About
 
 Joy is a health tech company on a mission to add ten years to life expectancy through better social health.
