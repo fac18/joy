@@ -2,10 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import WellbeingAssessmentModal from "./WellbeingAssessmentModal";
 
-test("renders the home wellbeing assessment component", () => {
+test("renders the home wellbeing assessment modal", () => {
   render(<WellbeingAssessmentModal />);
 });
 
-// test('Jest is working', () => {
-//   expect(true).toBeTruthy();
-// });
