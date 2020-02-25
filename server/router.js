@@ -40,7 +40,6 @@ router.get('/getclient:id', (req, res) => {
     getCurrentAssessment(id),
     getClientServices(id)
   ]).then(data => {
-    console.log('I am not res.jsoned', data);
     return res.json(data);
   });
 });
