@@ -1,6 +1,6 @@
 const dbConnection = require('../database/db_connection.js');
 
-// Sends a request to the database including reformatting data to make more readable
+// Get clients for search page
 
 const getAllClients = () => {
   console.log('I am getallclients');
@@ -13,6 +13,8 @@ const getAllClients = () => {
       return data.rows;
     });
 };
+
+// Get specific client information for log
 
 const getClient = id => {
   return dbConnection
@@ -30,8 +32,8 @@ const getInitialAssessment = id => {
     .query(
       `SELECT ucla3_id, TO_CHAR(input_date_ucla3, 'dd/mm/yyyy') AS initial_assessment_date, total_ucla3, client_id
 FROM ucla3_questionnaire
-WHERE client_id = ${id}
-ORDER BY input_date_ucla3 ASC
+WHERE client_id = 1
+ORDER BY ucla3_id ASC
 LIMIT 1;`
     )
     .then(data => {
@@ -54,59 +56,13 @@ const getClientServices = id => {
     });
 };
 
-// const getClientAge = id => {
-//   console.log('I am inside getclientage')
-//   return dbConnection
-//     .query(
-//       `SELECT client_id, client_firstname, client_surname, EXTRACT(YEAR FROM age(current_date, client_dob)) AS current_age FROM client WHERE client_id=${id});`
-//     )
-//     .then(data => {
-//       console.log('I am the data in the getclientage request', data.rows)
-//       return data.rows
-//     })
-// };
-
-// async function getAllAssessments() {
-//   console.log('starting async query');
-//   const result = await dbConnection.query(`SELECT ucla3_id, input_date_ucla3 AS initial_assessment_date, total_ucla3, client_id
-// FROM ucla3_questionnaire
-// WHERE client_id = 1
-// ORDER BY input_date_ucla3 ASC
-// LIMIT 1;`);
-//   console.log('async query finished');
-//   console.log('starting callback query');
-//   dbConnection
-//     .query(
-//       `SELECT ucla3_id, input_date_ucla3 AS current_assessment_date, total_ucla3, client_id
-// FROM ucla3_questionnaire
-// WHERE client_id = 1
-// ORDER BY input_date_ucla3 DESC
-// LIMIT 1;`
-//     )
-//     .then(data => {
-//       return data.rows;
-//     });
-//   console.log('calling end');
-//   // await dbConnection.end();
-//   console.log('pool has drained');
-// }
-
-// getAllAssessments().then(data => {
-//   console.log('I am the data in getallassessments', data);
-// });
-
-// getClient(1).then(data => {
-//   console.log('I am the data in the router', data);
-//   return res.json(data);
-// });
-
 const getCurrentAssessment = id => {
   return dbConnection
     .query(
       `SELECT ucla3_id, TO_CHAR(input_date_ucla3, 'dd/mm/yyyy') AS current_assessment_date, total_ucla3, client_id
 FROM ucla3_questionnaire
-WHERE client_id = ${id}
-ORDER BY input_date_ucla3 DESC
+WHERE client_id = 1
+ORDER BY ucla3_id DESC
 LIMIT 1;`
     )
     .then(data => {
@@ -118,14 +74,7 @@ LIMIT 1;`
     });
 };
 
-// const getClientInfo = id => {
-//   return dbConnection
-//     .query(
-//       'SELECT services_name FROM services WHERE services_id client_id = $1',
-//       [id]
-//     )
-//     .then(data => data.rows);
-// };
+// Services request for referral form
 
 const getAllServices = () => {
   return dbConnection.query('SELECT * FROM services').then(data => data.rows);

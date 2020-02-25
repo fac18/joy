@@ -55,6 +55,7 @@
   "license": "ISC",
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
+    "codecov": "^3.6.5",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.4.4"
