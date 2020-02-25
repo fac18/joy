@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test jest --detectOpenHandles"
+    "test": "NODE_ENV=test jest --detectOpenHandles --coverage --watchAll=false --forceExit && codecov"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "codecov": "^3.6.5",
     "jest": "^25.1.0",
-    "supertest": "^4.0.2"
-  }
+    "supertest": "^4.0.2"  }
 }
