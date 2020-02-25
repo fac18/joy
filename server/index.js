@@ -1,8 +1,8 @@
-const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const router = require('./router');
 const bodyParser = require('body-parser');
+const express = require('express');
 const app = express();
 
 // Log all request to make error identification easier
@@ -10,8 +10,7 @@ app.use(morgan('combined'));
 
 // Serve static files from the React app
 
-app.use(express.static(path.join(__dirname, '../client/build')))
-
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // app.use(express.json({ limit: '1mb' }))
 app.use(bodyParser.json());
@@ -26,7 +25,4 @@ app.use(
 
 app.use(router);
 
-const port = process.env.PORT || 5000;
-app.listen(port);
-
-console.log(`Joy happens at port ${port}`);
+module.exports = app;
