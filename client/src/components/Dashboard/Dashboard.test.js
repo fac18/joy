@@ -5,7 +5,3 @@ import Dashboard from "./Dashboard";
 test("renders the home landing page component", () => {
   render(<Dashboard />);
 });
-
-// test('Jest is working', () => {
-//   expect(true).toBeTruthy();
-// });
