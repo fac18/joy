@@ -35,8 +35,14 @@ test('test gettotalservices endpoint path works', () => {
   });
 });
 
-test('test getwellbeingtotals endpoint path works', () => {
-  return request.get('/getwellbeingtotals').then(response => {
+test('test get initial wellbeingtotals endpoint path works', () => {
+  return request.get('/getinitialwellbeingtotals').then(response => {
+    expect(response.statusCode).toBe(200);
+  });
+});
+
+test('test get current wellbeingtotals endpoint path works', () => {
+  return request.get('/getcurrentwellbeingtotals').then(response => {
     expect(response.statusCode).toBe(200);
   });
 });

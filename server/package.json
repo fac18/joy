@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test jest --detectOpenHandles"
+    "test": "NODE_ENV=test jest --detectOpenHandles -- --coverage --watchAll=false && codecov --forceExit"
   },
   "keywords": [],
   "author": "",

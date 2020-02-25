@@ -1,5 +1,5 @@
 language: node_js
 node_js:
-  - "node"
+  - 'node'
 script:
-  - cd client && npm i && npm run test -- --coverage --watchAll=false && codecov
+  - cd client && npm i && npm run test -- --coverage --watchAll=false && codecov && cd ../server && npm test

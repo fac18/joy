@@ -9,17 +9,14 @@ const {
   getClientServices,
   getTotalClients,
   getTotalServices,
-  getWellbeingTotals,
+  getInitialWellbeingTotals,
+  getCurrentWellbeingTotals,
   getServicesPopularity,
   getAllServices
 } = require('../model/queries/getData.js');
 
 beforeEach(() => {
   return dbBuild(schema);
-});
-
-test('Jest is working', () => {
-  expect(true).toBeTruthy();
 });
 
 test('get a specific client basic info', () => {
@@ -70,10 +67,17 @@ test('get the count of the total number of services in the database', () => {
   });
 });
 
-test('get accurate data around the sites total wellbeing', () => {
-  return getWellbeingTotals().then(totals => {
+test('get accurate data around the sites initial wellbeing', () => {
+  return getInitialWellbeingTotals().then(totals => {
     console.log(totals);
-    expect(parseInt(totals[0].lonely_8_9)).toBe(8);
+    expect(parseInt(totals[0].lonely_8_9)).toBe(4);
+  });
+});
+
+test('get accurate data around the sites current wellbeing', () => {
+  return getCurrentWellbeingTotals().then(totals => {
+    console.log(totals);
+    expect(parseInt(totals[0].lonely_8_9)).toBe(1);
   });
 });
 
