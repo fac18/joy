@@ -1,14 +1,14 @@
-import React from "react";
-import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Dashboard from "./components/Dashboard/Dashboard";
-import LandingPage from "../src/components/LandingPage/LandingPage";
-import SearchClient from "../src/components/SearchClient/SearchClient";
-import ClientProfile from "../src/components/ClientProfile/ClientProfile";
-import WellbeingAssessment from "../src/components/WellbeingAssessment/WellbeingAssessment";
-import RegisterClient from "./components/RegisterClient/RegisterClient";
-import ReferralForm from "./components/ReferralForm/ReferralForm";
-import RegisterSuccess from "./components/RegisterClient/RegisterSuccess";
+import React from 'react';
+import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Dashboard from './components/Dashboard/Dashboard';
+import LandingPage from '../src/components/LandingPage/LandingPage';
+import SearchClient from '../src/components/SearchClient/SearchClient';
+import ClientProfile from '../src/components/ClientProfile/ClientProfile';
+import WellbeingAssessment from '../src/components/WellbeingAssessment/WellbeingAssessment';
+import RegisterClient from './components/RegisterClient/RegisterClient';
+import ReferralForm from './components/ReferralForm/ReferralForm';
+import RegisterSuccess from './components/RegisterClient/RegisterSuccess';
 
 const App = () => {
   const [clients, setClients] = React.useState([{}]);
@@ -25,11 +25,11 @@ const App = () => {
 
   return (
     <Router>
-      <Route exact path="/" component={LandingPage} />
-      <Route exact path="/registerClient" component={RegisterClient} />
-      <Route exact path="/registerClientSuccess" component={RegisterSuccess} />
+      <Route exact path='/' component={LandingPage} />
+      <Route exact path='/registerClient' component={RegisterClient} />
+      <Route exact path='/registerClientSuccess' component={RegisterSuccess} />
       <Route
-        path="/dashboard"
+        path='/dashboard'
         render={() => (
           <Dashboard
             clients={clients}
@@ -49,7 +49,7 @@ const App = () => {
       />
 
       <Route
-        path="/searchClient"
+        path='/searchClient'
         render={() => (
           <SearchClient
             singleClient={singleClient}
@@ -62,7 +62,7 @@ const App = () => {
 
       <Switch>
         <Route
-          path="/clientProfile/:id"
+          path='/clientProfile/:id'
           render={() => (
             <ClientProfile
               singleClient={singleClient}
@@ -71,7 +71,7 @@ const App = () => {
           )}
         />
         <Route
-          path="/wellbeingAssessment/:id"
+          path='/wellbeingAssessment/:id'
           render={() => (
             <WellbeingAssessment
               singleClient={singleClient}
@@ -80,7 +80,7 @@ const App = () => {
           )}
         />
         <Route
-          path="/referralForm/:id"
+          path='/referralForm/:id'
           render={() => (
             <ReferralForm
               singleClient={singleClient}

@@ -50,14 +50,9 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
   const [services, setServices] = React.useState(null);
   const [referredServices, setReferredServices] = React.useState(null);
   const classes = useStyles();
-  let { id } = useParams();
   const history = useHistory();
 
-  useEffect(() => {
-    getRequest(`/getclient:${id}`).then(res => {
-      setSingleClient(buildClientObject(res));
-    });
-  }, []);
+  let { id } = useParams();
 
   const handleSubmit = e => {
     e.preventDefault();
