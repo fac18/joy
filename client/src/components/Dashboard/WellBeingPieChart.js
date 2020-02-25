@@ -85,12 +85,6 @@ const WellbeingPieGraph = ({
           initialWellbeingTotals[0].ok_5_6_7 -
           initialWellbeingTotals[0].not_lonely_3_4
       ],
-      dataLabels: {
-        enabled: true,
-        formatter: function(val) {
-          return val + "%";
-        }
-      },
       chart: {
         width: 350,
         type: "pie"
@@ -99,7 +93,7 @@ const WellbeingPieGraph = ({
         `HIGH risk (Level 8-9)`,
         `MED risk (Level 5-7)`,
         `LOW risk (Level 3-4)`,
-        `NO ASSESSMENTS`
+        `No assessments yet`
       ],
       colors: [
         "rgb(255, 69, 96)",
@@ -118,9 +112,10 @@ const WellbeingPieGraph = ({
       legend: {
         position: "bottom",
         onItemClick: {
-          toggleDataSeries: true
+          toggleDataSeries: false
         },
         horizontalAlign: "center"
+        // paddingLeft: "4rem"
       },
       responsive: [
         {
