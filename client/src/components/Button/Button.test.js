@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import ClientProfile from "./ClientProfile";
+import Button from "./Button";
 
 test("renders the home wellbeing assessment component", () => {
-  render(<ClientProfile />);
+  render(<Button />);
 });
