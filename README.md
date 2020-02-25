@@ -1,5 +1,7 @@
 # joy efficacy tool
 
+[![Build Status](https://travis-ci.com/fac18/joy.svg?branch=master)](https://travis-ci.com/fac18/joy)
+
 ### About
 
 Joy is a health tech company on a mission to add ten years to life expectancy through better social health.
@@ -16,7 +18,7 @@ We built a tool which allows you to track which clients you have referred to whi
 
 ### Tech stack
 
-- Express server, PSQL, React Hooks, Material UI styling, hosted on Heroku.
+- Express server, PostgreSQL, React Hooks, Material UI styling, hosted on Heroku.
 
 ### The app
 <img src="https://i.imgur.com/sRovB7h.png" width="400">
