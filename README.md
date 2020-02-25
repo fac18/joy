@@ -18,7 +18,7 @@ We built a tool which allows you to track which clients you have referred to whi
 
 ### Tech stack
 
-- Express server, PSQL, React Hooks, Material UI styling, hosted on Heroku.
+- Express server, PostgreSQL, React Hooks, Material UI styling, hosted on Heroku.
 
 ### The app
 <img src="https://i.imgur.com/sRovB7h.png" width="400">
