@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import ButtonAppBar from "./NavBar";
 import TemporaryDrawer from './NavMenu';
 
-test("renders the home navbar component", () => {
+test("renders the button app bar component", () => {
   render(<ButtonAppBar />);
 });
 
