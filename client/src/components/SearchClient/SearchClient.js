@@ -97,6 +97,7 @@ const SearchClient = ({ clients, setClients }) => {
 
   useEffect(() => {
     getRequest('/getallclients').then(res => {
+      console.log(res);
       setClients(res);
     });
   }, []);
