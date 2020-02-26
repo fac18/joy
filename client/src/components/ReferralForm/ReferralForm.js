@@ -53,12 +53,6 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
   let { id } = useParams();
   const history = useHistory();
 
-  useEffect(() => {
-    getRequest(`/getclient:${id}`).then(res => {
-      setSingleClient(buildClientObject(res));
-    });
-  }, []);
-
   const handleSubmit = e => {
     e.preventDefault();
     postRequest(`/postreferralform:${id}`, referredServices).then(response => {

@@ -5,7 +5,7 @@ import { render } from '@testing-library/react';
 import RegisterClient from './RegisterClient';
 import Success from './RegisterSuccess';
 
-test("renders the register success page component", () => {
+test('renders the register success page component', () => {
   render(<Success />);
 });
 
