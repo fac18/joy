@@ -19,6 +19,10 @@ beforeEach(() => {
   return dbBuild(schema);
 });
 
+beforeEach(() => {
+  jest.setTimeout(10000);
+});
+
 test('get a specific client basic info', () => {
   return getClient(1).then(client => {
     expect(client[0].client_firstname).toBe('Jim');
