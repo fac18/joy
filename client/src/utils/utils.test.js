@@ -1,4 +1,4 @@
-import filterClients from './filterClients';
+import { filterClients } from './filterClients';
 
 const clients = [
   {
@@ -23,8 +23,14 @@ const clients = [
   }
 ];
 
-test('filterClients works as expected', () => {
-  console.log(filterClients('J', undefined, undefined, clients));
+test('filterClients works with all three parameters', () => {
+  expect(filterClients('J', 'B', '1993', clients).length).toBe(1);
+});
 
-  // expect(filterClients('j', clients).length).toBe(2);
+test('filterClients works with first and last name', () => {
+  expect(filterClients('J', 'B', undefined, clients).length).toBe(2);
+});
+
+test('filterClients works with only date of birth', () => {
+  expect(filterClients(undefined, undefined, '1993', clients).length).toBe(1);
 });

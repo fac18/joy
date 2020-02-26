@@ -63,7 +63,6 @@ const useStyles = makeStyles({
     },
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      // marginLeft: theme.spacing(1),
       width: 'auto'
     },
     margin: '1rem auto'
@@ -83,33 +82,6 @@ const useStyles = makeStyles({
   }
 });
 
-// Automatically sends a request to the server asking for a list of all the clients
-
-const clients = [
-  {
-    client_firstname: 'Jim',
-    client_surname: 'Brown',
-    to_char: '05/05/1996'
-  },
-  {
-    client_firstname: 'Dot',
-    client_surname: 'Green',
-    to_char: '05/05/1996'
-  },
-  {
-    client_firstname: 'Kathy',
-    client_surname: 'Black',
-    to_char: '05/05/1996'
-  },
-  {
-    client_firstname: 'JIm',
-    client_surname: 'Brown',
-    to_char: '05/05/1993'
-  }
-];
-
-console.log(filterClients('J', 'J', 'J', clients));
-
 const SearchClient = ({ clients, setClients }) => {
   // Creates a card for every user which comes back from the database
   const [searchInputFirstName, setSearchInputFirstName] = React.useState(
@@ -120,6 +92,8 @@ const SearchClient = ({ clients, setClients }) => {
   );
   const [searchInputDOB, setSearchInputDOB] = React.useState(undefined);
   const classes = useStyles();
+
+  // Automatically sends a request to the server asking for a list of all the clients
 
   useEffect(() => {
     getRequest('/getallclients').then(res => {
