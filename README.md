@@ -31,13 +31,19 @@ You can
 1. Register a client
 <img src="https://i.imgur.com/XJgJzvK.png" width="400">
 
-2. Make a service referral to them from a selection of services
+2. Search for an existing client by first name, last name and date of birth
+<img src="https://i.imgur.com/7c5fcd3.png" width="400">
+
+3. View an existing client's profile
+<img src="https://i.imgur.com/tGgqyxh.png" width="400">
+
+4. Make a service referral to them from a selection of services
 <img src="https://i.imgur.com/730RZSa.png" width="400">
 
-3. Carry out a wellbeing assessment
-<img src="https://i.imgur.com/odrXO5D.png" width="400">
+5. Carry out a wellbeing assessment
+<img src="https://i.imgur.com/16QKI9o.pngg" width="400">
 
-4. See how these metrics affect wellbeing on the dashboard
+6. See how these metrics affect wellbeing on the dashboard
 <img src="https://i.imgur.com/WDPcDS4.png" width="400">
 
 ### Database
@@ -86,8 +92,11 @@ Deployment instructions
 
 ### To do
 
-- For the app to go into formal production, we need help from a security expert.
-- Build out the database.
+- For the app to go into formal production, we need help from a security expert to ensure that the data of the individuals on the app is completely protected.
+- We would like to add additional functionality, including: 
+* The ability to add a new service
+- We would also like to focus on what other interesting data can be pulled from the information, namely
+* How services affect wellbeing over a long period of time.
 
 ### Contributing
 
