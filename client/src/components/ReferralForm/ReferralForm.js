@@ -2,7 +2,6 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 
 // initial assessment
 import React, { useEffect } from 'react';
-// import { useForm } from 'react-hook-form';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import theme from '../../theme';
@@ -12,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import { useParams, useHistory } from 'react-router-dom';
 import getRequest from '../../utils/getData';
 import buildClientObject from '../../utils/buildClientObject';
+import postRequest from '../../utils/postData';
 
 const useStyles = makeStyles({
   mainTitle: {
@@ -53,20 +53,9 @@ const ReferralForm = ({ singleClient, setSingleClient }) => {
   let { id } = useParams();
   const history = useHistory();
 
-  useEffect(() => {
-    getRequest(`/getclient:${id}`).then(res => {
-      setSingleClient(buildClientObject(res));
-    });
-  }, []);
-
   const handleSubmit = e => {
     e.preventDefault();
-    const options = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(referredServices)
-    };
-    fetch(`/postreferralform:${id}`, options).then(response => {
+    postRequest(`/postreferralform:${id}`, referredServices).then(response => {
       if (response.status === 200) {
         history.push(`/clientProfile/${id}`);
       } else console.log(response);

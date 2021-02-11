@@ -12,6 +12,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { useParams, useHistory } from 'react-router-dom';
+import postRequest from '../../utils/postData';
 
 const useStyles = makeStyles({
   root: {
@@ -89,16 +90,10 @@ const RegisterClient = () => {
   const classes = useStyles();
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // const [checked, setChecked] = React.useState(true);
-  // const handleCheckBoxChange = event => {
-  //   setChecked(event.target.checked);
-  // };
-
   const history = useHistory();
 
   const onChange = (e, value) => {
     // Checks whether the input is the material ui component, and if so accesses its value rather than event.value
-
     const materialUIValue = value ? value.option : null;
     dispatch({
       field: materialUIValue ? 'areasOfSupport' : e.target.name,
@@ -108,14 +103,7 @@ const RegisterClient = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    fetch('/postregisterclient', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(state)
-    })
-      // .then(result => result.json())
+    postRequest('/postregisterclient', state)
       .then(result => {
         if (result.status === 200) {
           history.push(`/searchClient`);
@@ -254,19 +242,6 @@ const RegisterClient = () => {
               )}
             />
           </div>
-
-          {/* <label className={classes.labels}> */}
-          {/* <Checkbox
-              checked={checked}
-              onChange={handleCheckBoxChange}
-              value='primary'
-              inputProps={{ 'aria-label': 'primary checkbox' }}
-              id='consent'
-              name='consent'
-              defaultValue={true}
-            />
-            I consent to Joy storing and processing my personal data
-          </label> */}
           <Button
             className={classes.pinkButton}
             variant='container'
